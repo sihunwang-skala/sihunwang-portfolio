@@ -1,12 +1,12 @@
 const copy = {
   ko: {
     skip:"본문으로 이동", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술",
-    summary:"Multi-Agent, Agentic AI, Agentic RAG, Tool Routing, LLM Evaluation을 설계·검증해 실제 업무에 적용 가능한 AI Agent와 AX 서비스를 개발합니다.",
+    summary:"Multi-Agent, Agentic AI, Agentic RAG, Tool Routing, LLM Evaluation을 설계하고 검증하여 실제 업무에 적용 가능한 AI Agent와 AX 서비스를 개발합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무",
     experienceTitle:"경력", experienceSubtitle:"최신순",
     flitto1:"LG전자와 Olive Young 다국어 AI 번역 프로젝트에서 Fluency Agent를 개발하고 언어와 도메인별 Workflow Prompt를 최적화했습니다.",
-    flitto2:"LLM 품질 평가 체계와 Benchmark 기준을 수립하고, 도메인 전문가 기반 HITL 검증 및 PoC 프로세스를 설계·운영해 외부 검수에서 97.5%의 무수정 통과율을 달성했습니다.",
+    flitto2:"LLM 품질 평가 체계와 Benchmark 기준을 수립하고, 도메인 전문가 기반 HITL 검증 및 PoC 프로세스를 설계하고 운영해 외부 검수에서 97.5%의 무수정 통과율을 달성했습니다.",
     kdn1:"국세청 API 기반 납세 여부 확인과 국가 농업통계 조사에 필요한 외부 데이터 수집, 식별자 Mapping, 검증, Excel 처리를 Python으로 자동화했습니다.",
     kdn2:"API 조회 오류 보완, 예외 처리, 실행 로그를 구현해 약 3시간의 반복 업무를 최종 검증 10분 수준으로 단축했습니다.", kdn3:"카카오맵과 지도 좌표를 활용해 약 7,000필지의 농지 데이터를 Cafe24 웹사이트 지도에 시각화했습니다.",
     iea1:"고령자 개인 맞춤형 건강정보 Agent를 위해 건강정보 조회와 논문 검색을 선택하는 Tool Routing과 Agent Workflow를 설계했습니다.",
@@ -17,8 +17,8 @@ const copy = {
     educationTitle:"학력", rankingLabel:"U.S. News Graduate AI Ranking", rankingSummary:"미국 AI 분야 최상위권 대학", rankingLink:"U.S. News Best Artificial Intelligence Programs Ranking", googleRankingUrl:"https://www.google.com/search?q=%EC%9D%BC%EB%A6%AC%EB%85%B8%EC%9D%B4+%EB%8C%80%ED%95%99%EA%B5%90+%EC%96%B4%EB%B0%94%EB%82%98-%EC%83%B4%ED%8E%98%EC%9D%B8+%EC%A1%B0%EC%A7%80%EC%95%84+%EA%B3%B5%EA%B3%BC%EB%8C%80%ED%95%99%EA%B5%90+%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5+%EC%88%9C%EC%9C%84", usNewsRanking:"US news Best Artificial Intelligence Programs", gtRank:"U.S. News Graduate AI #5", uiucRank:"U.S. News Graduate AI #6", gtDegree:"M.S. Computer Science, AI", uiucDegree:"B.S. Statistics, Minors in Computer Science, Data Science, and Informatics",
     projectsTitle:"대표 프로젝트", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"이전 GitHub 계정", googleRanking:"U.S. News 순위 검색", themeDark:"다크 모드", themeLight:"라이트 모드", showScreenshots:"프로젝트 화면 보기",
     healthProjectTitle:"개인 맞춤형 건강 코칭 Multi-Agent", translationProjectTitle:"다국어 번역 품질 개선 Multi-Agent", pipelineProjectTitle:"국세청 세금 납부 및 한국농촌경제연구원 데이터 파이프라인", usageProjectTitle:"AI Usage Bar",
-    healthProject1:"개인 건강정보와 연구 근거를 바탕으로 생활습관을 안내하는 건강 코칭 Agent를 개발했습니다.", healthProject2:"사용자의 질문에 따라 건강 기록 조회와 논문 검색을 선택하고, 답변과 함께 근거 문장을 제공합니다.", healthProject3:"Benchmark 600문항에서 전체 정확도 98.67%, API 오류 0건을 기록했고, 표준 RAG 대비 답변 품질을 75.3%에서 91.5%로 개선했습니다.",
-    translationProject1:"CSV와 직접 입력 문장을 대상으로 번역 품질을 검수하고 수정하는 AI Agent를 개발했습니다.", translationProject2:"MQM 오류를 분류한 뒤 오류 유형에 맞는 전문 Agent가 번역을 수정하고, 재검증 결과와 사람 검토 상태를 화면에 보여줍니다.", translationProject3:"Orchestrator가 오류 유형별 전문 Agent를 순차 라우팅하는 Multi-Agent Workflow에 결정적 검증, Rollback, OpenAI Escalation, HITL 승인을 연결했으며, 별도 Agent 간 통신 프로토콜을 사용하는 A2A가 아닌 구조로 설계했습니다.",
+    healthProject1:"개인 건강정보와 연구 근거를 바탕으로 생활습관을 안내하는 건강 코칭 Agent를 개발했습니다.", healthProject2:"사용자의 질문에 따라 건강 기록 조회와 논문 검색을 선택하고, 답변과 함께 근거 문장을 제공합니다.", healthProject3:"LangGraph Supervisor와 Tool Routing, Hybrid Search RAG, MCP Tool, Evidence Citation, Safety Rules를 연결해 Benchmark 600문항에서 전체 정확도 98.67%와 API 오류 0건을 기록하고, 표준 RAG 대비 답변 품질을 75.3%에서 91.5%로 개선했습니다.",
+    translationProject1:"CSV와 직접 입력 문장을 대상으로 번역 품질을 검수하고 수정하는 AI Agent를 개발했습니다.", translationProject2:"MQM 오류를 분류한 뒤 오류 유형에 맞는 전문 Agent가 번역을 수정하고, 재검증 결과와 사람 검토 상태를 화면에 보여줍니다.", translationProject3:"Orchestrator 기반 순차형 Multi-Agent Workflow에 결정적 검증, Rollback, OpenAI Escalation, HITL 승인을 연결하고, 실행 화면에서 번역 전후 비교와 채택 또는 Rollback 이력을 확인할 수 있습니다.",
     pipelineProject1:"국가 농업통계 조사와 납세 여부 확인에 필요한 데이터를 수집하고 검증하는 자동화 파이프라인을 개발했습니다.", pipelineProject2:"외부 API와 웹 데이터를 식별자 기준으로 연결하고 Excel 문서와 지도 좌표까지 처리했습니다.", pipelineProject3:"Python, API fallback, Selenium, Beautiful Soup, OpenPyXL, execution logs를 사용해 반복 업무를 약 3시간에서 최종 검증 10분 수준으로 줄였습니다.",
     usageBarProject1:"Claude와 Codex의 사용량을 메뉴 바에서 확인하는 macOS 앱을 개발했습니다.", usageBarProject2:"5시간 및 주간 사용량, 초기화 시각, 최근 기록과 설정 메뉴를 한 화면에서 확인할 수 있습니다.", usageBarProject3:"Swift 6, SwiftPM, LaunchAgent, Swift Testing으로 백그라운드 갱신과 Threshold Alert, Usage Coach를 구현했습니다.",
     skillsTitle:"기술", recognitionTitle:"기여와 수상", openSource:"UIUC STAT 420 응용통계학 교과서 기여자 (2020)", upstageAward:"아파트 실거래가 예측 Machine Learning 경진대회 Team 2위 (2026)", dataDiveAward:"주가 데이터를 활용한 Machine Learning 분석 경진대회 Team 4위 (2023)", mathAward:"미국 수학경시대회 조지아주 동남부 지역 대표(2017, 2018), 개인 2위(2017, 2018), 단체 1위(2017, 2018)", tournamentSite:"대회 공식 페이지", gctmResult:"2017 GCTM 수상 기록"
@@ -41,8 +41,8 @@ const copy = {
     educationTitle:"Education", rankingLabel:"U.S. News Graduate AI Ranking", rankingSummary:"Top AI universities in the U.S.", rankingLink:"U.S. News reference", googleRankingUrl:"https://www.google.com/search?q=What%20are%20the%20AI%20rankings%20for%20UIUC%20and%20Georgia%20Tech%3F", usNewsRanking:"US news Best Artificial Intelligence Programs", gtRank:"U.S. News Graduate AI #5", uiucRank:"U.S. News Graduate AI #6", gtDegree:"M.S. Computer Science, AI", uiucDegree:"B.S. Statistics, Minors in Computer Science, Data Science, and Informatics",
     projectsTitle:"Selected Projects", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"Previous GitHub account", googleRanking:"Search U.S. News ranking", themeDark:"Dark mode", themeLight:"Light mode", showScreenshots:"View project screens",
     healthProjectTitle:"Personalized Health Coach Multi-Agent", translationProjectTitle:"Multilingual Translation Quality Multi-Agent", pipelineProjectTitle:"Tax Payment and Korea Rural Economic Institute Data Pipeline", usageProjectTitle:"AI Usage Bar",
-    healthProject1:"Built a health-coaching agent that provides lifestyle guidance grounded in personal health records and research evidence.", healthProject2:"It routes each question to health-record retrieval or paper search and returns the answer with supporting evidence.", healthProject3:"Across 600 benchmark questions, it reached 98.67% overall accuracy with zero API errors and improved answer quality from 75.3% to 91.5% versus standard RAG.",
-    translationProject1:"Built an AI agent that reviews and repairs translations from CSV files or direct input.", translationProject2:"It classifies MQM errors, routes each issue to a specialist repair step, and presents re-check results and human-review status.", translationProject3:"An Orchestrator sequentially routes specialized agents by MQM error type and connects deterministic validation, rollback, OpenAI escalation, and HITL approval; it is an orchestrator-based sequential Multi-Agent workflow rather than an A2A protocol.",
+    healthProject1:"Built a health-coaching agent that provides lifestyle guidance grounded in personal health records and research evidence.", healthProject2:"It routes each question to health-record retrieval or paper search and returns the answer with supporting evidence.", healthProject3:"Connected LangGraph Supervisor, Tool Routing, Hybrid Search RAG, MCP tools, evidence citations, and safety rules; across 600 benchmark questions, the system reached 98.67% overall accuracy with zero API errors and improved answer quality from 75.3% to 91.5% versus standard RAG.",
+    translationProject1:"Built an AI agent that reviews and repairs translations from CSV files or direct input.", translationProject2:"It classifies MQM errors, routes each issue to a specialist repair step, and presents re-check results and human-review status.", translationProject3:"The orchestrator-based sequential Multi-Agent workflow combines deterministic validation, rollback, OpenAI escalation, and HITL approval, with before-and-after translations and accepted or rolled-back revisions shown in the result view.",
     pipelineProject1:"Built an automation pipeline that collects and validates data for a national agricultural statistics survey and tax-payment verification.", pipelineProject2:"It maps external API and web data by identifier and processes Excel documents and geographic coordinates.", pipelineProject3:"Python, API fallback logic, Selenium, Beautiful Soup, OpenPyXL, and execution logs reduced a recurring three-hour workflow to about ten minutes of final verification.",
     usageBarProject1:"Built a macOS app that makes Claude and Codex usage visible from the menu bar.", usageBarProject2:"It shows five-hour and weekly usage, reset times, recent records, and settings in one place.", usageBarProject3:"Swift 6, SwiftPM, LaunchAgent, and Swift Testing support background refresh, threshold alerts, and a usage coach.",
     skillsTitle:"Skills", recognitionTitle:"Contributions and Awards", openSource:"Credited contributor to the UIUC STAT 420 textbook (2020)", upstageAward:"Team 2nd place in an apartment transaction price prediction ML competition, 2026", dataDiveAward:"Team 4th place in a stock-data Machine Learning analysis competition, 2023", mathAward:"Represented Southeast Georgia in the U.S. mathematics competition in 2017 and 2018; placed 2nd individually and 1st as a team.", tournamentSite:"Official tournament page", gctmResult:"2017 GCTM result"
@@ -111,8 +111,8 @@ const healthSlideSources = [
 ];
 
 const healthCaptionOverrides = {
-  "docs__ui__screenshots__readme__03_evidence_panel_ko.png": "대표 화면 · 근거 패널",
-  "docs__ui__screenshots__readme__03_evidence_panel_en.png": "대표 화면 · Evidence panel",
+  "docs__ui__screenshots__readme__03_evidence_panel_ko.png": "대표 화면 | 근거 패널",
+  "docs__ui__screenshots__readme__03_evidence_panel_en.png": "대표 화면 | Evidence panel",
   "docs__ui__screenshots__readme__01_user_login_ko.png": "사용자 로그인",
   "docs__ui__screenshots__readme__02_chat_answer_ko.png": "대화 답변",
   "docs__ui__screenshots__readme__06_care_overview_ko.png": "Care overview",
@@ -158,7 +158,7 @@ const healthSlidesFor = (language) => {
   const architecture = {
     src: `./assets/health-architecture-${language}.png`,
     label: "A",
-    caption: language === "ko" ? "전체 구조 · REPORT" : "Architecture · REPORT",
+    caption: language === "ko" ? "전체 구조 | REPORT" : "Architecture | REPORT",
     alt: language === "ko" ? "Health coach Multi-Agent 구조" : "Health coach Multi-Agent architecture"
   };
   return [slides[0], architecture, ...slides.slice(1)].map((slide, index) => ({
@@ -170,7 +170,7 @@ const healthSlidesFor = (language) => {
 const slideCollections = {
   health: { ko: healthSlidesFor("ko"), en: healthSlidesFor("en") },
   l10n: [
-    { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"대표 화면 · 일괄 실행 결과: Japan", alt:"Translation quality agent Japan run screen" },
+    { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"대표 화면 | 일괄 실행 결과: Japan", alt:"Translation quality agent Japan run screen" },
     { src:"./assets/l10n-ui-run-08.png", label:"06", caption:"일괄 실행 결과: France", alt:"Translation quality agent France run screen" },
     { src:"./assets/l10n-ui-hero.png", label:"01", caption:"서비스 화면과 주요 상태", alt:"Translation quality agent hero screen" },
     { src:"./assets/l10n-architecture.png", label:"02", caption:"Agent 처리 구조", alt:"Translation quality agent architecture" },
