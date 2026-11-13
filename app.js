@@ -1,7 +1,7 @@
 const copy = {
   ko: {
     skip:"본문으로 이동", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술",
-    summary1:"AI Agent와 AX 서비스의 문제 정의부터", summary2:"Workflow 설계·구현·평가까지 수행합니다.", summary3:"Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 서비스에 적용하고", summary4:"LLM Evaluation과 HITL로 품질을 검증합니다.",
+    summary:"AI Agent와 AX 서비스를 문제 정의부터 설계, 개발, 평가까지 수행합니다. Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 서비스에 적용하고 LLM Evaluation과 HITL로 품질을 검증합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무",
     experienceTitle:"경력", experienceSubtitle:"최신순",
@@ -18,14 +18,14 @@ const copy = {
     projectsTitle:"대표 프로젝트", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"이전 GitHub 계정", googleRanking:"U.S. News 순위 검색", themeDark:"다크 모드", themeLight:"라이트 모드", showScreenshots:"프로젝트 화면 보기",
     healthProjectTitle:"개인 맞춤형 건강 코칭 Multi-Agent", translationProjectTitle:"Agent 기반 다국어 번역 품질 워크플로우", pipelineProjectTitle:"국세청 세금 납부 및 한국농촌경제연구원 데이터 파이프라인", usageProjectTitle:"AI Usage Bar",
     healthProject1:"개인 건강정보와 연구 근거를 바탕으로 생활습관을 안내하는 건강 코칭 Agent를 개발했습니다.", healthProject2:"사용자의 질문에 따라 건강 기록 조회와 논문 검색을 선택하고, 답변과 함께 근거 문장을 제공합니다.", healthProject3:"LangGraph Supervisor와 Tool Routing, Hybrid Search RAG, MCP Tool, Evidence Citation, Safety Rules를 연결해 Benchmark 600문항에서 전체 정확도 98.67%와 API 오류 0건을 기록하고, 표준 RAG 대비 답변 품질을 75.3%에서 91.5%로 개선했습니다.",
-    translationProject1:"Gradio UI에 PoC·직접 입력·CSV 일괄 처리 모드를 구현하고, LangChain LCEL로 번역·MQM 평가·수정 체인을 연결했습니다. Ollama의 Qwen3.5 4B를 로컬 LLM으로 사용하며, 번역 메모리·용어집·Do-Not-Edit 목록을 문맥에 반영합니다.", translationProject2:"MQM 평가를 Pydantic 구조화 결과로 받아 오류 유형·위치·심각도·수정 제안을 기록하고, 정확성·용어·철자·문법·문체·유창성별 전용 수정 Chain으로 라우팅합니다. Python 오케스트레이터가 Workflow/Agent-first 모드, 상태 전이, 재시도 한도와 후보 채택을 제어하며 Agent는 잔여 오류와 이전 시도를 보고 다음 전략을 선택합니다.", translationProject3:"수정할 때마다 전체 문장을 MQM 재평가하고 숫자·단위·보호 용어를 Python으로 결정적으로 검증해 개선된 후보만 채택하고 나머지는 Rollback합니다. 로컬 처리 후에도 해결되지 않으면 OpenAI gpt-5-mini로 에스컬레이션하고, Gradio 검토 화면에서 사람이 수정·승인·거절하도록 하며 run_id별 JSON 이력을 저장합니다.",
+    translationProject1:"Gradio UI에 PoC, 직접 입력, CSV 일괄 처리 모드를 구현하고 LangChain LCEL로 번역, MQM 평가, 수정 체인을 연결했습니다. Ollama의 Qwen3.5 4B를 로컬 LLM으로 사용하며 번역 메모리, 용어집, Do-Not-Edit 목록을 문맥에 반영합니다.", translationProject2:"MQM 평가를 Pydantic 구조화 결과로 받아 오류 유형, 위치, 심각도, 수정 제안을 기록하고 정확성, 용어, 철자, 문법, 문체, 유창성별 전용 수정 Chain으로 라우팅합니다. Python 오케스트레이터가 Workflow/Agent-first 모드, 상태 전이, 재시도 한도와 후보 채택을 제어하며 Agent는 잔여 오류와 이전 시도를 보고 다음 전략을 선택합니다.", translationProject3:"수정할 때마다 전체 문장을 MQM 재평가하고 숫자, 단위, 보호 용어를 Python으로 결정적으로 검증해 개선된 후보만 채택하고 나머지는 Rollback합니다. 로컬 처리 후에도 해결되지 않으면 OpenAI gpt-5-mini로 에스컬레이션하고, Gradio 검토 화면에서 사람이 수정·승인·거절하도록 하며 run_id별 JSON 이력을 저장합니다.",
     pipelineProject1:"국가 농업통계 조사와 납세 여부 확인에 필요한 데이터를 수집하고 검증하는 자동화 파이프라인을 개발했습니다.", pipelineProject2:"외부 API와 웹 데이터를 식별자 기준으로 연결하고 Excel 문서와 지도 좌표까지 처리했습니다.", pipelineProject3:"Python, API fallback, Selenium, Beautiful Soup, OpenPyXL, execution logs를 사용해 반복 업무를 약 3시간에서 최종 검증 10분 수준으로 줄였습니다.",
     usageBarProject1:"Claude와 Codex의 사용량을 메뉴 바에서 확인하는 macOS 앱을 개발했습니다.", usageBarProject2:"5시간 및 주간 사용량, 초기화 시각, 최근 기록과 설정 메뉴를 한 화면에서 확인할 수 있습니다.", usageBarProject3:"Swift 6, SwiftPM, LaunchAgent, Swift Testing으로 백그라운드 갱신과 Threshold Alert, Usage Coach를 구현했습니다.",
     skillsTitle:"기술", recognitionTitle:"기여와 수상", openSource:"UIUC STAT 420 응용통계학 교과서 기여자 (2020)", upstageAward:"아파트 실거래가 예측 Machine Learning 경진대회 Team 2위 (2026)", dataDiveAward:"주가 데이터를 활용한 Machine Learning 분석 경진대회 Team 4위 (2023)", mathAward:"미국 수학경시대회 조지아주 동남부 지역 대표(2017, 2018), 개인 2위(2017, 2018), 단체 1위(2017, 2018)", tournamentSite:"대회 공식 페이지", gctmResult:"GCTM 주 수학 토너먼트 수상 기록"
   },
   en: {
     skip:"Skip to content", navExperience:"Experience", navEducation:"Education", navProjects:"Projects", navSkills:"Skills",
-    summary1:"I take AI Agent and AX services from problem definition", summary2:"through workflow design, implementation, and evaluation.", summary3:"I apply Multi-Agent, Agentic AI, Agentic RAG, and Tool Routing", summary4:"and validate quality with LLM evaluation and HITL.",
+    summary:"I take AI Agent and AX services from problem definition through design, development, and evaluation. I apply Multi-Agent, Agentic AI, Agentic RAG, and Tool Routing in services, then validate quality with LLM evaluation and HITL.",
     viewExperience:"Experience", viewEducation:"Education", viewProjects:"Projects", viewSkills:"Skills",
     locationLabel:"Location", educationLabel:"Education", focusLabel:"Target roles",
     experienceTitle:"Experience", experienceSubtitle:"Reverse chronological",
