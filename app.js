@@ -112,7 +112,7 @@ const healthSlideSources = [
 
 const healthCaptionOverrides = {
   "docs__ui__screenshots__readme__03_evidence_panel_ko.png": "대표 화면 | 근거 패널",
-  "docs__ui__screenshots__readme__03_evidence_panel_en.png": "대표 화면 | Evidence panel",
+  "docs__ui__screenshots__readme__03_evidence_panel_en.png": "Main screen | Evidence panel",
   "docs__ui__screenshots__readme__01_user_login_ko.png": "사용자 로그인",
   "docs__ui__screenshots__readme__02_chat_answer_ko.png": "대화 답변",
   "docs__ui__screenshots__readme__06_care_overview_ko.png": "Care overview",
@@ -126,7 +126,7 @@ const healthSlideCaption = (source) => healthCaptionOverrides[source] || source
   .replace(/^ui__screenshots__readme__/, "")
   .replace(/^ui__screenshots__/, "")
   .replace(/\.(png|jpe?g|gif|webp)$/i, "")
-  .replace(/__(ko|en)$/, " ($1)")
+  .replace(/_(ko|en)$/, " ($1)")
   .replace(" (ko)", " (한국어)")
   .replace(" (en)", " (English)")
   .replace(/__/g, " / ")
@@ -135,9 +135,9 @@ const healthSlideCaption = (source) => healthCaptionOverrides[source] || source
 
 const healthSourceSet = new Set(healthSlideSources);
 const localizedHealthSource = (source, language) => {
-  const match = source.match(/__(ko|en)(\.[^.]+)$/i);
+  const match = source.match(/_(ko|en)(\.[^.]+)$/i);
   if (!match) return source;
-  const candidate = source.replace(/__(ko|en)(\.[^.]+)$/i, `__${language}$2`);
+  const candidate = source.replace(/_(ko|en)(\.[^.]+)$/i, `_${language}$2`);
   return healthSourceSet.has(candidate) ? candidate : source;
 };
 const healthSlidesFor = (language) => {
