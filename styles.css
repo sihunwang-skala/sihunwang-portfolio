@@ -31,7 +31,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .language-switch button[aria-pressed="true"] { background:var(--ink); color:var(--white); }
 
 .hero { display:grid; grid-template-columns:minmax(0,1fr) 250px; gap:3rem; align-items:center; min-height:40rem; padding-block:4.5rem; border-bottom:1px solid var(--line); }
-.hero-main { align-self:start; }
+.hero-main { align-self:center; }
 .job-title { margin:0; color:var(--blue); font-size:.88rem; font-weight:800; letter-spacing:.06em; }
 .hero h1 { min-height:1em; margin:.25rem 0 .8rem; font-size:clamp(2.8rem,6vw,4.8rem); letter-spacing:-.06em; line-height:1; }
 .summary { max-width:650px; margin:0; color:#344054; font-size:1rem; line-height:1.6; }
