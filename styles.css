@@ -39,7 +39,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .reveal-text { display:inline; }
 .intro-char { display:inline; opacity:0; animation:text-reveal .22s ease-out both; animation-delay:calc(var(--reveal-index) * 12ms); }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
-.quick-links { position:absolute; right:0; bottom:0; left:0; display:flex; flex-wrap:wrap; gap:.55rem; margin:0; }
+.quick-links { position:absolute; right:0; bottom:0; left:0; display:grid; grid-template-columns:repeat(4,max-content); gap:.55rem; margin:0; }
 .quick-links a { white-space:nowrap; }
 .quick-links a { padding:.5rem .75rem; border:1px solid var(--line); border-radius:7px; color:#344054; font-size:.83rem; font-weight:700; text-decoration:none; }
 .quick-links a:hover { border-color:var(--blue); color:var(--blue); }
@@ -207,6 +207,8 @@ footer { display:flex; justify-content:space-between; gap:1rem; padding:1.4rem c
 @media (max-width:560px) {
   .page-shell { width:min(calc(100% - 1.5rem),var(--max)); }
   .hero { grid-template-columns:1fr; min-height:0; padding-block:3rem; }
+  .quick-links { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .quick-links a { display:flex; align-items:center; justify-content:center; min-height:2.5rem; white-space:normal; text-align:center; }
   .hero h1 { font-size:2.6rem; }
   .hero-facts { display:block; }
   .hero-facts div { padding:.6rem 0; border-right:0; border-bottom:1px solid var(--line); }
