@@ -180,11 +180,11 @@ html[lang="en"] .ranking-usnews-link { margin-left:0; }
 .idsc-image img { filter:none; border-radius:0; object-fit:cover; }
 .recognition-photo { object-fit:cover !important; }
 .recognition-body { min-width:0; }
-.recognition-list h3 { margin:0; font-size:1.05rem; }
+.recognition-list h3 { margin:0; font-size:1.25rem; line-height:1.35; }
 .recognition-list h3 a { text-decoration:none; }
 .recognition-list h3 { display:flex; align-items:baseline; justify-content:space-between; gap:1rem; }
 .recognition-list h3 a { min-width:0; }
-.recognition-year { flex:0 0 auto; margin-left:auto; color:var(--muted); font-size:inherit; font-weight:700; white-space:nowrap; }
+.recognition-year { flex:0 0 auto; margin-left:auto; color:var(--muted); font-size:.82em; font-weight:500; white-space:nowrap; }
 .recognition-list p { margin:.55rem 0 0; color:#344054; font-family:inherit; font-size:.92rem; font-weight:500; line-height:1.55; }
 .recognition-links { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:.8rem; }
 .recognition-links a { color:var(--blue); font-size:.8rem; font-weight:750; text-underline-offset:.2rem; }
