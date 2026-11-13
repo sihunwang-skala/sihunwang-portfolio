@@ -183,15 +183,15 @@ const slideCollections = {
 
 const buttons = document.querySelectorAll("[data-lang]");
 const elements = document.querySelectorAll("[data-i18n]");
-function renderWaveText() {
-  const target = document.querySelector("[data-wave-text]");
+function renderIntroText() {
+  const target = document.querySelector("[data-reveal-text]");
   const value = copy[currentLanguage]?.summary || "";
   if (!target) return;
   target.replaceChildren(...Array.from(value).map((character, index) => {
     if (character === " ") return document.createTextNode(" ");
     const letter = document.createElement("span");
-    letter.className = "wave-char";
-    letter.style.setProperty("--wave-index", String(index % 24));
+    letter.className = "intro-char";
+    letter.style.setProperty("--reveal-index", String(index));
     letter.textContent = character;
     return letter;
   }));
@@ -259,7 +259,7 @@ function setLanguage(language) {
     const value = copy[selected][element.dataset.i18n];
     if (value) element.textContent = value;
   });
-  renderWaveText();
+  renderIntroText();
   buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.lang === selected)));
   localStorage.setItem("portfolio-language", selected);
   updateHealthSlideLanguage(selected);
