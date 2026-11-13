@@ -1,7 +1,7 @@
 const copy = {
   ko: {
     skip:"본문으로 이동", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술",
-    summary:"AI Agent와 AX 서비스를 기획부터 설계, 개발, 평가까지 전 과정을 수행합니다. Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 실제 업무에 적용하고, LLM Evaluation으로 품질을 검증합니다.",
+    summary1:"AI Agent와 AX 서비스의 문제 정의부터", summary2:"Workflow 설계·구현·평가까지 수행합니다.", summary3:"Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 서비스에 적용하고", summary4:"LLM Evaluation과 HITL로 품질을 검증합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무",
     experienceTitle:"경력", experienceSubtitle:"최신순",
@@ -25,7 +25,7 @@ const copy = {
   },
   en: {
     skip:"Skip to content", navExperience:"Experience", navEducation:"Education", navProjects:"Projects", navSkills:"Skills",
-    summary:"I develop AI agents and AX services for real workflows, focusing on Multi-Agent systems, Agentic AI, Agentic RAG, Tool Routing, and evaluation.",
+    summary1:"I take AI Agent and AX services from problem definition", summary2:"through workflow design, implementation, and evaluation.", summary3:"I apply Multi-Agent, Agentic AI, Agentic RAG, and Tool Routing", summary4:"and validate quality with LLM evaluation and HITL.",
     viewExperience:"Experience", viewEducation:"Education", viewProjects:"Projects", viewSkills:"Skills",
     locationLabel:"Location", educationLabel:"Education", focusLabel:"Target roles",
     experienceTitle:"Experience", experienceSubtitle:"Reverse chronological",
