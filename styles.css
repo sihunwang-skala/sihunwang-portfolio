@@ -114,7 +114,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .project-media .project-preview { margin:0; }
 .project-company-logo { display:block; object-fit:contain; object-position:left center; }
 .kdn-project-logo { width:220px; height:48px; margin:1rem auto 1rem; object-position:center; }
-.project-slideshow { margin:-.2rem 0 1.15rem; }
+.project-slideshow { display:flex; flex-direction:column; margin:-.2rem 0 1.15rem; }
 .project-slides { height:auto; overflow:visible; border-radius:8px; background:transparent; }
 .project-slide { display:none; width:100%; height:auto; margin:0; }
 .project-slide.is-active { display:flex; align-items:center; justify-content:center; height:auto; }
@@ -266,3 +266,6 @@ html[data-theme="dark"] .project-slide-controls button { background:#111827; bor
 
 html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
 
+
+.project-slide-controls { order:-1; }
+.project-slide img[src*="l10n-ui-review.png"] { max-height:none; }
