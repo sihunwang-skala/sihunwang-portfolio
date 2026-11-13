@@ -1,6 +1,6 @@
 const copy = {
   ko: {
-    skip:"본문으로 이동", name:"왕시훈", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술", navRecognition:"기여와 수상",
+    skip:"본문으로 이동", name:"Sihun Wang", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술", navRecognition:"기여와 수상",
     summary:"AI Agent와 AX 서비스를 문제 정의부터 설계, 개발, 평가까지 수행합니다. Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 서비스에 적용하고 LLM Evaluation과 HITL로 품질을 검증합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술", viewRecognition:"기여와 수상",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무", previousScreen:"이전 화면", nextScreen:"다음 화면",
