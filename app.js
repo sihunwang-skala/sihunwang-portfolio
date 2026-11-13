@@ -171,24 +171,24 @@ const slideCollections = {
   health: { ko: healthSlidesFor("ko"), en: healthSlidesFor("en") },
   l10n: {
     ko: [
-      { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"대표 화면 | 일괄 실행 결과: Japan", alt:"Translation quality agent Japan run screen" },
-      { src:"./assets/l10n-ui-run-08.png", label:"06", caption:"일괄 실행 결과: France", alt:"Translation quality agent France run screen" },
       { src:"./assets/l10n-ui-hero.png", label:"01", caption:"서비스 화면과 주요 상태", alt:"Translation quality agent hero screen" },
       { src:"./assets/l10n-architecture.png", label:"02", caption:"Agent 처리 구조", alt:"Translation quality agent architecture" },
       { src:"./assets/l10n-ui-mode-poc.png", label:"03", caption:"PoC 테스트", alt:"Translation quality agent PoC mode" },
       { src:"./assets/l10n-ui-mode-direct.png", label:"04", caption:"직접 입력 번역", alt:"Translation quality agent direct mode" },
       { src:"./assets/l10n-ui-mode-csv.png", label:"05", caption:"CSV 일괄 번역", alt:"Translation quality agent CSV mode" },
-      { src:"./assets/l10n-ui-review.png", label:"07", caption:"검토와 승인", alt:"Translation quality agent review screen" }
+      { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"일괄 실행 결과: Japan", alt:"Translation quality agent Japan run screen" },
+      { src:"./assets/l10n-ui-run-08.png", label:"07", caption:"일괄 실행 결과: France", alt:"Translation quality agent France run screen" },
+      { src:"./assets/l10n-ui-review.png", label:"08", caption:"검토와 승인", alt:"Translation quality agent review screen" }
     ],
     en: [
-      { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"Main screen | Batch run: Japan", alt:"Translation quality agent Japan run screen" },
-      { src:"./assets/l10n-ui-run-08.png", label:"06", caption:"Batch run: France", alt:"Translation quality agent France run screen" },
       { src:"./assets/l10n-ui-hero.png", label:"01", caption:"Service overview", alt:"Translation quality agent hero screen" },
       { src:"./assets/l10n-architecture.png", label:"02", caption:"Agent workflow", alt:"Translation quality agent architecture" },
       { src:"./assets/l10n-ui-mode-poc.png", label:"03", caption:"PoC mode", alt:"Translation quality agent PoC mode" },
       { src:"./assets/l10n-ui-mode-direct.png", label:"04", caption:"Direct-input translation", alt:"Translation quality agent direct mode" },
       { src:"./assets/l10n-ui-mode-csv.png", label:"05", caption:"CSV batch translation", alt:"Translation quality agent CSV mode" },
-      { src:"./assets/l10n-ui-review.png", label:"07", caption:"Review and approval", alt:"Translation quality agent review screen" }
+      { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"Batch run: Japan", alt:"Translation quality agent Japan run screen" },
+      { src:"./assets/l10n-ui-run-08.png", label:"07", caption:"Batch run: France", alt:"Translation quality agent France run screen" },
+      { src:"./assets/l10n-ui-review.png", label:"08", caption:"Review and approval", alt:"Translation quality agent review screen" }
     ]
   }
 };
