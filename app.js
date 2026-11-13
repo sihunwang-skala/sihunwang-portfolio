@@ -18,7 +18,7 @@ const copy = {
     projectsTitle:"대표 프로젝트", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"이전 GitHub 계정", googleRanking:"U.S. News 순위 검색", themeDark:"다크 모드", themeLight:"라이트 모드", showScreenshots:"프로젝트 화면 보기",
     healthProjectTitle:"개인 맞춤형 건강 코칭 Multi-Agent", translationProjectTitle:"Agent 기반 다국어 번역 품질 워크플로우", pipelineProjectTitle:"국세청 세금 납부 및 한국농촌경제연구원 데이터 파이프라인", usageProjectTitle:"AI Usage Bar",
     healthProject1:"개인 건강정보와 연구 근거를 바탕으로 생활습관을 안내하는 건강 코칭 Agent를 개발했습니다.", healthProject2:"사용자의 질문에 따라 건강 기록 조회와 논문 검색을 선택하고, 답변과 함께 근거 문장을 제공합니다.", healthProject3:"LangGraph Supervisor와 Tool Routing, Hybrid Search RAG, MCP Tool, Evidence Citation, Safety Rules를 연결해 Benchmark 600문항에서 전체 정확도 98.67%와 API 오류 0건을 기록하고, 표준 RAG 대비 답변 품질을 75.3%에서 91.5%로 개선했습니다.",
-    translationProject1:"Gradio의 PoC, 직접 입력, CSV 처리와 LangChain LCEL 기반 번역, MQM 평가, 수정 Chain을 연결하고 번역 메모리, 용어집, Do-Not-Edit 컨텍스트를 적용했습니다.", translationProject2:"Pydantic으로 MQM 오류를 구조화해 6개 유형별 수정 Chain에 연결하고, Agent가 잔여 오류와 수정 이력에 따라 다음 전략을 선택합니다.", translationProject3:"Python이 상태 전이, 재시도, 숫자·단위·보호 용어 검증과 Rollback을 제어합니다. 미해결 건은 OpenAI 에스컬레이션과 사람 승인으로 넘깁니다.",
+    translationProject1:"Gradio의 PoC, 직접 입력, CSV 처리와 LangChain LCEL 기반 번역, MQM 평가, 수정 Chain을 연결하고 번역 메모리, 용어집, Do-Not-Edit 컨텍스트를 적용했습니다.", translationProject2:"Pydantic으로 MQM 오류를 구조화해 6개 유형별 수정 Chain에 연결하고, Agent가 잔여 오류와 수정 이력에 따라 다음 전략을 선택합니다.", translationProject3:"Python이 상태 전이, 재시도, 숫자, 단위, 보호 용어 검증과 Rollback을 제어합니다. 미해결 건은 OpenAI 에스컬레이션과 사람 승인으로 넘깁니다.",
     pipelineProject1:"국가 농업통계 조사와 납세 여부 확인에 필요한 데이터를 수집하고 검증하는 자동화 파이프라인을 개발했습니다.", pipelineProject2:"외부 API와 웹 데이터를 식별자 기준으로 연결하고 Excel 문서와 지도 좌표까지 처리했습니다.", pipelineProject3:"Python, API fallback, Selenium, Beautiful Soup, OpenPyXL, execution logs를 사용해 반복 업무를 약 3시간에서 최종 검증 10분 수준으로 줄였습니다.",
     usageBarProject1:"Claude와 Codex의 사용량을 메뉴 바에서 확인하는 macOS 앱을 개발했습니다.", usageBarProject2:"5시간 및 주간 사용량, 초기화 시각, 최근 기록과 설정 메뉴를 한 화면에서 확인할 수 있습니다.", usageBarProject3:"Swift 6, SwiftPM, LaunchAgent, Swift Testing으로 백그라운드 갱신과 Threshold Alert, Usage Coach를 구현했습니다.",
     skillsTitle:"기술", recognitionTitle:"기여와 수상", openSource:"UIUC STAT 420 응용통계학 교과서 기여자 (2020)", upstageAward:"아파트 실거래가 예측 Machine Learning 경진대회 Team 2위 (2026)", dataDiveAward:"주가 데이터를 활용한 Machine Learning 분석 경진대회 Team 4위 (2023)", mathAward:"미국 수학경시대회 조지아주 동남부 지역 대표(2017, 2018), 개인 2위(2017, 2018), 단체 1위(2017, 2018)", tournamentSite:"대회 공식 페이지", gctmResult:"GCTM 주 수학 토너먼트 수상 기록"
@@ -183,6 +183,20 @@ const slideCollections = {
 
 const buttons = document.querySelectorAll("[data-lang]");
 const elements = document.querySelectorAll("[data-i18n]");
+function renderWaveText() {
+  const target = document.querySelector("[data-wave-text]");
+  const value = copy[currentLanguage]?.summary || "";
+  if (!target) return;
+  target.replaceChildren(...Array.from(value).map((character, index) => {
+    if (character === " ") return document.createTextNode(" ");
+    const letter = document.createElement("span");
+    letter.className = "wave-char";
+    letter.style.setProperty("--wave-index", String(index % 24));
+    letter.textContent = character;
+    return letter;
+  }));
+}
+
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 let currentLanguage = "ko";
@@ -245,6 +259,7 @@ function setLanguage(language) {
     const value = copy[selected][element.dataset.i18n];
     if (value) element.textContent = value;
   });
+  renderWaveText();
   buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.lang === selected)));
   localStorage.setItem("portfolio-language", selected);
   updateHealthSlideLanguage(selected);
