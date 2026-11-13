@@ -34,8 +34,8 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .job-title { margin:0; color:var(--blue); font-size:.88rem; font-weight:800; letter-spacing:.06em; }
 .hero h1 { margin:.25rem 0 .8rem; font-size:clamp(2.8rem,6vw,4.8rem); letter-spacing:-.06em; line-height:1; }
 .summary { max-width:650px; margin:0; color:#344054; font-size:1rem; line-height:1.6; }
-.wave-text { display:inline; }
-.wave-char { display:inline-block; animation:letter-wave 1.6s ease-in-out infinite; animation-delay:calc(var(--wave-index) * -42ms); }
+.reveal-text { display:inline; }
+.intro-char { display:inline; opacity:0; animation:text-reveal .22s ease-out both; animation-delay:calc(var(--reveal-index) * 12ms); }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .quick-links { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:1.3rem; }
 .quick-links a { padding:.5rem .75rem; border:1px solid var(--line); border-radius:7px; color:#344054; font-size:.83rem; font-weight:700; text-decoration:none; }
@@ -203,8 +203,8 @@ footer { display:flex; justify-content:space-between; gap:1rem; padding:1.4rem c
   .skills-list div { grid-template-columns:1fr; gap:.35rem; }
 }
 
-@keyframes letter-wave { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-3px); } }
-@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .wave-char { animation:none; } }
+@keyframes text-reveal { from { opacity:0; } to { opacity:1; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .intro-char { animation:none; opacity:1; } }
 
 html[data-theme="dark"] {
   color-scheme:dark;
