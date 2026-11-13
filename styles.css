@@ -161,7 +161,8 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .stat420-wordmark { width:170px; background:#f7f9fc; color:#13294b; border-color:#cbd5e1; }
 .stat420-wordmark span { letter-spacing:.08em; }
 .tournament-logo-row { align-items:stretch; }
-.tournament-photo { width:90px; height:72px; padding:.3rem .55rem !important; border:1px solid #c8d2e0; border-radius:6px; background:#ffffff; }\n.tournament-photo img { width:100%; height:100%; object-fit:contain; border-radius:0; }
+.tournament-photo { width:90px; height:72px; padding:0 !important; overflow:hidden; border:1px solid #c8d2e0; border-radius:6px; background:#ffffff; }
+.tournament-photo img { display:block; width:100%; height:100%; object-fit:contain; border-radius:0; }
 .recognition-logo.image-logo { padding:0; overflow:hidden; }
 .recognition-logo img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:6px; }
 .upstage-image img { mix-blend-mode:multiply; }
@@ -240,7 +241,11 @@ html[data-theme="dark"] .stack { color:#cbd5e1; }
 html[data-theme="dark"] .project-media summary { color:#cbd5e1; }
 html[data-theme="dark"] .recognition-wordmark { color:#cbd5e1; }
 html[data-theme="dark"] .project-preview,
-html[data-theme="dark"] .project-slide img { filter:brightness(.72) contrast(1.04); }
+html[data-theme="dark"] .project-slide img { filter:none; mix-blend-mode:normal; }
+html[data-theme="dark"] .recognition-media,
+html[data-theme="dark"] .recognition-logo.image-logo,
+html[data-theme="dark"] .tournament-photo { background:#ffffff; }
+html[data-theme="dark"] .recognition-logo img { filter:none; mix-blend-mode:normal; }
 html[data-theme="dark"] .hero-minors-label { color:#cbd5e1; }
 html[data-theme="dark"] .hero-facts,
 html[data-theme="dark"] .education-list article,
