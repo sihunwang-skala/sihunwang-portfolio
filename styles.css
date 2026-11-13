@@ -99,7 +99,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .project-list article { display:flex; flex-direction:column; padding:1.35rem; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
 .project-preview { display:block; width:100%; height:clamp(360px, 34vw, 560px); margin:-.2rem 0 1.15rem; border-radius:8px; background:#f8fafc; object-fit:contain; object-position:center; }
 .project-media { margin:1.15rem 0 1.35rem; }
-.project-media summary { cursor:pointer; color:#344054; font-size:.92rem; font-weight:700; list-style:none; }
+.project-media summary { cursor:pointer; color:#667085; font-family:inherit; font-size:.82rem; font-weight:650; line-height:1.5; list-style:none; }
 .project-media summary::-webkit-details-marker { display:none; }
 .project-media summary::before { content:"▸"; display:inline-block; margin-right:.55rem; color:inherit; transition:transform .2s ease; }
 .project-media[open] summary::before { transform:rotate(90deg); }
