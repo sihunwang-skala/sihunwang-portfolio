@@ -143,13 +143,21 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .recognition-list { margin:0; padding:0; list-style:none; border-top:1px solid var(--line); }
 .recognition-list li { position:relative; padding:1.15rem 0 1.15rem 1.35rem; border-bottom:1px solid var(--line); }
 .recognition-list li::before { content:none; }
-.recognition-card { display:flex; align-items:flex-start; gap:1rem; }
-.recognition-media { display:flex; flex:0 0 auto; gap:.4rem; align-items:flex-start; width:64px; min-height:64px; padding:.35rem; border:1px solid var(--line); border-radius:10px; background:var(--white); }
-.recognition-media img { display:block; width:100%; height:52px; object-fit:contain; border-radius:6px; }
-.recognition-media:has(img + img) { width:132px; }
-.recognition-media:has(img + img) img { width:52px; }
-.recognition-media .recognition-photo { object-fit:cover; }
-.recognition-wordmark { display:flex; align-items:center; justify-content:center; width:100%; height:52px; color:#344054; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.8rem; font-weight:800; letter-spacing:-.06em; line-height:1.05; text-align:center; }
+.recognition-card { display:block; }
+.recognition-media { display:flex; flex:0 0 auto; align-items:center; justify-content:center; width:150px; height:48px; padding:.35rem .65rem; border:1px solid var(--line); border-radius:9px; background:var(--white); }
+.recognition-logo-row { display:flex; flex-wrap:wrap; gap:.6rem; margin:.7rem 0 .8rem; }
+.recognition-logo { display:flex; align-items:center; justify-content:center; width:150px; height:44px; padding:0 .8rem; border:1px solid var(--line); border-radius:8px; text-decoration:none; }
+.recognition-logo span { font-family:ui-sans-serif,system-ui,sans-serif; font-size:.82rem; font-weight:850; letter-spacing:.04em; line-height:1; }
+.upstage-wordmark { background:#101828; color:#ffffff; border-color:#101828; }
+.upstage-wordmark span::before { content:"▰"; margin-right:.35rem; color:#8b7cff; }
+.uiuc-wordmark { background:#13294b; color:#ffffff; border-color:#13294b; }
+.uiuc-wordmark b { margin-right:.25rem; color:#fa4b0b; font-size:1.35rem; line-height:0; }
+.idsc-wordmark { background:#f7f2f4; color:#6f1d45; border-color:#d7c5cd; }
+.stat420-wordmark { width:170px; background:#f7f9fc; color:#13294b; border-color:#cbd5e1; }
+.stat420-wordmark span { letter-spacing:.08em; }
+.gctm-wordmark { width:92px; padding:0; }
+.recognition-logo img { display:block; width:100%; height:100%; object-fit:contain; border-radius:6px; }
+.recognition-photo { object-fit:cover !important; }
 .recognition-body { min-width:0; }
 .recognition-list h3 { margin:0; font-size:1.05rem; }
 .recognition-list h3 a { text-decoration:none; }
