@@ -3,7 +3,7 @@ const copy = {
     skip:"본문으로 이동", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술",
     summary:"AI Agent와 AX 서비스를 문제 정의부터 설계, 개발, 평가까지 수행합니다. Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 서비스에 적용하고 LLM Evaluation과 HITL로 품질을 검증합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술",
-    locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무",
+    locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무", previousScreen:"이전 화면", nextScreen:"다음 화면",
     experienceTitle:"경력", experienceSubtitle:"최신순",
     flitto1:"LG전자와 Olive Young 다국어 AI 번역 프로젝트에서 Fluency Agent를 개발하고 언어와 도메인별 Workflow Prompt를 최적화했습니다.",
     flitto2:"LLM 품질 평가 체계와 Benchmark 기준을 수립하고, 도메인 전문가 기반 HITL 검증 및 PoC 프로세스를 설계하고 운영해 외부 검수에서 97.5%의 무수정 통과율을 달성했습니다.",
@@ -27,7 +27,7 @@ const copy = {
     skip:"Skip to content", navExperience:"Experience", navEducation:"Education", navProjects:"Projects", navSkills:"Skills",
     summary:"I take AI Agent and AX services from problem definition through design, development, and evaluation. I apply Multi-Agent, Agentic AI, Agentic RAG, and Tool Routing in services, then validate quality with LLM evaluation and HITL.",
     viewExperience:"Experience", viewEducation:"Education", viewProjects:"Projects", viewSkills:"Skills",
-    locationLabel:"Location", educationLabel:"Education", focusLabel:"Target roles",
+    locationLabel:"Location", educationLabel:"Education", focusLabel:"Target roles", previousScreen:"Previous screen", nextScreen:"Next screen",
     experienceTitle:"Experience", experienceSubtitle:"Reverse chronological",
     flitto1:"Developed a Fluency Agent and optimized language-specific and domain-specific workflow prompts for LG Electronics and Olive Young multilingual AI translation projects.",
     flitto2:"Established LLM quality evaluation and benchmark criteria, then designed and operated an expert HITL validation and PoC process that achieved a 97.5% no-edit pass rate in external review.",
@@ -169,16 +169,28 @@ const healthSlidesFor = (language) => {
 
 const slideCollections = {
   health: { ko: healthSlidesFor("ko"), en: healthSlidesFor("en") },
-  l10n: [
-    { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"대표 화면 | 일괄 실행 결과: Japan", alt:"Translation quality agent Japan run screen" },
-    { src:"./assets/l10n-ui-run-08.png", label:"06", caption:"일괄 실행 결과: France", alt:"Translation quality agent France run screen" },
-    { src:"./assets/l10n-ui-hero.png", label:"01", caption:"서비스 화면과 주요 상태", alt:"Translation quality agent hero screen" },
-    { src:"./assets/l10n-architecture.png", label:"02", caption:"Agent 처리 구조", alt:"Translation quality agent architecture" },
-    { src:"./assets/l10n-ui-mode-poc.png", label:"03", caption:"PoC 테스트", alt:"Translation quality agent PoC mode" },
-    { src:"./assets/l10n-ui-mode-direct.png", label:"04", caption:"직접 입력 번역", alt:"Translation quality agent direct mode" },
-    { src:"./assets/l10n-ui-mode-csv.png", label:"05", caption:"CSV 일괄 번역", alt:"Translation quality agent CSV mode" },
-    { src:"./assets/l10n-ui-review.png", label:"07", caption:"검토와 승인", alt:"Translation quality agent review screen" }
-  ]
+  l10n: {
+    ko: [
+      { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"대표 화면 | 일괄 실행 결과: Japan", alt:"Translation quality agent Japan run screen" },
+      { src:"./assets/l10n-ui-run-08.png", label:"06", caption:"일괄 실행 결과: France", alt:"Translation quality agent France run screen" },
+      { src:"./assets/l10n-ui-hero.png", label:"01", caption:"서비스 화면과 주요 상태", alt:"Translation quality agent hero screen" },
+      { src:"./assets/l10n-architecture.png", label:"02", caption:"Agent 처리 구조", alt:"Translation quality agent architecture" },
+      { src:"./assets/l10n-ui-mode-poc.png", label:"03", caption:"PoC 테스트", alt:"Translation quality agent PoC mode" },
+      { src:"./assets/l10n-ui-mode-direct.png", label:"04", caption:"직접 입력 번역", alt:"Translation quality agent direct mode" },
+      { src:"./assets/l10n-ui-mode-csv.png", label:"05", caption:"CSV 일괄 번역", alt:"Translation quality agent CSV mode" },
+      { src:"./assets/l10n-ui-review.png", label:"07", caption:"검토와 승인", alt:"Translation quality agent review screen" }
+    ],
+    en: [
+      { src:"./assets/l10n-ui-run-07.png", label:"06", caption:"Main screen | Batch run: Japan", alt:"Translation quality agent Japan run screen" },
+      { src:"./assets/l10n-ui-run-08.png", label:"06", caption:"Batch run: France", alt:"Translation quality agent France run screen" },
+      { src:"./assets/l10n-ui-hero.png", label:"01", caption:"Service overview", alt:"Translation quality agent hero screen" },
+      { src:"./assets/l10n-architecture.png", label:"02", caption:"Agent workflow", alt:"Translation quality agent architecture" },
+      { src:"./assets/l10n-ui-mode-poc.png", label:"03", caption:"PoC mode", alt:"Translation quality agent PoC mode" },
+      { src:"./assets/l10n-ui-mode-direct.png", label:"04", caption:"Direct-input translation", alt:"Translation quality agent direct mode" },
+      { src:"./assets/l10n-ui-mode-csv.png", label:"05", caption:"CSV batch translation", alt:"Translation quality agent CSV mode" },
+      { src:"./assets/l10n-ui-review.png", label:"07", caption:"Review and approval", alt:"Translation quality agent review screen" }
+    ]
+  }
 };
 
 const buttons = document.querySelectorAll("[data-lang]");
@@ -215,7 +227,7 @@ themeToggle?.addEventListener("click", () => updateTheme(currentTheme === "dark"
 
 const getSlideCollection = (name, language = currentLanguage) => {
   const collection = slideCollections[name];
-  return name === "health" ? collection[language] : collection;
+  return name === "health" || name === "l10n" ? collection[language] : collection;
 };
 
 const warmSlideImages = (slides) => {
@@ -225,9 +237,10 @@ const warmSlideImages = (slides) => {
   });
 };
 
-function updateHealthSlideLanguage(language) {
-  document.querySelectorAll('[data-slide-collection="health"]').forEach((container) => {
-    const collection = getSlideCollection("health", language);
+function updateSlideLanguage(language) {
+  document.querySelectorAll("[data-slide-collection]").forEach((container) => {
+    const name = container.dataset.slideCollection;
+    const collection = getSlideCollection(name, language);
     container.querySelectorAll(".project-slide").forEach((slide, index) => {
       const item = collection[index];
       if (!item) return;
@@ -244,7 +257,6 @@ function updateHealthSlideLanguage(language) {
     warmSlideImages(collection);
   });
 }
-
 function updateRankingLink(language) {
   const url = copy[language]?.googleRankingUrl;
   if (!url) return;
@@ -262,7 +274,9 @@ function setLanguage(language) {
   renderIntroText();
   buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.lang === selected)));
   localStorage.setItem("portfolio-language", selected);
-  updateHealthSlideLanguage(selected);
+  updateSlideLanguage(selected);
+  document.querySelectorAll("[data-slide-prev]").forEach((button) => button.setAttribute("aria-label", copy[selected].previousScreen));
+  document.querySelectorAll("[data-slide-next]").forEach((button) => button.setAttribute("aria-label", copy[selected].nextScreen));
   updateRankingLink(selected);
   updateTheme(currentTheme);
 }
