@@ -277,4 +277,6 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
 
 
 .project-slide-controls { order:-1; }
+.project-slide img[src*="l10n-ui-run-07.png"],
+.project-slide img[src*="l10n-ui-run-08.png"],
 .project-slide img[src*="l10n-ui-review.png"] { max-height:none; }
