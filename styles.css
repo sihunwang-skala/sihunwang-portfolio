@@ -24,15 +24,15 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .site-header nav a { color:var(--muted); font-size:.88rem; font-weight:700; text-decoration:none; }
 .site-header nav a:hover,.site-header nav a:focus-visible { color:var(--blue); }
 .header-actions { justify-self:end; display:flex; align-items:center; gap:.5rem; }
-.theme-toggle { border:1px solid var(--line); border-radius:999px; padding:.36rem .68rem; background:transparent; color:var(--muted); cursor:pointer; font:inherit; font-size:.78rem; font-weight:800; }
+.theme-toggle { order:1; border:1px solid var(--line); border-radius:999px; padding:.36rem .68rem; background:transparent; color:var(--muted); cursor:pointer; font:inherit; font-size:.78rem; font-weight:800; }
 .theme-toggle:hover,.theme-toggle:focus-visible { border-color:var(--blue); color:var(--blue); }
-.language-switch { display:flex; gap:.2rem; padding:.2rem; border:1px solid var(--line); border-radius:999px; }
+.language-switch { order:-1; display:flex; gap:.2rem; padding:.2rem; border:1px solid var(--line); border-radius:999px; }
 .language-switch button { border:0; border-radius:999px; padding:.36rem .62rem; background:transparent; color:var(--muted); cursor:pointer; font:inherit; font-size:.78rem; font-weight:800; }
 .language-switch button[aria-pressed="true"] { background:var(--ink); color:var(--white); }
 
 .hero { display:grid; grid-template-columns:minmax(0,1fr) 250px; gap:3rem; align-items:center; min-height:40rem; padding-block:4.5rem; border-bottom:1px solid var(--line); }
 .job-title { margin:0; color:var(--blue); font-size:.88rem; font-weight:800; letter-spacing:.06em; }
-.hero h1 { margin:.25rem 0 .8rem; font-size:clamp(2.8rem,6vw,4.8rem); letter-spacing:-.06em; line-height:1; }
+.hero h1 { min-height:1em; margin:.25rem 0 .8rem; font-size:clamp(2.8rem,6vw,4.8rem); letter-spacing:-.06em; line-height:1; }
 .summary { max-width:650px; margin:0; color:#344054; font-size:1rem; line-height:1.6; }
 .reveal-text { display:inline; }
 .intro-char { display:inline; opacity:0; animation:text-reveal .22s ease-out both; animation-delay:calc(var(--reveal-index) * 12ms); }
