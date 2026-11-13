@@ -164,8 +164,8 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .recognition-logo img { display:block; width:100%; height:100%; object-fit:contain; object-position:center; border-radius:6px; }
 .upstage-image img { mix-blend-mode:multiply; }
 .uiuc-image img { transform:scale(.9); }
-.idsc-image { width:90px; height:72px; }
-.idsc-image img { filter:none; }
+.idsc-image { width:70px; height:72px; padding:0; border:0; border-radius:0; background:#12263c; }
+.idsc-image img { filter:none; border-radius:0; object-fit:cover; }
 .recognition-photo { object-fit:cover !important; }
 .recognition-body { min-width:0; }
 .recognition-list h3 { margin:0; font-size:1.05rem; }
