@@ -1,7 +1,7 @@
 const copy = {
   ko: {
     skip:"본문으로 이동", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술",
-    summary:"Multi-Agent, Agentic AI, Agentic RAG, Tool Routing, LLM Evaluation을 설계하고 검증하여 실제 업무에 적용 가능한 AI Agent와 AX 서비스를 개발합니다.",
+    summary:"실제 업무에 적용할 수 있는 AI Agent와 AX 서비스를 개발하고, 이를 위해 Multi-Agent, Agentic AI, Agentic RAG, Tool Routing, LLM Evaluation을 설계하고 검증합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무",
     experienceTitle:"경력", experienceSubtitle:"최신순",
