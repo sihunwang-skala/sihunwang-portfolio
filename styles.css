@@ -114,11 +114,11 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .project-media .project-preview { margin:0; }
 .project-company-logo { display:block; object-fit:contain; object-position:left center; }
 .kdn-project-logo { width:220px; height:48px; margin:1rem auto 1rem; object-position:center; }
-.project-slideshow { width:100%; margin:-.2rem 0 1.15rem; }
-.project-slides { width:100%; height:auto; overflow:visible; border-radius:8px; background:transparent; }
-.project-slide { display:none; flex:0 0 100%; width:100%; height:auto; margin:0; }
-.project-slide.is-active { display:flex; flex:0 0 100%; align-items:center; justify-content:center; width:100%; height:auto; }
-.project-slide img { display:block; width:100%; max-width:100%; height:auto; max-height:none; min-height:0; object-fit:contain; object-position:center; border-radius:8px; }
+.project-slideshow { margin:-.2rem 0 1.15rem; }
+.project-slides { height:auto; overflow:visible; border-radius:8px; background:transparent; }
+.project-slide { display:none; width:100%; height:auto; margin:0; }
+.project-slide.is-active { display:flex; align-items:center; justify-content:center; height:auto; }
+.project-slide img { display:block; width:100%; height:auto; max-height:72vh; min-height:0; object-fit:contain; object-position:center; border-radius:8px; }
 .project-preview, .project-slide img { cursor:zoom-in; }
 .project-slide-controls { display:grid; grid-template-columns:2rem minmax(0,1fr) 2rem; align-items:center; width:min(30rem,100%); margin:.65rem auto 0; gap:.55rem; }
 .project-slide-controls button { width:2rem; height:2rem; padding:0; border:1px solid var(--line); border-radius:999px; background:var(--surface); color:var(--blue); font-size:1rem; font-weight:800; cursor:pointer; }
@@ -265,3 +265,5 @@ html[data-theme="dark"] .rank-badge,
 html[data-theme="dark"] .project-slide-controls button { background:#111827; border-color:#435987; }
 
 html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
+
+.project-slide img[src*="l10n-ui-review.png"] { max-height:none; }
