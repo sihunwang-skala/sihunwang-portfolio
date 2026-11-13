@@ -170,6 +170,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .recognition-body { min-width:0; }
 .recognition-list h3 { margin:0; font-size:1.05rem; }
 .recognition-list h3 a { text-decoration:none; }
+.recognition-year { color:var(--muted); font-size:.82em; font-weight:600; white-space:nowrap; }
 .recognition-list p { margin:.55rem 0 0; color:#344054; font-family:inherit; font-size:.92rem; font-weight:500; line-height:1.55; }
 .recognition-links { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:.8rem; }
 .recognition-links a { color:var(--blue); font-size:.8rem; font-weight:750; text-underline-offset:.2rem; }
