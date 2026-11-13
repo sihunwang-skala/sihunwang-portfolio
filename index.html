@@ -148,20 +148,22 @@
         <div class="project-list">
           <article>
             <div class="project-heading"><h3><a href="https://github.com/sihunwang-skala/health-coach-multi-agent" target="_blank" rel="noreferrer" data-i18n="healthProjectTitle">Personalized Health Coach Multi-Agent</a></h3></div>
-            <div class="project-media">
+            <details class="project-media">
+              <summary data-i18n="showScreenshots">프로젝트 화면 보기</summary>
               <div class="project-slideshow" data-slideshow data-initial="0"><div class="project-slides" data-slide-collection="health"></div><div class="project-slide-controls"><button type="button" data-slide-prev aria-label="이전 화면">←</button><span class="project-slide-status" data-slide-status>01 대표 화면 | 근거 패널</span><button type="button" data-slide-next aria-label="다음 화면">→</button></div></div>
-            </div>
+            </details>
             <ul class="project-bullets"><li data-i18n="healthProject1">개인 건강정보와 연구 근거를 바탕으로 생활습관을 안내하는 건강 코칭 Agent를 개발했습니다.</li><li data-i18n="healthProject2">사용자의 질문에 따라 건강 기록 조회와 논문 검색을 선택하고, 답변과 함께 근거 문장을 제공합니다.</li><li data-i18n="healthProject3">LangGraph Supervisor와 Tool Routing, Hybrid Search RAG, MCP Tool, Evidence Citation, Safety Rules를 연결해 Benchmark 600문항에서 전체 정확도 98.67%와 API 오류 0건을 기록하고, 표준 RAG 대비 답변 품질을 75.3%에서 91.5%로 개선했습니다.</li></ul>
             <p class="stack">LangGraph Multi-Agent, Supervisor Routing, Query Expansion, Hybrid Search RAG, MCP Tool Routing, Evidence Citations, Safety Rules</p>
             <div class="project-links"><a class="project-link" href="https://github.com/sihunwang-skala/health-coach-multi-agent" target="_blank" rel="noreferrer" data-i18n="repository">Repository</a><a class="project-link" href="https://github.com/sihunwang-skala/health-coach-multi-agent/blob/main/docs/REPORT.md#2-2-%EC%A0%84%EC%B2%B4-%EA%B5%AC%EC%A1%B0" target="_blank" rel="noreferrer" data-i18n="report">REPORT</a></div>
           </article>
           <article>
-            <div class="project-heading"><h3><a href="https://github.com/sihunwang-skala/l10n-quality-agent" target="_blank" rel="noreferrer" data-i18n="translationProjectTitle">다국어 번역 품질 개선 Multi-Agent</a></h3></div>
-            <div class="project-media">
+            <div class="project-heading"><h3><a href="https://github.com/sihunwang-skala/l10n-quality-agent" target="_blank" rel="noreferrer" data-i18n="translationProjectTitle">Agent 기반 다국어 번역 품질 워크플로우</a></h3></div>
+            <details class="project-media">
+              <summary data-i18n="showScreenshots">프로젝트 화면 보기</summary>
               <div class="project-slideshow" data-slideshow data-initial="0"><div class="project-slides" data-slide-collection="l10n"></div><div class="project-slide-controls"><button type="button" data-slide-prev aria-label="이전 화면">←</button><span class="project-slide-status" data-slide-status>06 대표 화면 | 일괄 실행 결과: Japan</span><button type="button" data-slide-next aria-label="다음 화면">→</button></div></div>
-            </div>
-            <ul class="project-bullets"><li data-i18n="translationProject1">CSV와 직접 입력 문장을 대상으로 번역 품질을 검수하고 수정하는 AI Agent를 개발했습니다.</li><li data-i18n="translationProject2">MQM 오류를 분류한 뒤 오류 유형에 맞는 전문 Agent가 번역을 수정하고, 재검증 결과와 사람 검토 상태를 화면에 보여줍니다.</li><li data-i18n="translationProject3">Orchestrator 기반 순차형 Multi-Agent Workflow에 결정적 검증, Rollback, OpenAI Escalation, HITL 승인을 연결하고, 실행 화면에서 번역 전후 비교와 채택 또는 Rollback 이력을 확인할 수 있습니다.</li></ul>
-            <p class="stack">Translation Quality Agent, MQM Error Routing, Specialist Agents, Prompt Routing, Deterministic Validation, Rollback, HITL</p>
+            </details>
+            <ul class="project-bullets"><li data-i18n="translationProject1">CSV와 직접 입력 문장을 대상으로 번역 품질을 검수하고 수정하는 Agent 기반 Workflow를 개발했습니다.</li><li data-i18n="translationProject2">Qwen Agent Planner가 MQM 오류와 이전 시도 이력을 바탕으로 다음 수정 전략을 선택하고, 정확성·용어·철자·문법·문체·유창성별 수정 Chain을 호출합니다.</li><li data-i18n="translationProject3">각 후보를 Python 결정적 검증과 MQM 재평가로 검증해 개선되지 않으면 Rollback하고, 미해결 사례는 OpenAI Escalation과 HITL 승인으로 넘깁니다.</li></ul>
+            <p class="stack">Translation Quality Agent, Qwen Agent Planner, MQM Error Routing, Category-Specific Revision Chains, LangChain LCEL, Deterministic Validation, Rollback, OpenAI Escalation, HITL</p>
             <a class="project-link" href="https://github.com/sihunwang-skala/l10n-quality-agent" target="_blank" rel="noreferrer" data-i18n="repository">Repository</a>
           </article>
           <article>
@@ -172,9 +174,10 @@
           </article>
           <article>
             <div class="project-heading"><h3><a href="https://github.com/sihunwang-skala/ai-usage-bar" target="_blank" rel="noreferrer" data-i18n="usageProjectTitle">AI Usage Bar</a></h3></div>
-            <div class="project-media">
+            <details class="project-media">
+              <summary data-i18n="showScreenshots">프로젝트 화면 보기</summary>
               <img class="project-preview" src="./assets/usage-combined.png?v=final03" alt="AI Usage Bar menu bar status and detail menu">
-            </div>
+            </details>
             <ul class="project-bullets"><li data-i18n="usageBarProject1">Claude와 Codex의 사용량을 메뉴 바에서 확인하는 macOS 앱을 개발했습니다.</li><li data-i18n="usageBarProject2">5시간 및 주간 사용량, 초기화 시각, 최근 기록과 설정 메뉴를 한 화면에서 확인할 수 있습니다.</li><li data-i18n="usageBarProject3">Swift 6, SwiftPM, LaunchAgent, Swift Testing으로 백그라운드 갱신과 Threshold Alert, Usage Coach를 구현했습니다.</li></ul>
             <p class="stack">Swift 6, SwiftPM, LaunchAgent, Swift Testing</p>
             <a class="project-link" href="https://github.com/sihunwang-skala/ai-usage-bar" target="_blank" rel="noreferrer" data-i18n="repository">Repository</a>
@@ -198,7 +201,7 @@
         <ul class="recognition-list">
           <li><div class="recognition-card"><a class="recognition-media" href="https://github.com/sihunwang/upstage-ml-team2" target="_blank" rel="noreferrer" aria-label="Upstage AI Stages ML Competition"><img src="https://www.google.com/s2/favicons?domain=upstage.ai&sz=128" alt="Upstage logo" loading="lazy"></a><div class="recognition-body"><h3><a href="https://github.com/sihunwang/upstage-ml-team2" target="_blank" rel="noreferrer">Upstage AI Stages ML Competition</a></h3><p data-i18n="upstageAward">아파트 실거래가 예측 Machine Learning 경진대회 Team 2위 (2026)</p><div class="recognition-links"><a href="https://github.com/sihunwang/upstage-ml-team2" target="_blank" rel="noreferrer" data-i18n="repository">Repository</a></div></div></div></li>
           <li><div class="recognition-card"><div class="recognition-media"><a href="https://illinois.edu/" target="_blank" rel="noreferrer" aria-label="University of Illinois Urbana-Champaign"><img src="https://www.google.com/s2/favicons?domain=illinois.edu&sz=128" alt="University of Illinois logo" loading="lazy"></a><a href="https://uiucdsc.org/" target="_blank" rel="noreferrer" aria-label="Illinois Data Science Club"><img src="https://www.google.com/s2/favicons?domain=uiucdsc.org&sz=128" alt="Illinois Data Science Club logo" loading="lazy"></a></div><div class="recognition-body"><h3><a href="https://uiucdsc.org/data-dive" target="_blank" rel="noreferrer">UIUC Data Dive Team Competition</a></h3><p data-i18n="dataDiveAward">주가 데이터를 활용한 Machine Learning 분석 경진대회 Team 4위 (2023)</p><div class="recognition-links"><a href="https://uiucdsc.org/" target="_blank" rel="noreferrer">UIUC Data Science Club</a></div></div></div></li>
-          <li><div class="recognition-card"><a class="recognition-media" href="https://book.stat420.org/" target="_blank" rel="noreferrer" aria-label="Applied Statistics with R textbook"><img src="https://www.google.com/s2/favicons?domain=book.stat420.org&sz=128" alt="Applied Statistics with R textbook" loading="lazy"></a><div class="recognition-body"><h3><a href="https://book.stat420.org/" target="_blank" rel="noreferrer">Applied Statistics with R</a></h3><p data-i18n="openSource">UIUC STAT 420 응용통계학 교과서 기여자 (2020)</p><div class="recognition-links"><a href="https://informatics.ischool.illinois.edu/courses/stat-420-methods-of-applied-statistics/" target="_blank" rel="noreferrer">STAT 420: Methods of Applied Statistics</a></div></div></div></li>
+          <li><div class="recognition-card"><a class="recognition-media stat420-media" href="https://book.stat420.org/" target="_blank" rel="noreferrer" aria-label="Applied Statistics with R textbook"><span class="recognition-wordmark">STAT<br>420</span></a><div class="recognition-body"><h3><a href="https://book.stat420.org/" target="_blank" rel="noreferrer">Applied Statistics with R</a></h3><p data-i18n="openSource">UIUC STAT 420 응용통계학 교과서 기여자 (2020)</p><div class="recognition-links"><a href="https://informatics.ischool.illinois.edu/courses/stat-420-methods-of-applied-statistics/" target="_blank" rel="noreferrer">STAT 420: Methods of Applied Statistics</a></div></div></div></li>
           <li><div class="recognition-card"><a class="recognition-media" href="https://www.gctm.org/competitions/state" target="_blank" rel="noreferrer" aria-label="GCTM State Mathematics Tournament"><img class="recognition-photo" src="https://gctm.org/resources/Competitions/trophy2.jpg" alt="GCTM State Mathematics Tournament trophy" loading="lazy"></a><div class="recognition-body"><h3><a href="https://sites.google.com/a/georgiasouthern.edu/math-tournament/" target="_blank" rel="noreferrer">Georgia Southern University Mathematics Tournament</a></h3><p data-i18n="mathAward">미국 수학경시대회 조지아주 동남부 지역 대표(2017, 2018), 개인 2위(2017, 2018), 단체 1위(2017, 2018)</p><div class="recognition-links"><a href="https://sites.google.com/a/georgiasouthern.edu/math-tournament/" target="_blank" rel="noreferrer" data-i18n="tournamentSite">대회 공식 페이지</a><a href="https://www.gctm.org/competitions/state/winners#:~:text=Bulloch%20Academy" target="_blank" rel="noreferrer" data-i18n="gctmResult">GCTM 주 수학 토너먼트 수상 기록</a></div></div></div></li>
         </ul>
       </section>
