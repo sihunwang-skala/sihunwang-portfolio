@@ -19,9 +19,9 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .page-shell { width:min(calc(100% - 2.4rem),var(--max)); margin-inline:auto; }
 
 .site-header { position:sticky; top:0; z-index:40; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1rem; padding:.9rem clamp(1.2rem,4vw,3.5rem); border-bottom:1px solid var(--line); background:rgba(255,255,255,.94); backdrop-filter:blur(12px); }
-.brand { font-size:1rem; font-weight:800; text-decoration:none; }
-.site-header nav { display:flex; gap:1.7rem; }
-.site-header nav a { color:var(--muted); font-size:.88rem; font-weight:700; text-decoration:none; }
+.brand { font-size:1rem; font-weight:800; text-decoration:none; white-space:nowrap; }
+.site-header nav { display:flex; gap:1rem; white-space:nowrap; }
+.site-header nav a { color:var(--muted); font-size:.88rem; font-weight:700; text-decoration:none; white-space:nowrap; }
 .site-header nav a:hover,.site-header nav a:focus-visible { color:var(--blue); }
 .header-actions { justify-self:end; display:flex; align-items:center; gap:.5rem; }
 .theme-toggle { order:1; min-width:5.8rem; border:1px solid var(--line); border-radius:999px; padding:.36rem .68rem; background:transparent; color:var(--muted); cursor:pointer; font:inherit; font-size:.78rem; font-weight:800; white-space:nowrap; }
@@ -185,6 +185,11 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .recognition-links a { color:var(--blue); font-size:.8rem; font-weight:750; text-underline-offset:.2rem; }
 
 footer { display:flex; justify-content:space-between; gap:1rem; padding:1.4rem clamp(1.2rem,4vw,3.5rem); color:var(--muted); font-size:.8rem; }
+
+@media (max-width:940px) {
+  .site-header { grid-template-columns:1fr auto; }
+  .site-header nav { display:none; }
+}
 
 @media (max-width:820px) {
   .site-header { grid-template-columns:1fr auto; }
