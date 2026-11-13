@@ -99,12 +99,6 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .project-list article { display:flex; flex-direction:column; padding:1.35rem; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
 .project-preview { display:block; width:100%; height:clamp(360px, 34vw, 560px); margin:-.2rem 0 1.15rem; border-radius:8px; background:#f8fafc; object-fit:contain; object-position:center; }
 .project-media { margin:1.15rem 0 1.35rem; }
-.project-media > summary { display:inline-flex; align-items:center; width:max-content; max-width:100%; list-style:none; cursor:pointer; padding:.15rem 0; border:0; background:transparent; color:#667085; font-size:.72rem; font-weight:650; }
-.project-media > summary:hover { color:#475467; }
-.project-media > summary::-webkit-details-marker { display:none; }
-.project-media > summary::before { content:"▸"; width:.8rem; margin-right:.2rem; color:var(--muted); font-size:.78rem; line-height:1; }
-.project-media[open] > summary { margin-bottom:1rem; }
-.project-media[open] > summary::before { content:"▾"; }
 .project-media .project-slideshow { margin:0; }
 .project-media .project-preview { margin:0; }
 .project-company-logo { display:block; object-fit:contain; object-position:left center; }
@@ -206,8 +200,6 @@ html[data-theme="dark"] .project-list article>p:not(.stack),
 html[data-theme="dark"] .project-bullets,
 html[data-theme="dark"] .skills-list dd,
 html[data-theme="dark"] .ranking-note { color:#cbd5e1; }
-html[data-theme="dark"] .project-media > summary { background:transparent; color:#a7b3c8; }
-html[data-theme="dark"] .project-media > summary:hover { color:#e2e8f0; }
 html[data-theme="dark"] .project-bullets li::marker { color:inherit; }
 html[data-theme="dark"] .stack { color:#cbd5e1; }
 html[data-theme="dark"] .project-preview,
