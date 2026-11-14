@@ -50,23 +50,22 @@ const copy = {
 };
 
 const healthSlideSources = [
-  "docs__ui__screenshots__readme__03_evidence_panel_ko.png",
-  "docs__ui__screenshots__readme__01_user_login_ko.png",
-  "docs__ui__screenshots__readme__02_chat_answer_ko.png",
-  "docs__ui__screenshots__readme__02b_citation_closeup_ko.png",
-  "docs__ui__screenshots__readme__04_emergency_ko.png",
-  "docs__ui__screenshots__readme__05_care_login_ko.png",
-  "docs__ui__screenshots__readme__06_care_overview_ko.png",
-  "docs__ui__screenshots__readme__07_care_alerts_ko.png",
-  "docs__ui__screenshots__readme__08_care_users_ko.png",
-  "docs__ui__screenshots__readme__09_care_user_detail_ko.png",
+  "docs__ui__screenshots__readme__03_evidence_panel_en.png",
+  "docs__ui__screenshots__readme__01_user_login_en.png",
+  "docs__ui__screenshots__readme__02_chat_answer_en.png",
+  "docs__ui__screenshots__readme__02b_citation_closeup_en.png",
+  "docs__ui__screenshots__readme__04_emergency_en.png",
+  "docs__ui__screenshots__readme__05_care_login_en.png",
+  "docs__ui__screenshots__readme__06_care_overview_en.png",
+  "docs__ui__screenshots__readme__07_care_alerts_en.png",
+  "docs__ui__screenshots__readme__08_care_users_en.png",
+  "docs__ui__screenshots__readme__09_care_user_detail_en.png",
   "docs__ui__screenshots__readme__11_mobile_chat.png",
   "docs__ui__screenshots__readme__12_mobile_evidence.png",
   "docs__ui__screenshots__readme__13_mobile_large_text.png",
   "docs__ui__screenshots__readme__14_mobile_english.png",
   "docs__img__langsmith_trace_hidden_content.jpg",
   "docs__img__live_mixed_diet_exercise.png",
-  "docs__img__live_mixed_diet_exercise_ko.png",
   "docs__img__live_kenji_glucose.png",
   "docs__img__live_emergency.png",
   "docs__img__live_handoff.png",
@@ -117,7 +116,8 @@ const healthCaptionOverrides = {
   "docs__ui__screenshots__readme__02_chat_answer_ko.png": "대화 답변",
   "docs__ui__screenshots__readme__06_care_overview_ko.png": "Care overview",
   "docs__ui__screenshots__readme__07_care_alerts_ko.png": "Care alerts",
-  "docs__ui__screenshots__readme__09_care_user_detail_ko.png": "사용자 상세"
+  "docs__ui__screenshots__readme__09_care_user_detail_ko.png": "사용자 상세",
+  "docs__ui__screenshots__readme__14_mobile_english.png": "Mobile screen"
 };
 
 const healthSlideCaption = (source) => healthCaptionOverrides[source] || source
