@@ -355,37 +355,37 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
 .education-list .organization-logo { padding:2px; }
 
 
-/* Fill logo tiles consistently and accommodate the official Georgia Tech lockup. */
-.organization-logo { padding:0; }
-.education-list article { grid-template-columns:112px 1fr auto; }
-.education-list .organization-logo.gt-wordmark {
-  width:112px;
-  height:48px;
-  padding:2px;
-  border-radius:8px;
-  object-fit:contain;
-  background:#ffffff;
+/* Fill icon tiles while keeping wordmarks proportional. */
+.organization-logo:not(.lab-wordmark):not(.kdn-logo) {
+  padding:0;
+  object-fit:cover;
 }
-.education-list .organization-logo.uiuc-mark {
+.education-list .organization-logo { padding:0; }
+.recognition-logo-row .recognition-logo { padding:0; }
+.recognition-logo-row .recognition-logo.image-logo img { object-fit:cover; }
+.recognition-logo-row .recognition-logo.idsc-image {
   width:48px;
   height:48px;
   padding:0;
-  object-fit:contain;
-  background:#ffffff;
+  border:0;
+  border-radius:10px;
+  overflow:hidden;
+  background:#12263c;
 }
-.recognition-logo-row .recognition-logo { padding:0; }
-.recognition-logo-row .recognition-logo.uiuc-mark { padding:0; }
-.recognition-logo-row .recognition-logo.idsc-image { border-radius:10px; }
-.recognition-logo-row .recognition-logo.tournament-photo { padding:0 !important; border-radius:10px; }
+.recognition-logo-row .recognition-logo.idsc-image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  mix-blend-mode:multiply;
+}
+.recognition-logo-row .recognition-logo.tournament-photo {
+  padding:0 !important;
+  border-radius:10px;
+}
 .recognition-logo-row .recognition-logo.tournament-photo img {
   width:100%;
   height:100%;
   margin:0;
-  object-fit:contain;
-}
-html[data-theme="dark"] .education-list .organization-logo.gt-wordmark { background:#ffffff; }
-@media (max-width:560px) {
-  .education-list article { grid-template-columns:96px 1fr; }
-  .education-list .organization-logo.gt-wordmark { width:96px; height:40px; }
-  .education-list .organization-logo.uiuc-mark { width:40px; height:40px; }
+  object-fit:cover;
 }
