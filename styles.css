@@ -315,3 +315,47 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
 }
 
 .recognition-logo.upstage-image { width:56px; height:56px; padding:0; }
+
+
+/* Match recognition icon boxes to organization icons in the experience section. */
+.recognition-logo-row .recognition-logo {
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  padding:7px;
+  border-radius:10px;
+}
+.recognition-logo-row .recognition-logo img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+.recognition-logo-row .recognition-logo.idsc-image {
+  background:#12263c;
+}
+.recognition-logo-row .recognition-logo.tournament-photo {
+  padding:7px !important;
+}
+.recognition-logo-row .recognition-logo.tournament-photo img {
+  width:100%;
+  height:100%;
+  margin:0;
+}
+.recognition-logo-row .recognition-logo.uiuc-image {
+  width:84px;
+  flex-basis:84px;
+  padding:4px;
+}
+@media (max-width:560px) {
+  .recognition-logo-row .recognition-logo {
+    width:40px;
+    height:40px;
+    flex-basis:40px;
+  }
+  .recognition-logo-row .recognition-logo.uiuc-image {
+    width:64px;
+    flex-basis:64px;
+    padding:3px;
+  }
+}
