@@ -313,3 +313,5 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
   .recognition-list h3 { align-items:flex-start; gap:.4rem; font-size:1rem; }
   .recognition-year { font-size:.75em; }
 }
+
+.recognition-logo.upstage-image { width:56px; height:56px; padding:0; }
