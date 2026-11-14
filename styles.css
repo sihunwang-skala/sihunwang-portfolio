@@ -389,3 +389,40 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
   margin:0;
   object-fit:cover;
 }
+
+
+/* Slightly enlarge the Illinois mark and keep Georgia Tech a touch smaller. */
+.logo-mark-frame {
+  display:grid;
+  place-items:center;
+  width:48px;
+  height:48px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--white);
+}
+.logo-mark-frame img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.logo-mark-frame.uiuc-mark img,
+.recognition-logo.uiuc-mark img {
+  width:108%;
+  height:108%;
+  max-width:none;
+  max-height:none;
+}
+.logo-mark-frame.gt-mark img {
+  width:94%;
+  height:94%;
+  max-width:none;
+  max-height:none;
+}
+.resume-entry > .logo-mark-frame { justify-self:center; }
+.recognition-logo.uiuc-mark { overflow:hidden; }
+@media (max-width:560px) {
+  .logo-mark-frame { width:40px; height:40px; }
+}
