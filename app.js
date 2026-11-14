@@ -1,7 +1,7 @@
 const copy = {
   ko: {
     skip:"본문으로 이동", name:"Sihun Wang", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술", navRecognition:"기여와 수상",
-    summary:"AI Agent와 AX 서비스를 문제 정의부터 설계, 개발, 평가까지 수행합니다. Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 서비스에 적용하고 LLM Evaluation과 HITL로 품질을 검증합니다.",
+    summary:"AI Agent와 AX 서비스를 문제 정의부터 설계, 개발, 평가까지 수행합니다. Multi-Agent, Agentic AI, Agentic RAG, Tool Routing을 서비스에 적용하고 Agent Evaluation과 HITL로 품질을 검증합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술", viewRecognition:"기여와 수상",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무", previousScreen:"이전 화면", nextScreen:"다음 화면",
     experienceTitle:"경력", experienceSubtitle:"최신순",
@@ -25,7 +25,7 @@ const copy = {
   },
   en: {
     skip:"Skip to content", name:"Sihun Wang", navExperience:"Experience", navEducation:"Education", navProjects:"Projects", navSkills:"Skills", navRecognition:"Contributions and Awards",
-    summary:"I take AI Agent and AX services from problem definition through design, development, and evaluation. I apply Multi-Agent, Agentic AI, Agentic RAG, and Tool Routing in services, then validate quality with LLM evaluation and HITL.",
+    summary:"I take AI Agent and AX services from problem definition through design, development, and evaluation. I apply Multi-Agent, Agentic AI, Agentic RAG, and Tool Routing in services, then validate quality with Agent evaluation and HITL.",
     viewExperience:"Experience", viewEducation:"Education", viewProjects:"Projects", viewSkills:"Skills", viewRecognition:"Contributions and Awards",
     locationLabel:"Location", educationLabel:"Education", focusLabel:"Target roles", previousScreen:"Previous screen", nextScreen:"Next screen",
     experienceTitle:"Experience", experienceSubtitle:"Reverse chronological",
