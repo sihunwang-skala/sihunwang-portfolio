@@ -426,3 +426,29 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
 @media (max-width:560px) {
   .logo-mark-frame { width:40px; height:40px; }
 }
+
+
+/* Tune individual organization marks without changing their shared resume layout. */
+.resume-entry > .organization-logo.aibm-logo {
+  width:56px;
+  height:56px;
+  font-size:.68rem;
+}
+.recognition-logo-row .recognition-logo.upstage-image img {
+  object-fit:contain;
+  padding:4px;
+}
+.recognition-logo-row .recognition-logo.kbs-image img {
+  object-fit:contain;
+  padding:3px;
+}
+@media (max-width:560px) {
+  .resume-entry > .organization-logo.aibm-logo {
+    width:46px;
+    height:46px;
+    font-size:.62rem;
+  }
+  .recognition-logo-row .recognition-logo.upstage-image img {
+    padding:3px;
+  }
+}
