@@ -82,7 +82,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .entry-links a { color:var(--blue); font-size:.82rem; font-weight:700; text-underline-offset:.2rem; }
 
 .education-list { display:grid; gap:.8rem; }
-.ranking-note { display:block; margin:0 0 1rem; color:#344054; font-size:1rem; font-weight:800; text-align:left; }
+.ranking-note { display:block; margin:0 0 1rem; color:#344054; font-size:1.2rem; font-weight:800; text-align:left; }
 .ranking-note span { color:var(--blue); font-weight:900; }
 .ranking-note strong { color:var(--ink); }
 .ranking-note a strong { color:inherit; }
