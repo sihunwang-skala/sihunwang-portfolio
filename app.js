@@ -126,9 +126,7 @@ const healthSlideCaption = (source) => healthCaptionOverrides[source] || source
   .replace(/^ui__screenshots__readme__/, "")
   .replace(/^ui__screenshots__/, "")
   .replace(/\.(png|jpe?g|gif|webp)$/i, "")
-  .replace(/_(ko|en)$/, " ($1)")
-  .replace(" (ko)", " (한국어)")
-  .replace(" (en)", " (English)")
+  .replace(/_(ko|en)$/, "")
   .replace(/__/g, " / ")
   .replace(/_/g, " ")
   .replace(/^\d{2}b?\s+/i, "");
