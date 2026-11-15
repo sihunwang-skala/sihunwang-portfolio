@@ -454,9 +454,9 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
 }
 
 
-/* Show only the interlocking GT mark on a transparent tile. */
+/* Show only the interlocking GT mark on a white tile. */
 .logo-mark-frame.gt-mark {
-  background:transparent;
+  background:var(--white);
 }
 .logo-mark-frame.gt-mark img {
   width:300%;
@@ -465,4 +465,42 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
   object-position:left center;
   max-width:none;
   max-height:none;
+}
+
+
+/* Make organization marks link to the same reference shown in each entry. */
+.organization-logo-link,
+.logo-mark-link {
+  display:grid;
+  place-items:center;
+  justify-self:center;
+  align-self:start;
+  color:inherit;
+  text-decoration:none;
+}
+.organization-logo-link:focus-visible,
+.logo-mark-link:focus-visible,
+.project-company-logo-link:focus-visible {
+  outline:2px solid var(--blue);
+  outline-offset:3px;
+  border-radius:10px;
+}
+.resume-entry > .organization-logo-link,
+.resume-entry > .logo-mark-link {
+  justify-self:center;
+}
+.organization-logo.kdn-mark-logo {
+  object-fit:contain;
+  padding:4px;
+  background:#ffffff;
+}
+.project-company-logo-link {
+  display:block;
+  width:max-content;
+  max-width:100%;
+  margin:1rem auto;
+}
+.project-company-logo-link .kdn-project-logo {
+  max-width:100%;
+  margin:0;
 }
