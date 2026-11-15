@@ -578,3 +578,39 @@ html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo:not(.
 html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo {
   background:transparent;
 }
+
+
+/* Apply the no-tile treatment to education and experience marks. Flitto keeps its blue brand tile. */
+.organization-logo:not(.flitto-logo) {
+  border:0;
+  background:transparent;
+  padding:0;
+  object-fit:contain;
+}
+.organization-logo.flitto-logo {
+  border:1px solid var(--line);
+  background:var(--white);
+  padding:7px;
+}
+.logo-mark-frame {
+  border:0;
+  background:transparent;
+}
+.logo-mark-frame img {
+  mix-blend-mode:multiply;
+}
+html[data-theme="dark"] .organization-logo:not(.flitto-logo) {
+  background:transparent;
+}
+html[data-theme="dark"] .organization-logo.flitto-logo {
+  background:#111827;
+}
+html[data-theme="dark"] .organization-logo.kdn-mark-logo,
+html[data-theme="dark"] .logo-mark-frame img {
+  filter:invert(1);
+  mix-blend-mode:screen;
+}
+html[data-theme="dark"] .organization-logo.mark-logo {
+  background:transparent;
+  color:#cbd5e1;
+}
