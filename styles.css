@@ -614,3 +614,14 @@ html[data-theme="dark"] .organization-logo.mark-logo {
   background:transparent;
   color:#cbd5e1;
 }
+
+
+/* Remove the remaining white frame background around education marks. */
+.logo-mark-frame.gt-mark,
+.logo-mark-frame.uiuc-mark {
+  background:transparent;
+}
+html[data-theme="dark"] .logo-mark-frame.gt-mark,
+html[data-theme="dark"] .logo-mark-frame.uiuc-mark {
+  background:transparent;
+}
