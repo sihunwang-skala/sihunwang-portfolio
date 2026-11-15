@@ -452,3 +452,17 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
     padding:3px;
   }
 }
+
+
+/* Show only the interlocking GT mark on a transparent tile. */
+.logo-mark-frame.gt-mark {
+  background:transparent;
+}
+.logo-mark-frame.gt-mark img {
+  width:300%;
+  height:100%;
+  object-fit:cover;
+  object-position:left center;
+  max-width:none;
+  max-height:none;
+}
