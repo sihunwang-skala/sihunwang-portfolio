@@ -636,3 +636,11 @@ html[data-theme="dark"] img.organization-logo.kdn-mark-logo {
   background:transparent;
   mix-blend-mode:screen;
 }
+
+
+img.organization-logo.kdn-mark-logo:not(.lab-wordmark):not(.kdn-logo) {
+  background:transparent !important;
+}
+html[data-theme="dark"] img.organization-logo.kdn-mark-logo:not(.lab-wordmark):not(.kdn-logo) {
+  background:transparent !important;
+}
