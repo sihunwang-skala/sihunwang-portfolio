@@ -566,10 +566,3 @@ img.organization-logo.kdn-mark-logo:not(.lab-wordmark):not(.kdn-logo) {
 html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo img {
   mix-blend-mode:normal;
 }
-
-
-/* Remove white image backgrounds in dark mode while preserving visible logo marks. */
-html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo:not(.idsc-image) img {
-  filter:invert(1);
-  mix-blend-mode:screen;
-}
