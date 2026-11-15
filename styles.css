@@ -534,3 +534,35 @@ img.organization-logo.kdn-mark-logo:not(.lab-wordmark):not(.kdn-logo) {
   padding:0;
   background:#ffffff;
 }
+
+
+/* Use logo artwork directly for recognition entries. Keep only branded colored backgrounds. */
+.recognition-logo-row .recognition-logo.image-logo {
+  border:0;
+  border-radius:0;
+  background:transparent;
+  overflow:visible;
+  padding:0;
+}
+.recognition-logo-row .recognition-logo.image-logo img {
+  object-fit:contain;
+  border-radius:0;
+  mix-blend-mode:multiply;
+}
+.recognition-logo-row .recognition-logo.idsc-image {
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:10px;
+  background:transparent;
+  overflow:visible;
+}
+.recognition-logo-row .recognition-logo.idsc-image img {
+  object-fit:cover;
+  border-radius:10px;
+  mix-blend-mode:normal;
+  filter:brightness(1.8) contrast(1.15) saturate(1.15);
+}
+html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo img {
+  mix-blend-mode:normal;
+}
