@@ -655,8 +655,8 @@ html[data-theme="dark"] .recognition-logo.tournament-photo img {
 }
 
 
-/* Keep the Georgia Southern mark's original navy and gold colors in dark mode. */
+/* Keep the transparent Georgia Southern mark's original navy and gold colors in dark mode. */
 html[data-theme="dark"] .recognition-logo.tournament-photo img {
-  filter:brightness(2.5) saturate(1.1) !important;
-  mix-blend-mode:multiply !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
 }
