@@ -154,7 +154,7 @@ html[lang="en"] .ranking-usnews-link { margin-left:0; }
 .skills-list div { display:grid; grid-template-columns:180px 1fr; gap:1.5rem; padding:1rem 0; border-bottom:1px solid var(--line); }
 .skills-list dt { font-size:.9rem; font-weight:800; }
 .skills-list dd { margin:0; color:#344054; font-size:.9rem; font-weight:500; }
-.recognition-list { margin:0; padding:0; list-style:none; border-top:1px solid var(--line); }
+.recognition-list { margin:0; padding:0; list-style:none; }
 .recognition-list li { position:relative; padding:1.15rem 0 1.15rem 1.35rem; border-bottom:1px solid var(--line); }
 .recognition-list li::before { content:none; }
 .recognition-card { display:block; }
@@ -646,17 +646,16 @@ html[data-theme="dark"] img.organization-logo.kdn-mark-logo:not(.lab-wordmark):n
 }
 
 
-/* Blend white-backed Illinois and Georgia Southern marks into the dark theme. */
+/* Blend the white-backed Illinois mark into the dark theme. */
 html[data-theme="dark"] .logo-mark-frame.uiuc-mark img,
-html[data-theme="dark"] .recognition-logo.uiuc-mark img,
-html[data-theme="dark"] .recognition-logo.tournament-photo img {
+html[data-theme="dark"] .recognition-logo.uiuc-mark img {
   filter:invert(1) hue-rotate(180deg) saturate(1.2) !important;
   mix-blend-mode:screen !important;
 }
 
 
-/* Keep the transparent Georgia Southern mark's original navy and gold colors in dark mode. */
-html[data-theme="dark"] .recognition-logo.tournament-photo img {
+/* Keep the original Georgia Southern icon artwork unchanged in both themes. */
+.recognition-logo-row .recognition-logo.tournament-photo img {
   filter:none !important;
   mix-blend-mode:normal !important;
 }
