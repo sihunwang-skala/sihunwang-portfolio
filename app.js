@@ -13,7 +13,7 @@ const copy = {
     kdn3:"오류 발생 시 유사 사례의 실행 로그를 제공하고 당일 작업 결과를 요약하는 Agent를 개발했습니다. API 조회 오류 대응 로직을 설계해 실패 45건을 모두 재처리했습니다.",
     iea1:"고령자 맞춤형 건강 가이드를 제공하는 Multi-Agent 챗봇을 개발했습니다. LangGraph 기반 5개 Agent 역할을 연계해 Tool Routing과 병렬 실행을 구현하고, Single-Agent 대비 일반 건강 질문 품질을 약 10%p, 기타 메시지 처리율을 62.5%p 개선했습니다.",
     iea2:"의학 논문 86편을 기반으로 Query Transformation, Hybrid Search, Evidence Selection 및 Faithfulness Check를 구현해, 최종 시스템에서 Standard RAG 대비 답변 품질을 16%p, 필수 근거 회수율을 29%p 개선했습니다.",
-    iea3:"RAG 및 Agent 구성별 4종 Architecture 비교 실험을 수행하고, 별도 600건 Benchmark에서 98.7%의 통과율을 달성했습니다.",
+    iea3:"RAG 및 Agent 구성별 4종 Architecture를 비교하고, 별도 200건 Benchmark에서 91%의 통과율을 달성했습니다.",
     ta1:"대학원생 대상 Federated Learning 강좌의 실습 4회와 프로그래밍 과제 3개의 설계, 출제, 채점을 담당했습니다.", ta2:"Machine Learning, Deep Learning, Federated Learning의 핵심 개념과 구현 예제를 설명하고 실습을 지도했습니다.",
     aibm1:"세계에서 가장 작은 ANN 모델 구현을 목표로 모델 구조와 레이어별 파라미터를 분석해 모델을 초경량화하고, 경량화 전후의 성능을 비교했습니다.", aibm2:"경량화한 모델에 Federated Learning을 적용해 분산 데이터 환경에서의 학습 가능성을 확인했습니다.", aibm3:"직접 초경량화한 CNN 모델이 연합학습 포럼에서 소개되었습니다.",
     officialSite:"공식 웹사이트", labPeople:"연구실 구성원", labSite:"연구실 웹사이트", khu:"경희대학교 빅데이터응용학과", khuDepartment:"경희대학교 빅데이터응용학과",
