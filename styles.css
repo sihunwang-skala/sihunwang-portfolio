@@ -644,3 +644,12 @@ img.organization-logo.kdn-mark-logo:not(.lab-wordmark):not(.kdn-logo) {
 html[data-theme="dark"] img.organization-logo.kdn-mark-logo:not(.lab-wordmark):not(.kdn-logo) {
   background:transparent !important;
 }
+
+
+/* Blend white-backed Illinois and Georgia Southern marks into the dark theme. */
+html[data-theme="dark"] .logo-mark-frame.uiuc-mark img,
+html[data-theme="dark"] .recognition-logo.uiuc-mark img,
+html[data-theme="dark"] .recognition-logo.tournament-photo img {
+  filter:brightness(3) saturate(1.1);
+  mix-blend-mode:multiply;
+}
