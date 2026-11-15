@@ -625,3 +625,14 @@ html[data-theme="dark"] .logo-mark-frame.gt-mark,
 html[data-theme="dark"] .logo-mark-frame.uiuc-mark {
   background:transparent;
 }
+
+
+/* KDN uses a transparent horizontal mark rather than an icon tile. */
+img.organization-logo.kdn-mark-logo {
+  background:transparent;
+  mix-blend-mode:multiply;
+}
+html[data-theme="dark"] img.organization-logo.kdn-mark-logo {
+  background:transparent;
+  mix-blend-mode:screen;
+}
