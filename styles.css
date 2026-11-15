@@ -573,3 +573,8 @@ html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo:not(.
   filter:invert(1);
   mix-blend-mode:screen;
 }
+
+
+html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo {
+  background:transparent;
+}
