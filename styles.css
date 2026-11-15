@@ -525,3 +525,11 @@ img.organization-logo.khu-seal-logo:not(.lab-wordmark):not(.kdn-logo) {
   object-fit:contain;
   background:transparent;
 }
+
+
+/* Preserve the complete KDN mark inside its icon tile. */
+img.organization-logo.kdn-mark-logo:not(.lab-wordmark):not(.kdn-logo) {
+  object-fit:contain;
+  padding:0;
+  background:#ffffff;
+}
