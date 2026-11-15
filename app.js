@@ -215,7 +215,7 @@ function renderIntroText() {
 
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-let currentLanguage = "ko";
+let currentLanguage = "en";
 let currentTheme = localStorage.getItem("portfolio-theme") || (window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ? "dark" : "light");
 
 const updateTheme = (theme) => {
@@ -286,7 +286,7 @@ function setLanguage(language) {
 }
 
 buttons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.lang)));
-setLanguage(localStorage.getItem("portfolio-language") || (navigator.language.toLowerCase().startsWith("ko") ? "ko" : "en"));
+setLanguage(localStorage.getItem("portfolio-language") || "en");
 document.getElementById("year").textContent = new Date().getFullYear();
 
 document.querySelectorAll("[data-slide-collection]").forEach((container) => {
