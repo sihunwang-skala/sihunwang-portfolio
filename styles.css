@@ -653,3 +653,10 @@ html[data-theme="dark"] .recognition-logo.tournament-photo img {
   filter:invert(1) hue-rotate(180deg) saturate(1.2) !important;
   mix-blend-mode:screen !important;
 }
+
+
+/* Keep the Georgia Southern mark's original navy and gold colors in dark mode. */
+html[data-theme="dark"] .recognition-logo.tournament-photo img {
+  filter:brightness(2.5) saturate(1.1) !important;
+  mix-blend-mode:multiply !important;
+}
