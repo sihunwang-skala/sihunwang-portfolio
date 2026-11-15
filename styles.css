@@ -570,8 +570,8 @@ html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo img {
 
 /* Remove white image backgrounds in dark mode while preserving visible logo marks. */
 html[data-theme="dark"] .recognition-logo-row .recognition-logo.image-logo:not(.idsc-image) img {
-  filter:invert(1);
-  mix-blend-mode:screen;
+  filter:none;
+  mix-blend-mode:multiply;
 }
 
 
@@ -607,8 +607,8 @@ html[data-theme="dark"] .organization-logo.flitto-logo {
 }
 html[data-theme="dark"] .organization-logo.kdn-mark-logo,
 html[data-theme="dark"] .logo-mark-frame img {
-  filter:invert(1);
-  mix-blend-mode:screen;
+  filter:none;
+  mix-blend-mode:multiply;
 }
 html[data-theme="dark"] .organization-logo.mark-logo {
   background:transparent;
@@ -634,7 +634,7 @@ img.organization-logo.kdn-mark-logo {
 }
 html[data-theme="dark"] img.organization-logo.kdn-mark-logo {
   background:transparent;
-  mix-blend-mode:screen;
+  mix-blend-mode:multiply;
 }
 
 
