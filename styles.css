@@ -293,7 +293,7 @@ html[data-theme="dark"] .recognition-year { color:#cbd5e1; }
 .project-slide-controls { order:-1; }
 .project-slide img[src*="l10n-ui-run-07.png"],
 .project-slide img[src*="l10n-ui-run-08.png"],
-.project-slide img[src*="l10n-ui-review.png"] { max-height:none; }
+.project-slide img[src*="l10n-ui-review.png"], .project-slide img[src*="docs/images/ui-review.png"] { max-height:none; }
 
 
 /* Recognition entries: compact organization marks beside each award. */
