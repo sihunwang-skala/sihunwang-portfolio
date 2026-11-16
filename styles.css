@@ -712,3 +712,24 @@ html[data-theme="dark"] .header-resume-link { background:#376be3; border-color:#
 .resume-dialog-actions { display:flex; justify-content:flex-end; gap:.8rem; margin-top:.4rem; padding-top:.2rem; }
 .resume-dialog-actions button { padding:.7rem 1rem; border:1px solid var(--blue); border-radius:7px; background:var(--blue); color:white; font:inherit; font-weight:750; cursor:pointer; }
 .resume-dialog-actions [data-resume-skip] { background:transparent; color:var(--blue); }
+
+
+/* Restore the original centered navigation while keeping the resume CTA beside the name. */
+.site-header { grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); }
+.brand-group { display:flex; align-items:center; gap:1.5rem; min-width:0; }
+.site-header nav { grid-column:2; justify-self:center; }
+.header-actions { justify-self:end; }
+.header-resume-link { margin-inline:auto; }
+@media (max-width:1000px) {
+  .site-header { grid-template-columns:minmax(0,1fr) auto; }
+  .site-header nav { display:none; }
+  .brand-group { justify-content:space-between; }
+  .header-actions { grid-column:2; }
+}
+@media (max-width:520px) {
+  .site-header { grid-template-columns:minmax(0,1fr) auto; }
+  .brand-group { display:contents; }
+  .brand { grid-column:1; grid-row:1; font-size:.9rem; }
+  .header-actions { grid-column:2; grid-row:1; }
+  .header-resume-link { grid-column:1/-1; grid-row:2; justify-self:center; margin-inline:0; padding:.4rem .5rem; font-size:.68rem; }
+}
