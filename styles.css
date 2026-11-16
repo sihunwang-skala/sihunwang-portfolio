@@ -660,3 +660,31 @@ html[data-theme="dark"] .recognition-logo.uiuc-mark img {
   filter:none !important;
   mix-blend-mode:normal !important;
 }
+
+
+/* Make the resume action prominent beneath the introduction. */
+.resume-cta {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  margin:.9rem 0 .45rem;
+  padding:.78rem 1.15rem;
+  border:1px solid var(--blue);
+  border-radius:8px;
+  background:var(--blue);
+  color:#fff !important;
+  font-size:.92rem;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 5px 14px rgba(34,87,216,.18);
+}
+.resume-cta:hover,.resume-cta:focus-visible {
+  background:#1746b5;
+  border-color:#1746b5;
+  color:#fff !important;
+  transform:translateY(-1px);
+}
+html[data-theme="dark"] .resume-cta { background:#376be3; border-color:#6f96ff; color:#fff !important; }
+html[data-theme="dark"] .resume-cta:hover,html[data-theme="dark"] .resume-cta:focus-visible { background:#4d7cf0; }
+@media(max-width:700px) { .resume-cta { margin:.8rem 0 .35rem; } }
