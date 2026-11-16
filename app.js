@@ -137,17 +137,10 @@ const healthSlideCaption = (source) => healthCaptionOverrides[source] || source
   .replace(/_/g, " ")
   .replace(/^\d{2}b?\s+/i, "");
 
-const healthSourceSet = new Set(healthSlideSources);
-const localizedHealthSource = (source, language) => {
-  const match = source.match(/_(ko|en)(\.[^.]+)$/i);
-  if (!match) return source;
-  const candidate = source.replace(/_(ko|en)(\.[^.]+)$/i, `_${language}$2`);
-  return healthSourceSet.has(candidate) ? candidate : source;
-};
 const healthSlidesFor = (language) => {
   const seen = new Set();
   const slides = healthSlideSources
-    .map((source) => localizedHealthSource(source, language))
+    .filter((source) => /_en\\.[^.]+$/i.test(source))
     .filter((source) => {
       if (seen.has(source)) return false;
       seen.add(source);
