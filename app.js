@@ -337,3 +337,27 @@ lightbox?.addEventListener("click", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeLightbox();
 });
+
+
+const resumeDialog = document.querySelector("[data-resume-dialog]");
+const resumeLink = document.querySelector(".header-resume-link");
+const resumeDownload = () => {
+  const link = document.createElement("a");
+  link.href = "./assets/Resume_Sihun_Wang.pdf";
+  link.download = "Resume_Sihun_Wang.pdf";
+  document.body.append(link);
+  link.click();
+  link.remove();
+};
+resumeLink?.addEventListener("click", (event) => {
+  event.preventDefault();
+  resumeDialog?.showModal();
+});
+resumeDialog?.querySelector("[data-resume-skip]")?.addEventListener("click", () => {
+  resumeDialog.close();
+  resumeDownload();
+});
+resumeDialog?.querySelector("[data-resume-submit]")?.addEventListener("click", () => {
+  resumeDialog.close();
+  resumeDownload();
+});
