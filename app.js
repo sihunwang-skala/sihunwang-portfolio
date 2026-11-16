@@ -140,7 +140,7 @@ const healthSlideCaption = (source) => healthCaptionOverrides[source] || source
 const healthSlidesFor = (language) => {
   const seen = new Set();
   const slides = healthSlideSources
-    .filter((source) => /_en\\.[^.]+$/i.test(source))
+    .filter((source) => /_en\.[^.]+$/i.test(source))
     .filter((source) => {
       if (seen.has(source)) return false;
       seen.add(source);
