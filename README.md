@@ -1,6 +1,6 @@
 **English** · [한국어](README.ko.md)
 
-# Sihun Wang | AI Agent Developer Portfolio
+# Sihun Wang | AI Agent Engineer Portfolio
 
 Bilingual portfolio website for Sihun Wang, focused on AI Agent development, Agentic RAG, Tool Routing, LLM Evaluation, HITL validation, and data pipelines.
 
