@@ -18,7 +18,7 @@ const copy = {
     aibm1:"모델 구조와 layer별 parameter를 분석해 초경량 ANN을 구축했습니다.", aibm2:"압축 모델에 Federated Learning을 적용하고 분산 데이터 환경에서 학습 가능성을 검증했습니다.", aibm3:"정확도 98%의 CNN 모델을 압축하고 Federated Learning Forum에서 소개했습니다.",
     officialSite:"공식 웹사이트", labPeople:"연구실 구성원", labSite:"연구실 웹사이트", khu:"경희대학교 빅데이터응용학과", khuDepartment:"경희대학교 빅데이터응용학과",
     educationTitle:"학력", rankingLabel:"U.S. News Graduate AI Ranking", rankingSummary:"미국 AI 분야 최상위권 대학", rankingLink:"U.S. News Best Artificial Intelligence Programs Ranking", googleRankingUrl:"https://www.google.com/search?q=%EC%A1%B0%EC%A7%80%EC%95%84+%EA%B3%B5%EA%B3%BC%EB%8C%80%ED%95%99%EA%B5%90%EC%99%80+%EC%9D%BC%EB%A6%AC%EB%85%B8%EC%9D%B4+%EB%8C%80%ED%95%99%EA%B5%90+%EC%96%B4%EB%B0%94%EB%82%98-%EC%83%B4%ED%8E%98%EC%9D%B8%EC%9D%98+%EB%AF%B8%EA%B5%AD+%EC%9D%B8%EA%B3%B5%EC%A7%80%EB%8A%A5+%EB%B6%84%EC%95%BC+%EC%88%9C%EC%9C%84", usNewsRanking:"US news Best Artificial Intelligence Programs", gtRank:"U.S. News Graduate AI #5", uiucRank:"U.S. News Graduate AI #6", gtSchoolName:"Georgia Institute of Technology (조지아 공과대학교)", uiucSchoolName:"University of Illinois Urbana-Champaign (일리노이 대학교 어바나-샴페인)",  gtDegree:"M.S. Computer Science (AI)", uiucDegree:"B.S. Statistics, Minors in Computer Science, Data Science, and Informatics",
-    projectsTitle:"대표 프로젝트", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"이전 GitHub 계정", googleRanking:"U.S. News 순위 검색", downloadResume:"이력서 다운로드 (PDF)", resumePrivacyNotice:"계속을 누르면 입력한 이름·직책과 다운로드 시간, 브라우저·기기, 언어, 유입 페이지가 FormSubmit을 통해 시훈 왕에게 이메일로 전송됩니다. FormSubmit은 제출 내용을 30일간 보관합니다. 두 항목을 비워도 다운로드할 수 있습니다.", resumeEmailFailed:"PDF는 다운로드되었지만 이메일 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.", themeDark:"다크 모드", themeLight:"라이트 모드", showScreenshots:"프로젝트 화면 보기",
+    projectsTitle:"대표 프로젝트", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"이전 GitHub 계정", googleRanking:"U.S. News 순위 검색", downloadResume:"이력서 다운로드 (PDF)", resumePrivacyNotice:"계속을 누르면 입력한 이름·직책과 다운로드 시간, 브라우저 또는 앱 내 브라우저·기기, 언어, 유입 페이지가 FormSubmit을 통해 시훈 왕에게 이메일로 전송됩니다. FormSubmit은 제출 내용을 30일간 보관합니다. 두 항목을 비워도 다운로드할 수 있습니다.", resumeEmailFailed:"PDF는 다운로드되었지만 이메일 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.", themeDark:"다크 모드", themeLight:"라이트 모드", showScreenshots:"프로젝트 화면 보기",
     healthProjectTitle:"개인 맞춤형 건강 코칭 Multi-Agent", translationProjectTitle:"다국어 번역 품질 L10n Agent", pipelineProjectTitle:"국세청 세금 납부 및 한국농촌경제연구원 데이터 파이프라인", usageProjectTitle:"AI Usage Bar",
     healthProject1:"개인 건강정보와 연구 근거를 바탕으로 생활습관을 안내하는 건강 코칭 Agent를 개발했습니다.", healthProject2:"사용자의 질문에 따라 건강 기록 조회와 논문 검색을 선택하고, 답변과 함께 근거 문장을 제공합니다.", healthProject3:"LangGraph Supervisor와 Tool Routing, Hybrid Search RAG, 근거 인용, 안전 규칙을 통합했습니다. 200개 Benchmark에서 통과율 90.5%, API 오류 0건을 기록했으며, 다른 3개 Agent/RAG 아키텍처보다 8.0–8.5%p 높았습니다.",
     translationProject1:"Gradio의 PoC, 직접 입력, CSV 처리와 LangChain LCEL 기반 번역, MQM 평가, 수정 Chain을 연결하고 번역 메모리, 용어집, Do-Not-Edit 컨텍스트를 적용했습니다.", translationProject2:"Pydantic으로 MQM 오류를 구조화해 6개 유형별 수정 Chain에 연결하고, Agent가 잔여 오류와 수정 이력에 따라 다음 전략을 선택합니다.", translationProject3:"Python이 상태 전이, 재시도, 숫자, 단위, 보호 용어 검증과 Rollback을 제어합니다. 미해결 건은 OpenAI 에스컬레이션과 사람 승인으로 넘깁니다.",
@@ -45,7 +45,7 @@ const copy = {
     aibm1:"Analyzed model structures and layer-level parameters to build an ultra-lightweight ANN.", aibm2:"Applied Federated Learning to the compressed model and validated training feasibility in a distributed-data setting.", aibm3:"Compressed a CNN model with 98% accuracy and presented it at a Federated Learning Forum.",
     officialSite:"Official website", labPeople:"Lab people", labSite:"Lab website", khu:"Kyung Hee University, Applied Big Data", khuDepartment:"Kyung Hee University, Applied Big Data",
     educationTitle:"Education", rankingLabel:"U.S. News Graduate AI Ranking", rankingSummary:"Top AI universities in the U.S.", rankingLink:"U.S. News reference", googleRankingUrl:"https://www.google.com/search?q=U.S.%20News%20AI%20rankings%20Georgia%20Tech%20UIUC", usNewsRanking:"US news Best Artificial Intelligence Programs", gtRank:"U.S. News Graduate AI #5", uiucRank:"U.S. News Graduate AI #6", gtSchoolName:"Georgia Institute of Technology", uiucSchoolName:"University of Illinois Urbana-Champaign",  gtDegree:"M.S. Computer Science (AI)", uiucDegree:"B.S. Statistics, Minors in Computer Science, Data Science, and Informatics",
-    projectsTitle:"Selected Projects", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"Previous GitHub", googleRanking:"Search U.S. News ranking", downloadResume:"Download Resume (PDF)", resumePrivacyNotice:"Continue sends your name and role if entered, plus the download time, browser/device, language, and referring page to Sihun Wang via FormSubmit. FormSubmit stores submissions for 30 days. You can leave both fields blank and still download.", resumeEmailFailed:"The PDF downloaded, but the email could not be sent. Please try again later.", themeDark:"Dark mode", themeLight:"Light mode", showScreenshots:"View project screens",
+    projectsTitle:"Selected Projects", repository:"Repository", report:"REPORT", currentGithub:"GitHub", previousGithub:"Previous GitHub", googleRanking:"Search U.S. News ranking", downloadResume:"Download Resume (PDF)", resumePrivacyNotice:"Continue sends your name and role if entered, plus the download time, browser or in-app browser/device, language, and referring page to Sihun Wang via FormSubmit. FormSubmit stores submissions for 30 days. You can leave both fields blank and still download.", resumeEmailFailed:"The PDF downloaded, but the email could not be sent. Please try again later.", themeDark:"Dark mode", themeLight:"Light mode", showScreenshots:"View project screens",
     healthProjectTitle:"Personalized Health Coach Multi-Agent", translationProjectTitle:"L10n Quality Agent for Multilingual Translation", pipelineProjectTitle:"Tax Payment and Korea Rural Economic Institute Data Pipeline", usageProjectTitle:"AI Usage Bar",
     healthProject1:"Built a health-coaching agent that provides lifestyle guidance grounded in personal health records and research evidence.", healthProject2:"It routes each question to health-record retrieval or paper search and returns the answer with supporting evidence.", healthProject3:"Integrated a LangGraph Supervisor, Tool Routing, Hybrid Search RAG, evidence citations, and safety rules. Across 200 benchmark questions, the system achieved a 90.5% pass rate with zero API errors, 8.0–8.5 percentage points higher than three alternative Agent/RAG architectures.",
     translationProject1:"Connected Gradio PoC, direct-input, and CSV modes to LangChain LCEL translation, MQM evaluation, and revision chains, with translation-memory, terminology, and Do-Not-Edit context.", translationProject2:"Structured MQM findings with Pydantic and routed six error types to dedicated revision chains. The Agent selects the next strategy from remaining errors and revision history.", translationProject3:"Python controls state transitions, retries, deterministic checks for numbers, units, and protected terms, and rollback. Unresolved cases escalate to OpenAI and human approval.",
@@ -353,12 +353,18 @@ resumeDialog?.querySelector("[data-resume-skip]")?.addEventListener("click", () 
 const resumeSubmitButton = resumeDialog?.querySelector("[data-resume-submit]");
 const resumeStatus = resumeDialog?.querySelector("[data-resume-status]");
 const detectResumeBrowser = (ua) => {
-  if (/Edg\//i.test(ua)) return "Microsoft Edge";
+  if (/KAKAOTALK/i.test(ua)) return "KakaoTalk in-app browser";
+  if (/Instagram/i.test(ua)) return "Instagram in-app browser";
+  if (/FBAN|FBAV/i.test(ua)) return "Facebook in-app browser";
+  if (/LinkedInApp/i.test(ua)) return "LinkedIn in-app browser";
+  if (/NAVER/i.test(ua)) return "Naver in-app browser";
+  if (/Line\\//i.test(ua)) return "LINE in-app browser";
+  if (/Edg\\//i.test(ua)) return "Microsoft Edge";
   if (/SamsungBrowser/i.test(ua)) return "Samsung Internet";
-  if (/OPR\//i.test(ua)) return "Opera";
-  if (/Firefox\//i.test(ua)) return "Firefox";
-  if (/Chrome\//i.test(ua)) return "Chrome";
-  if (/Safari\//i.test(ua)) return "Safari";
+  if (/OPR\\//i.test(ua)) return "Opera";
+  if (/Firefox\\//i.test(ua)) return "Firefox";
+  if (/Chrome\\//i.test(ua)) return "Chrome";
+  if (/Safari\\//i.test(ua)) return "Safari";
   return "Other";
 };
 const detectResumeOS = (ua) => {
@@ -390,7 +396,7 @@ resumeSubmitButton?.addEventListener("click", async () => {
     name: name || "Not provided",
     role: role || "Not provided",
     downloaded_at: new Date().toISOString(),
-    browser: detectResumeBrowser(ua),
+    browser_or_app: detectResumeBrowser(ua),
     operating_system: detectResumeOS(ua),
     device_type: navigator.userAgentData?.mobile || /Mobi|Android|iPhone|iPad/i.test(ua) ? "Mobile" : "Desktop",
     language: navigator.language || "Unknown",
