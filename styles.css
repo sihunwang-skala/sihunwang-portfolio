@@ -745,3 +745,7 @@ html[data-theme="dark"] .header-resume-link { background:#376be3; border-color:#
   .theme-toggle { min-width:0; padding:.34rem .52rem; font-size:.72rem; }
   .header-resume-link { grid-column:1/-1; grid-row:2; justify-self:start; margin:0; padding:.4rem .62rem; font-size:.72rem; }
 }
+
+
+/* Let L10n screenshots use the full available project width and natural height. */
+.l10n-slideshow .project-slide img { max-height:none; }
