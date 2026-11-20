@@ -358,13 +358,13 @@ const detectResumeBrowser = (ua) => {
   if (/FBAN|FBAV/i.test(ua)) return "Facebook in-app browser";
   if (/LinkedInApp/i.test(ua)) return "LinkedIn in-app browser";
   if (/NAVER/i.test(ua)) return "Naver in-app browser";
-  if (/Line\\//i.test(ua)) return "LINE in-app browser";
-  if (/Edg\\//i.test(ua)) return "Microsoft Edge";
+  if (/Line\//i.test(ua)) return "LINE in-app browser";
+  if (/Edg\//i.test(ua)) return "Microsoft Edge";
   if (/SamsungBrowser/i.test(ua)) return "Samsung Internet";
-  if (/OPR\\//i.test(ua)) return "Opera";
-  if (/Firefox\\//i.test(ua)) return "Firefox";
-  if (/Chrome\\//i.test(ua)) return "Chrome";
-  if (/Safari\\//i.test(ua)) return "Safari";
+  if (/OPR\//i.test(ua)) return "Opera";
+  if (/Firefox\//i.test(ua)) return "Firefox";
+  if (/Chrome\//i.test(ua)) return "Chrome";
+  if (/Safari\//i.test(ua)) return "Safari";
   return "Other";
 };
 const detectResumeOS = (ua) => {
