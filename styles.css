@@ -749,3 +749,6 @@ html[data-theme="dark"] .header-resume-link { background:#376be3; border-color:#
 
 /* Let L10n screenshots use the full available project width and natural height. */
 .l10n-slideshow .project-slide img { max-height:none; }
+
+
+.resume-email-status { min-height:1.3em; margin:0; color:#b42318; font-size:.82rem; line-height:1.4; }
