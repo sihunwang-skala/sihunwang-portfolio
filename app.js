@@ -353,12 +353,12 @@ resumeDialog?.querySelector("[data-resume-skip]")?.addEventListener("click", () 
 const resumeSubmitButton = resumeDialog?.querySelector("[data-resume-submit]");
 const resumeStatus = resumeDialog?.querySelector("[data-resume-status]");
 const detectResumeBrowser = (ua) => {
-  if (/Edg\\//i.test(ua)) return "Microsoft Edge";
+  if (/Edg\//i.test(ua)) return "Microsoft Edge";
   if (/SamsungBrowser/i.test(ua)) return "Samsung Internet";
-  if (/OPR\\//i.test(ua)) return "Opera";
-  if (/Firefox\\//i.test(ua)) return "Firefox";
-  if (/Chrome\\//i.test(ua)) return "Chrome";
-  if (/Safari\\//i.test(ua)) return "Safari";
+  if (/OPR\//i.test(ua)) return "Opera";
+  if (/Firefox\//i.test(ua)) return "Firefox";
+  if (/Chrome\//i.test(ua)) return "Chrome";
+  if (/Safari\//i.test(ua)) return "Safari";
   return "Other";
 };
 const detectResumeOS = (ua) => {
