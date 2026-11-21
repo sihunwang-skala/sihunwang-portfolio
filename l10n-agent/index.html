@@ -98,7 +98,8 @@ html[data-theme=dark]{--ink:#f0f0f2;--mute:#a4a4ad;--line:#2a2a31;--bg:#0f0f12;-
 body{font:400 16px/1.65 Manrope,"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--ink);word-break:keep-all}
 .hero{text-align:left}
 .col{max-width:1000px;margin:0 auto;padding:0 48px}
-.side{position:fixed;left:0;top:0;bottom:0;width:236px;padding:28px 18px 18px 26px;display:flex;flex-direction:column;background:var(--bg);z-index:20;overflow-y:auto}
+.side{position:fixed;left:0;top:0;bottom:0;width:236px;padding:28px 18px 18px 26px;display:flex;flex-direction:column;background:var(--bg);z-index:20;overflow-y:auto;border-right:1px solid transparent;transition:border-color .2s ease}
+.side:hover{border-right-color:var(--line)}
 .logo{font:600 22px/1 Inter,sans-serif;letter-spacing:-.04em;color:var(--ink);text-decoration:none}
 .tree{margin-top:34px;font-size:13.5px;display:flex;flex-direction:column;gap:2px}
 .t0,.t1{color:var(--mute);padding:3px 0}.t1{padding-left:10px}
