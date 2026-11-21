@@ -581,6 +581,15 @@ html,body{overflow-x:hidden}
 .lq-panel.flash{animation:lqFlash .5s ease}
 @keyframes lqFlash{0%{box-shadow:0 0 0 0 rgba(47,42,107,.25)}100%{box-shadow:0 0 0 14px rgba(47,42,107,0)}}
 @media (prefers-reduced-motion:reduce){.lq-n,.lq-n.bounce,.lq-n.hint i,.lq-panel.flash{animation:none!important;transition:none!important}}
+/* paper-style typography (matches the technical report): one sans family, bold headings, tighter tracking */
+*{font-family:"Noto Sans KR","Apple SD Gothic Neo","Helvetica Neue",Arial,sans-serif!important}
+code,pre,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace!important}
+body{font-size:16px!important;line-height:1.85!important;color:#111!important}
+h1,h2,h3,h4{font-weight:700!important;letter-spacing:-.01em!important;line-height:1.35!important}
+.cs h2,h1{font-size:clamp(24px,3vw,34px)!important}
+.hmw{font-weight:700!important;letter-spacing:-.02em!important}
+.lead,.cs .lead,.lq-s p,.card p,.note2{font-weight:400!important;line-height:1.85!important}
+.eb,.lq-k,.lq-r b,.tg,.ptags,.tags span{font-weight:700!important;letter-spacing:.04em!important}
 /* definition sentence: keep every line on one row, words light up with scroll */
 .hmw{max-width:none}
 .hmw .ln{white-space:nowrap}
