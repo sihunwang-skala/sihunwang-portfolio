@@ -419,6 +419,12 @@ html[data-theme=dark] .um{background:#26335f;color:#e8ecff}
 .hf{font:600 13.5px/1.2 Inter,sans-serif;color:var(--mute);margin-bottom:4px}.hf .ar{color:var(--ac);margin-left:3px}
 .hv{font:500 clamp(26px,2.5vw,34px)/1.1 Inter,sans-serif;letter-spacing:-.03em;color:var(--ac)}
 .hl2{font:400 12.5px/1.4 Inter,"Noto Sans KR",sans-serif;color:var(--mute);margin-top:6px}
+/* Keyword highlighter: a centered yellow bar sweeps in behind each key term once on load. */
+.hl{position:relative;isolation:isolate;background:none;padding:0}
+.hl::after{content:"";position:absolute;left:0;right:0;top:50%;height:.8em;margin-top:-.4em;background:rgba(255,201,40,.6);z-index:-1;transform-origin:left;animation:hl-sweep .8s cubic-bezier(.2,.7,.2,1) .3s both}
+html[data-theme=dark] .hl::after{background:rgba(255,201,40,.4)}
+@keyframes hl-sweep{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){.hl::after{animation:none}}
 .hmts+.meta{margin-top:22px}
 @media (max-width:700px){.hgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
 
