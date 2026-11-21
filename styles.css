@@ -91,8 +91,9 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .ranking-note a { margin-left:.6rem; color:var(--blue); font-size:inherit; font-weight:inherit; text-underline-offset:.18rem; }
 .ranking-note a strong { font-size:inherit; font-weight:inherit; }
 .ranking-google-link, .ranking-usnews-link { color:var(--blue); font-size:inherit; text-decoration:underline; text-underline-offset:.2rem; }
-/* Google ranking link: wavy underline, no highlight. */
-.ranking-google-link { text-decoration:underline wavy; text-decoration-color:var(--blue); text-decoration-thickness:2px; text-underline-offset:.25rem; }
+/* Google ranking link: plain text like the intro paragraph; underline only on hover. */
+.ranking-google-link { color:inherit; font-weight:400; text-decoration:none; }
+.ranking-google-link:hover { text-decoration:underline; text-underline-offset:.25rem; }
 html[lang="ko"] .ranking-usnews-link, html[lang="ko"] .ranking-usnews-label { display:none; }
 html[lang="en"] .ranking-google-link { display:none; }
 html[lang="en"] .ranking-usnews-link { margin-left:0; }
