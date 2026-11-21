@@ -475,7 +475,7 @@ resumeSubmitButton?.addEventListener("click", async () => {
       if (current.length < 2) return;
       index = (index + 1) % current.length;
       current.forEach((img, k) => img.classList.toggle("on", k === index));
-    }, 1300);
+    }, 2600);
   });
 })();
 
