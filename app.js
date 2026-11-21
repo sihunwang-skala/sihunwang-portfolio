@@ -215,6 +215,7 @@ const elements = document.querySelectorAll("[data-i18n]");
 
 // Emphasize selected technical terms and results without changing the copy.
 const keywordTerms = [
+  "교과서 기여자", "Credited contributor",
   "Agent-to-Agent(A2A)", "Agent-to-Agent (A2A)",
   "cluster-based few-shot prompting", "LangGraph Supervisor", "LangChain LCEL",
   "Supervisor Agent", "Supervisor Routing", "Evidence Selection", "LLM Evaluation",
