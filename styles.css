@@ -801,3 +801,21 @@ html[data-theme=dark] .pvis{background:linear-gradient(135deg,#1d2027,#252932)}
 html[data-theme=dark] .side3{background:#0f1115}
 html[data-theme=dark] .side3 a.s3{color:#c4cad6}
 html[data-theme=dark] .side3 a.s3:hover,html[data-theme=dark] .side3 a.s3.on{color:#fff}
+
+/* ---- responsive fixes: every screen size, no clipping, centered ---- */
+.project-list{grid-template-columns:minmax(0,1fr)}
+.project-list article{min-width:0}
+.pvis-link,.pvis,.pshots{max-width:100%}
+.parch-b svg{max-width:100%}
+@media(max-width:860px){
+ .pvis{height:auto;padding:24px 0 0}
+ .pvis[data-card=health] .pshots{flex-direction:column;align-items:center;gap:20px;height:auto;padding:0 16px;box-sizing:border-box}
+ .pvis[data-card=health] .ph3{height:390px}
+ .pvis[data-card=health] .parch{width:100%;margin-bottom:0;align-self:stretch}
+ .pvis[data-card=l10n] .pshots{height:auto;padding:0 12px;box-sizing:border-box}
+ .pvis[data-card=l10n] .ph3.wide{width:100%;height:auto}
+ .cta{position:static;display:flex;width:max-content;max-width:calc(100% - 28px);margin:16px auto;font-size:.9rem;padding:.65rem 1rem}
+}
+@media(max-width:420px){.pvis[data-card=health] .ph3{height:340px}}
+@media(min-width:1800px){:root{--max:1040px}.pvis{height:520px}}
+@media(min-width:2600px){:root{--max:1240px}.pvis{height:600px}}
