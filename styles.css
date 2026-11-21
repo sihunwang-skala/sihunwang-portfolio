@@ -832,3 +832,8 @@ html[data-theme=dark] .side3 a.s3:hover,html[data-theme=dark] .side3 a.s3.on{col
 .side-toggle{z-index:60;width:36px;height:36px;border-color:#667085;color:#111;box-shadow:0 2px 8px rgba(0,0,0,.18)}
 html[data-theme=dark] .side-toggle{background:#1e293b;border-color:#64748b;color:#f1f5f9;box-shadow:0 2px 10px rgba(0,0,0,.5)}
 .side-toggle:hover,.side-toggle:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
+/* health card: a complete phone (rounded on all four corners, with a home bar) instead of a phone cropped flat at the card bottom */
+.pvis[data-card=health]{padding-bottom:24px}
+.pvis[data-card=health] .ph3{border-bottom:7px solid #16161f;border-radius:34px}
+.pvis[data-card=health] .ph3 img{height:100%;object-fit:cover;object-position:top}
+.pvis[data-card=health] .ph3::after{content:"";position:absolute;left:50%;bottom:7px;width:34%;height:4px;border-radius:2px;background:rgba(17,24,39,.6);transform:translateX(-50%);z-index:2;pointer-events:none}
