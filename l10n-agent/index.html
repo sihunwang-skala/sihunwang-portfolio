@@ -677,6 +677,16 @@ html[data-theme=dark] mark.kw{background:linear-gradient(transparent 52%,rgba(25
 .lq-n.on{border-color:var(--ac);background:var(--soft)}.lq-n.on i{background:var(--ac);color:var(--bg)}
 .lq-n.ok i{background:#d9f0e2;color:#1f6b45}html[data-theme=dark] .lq-n.ok i{background:#16352a;color:#8fd6b0}
 .lq-n.ok.on i{background:#2e8b57;color:#fff}
+/* map buttons: same pill style as the tabs on the reference (health) page */
+.lq-map{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px}
+.lq-n{font:600 13.5px/1 "Noto Sans KR",sans-serif!important;padding:10px 16px;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--mute);gap:8px;align-items:center}
+.lq-n:hover{color:var(--ink);border-color:var(--ink)}
+.lq-n i{width:20px;height:20px;font:700 11px/1 "Noto Sans KR",sans-serif!important;background:var(--soft);color:var(--mute)}
+.lq-n.on{background:#2f3061;border-color:#2f3061;color:#fff}
+.lq-n.on i{background:rgba(255,255,255,.22);color:#fff;transform:none}
+html[data-theme=dark] .lq-n.on{background:#c9c5ff;border-color:#c9c5ff;color:#15152a}
+html[data-theme=dark] .lq-n.on i{background:rgba(21,21,42,.16);color:#15152a}
+.lq-n.ok:not(.on) i{background:#d9f0e2;color:#1f6b45}
 .lq-panel{border:1px solid var(--line);border-radius:18px;background:var(--soft);padding:26px 30px;min-height:300px}
 .lq-d{display:none}.lq-d.on{display:block;animation:lqin .45s ease}
 @keyframes lqin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
