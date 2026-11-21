@@ -192,18 +192,74 @@ const slideCollections = {
 
 const buttons = document.querySelectorAll("[data-lang]");
 const elements = document.querySelectorAll("[data-i18n]");
+
+// Emphasize selected technical terms and results without changing the copy.
+const keywordTerms = [
+  "cluster-based few-shot prompting", "LangGraph Supervisor", "LangChain LCEL",
+  "multi-agent orchestration", "human-in-the-loop", "Machine Learning",
+  "Deep Learning", "Federated Learning", "Hybrid Search RAG", "Agentic RAG",
+  "Agent Evaluation", "Fluency Agent", "Tool Routing", "Multi-Agent",
+  "Agentic AI", "AI Agent", "LangGraph", "LangChain", "HITL", "Pydantic",
+  "MQM", "Rollback", "OpenPyXL", "Selenium", "Beautiful Soup", "BeautifulSoup",
+  "API fallback", "error triage agent", "parallel execution", "병렬 실행",
+  "LLM-as-a-Judge", "xCOMET", "PyTorch", "TensorFlow", "XGBoost", "CNN",
+  "ANN", "Swift 6", "SwiftPM", "LaunchAgent", "Swift Testing",
+  "97.5%", "90.5%", "8.0–8.5%p", "8.0–8.5 percentage points",
+  "60분에서 10분", "60 to 10 minutes", "zero API errors", "API 오류 0건",
+  "Team 2nd place", "Team 4th place", "Team 2위", "Team 4위"
+].sort((a, b) => b.length - a.length);
+const keywordPattern = new RegExp(
+  "(?<![A-Za-z0-9])(?:" +
+  keywordTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\function renderIntroText() {")).join("|") +
+  ")(?![A-Za-z0-9])", "gi"
+);
+function keywordFragment(value) {
+  const fragment = document.createDocumentFragment();
+  let cursor = 0;
+  let count = 0;
+  keywordPattern.lastIndex = 0;
+  for (const match of value.matchAll(keywordPattern)) {
+    if (count++ === 4) break;
+    fragment.append(document.createTextNode(value.slice(cursor, match.index)));
+    const strong = document.createElement("strong");
+    strong.className = "keyword";
+    strong.textContent = match[0];
+    fragment.append(strong);
+    cursor = match.index + match[0].length;
+  }
+  fragment.append(document.createTextNode(value.slice(cursor)));
+  return fragment;
+}
+function highlightBodyKeywords() {
+  document.querySelectorAll(
+    ".resume-entry li[data-i18n], .project-bullets li[data-i18n], .recognition-body p[data-i18n]"
+  ).forEach((element) => element.replaceChildren(keywordFragment(element.textContent)));
+}
+
 function renderIntroText() {
   const target = document.querySelector("[data-reveal-text]");
   const value = copy[currentLanguage]?.summary || "";
   if (!target) return;
-  target.replaceChildren(...Array.from(value).map((character, index) => {
-    if (character === " ") return document.createTextNode(" ");
-    const letter = document.createElement("span");
-    letter.className = "intro-char";
-    letter.style.setProperty("--reveal-index", String(index));
-    letter.textContent = character;
-    return letter;
-  }));
+  target.replaceChildren(keywordFragment(value));
+  let index = 0;
+  const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  textNodes.forEach((node) => {
+    const fragment = document.createDocumentFragment();
+    Array.from(node.textContent).forEach((character) => {
+      if (character === " ") {
+        fragment.append(document.createTextNode(" "));
+        return;
+      }
+      const letter = document.createElement("span");
+      letter.className = "intro-char";
+      letter.style.setProperty("--reveal-index", String(index++));
+      letter.textContent = character;
+      fragment.append(letter);
+    });
+    node.replaceWith(fragment);
+  });
 }
 
 const themeToggle = document.querySelector("[data-theme-toggle]");
@@ -304,6 +360,7 @@ function setLanguage(language) {
     if (value) element.textContent = value;
   });
   renderIntroText();
+  highlightBodyKeywords();
   buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.lang === selected)));
   localStorage.setItem("portfolio-language", selected);
   updateSlideLanguage(selected);
