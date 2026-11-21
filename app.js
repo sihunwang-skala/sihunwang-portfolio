@@ -5,7 +5,7 @@ const copy = {
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술", viewRecognition:"수상 및 기여",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무", previousScreen:"이전 화면", nextScreen:"다음 화면",
     experienceTitle:"경력", experienceSubtitle:"최신순",
-    flitto1:"AI 다국어 번역 상장사이자 한국 독자 파운데이션 모델 프로젝트 참여사인 Flitto에서 LG전자 및 올리브영 대상 다국어 AI 번역 Workflow 개선",
+    flitto1:"AI 다국어 번역 상장사이자 한국 독자 파운데이션 모델 프로젝트 참여사인 Flitto에서 LG전자 및 올리브영 대상 다국어 번역 AI Workflow 개선",
     flitto2:"LangChain 기반 번역 유창성 평가 Agent 개발 및 Cluster-based Few-Shot Prompting을 활용한 11개 언어별 Prompt 최적화",
     flitto3:"총 4,983건의 번역 결과에 대해 LLM-as-a-Judge, xCOMET 등 4개 자동 평가 지표를 활용한 품질 평가 Pipeline 구축",
     flitto4:"저득점 번역을 Human-in-the-Loop(HITL) 검수로 연결하여 자동 평가와 전문가 검토를 결합한 품질 관리 체계 구현",
@@ -215,6 +215,9 @@ const elements = document.querySelectorAll("[data-i18n]");
 
 // Emphasize selected technical terms and results without changing the copy.
 const keywordTerms = [
+  "성능 비교", "comparing architectures",
+  "Pipeline", "Pipelines", "자동화", "Automation", "Automated",
+  "자동 평가 지표", "automated metrics", "PoC",
   "Multi-Agent System", "Multi-Agent Systems",
   "Agent-to-Agent(A2A) Communication", "Agent-to-Agent (A2A) Communication",
   "개인화", "personalized",
@@ -243,7 +246,7 @@ const keywordPattern = new RegExp(
   keywordTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") +
   ")(?![A-Za-z0-9])", "gi"
 );
-function keywordFragment(value, limit = 4) {
+function keywordFragment(value, limit = 5) {
   const fragment = document.createDocumentFragment();
   let cursor = 0;
   let count = 0;
