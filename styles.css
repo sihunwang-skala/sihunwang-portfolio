@@ -91,12 +91,8 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .ranking-note a { margin-left:.6rem; color:var(--blue); font-size:inherit; font-weight:inherit; text-underline-offset:.18rem; }
 .ranking-note a strong { font-size:inherit; font-weight:inherit; }
 .ranking-google-link, .ranking-usnews-link { color:var(--blue); font-size:inherit; text-decoration:underline; text-underline-offset:.2rem; }
-/* Highlighter sweep behind the Google ranking link: a centered yellow bar draws in once on load. */
-.ranking-google-link { position:relative; isolation:isolate; }
-.ranking-google-link::after { content:""; position:absolute; left:0; right:0; top:50%; height:.8em; margin-top:-.4em; background:rgba(255,201,40,.6); z-index:-1; transform-origin:left; animation:hl-sweep .8s cubic-bezier(.2,.7,.2,1) .3s both; }
-html[data-theme="dark"] .ranking-google-link::after { background:rgba(255,201,40,.4); }
-@keyframes hl-sweep { from { transform:scaleX(0); } to { transform:scaleX(1); } }
-@media (prefers-reduced-motion: reduce) { .ranking-google-link::after { animation:none; } }
+/* Google ranking link: wavy underline, no highlight. */
+.ranking-google-link { text-decoration:underline wavy; text-decoration-color:var(--blue); text-decoration-thickness:2px; text-underline-offset:.25rem; }
 html[lang="ko"] .ranking-usnews-link, html[lang="ko"] .ranking-usnews-label { display:none; }
 html[lang="en"] .ranking-google-link { display:none; }
 html[lang="en"] .ranking-usnews-link { margin-left:0; }
