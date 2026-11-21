@@ -211,11 +211,19 @@ const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 let currentLanguage = "en";
 let currentTheme = localStorage.getItem("portfolio-theme") || (window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ? "dark" : "light");
 
+const MOON_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/></svg>';
+const SUN_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
 const updateTheme = (theme) => {
   currentTheme = theme === "dark" ? "dark" : "light";
   document.documentElement.dataset.theme = currentTheme;
   themeToggle?.setAttribute("aria-pressed", String(currentTheme === "dark"));
-  if (themeToggle) themeToggle.textContent = copy[currentLanguage][currentTheme === "dark" ? "themeLight" : "themeDark"];
+  if (themeToggle) {
+    const label = copy[currentLanguage][currentTheme === "dark" ? "themeLight" : "themeDark"];
+    themeToggle.setAttribute("aria-label", label);
+    themeToggle.title = label;
+    themeToggle.innerHTML = currentTheme === "dark" ? SUN_ICON : MOON_ICON;
+  }
   themeColorMeta?.setAttribute("content", currentTheme === "dark" ? "#0b1220" : "#ffffff");
   localStorage.setItem("portfolio-theme", currentTheme);
 };
@@ -275,6 +283,7 @@ function setLanguage(language) {
   document.querySelectorAll("[data-slide-prev]").forEach((button) => button.setAttribute("aria-label", copy[selected].previousScreen));
   document.querySelectorAll("[data-slide-next]").forEach((button) => button.setAttribute("aria-label", copy[selected].nextScreen));
   updateRankingLink(selected);
+  document.querySelectorAll("a[data-href-ko]").forEach((link) => { link.href = selected === "ko" ? link.dataset.hrefKo : link.dataset.hrefEn; });
   updateTheme(currentTheme);
 }
 
