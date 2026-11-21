@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L10n Quality Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1f26;--mute:#3b4554;--line:#e4e8ee;--bg:#fff;--soft:#f5f7fa;--navy:#12315c;--blue:#2f63b5;--grey:#a9b6c7;--red:#c0392b;--teal:#8fb4b7}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.7 Inter,"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:24px;align-items:center;height:50px;overflow-x:auto;white-space:nowrap}
+nav b{margin-right:auto;font-weight:700}nav a{color:var(--mute);text-decoration:none;font-size:14px;font-weight:500}nav a:hover{color:var(--navy)}nav a.ext{color:var(--navy);font-weight:700}
+.hero{text-align:center;padding:56px 0 20px}
+h1{font-size:clamp(28px,4.6vw,46px);line-height:1.22;font-weight:800;letter-spacing:-.02em;margin:0 auto 14px;max-width:900px}
+h1 em{font-style:normal;color:var(--blue)}
+.slogan{font-size:clamp(17px,2.2vw,22px);font-weight:600;color:var(--mute);margin:0 0 18px}
+.auth{font-size:18px;margin:6px 0 2px}.aff{color:var(--mute);font-size:15px}
+.btns{display:flex;gap:10px;justify-content:center;margin:20px 0 26px;flex-wrap:wrap}
+.btn{background:#111a2b;color:#fff;text-decoration:none;font-weight:600;padding:9px 20px;border-radius:10px;font-size:15px}.btn:hover{background:var(--blue)}
+.tldr{font-size:19px;max-width:880px;margin:0 auto 26px}.tldr b{font-weight:800}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 6px;text-align:left}
+.kpi{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.kpi b{display:block;font-size:30px;line-height:1.1;color:#d62828;font-weight:800}.rd{color:var(--navy);font-weight:800}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.chips span{background:#e8f0fb;border:1.5px solid #7fa8dc;color:#12315c;font-weight:600;font-size:13.5px;padding:4px 12px;border-radius:99px}
+.hl{background:linear-gradient(transparent 55%,#ffe27a 55%);font-weight:700;color:inherit;padding:0 1px}
+.kpi .na{font-style:normal;color:#6a7685}
+.kpi .d{font-style:normal;font-weight:800;color:var(--navy)}
+.kpi .kl{display:block;font-size:15.5px;font-weight:800;color:#0f2238;margin:2px 0 6px;line-height:1.35}
+.kpi span{font-size:13px;color:var(--mute);line-height:1.4;display:block;margin-top:4px}
+section{padding:44px 0;border-top:1px solid var(--line)}
+.num{font-size:12.5px;font-weight:700;color:var(--blue);letter-spacing:.1em}
+h2{font-size:clamp(24px,3.2vw,32px);margin:2px 0 8px;letter-spacing:-.015em;font-weight:800}
+.sub{color:var(--mute);margin:0 0 22px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:18px 20px}.card h3{margin:0 0 6px;font-size:16.5px}.card p{margin:0;color:var(--mute);font-size:15px}
+.card.bad{border-top:4px solid var(--navy)}.card.good{border-top:4px solid var(--navy)}
+.fig{margin:0 0 18px}.fig .svgbox{overflow-x:auto;border:1px solid var(--line);border-radius:16px;padding:12px;background:#fff}.fig svg{display:block;width:100%;min-width:820px;height:auto;font-family:Inter,"Noto Sans KR",sans-serif}
+.cap,.cap2{font-size:14px;color:var(--mute);margin:10px 4px 0}.cap b,.cap2 b{color:var(--ink)}
+.pipe{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:10px 0 0}
+.pipe .s{flex:1 1 170px;background:#cfe0e1;border:1.5px solid #111;border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.45}.pipe .s b{display:block;font-size:14.5px}.pipe .s small{color:#1c3235}
+.pipe .s.p{background:#f0c8c8}.pipe .a{align-self:center;font-weight:700}
+.grid6{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chart{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.chart h3{margin:0 0 2px;font-size:16.5px}.chart .q{color:#2c3644;font-size:13.5px;margin:0 0 12px;line-height:1.5}
+.row{display:grid;grid-template-columns:178px 1fr;gap:10px;align-items:center;height:24px;margin:6px 0}.row .name{font-size:12.5px;line-height:1.25;white-space:nowrap}.row .name.n0{font-weight:700;color:#2b7a4b}.row .name.n1{font-weight:700;color:#6a5fb0}.row .name.n2{font-weight:700;color:#2a68ad}.row .name.n3{font-weight:800;color:#8a6200}
+.row .name.final{font-weight:800;color:#8a6200}
+.track{background:var(--soft);border-radius:5px;height:17px;overflow:hidden;display:flex;align-items:center}
+.bar{height:100%;border-radius:5px;background:var(--grey);display:flex;align-items:center;justify-content:flex-end;padding-right:7px;font-size:11px;font-weight:700;color:#fff;min-width:40px}
+.bar.c0{background:#7cc096}.bar.c1{background:#a597d9}.bar.c2{background:#7fa8dc}
+.bar.final{background:#ffc928;color:#3b2c00}.bar.red{background:var(--red)}.ztxt{padding-left:8px;font-size:12.5px;font-weight:700;color:var(--navy)}
+.row .name.final+.track .ztxt{color:#b81f1f;font-size:14px}
+.gt{font-size:12.5px;font-weight:700;color:var(--mute);margin:12px 0 2px;letter-spacing:.02em}
+.method{margin:12px 0 0;font-size:13px;line-height:1.55;color:#33414f;border-top:1px dashed var(--line);padding-top:10px}.method b{color:#12315c;margin-right:4px}
+.note{margin:10px 0 0;font-size:13.5px;color:var(--mute);line-height:1.55}
+.caveat{margin-top:16px;border:1px dashed var(--grey);border-radius:14px;padding:14px 18px;font-size:14px;color:var(--mute)}.caveat b{color:var(--ink)}
+.grp{margin:30px 0 12px;font-size:17px;font-weight:700}.grp small{color:var(--mute);font-weight:400;margin-left:8px}
+figure{margin:0}figure img{width:100%;display:block;border-radius:12px;border:1px solid var(--line)}figcaption{font-size:14px;color:var(--mute);margin-top:8px}figcaption b{color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.mob{display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:start}.mob img{max-width:230px}
+.tbl{width:100%;border-collapse:collapse;border:1px solid var(--line);font-size:12px;line-height:1.5}.tbl td,.tbl th{padding:6px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.tbl th{width:170px;color:var(--mute);font-weight:600;background:var(--soft)}.tbl tr:last-child td,.tbl tr:last-child th{border-bottom:0}.tbl a{color:var(--blue)}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.tile{margin:0;position:relative}.tile.key .shot{border:3px solid #ffc928;box-shadow:0 6px 20px rgba(255,201,40,.35)}.shot{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:zoom-in;overflow:hidden;transition:box-shadow .15s,transform .15s}
+.shot:hover{box-shadow:0 8px 24px rgba(18,49,92,.18);transform:translateY(-2px)}
+.tiles .shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border:0;border-radius:0}
+.tile figcaption,.details figcaption{font-size:13px;line-height:1.55}.tile figcaption b,.details figcaption b{font-size:17px;line-height:1.4}
+.tg{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:99px;margin-right:6px;color:#fff;vertical-align:1px}.tg.u{background:#12315c}.tg.c{background:#2f7d7a}
+.details{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start}.details .shot img{width:100%;border:0;border-radius:0}.phone .shot{width:auto;display:block;margin:0 auto}.phone .shot img{width:auto;height:240px;display:block;margin:0 auto}.phone figcaption{text-align:left}
+.steps{margin-top:6px}.steps th{width:auto;background:var(--soft)}.steps td small{color:var(--mute)}
+.hot{cursor:pointer}.hot:hover rect{stroke:#d62828;stroke-width:2.6}.hot.sel rect{stroke:#d62828;stroke-width:3.4}.detail{border:1px dashed #b6c0cd;border-radius:12px;padding:14px 18px;margin:0 0 22px;font-size:14.5px;line-height:1.65;color:#2c3644}.detail.on{border:1.5px solid #d62828;background:#fff8f8}.detail p{margin:6px 0 0}.detail ul{margin:8px 0 0;padding-left:20px}.detail li{margin:3px 0}.detail b{color:#12315c}
+.toggles{margin:6px 0 22px}.toggles details{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:#fff}.toggles summary{cursor:pointer;padding:11px 16px;font-weight:700;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}.toggles summary::-webkit-details-marker{display:none}.toggles summary::after{content:'+';color:#d62828;font-size:20px;font-weight:700}.toggles details[open] summary::after{content:'\2212'}.toggles details[open]{border-color:#d62828}.toggles p{margin:0;padding:0 16px 14px;font-size:14.5px;color:#2c3644;line-height:1.65}
+.kw{list-style:none;margin:6px 0 0;padding:0}.kw li{font-size:14.5px;line-height:1.55;color:#2c3644;padding:4px 0 4px 14px;position:relative}.kw li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%;background:#9aa6b4}.kw li.to{font-weight:600;color:#12315c}.kw li.to::before{content:'\2192';background:none;width:auto;height:auto;top:4px;left:-2px;font-weight:700;color:#d62828}.kw li.to{padding-left:18px}
+.how{background:#f5f7fa;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.55}.how p{margin:6px 0 0}.how span{color:var(--mute)}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,16,26,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}.lb[hidden]{display:none}
+.lb img{max-width:96vw;max-height:84vh;border-radius:8px;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.5)}.lb p{color:#fff;font-size:15px;margin:12px 0 0;text-align:center}.lbx{position:absolute;top:14px;right:20px;background:none;border:0;color:#fff;font-size:38px;cursor:pointer}
+@media (max-width:980px){.details{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.tiles,.details{grid-template-columns:1fr}}
+footer{padding:28px 0 56px;color:var(--mute);font-size:14px;border-top:1px solid var(--line);text-align:center}
+@media (max-width:820px){.kpis{grid-template-columns:1fr 1fr}.grid6,.grid2,.mob{grid-template-columns:1fr}.row{grid-template-columns:150px 1fr;gap:8px}.tbl th{width:100px}}
+
+.fin{display:inline-block;margin-left:8px;vertical-align:2px;background:#ffc928;color:#3b2c00;font-size:11.5px;font-weight:800;padding:2px 9px;border-radius:99px;letter-spacing:.02em}
+.grid6.one{grid-template-columns:1fr}details.allres{margin:18px 0 6px}details.allres summary{cursor:pointer;list-style:none;border:1.5px solid var(--line);border-radius:14px;padding:14px 56px 14px 20px;font-weight:800;font-size:16px;background:var(--soft);position:relative}details.allres summary::-webkit-details-marker{display:none}details.allres summary::after{content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:24px;font-weight:600;color:var(--blue)}details.allres[open] summary::after{content:"−"}details.allres summary:hover{border-color:var(--blue)}details.allres summary small{display:block;font-weight:500;font-size:13px;color:var(--mute);margin-top:2px}details.allres[open] summary{margin-bottom:18px}
+.note2{margin:10px 0 0;font-size:13.5px;color:var(--mute);line-height:1.55}.note2 b{color:var(--ink)}.chart.key{border:1px solid #ffc928}
+nav{background:var(--bg)}nav b{margin-right:0}nav .sp{flex:1}.tb{font:inherit;font-size:15px;line-height:1;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 10px;cursor:pointer}.tb:hover{color:var(--navy);border-color:var(--navy)}
+html[data-theme=dark]{--ink:#e8ecf1;--mute:#b4bfcc;--line:#2b3441;--bg:#0f141b;--soft:#171e28;--navy:#a9c6f2;--blue:#7aa5e6;--grey:#4a5666;color-scheme:dark}
+html[data-theme=dark] .chart,html[data-theme=dark] .toggles details{background:var(--soft)}
+html[data-theme=dark] .kpi b{color:#ff7b7b}html[data-theme=dark] .kpi .kl{color:var(--ink)}
+html[data-theme=dark] .row .name.n0{color:#6fd09a}html[data-theme=dark] .row .name.n1{color:#b9aef0}html[data-theme=dark] .row .name.n2{color:#8ab8ee}html[data-theme=dark] .row .name.n3,html[data-theme=dark] .row .name.final{color:#ffc928}
+html[data-theme=dark] .row .name.final+.track .ztxt{color:#ff8a8a}
+html[data-theme=dark] .chart .q,html[data-theme=dark] .method,html[data-theme=dark] .detail,html[data-theme=dark] .kw li{color:var(--mute)}html[data-theme=dark] .method b,html[data-theme=dark] .kw li.to{color:var(--navy)}
+html[data-theme=dark] .detail.on{background:#2a1a1d}html[data-theme=dark] .hl{background:linear-gradient(transparent 55%,rgba(255,201,40,.45) 55%)}
+html[data-theme=dark] .tg.u{background:#3d5f94}html[data-theme=dark] .card.bad,html[data-theme=dark] .card.good{border-top-color:var(--blue)}
+html[data-theme=dark] .num{color:var(--blue)}html[data-theme=dark] h1 em{color:#7aa5e6}
+html[data-theme=dark] .fig .svgbox{background:#f5f7fa}html[data-theme=dark] figure img{opacity:.93}
+
+
+:root{--ink:#151515;--mute:#6b6b6b;--line:#e9e9eb;--bg:#fff;--soft:#f6f6f8;--navy:#2f2a6b;--blue:#3b46b0;--ac:#2f2a6b;--grey:#b9b9c2}
+html[data-theme=dark]{--ink:#f0f0f2;--mute:#a4a4ad;--line:#2a2a31;--bg:#0f0f12;--soft:#17171c;--navy:#b7b3f2;--blue:#8f98f0;--ac:#b7b3f2;--grey:#4b4b55;color-scheme:dark}
+body{font:400 16px/1.65 Manrope,"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--ink);word-break:keep-all}
+.hero{text-align:left}
+.col{max-width:1000px;margin:0 auto;padding:0 48px}
+.side{position:fixed;left:0;top:0;bottom:0;width:236px;padding:28px 18px 18px 26px;display:flex;flex-direction:column;background:var(--bg);z-index:20;overflow-y:auto}
+.logo{font:600 22px/1 Inter,sans-serif;letter-spacing:-.04em;color:var(--ink);text-decoration:none}
+.tree{margin-top:34px;font-size:13.5px;display:flex;flex-direction:column;gap:2px}
+.t0,.t1{color:var(--mute);padding:3px 0}.t1{padding-left:10px}
+.t2{margin-left:18px;padding:5px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600;background:var(--soft)}
+.t3{margin-left:34px;padding:3px 10px;color:var(--mute);text-decoration:none;font-size:12.5px;border-radius:6px;transition:color .2s}
+.t3:hover{color:var(--ink)}.t3.on{color:var(--ink);font-weight:700}
+.side-b{margin-top:auto;padding-top:20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}.cp{width:100%;font-size:11.5px;color:var(--mute);margin-top:10px}
+.tb{font:600 12px/1 Manrope,sans-serif;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:7px 11px;cursor:pointer}.tb:hover{color:var(--ink);border-color:var(--ink)}
+.topbar{display:none}
+main{margin-left:236px}
+.hero{padding:64px 0 40px;min-height:min(100vh,760px);display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:center;width:100%}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:26px}.tags span{background:var(--soft);color:var(--ink);font-size:12px;font-weight:600;padding:5px 11px;border-radius:99px}
+h1{font:500 clamp(28px,2.8vw,40px)/1.15 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.04em;margin:0 0 22px;max-width:none;text-align:left}
+.quote{font-size:20px;font-style:italic;font-weight:500;color:var(--ink);margin:0 0 24px;max-width:none;white-space:nowrap;overflow:hidden}
+.lead{font:400 19px/1.65 Inter,"Noto Sans KR",sans-serif;color:var(--mute);max-width:720px;margin:0 0 22px}.lead b{color:var(--ink);font-weight:600}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;border-top:1px solid var(--line);margin-top:34px;padding-top:22px;max-width:600px}
+.meta .k{font-size:11px;letter-spacing:.12em;color:var(--mute);font-weight:600;margin-bottom:4px}.meta .v{font-size:14.5px;line-height:1.5}
+.ext-link{display:inline-block;margin-top:28px;color:var(--ink);font-weight:600;font-size:14.5px;text-decoration:none;border-bottom:1px solid var(--ink)}
+.ph-wrap{text-align:center}.ph-lb{font-size:12px;letter-spacing:.2em;color:var(--mute);margin-bottom:16px}
+.ph{position:relative;width:268px;margin:0 auto;border:9px solid #55555d;border-radius:40px;background:#000;overflow:hidden;box-shadow:0 24px 60px rgba(20,20,40,.18)}
+.ph img{display:block;width:100%;aspect-ratio:9/18.2;object-fit:cover;object-position:top;border:0;border-radius:0}
+.track .bv{white-space:nowrap}
+.ph{width:290px;border-width:10px;border-radius:44px;aspect-ratio:9/19.3}
+.ph .pi{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:top;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;image-rendering:auto}
+.ph .pi.on{opacity:1;transform:none}
+.ph .pi.en{display:none}html[lang=en] .ph .pi.ko{display:none}html[lang=en] .ph .pi.en{display:block}
+.ph-tabs{display:flex;justify-content:center;gap:6px;margin-top:18px;flex-wrap:wrap}
+.ph-tabs button{font:600 12.5px/1 Manrope,Inter,sans-serif;border:1px solid var(--line);background:transparent;color:var(--mute);padding:8px 12px;border-radius:99px;cursor:pointer;transition:.2s}
+.ph-tabs button:hover{color:var(--ink)}.ph-tabs button.on{background:#2f3061;border-color:#2f3061;color:#fff}
+html[data-theme=dark] .ph-tabs button.on{background:#c9c5ff;border-color:#c9c5ff;color:#15152a}
+.autobtn{position:fixed;right:22px;bottom:20px;z-index:60;font:600 12.5px/1 Manrope,Inter,sans-serif;padding:10px 15px;border-radius:99px;border:1px solid var(--line);background:var(--bg);color:var(--ink);box-shadow:0 6px 20px rgba(20,20,45,.14);cursor:pointer}.autobtn.off{color:var(--mute)}
+@media (max-width:900px){.autobtn{right:12px;bottom:12px}}
+[data-fill] .w{transition:none!important}
+.ph-row{display:flex;justify-content:center;align-items:center}.ph-row .ph{margin:0;flex:none}.ph-row .mid{width:212px;z-index:2;border-width:8px;border-radius:34px}.ph-row .sm{width:176px;border-width:7px;border-radius:30px;opacity:.96}.ph-row .pl{margin-right:-26px;transform:rotate(-4deg)}.ph-row .pr{margin-left:-26px;transform:rotate(4deg)}.ph-row .ph img{aspect-ratio:9/19}
+.notch{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:84px;height:20px;border-radius:99px;background:#1a1a1f;z-index:2}
+.cs{padding:104px 0 8px;border-top:0}.cs .col>*{max-width:none}
+.eb{font:700 11.5px/1 Manrope,sans-serif;letter-spacing:.16em;color:var(--ac);margin-bottom:18px}
+.cs h2{font:500 clamp(28px,3.4vw,40px)/1.18 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.035em;margin:0 0 26px;max-width:800px}
+.cs .lead{margin-bottom:28px}
+.hmw{font:400 clamp(28px,3.6vw,44px)/1.3 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.035em;color:var(--grey);max-width:820px;margin:0}.hmw em{color:var(--ink);font-style:italic;font-weight:700}
+.define{padding:140px 0 70px}
+.mts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;border-top:1px solid var(--line);padding-top:30px;margin-top:8px}
+.mf{font-size:14px;color:var(--mute);height:20px}.mv{font:500 clamp(30px,3.6vw,44px)/1.15 Inter,sans-serif;letter-spacing:-.03em;color:var(--ac)}.ml{font-size:13.5px;color:var(--mute);margin-top:6px;line-height:1.45}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--soft);border:0;border-radius:18px;padding:24px 24px}.card h3{font:600 18px/1.35 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.02em;margin:0 0 10px}.card p{font-size:15px;line-height:1.7;color:var(--mute)}
+.card.bad,.card.good{border-top:0}
+.chart{border-radius:18px;border:1px solid var(--line)}.chart.key{border:1px solid var(--line)}
+.fig .svgbox{border-radius:18px;border-color:var(--line)}
+.tbl{font-size:14px;border-radius:14px;border-collapse:separate;border:1px solid var(--line);overflow:hidden}.tbl th{width:180px}.tbl td,.tbl th{padding:14px 18px}
+.tile.key .shot{border:1px solid #ffc928;box-shadow:none}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}.rv.in{opacity:1;transform:none}
+
+.hl{background:none;font-weight:600;color:var(--ink);padding:0}
+.note>.hl,.note>span.hl{font-weight:500;color:var(--mute)}
+.mk{background:linear-gradient(rgba(255,201,40,.62),rgba(255,201,40,.62)) no-repeat 0 50%/0% 66%;font-weight:700;color:var(--ink);padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size 1.1s cubic-bezier(.2,.7,.2,1) .5s}
+.in .mk,.mk.on{background-size:100% 66%}
+.note2{font-size:15px;line-height:1.75}.note2>b:first-child{display:block;font:500 clamp(18px,1.7vw,22px)/1.35 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.025em;margin-bottom:8px;color:var(--ink)}
+/* result charts in the case-study typography */
+.chart{background:var(--soft);border:0;border-radius:22px;padding:30px 32px}.chart.key{background:var(--soft);border:0}
+.chart h3{font:500 22px/1.3 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.03em;margin:0 0 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fin{margin-left:0;vertical-align:0;background:#ffc928;color:#3b2c00;font:700 11px/1 Manrope,sans-serif;letter-spacing:.06em;padding:6px 11px}
+.chart .q{font:400 14.5px/1.65 Inter,"Noto Sans KR",sans-serif;color:var(--mute);margin:0 0 22px}
+.row{grid-template-columns:210px 1fr;height:30px;margin:8px 0;gap:14px}
+.row .name,.row .name.n0,.row .name.n1,.row .name.n2,.row .name.n3,.row .name.final,html[data-theme=dark] .row .name.n0,html[data-theme=dark] .row .name.n1,html[data-theme=dark] .row .name.n2,html[data-theme=dark] .row .name.n3{font:500 13.5px/1.2 Manrope,sans-serif;color:var(--ink)!important}
+.row .name.n3,.row .name.final{font-weight:700}
+.row .name::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:10px;background:var(--grey)}
+.row .name.n0::before{background:#7cc096}.row .name.n1::before{background:#a597d9}.row .name.n2::before{background:#7fa8dc}.row .name.n3::before{background:#ffc928}
+.row .bar.c0,.row .bar.c1,.row .bar.c2,.row .name.n0::before,.row .name.n1::before,.row .name.n2::before{background:#c4c4cc}
+html[data-theme=dark] .row .bar.c0,html[data-theme=dark] .row .bar.c1,html[data-theme=dark] .row .bar.c2,html[data-theme=dark] .row .name.n0::before,html[data-theme=dark] .row .name.n1::before,html[data-theme=dark] .row .name.n2::before{background:#5a5a66}
+.row .bar.c3,.row .name.n3::before{background:#ffc928}
+.track{height:10px;background:var(--line);border-radius:99px;overflow:visible;position:relative;display:flex;align-items:center}
+.bar{height:10px;width:0;min-width:0;border-radius:99px;padding:0;font-size:0;transition:width 1.3s cubic-bezier(.2,.7,.2,1) .15s}
+.in .bar,.chart.in .bar{width:var(--w)}
+.bv{position:absolute;right:0;top:-24px;font:600 13px/1 Inter,sans-serif;color:var(--mute);font-variant-numeric:tabular-nums;display:none}
+.track .bar+.bv{display:inline;position:static;margin-left:12px;font:600 13.5px/1 Inter,sans-serif;color:var(--ink)}
+.row .bar.final+.bv{color:var(--ac);font-weight:700}
+.chart{min-width:0}.grid6:not(.one)>.chart .row{grid-template-columns:1fr;height:auto;gap:7px;margin:14px 0}
+.grid6:not(.one)>.chart .row .name{margin:0}
+.gt{font:700 11.5px/1 Manrope,sans-serif;letter-spacing:.12em;color:var(--mute);text-transform:uppercase;margin:26px 0 10px}
+.method{font:400 13.5px/1.65 Inter,"Noto Sans KR",sans-serif;color:var(--mute);border-top:1px solid var(--line);margin-top:20px;padding-top:16px}.method b{color:var(--ink);font-weight:600}
+.note{font:400 14.5px/1.7 Inter,"Noto Sans KR",sans-serif;margin-top:16px}
+.grid6{gap:18px}.grid6.one{margin-bottom:6px}
+details.allres summary{border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:none;padding:26px 64px 26px 2px;font:500 20px/1.3 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.02em}
+details.allres summary small{font:400 14px/1.5 Inter,"Noto Sans KR",sans-serif;color:var(--mute);margin-top:6px;letter-spacing:0}
+details.allres summary::after{right:4px;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:400;color:var(--ink);line-height:1}
+details.allres summary:hover{border-color:var(--line)}details.allres summary:hover::after{background:var(--soft)}
+details.allres[open] summary{margin-bottom:26px}
+
+/* product screens in the case-study typography */
+.tiles{gap:40px 28px}
+.shot{border:1px solid var(--line);border-radius:18px;background:var(--soft);box-shadow:0 14px 34px rgba(20,20,45,.07)}
+.shot:hover{box-shadow:0 20px 44px rgba(20,20,45,.13);transform:translateY(-3px)}
+.tile.key .shot{border:1px solid #ffc928;box-shadow:0 14px 34px rgba(20,20,45,.07)}
+.tile figcaption,.details figcaption{font:400 14px/1.7 Inter,"Noto Sans KR",sans-serif;color:var(--mute);margin-top:16px}
+.tile figcaption b,.details figcaption b{display:block;font:500 18px/1.35 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.025em;color:var(--ink);margin:0 0 4px}
+.tile figcaption br,.details figcaption>br:first-of-type{display:none}
+.tg{display:block;width:max-content;margin:0 0 10px;font:700 10.5px/1 Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:99px;vertical-align:0}
+.tg.u{background:#ece9fb;color:#2f2a6b}.tg.c{background:#e0f0ee;color:#1f6b66}
+html[data-theme=dark] .tg.u{background:#27244d;color:#c9c5ff}html[data-theme=dark] .tg.c{background:#16312f;color:#8fd6cf}
+.grp{font:500 22px/1.3 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.03em;margin:64px 0 22px}.grp small{font:400 14px Inter,sans-serif;color:var(--mute);margin-left:10px}
+.details{gap:28px}
+
+details.allres summary{background:var(--soft);border:1px solid var(--line);border-radius:18px;padding:24px 150px 24px 26px;transition:border-color .2s,background .2s,transform .2s}
+details.allres summary:hover{border-color:var(--ac);transform:translateY(-1px)}
+details.allres summary::after{right:22px;width:38px;height:38px;border:0;background:var(--ac);color:#fff;animation:ring 2.2s ease-out infinite}
+html[data-theme=dark] details.allres summary::after{color:#15131f}
+details.allres[open] summary::after{animation:none;background:var(--line);color:var(--ink)}
+details.allres summary:hover::after{background:var(--blue)}
+.cta{position:absolute;right:74px;top:50%;transform:translateY(-50%);font:700 12.5px/1 Manrope,sans-serif;letter-spacing:.04em;color:var(--ac);background:rgba(47,42,107,.09);padding:9px 14px;border-radius:99px;margin:0}
+html[data-theme=dark] .cta{background:rgba(183,179,242,.16)}
+details.allres[open] .cta{display:none}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(47,42,107,.38)}70%{box-shadow:0 0 0 14px rgba(47,42,107,0)}100%{box-shadow:0 0 0 0 rgba(47,42,107,0)}}
+@media (max-width:700px){.cta{display:none}details.allres summary{padding-right:80px}}
+@media (prefers-reduced-motion:reduce){details.allres summary::after{animation:none}}
+.cap{font:400 13px/1.6 Inter,"Noto Sans KR",sans-serif;color:var(--mute);margin-top:14px}
+@media (max-width:700px){.row{grid-template-columns:1fr;height:auto}.row .name{margin-bottom:6px}.track{height:10px}}
+
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+.lb{z-index:60}
+@media (max-width:1100px){.hero-grid{grid-template-columns:1fr}.ph-wrap{order:-1;margin-bottom:10px}}
+@media (max-width:900px){.side{display:none}main{margin-left:0}.topbar{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg);padding:12px 20px;z-index:30;border-bottom:1px solid var(--line)}.col{padding:0 20px}.mts{grid-template-columns:repeat(2,minmax(0,1fr))}.cs{padding-top:72px}.meta{grid-template-columns:1fr}}
+
+/* pinned scenes */
+.scn{padding:0}.scn .stage{padding:96px 0 8px}
+.stage-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center;width:100%}
+.stage-l .eb{margin-bottom:18px}.stage-l h2{margin-bottom:20px}.stage-l .lead{margin-bottom:0}
+.beats{position:relative}
+.ind{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.ind li{font:500 15px/1.4 Inter,"Noto Sans KR",sans-serif;color:var(--grey);padding-left:20px;position:relative;transition:color .4s,transform .4s}
+.ind li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .4s,transform .4s}
+.ind li.on{color:var(--ink);font-weight:700}.ind li.on::before{background:var(--ac);transform:scale(1.35)}
+.mts2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 30px}
+.mts2 .mt{border-top:1px solid var(--line);padding-top:18px}
+.pinned .mts2 .mt{opacity:.14;transform:translateY(16px);transition:opacity .7s,transform .7s}.pinned .mts2 .mt.on{opacity:1;transform:none}
+.fan{position:relative;height:360px;max-width:480px;margin:0 auto}
+.fc{position:absolute;left:50%;top:50%;width:310px;margin:-110px 0 0 -155px;border-radius:16px;overflow:hidden;background:var(--bg);border:1px solid var(--line);box-shadow:0 22px 46px rgba(20,20,45,.2);
+ transform:translateX(calc((var(--i) - 1) * var(--p,1) * 130px)) translateY(calc((var(--i) - 1) * var(--p,1) * 12px)) rotate(calc((var(--i) - 1) * var(--p,1) * 7deg));will-change:transform}
+.fc img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left;border:0;border-radius:0}
+.qv{max-width:440px;margin:0 auto}
+.bubble{background:#2f2a6b;color:#fff;border-radius:22px 22px 6px 22px;padding:18px 22px;font:400 17px/1.55 Inter,"Noto Sans KR",sans-serif;min-height:64px}
+html[data-theme=dark] .bubble{background:#4a43a8}
+.caret{display:inline-block;width:2px;height:1.1em;background:#fff;vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.chips2{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;min-height:44px}
+.chip{background:var(--soft);border:1px solid var(--line);border-radius:99px;padding:9px 16px;font:600 14px/1 Manrope,"Noto Sans KR",sans-serif;opacity:.0;transform:translateY(10px) scale(.96);transition:opacity .5s,transform .5s}
+.chip.on{opacity:1;transform:none}.chip{transition:opacity .35s,transform .45s cubic-bezier(.3,1.7,.5,1)}.illus{font-size:12px;color:var(--mute);margin-top:16px;letter-spacing:.04em}
+.define .stage .col{max-width:1000px}.define .eb{margin-bottom:22px}
+.hmw .w{color:var(--grey);transition:color .3s}.hmw .w.on{color:var(--ink)}
+.pinned .scn .scene{height:var(--scene-h)}
+.pinned .scn .stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;padding:0}
+.pinned .beats{min-height:400px}
+.pinned .cardbeats{min-height:360px}
+.pinned .beat{position:absolute;left:0;right:0;top:0;opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;pointer-events:none}
+.pinned .beat.on{opacity:1;transform:none;pointer-events:auto}.pinned .beat.past{opacity:0;transform:translateY(-28px)}
+.pinned .cardbeats .beat{top:50%;transform:translateY(-44%)}.pinned .cardbeats .beat.on{transform:translateY(-50%)}.pinned .cardbeats .beat.past{transform:translateY(-58%)}
+.cardbeats .card{box-shadow:0 18px 44px rgba(20,20,45,.08)}.cardbeats .card h3{font-size:21px}.cardbeats .card p{font-size:16.5px;line-height:1.75}
+html:not(.pinned) .beat+.beat{margin-top:26px}html:not(.pinned) .stage-grid{gap:34px}
+@media (max-width:900px){.stage-grid{grid-template-columns:1fr;gap:30px}.fan{height:300px}.scn .stage{padding:72px 0 8px}}
+
+/* click hint for the architecture diagram */
+#detail:not(.on){border:1.5px dashed var(--ac);background:rgba(47,42,107,.05);border-radius:16px;padding:18px 22px;font-size:15.5px;animation:breath 2.4s ease-in-out infinite}
+#detail:not(.on) b{color:var(--ac)}
+html[data-theme=dark] #detail:not(.on){background:rgba(183,179,242,.08)}
+@keyframes breath{0%,100%{border-color:rgba(47,42,107,.35);transform:translateY(0)}50%{border-color:var(--ac);transform:translateY(-3px)}}
+.fig .svgbox{position:relative}
+.hint .hot rect{animation:hotp 2.6s ease-out infinite;animation-delay:calc(var(--d,0) * .35s)}
+@keyframes hotp{0%,60%,100%{stroke:#111;stroke-width:1.5}25%{stroke:#d62828;stroke-width:3.4}}
+.tap{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;pointer-events:none;z-index:6;opacity:0}
+.hint .tap{opacity:1}
+.tap::before,.tap::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #d62828;opacity:0;animation:ripple 2.6s ease-out infinite}
+.tap::after{animation-delay:.35s}
+.tap i{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-4px 0 0 -4px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 3l14 8-6 2 4 7-3 1.5-4-7-5 4z' fill='%23151515' stroke='white' stroke-width='1.4' stroke-linejoin='round'/></svg>") no-repeat center/contain;animation:cur 2.6s ease-in-out infinite;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+@keyframes ripple{0%,25%{transform:scale(.3);opacity:0}30%{opacity:.9}70%{transform:scale(1.8);opacity:0}100%{opacity:0}}
+@keyframes cur{0%{transform:translate(60px,48px);opacity:0}18%{opacity:1}28%,38%{transform:translate(0,0) scale(.88)}48%{transform:translate(0,0) scale(1)}85%{opacity:1}100%{transform:translate(60px,48px);opacity:0}}
+@media (prefers-reduced-motion:reduce){#detail:not(.on),.hint .hot rect,.tap::before,.tap::after,.tap i{animation:none}}
+
+.fig2s .stage .col{max-width:1000px}.fig2s .fig{margin-top:6px}
+.gal .ind li{font-size:13.5px}.gal .ind{gap:3px;margin-top:22px}
+.tilebeats .tile{margin:0}.tilebeats figcaption{margin-top:14px}
+.pinned .tilebeats{min-height:480px}
+details.allres summary .tap{left:calc(100% - 41px);top:50%}
+
+.tap{display:none!important}
+#detail:not(.on){animation:none!important}
+.hint .hot rect{animation:none!important}
+details.allres summary::after{animation:none!important}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.07)}28%{transform:scale(1)}42%{transform:scale(1.05)}70%{transform:scale(1)}}
+.svgbox.hint .hot{transform-box:fill-box;transform-origin:center;animation:beat 1.1s ease-in-out 1;animation-delay:calc(var(--d,0) * .12s)}
+#detail.hint:not(.on){animation:beat 1.1s ease-in-out 1,wave 1.1s ease-out 1!important;animation-delay:0s!important}
+@keyframes wave{0%{box-shadow:0 0 0 0 rgba(47,42,107,.4)}100%{box-shadow:0 0 0 26px rgba(47,42,107,0)}}
+details.allres summary.hint{animation:beat 1.1s ease-in-out 1}
+details.allres summary.hint::after{animation:beat 1.1s ease-in-out 1!important}
+@media (prefers-reduced-motion:reduce){.svgbox.hint .hot,#detail.hint:not(.on),details.allres summary.hint,details.allres summary.hint::after{animation:none!important}}
+
+/* bigger screenshots in the gallery */
+.gal .stage .col{max-width:1340px}
+.gal .stage-grid{grid-template-columns:minmax(0,.7fr) minmax(0,1.55fr);gap:44px}
+.gal .lead{font-size:16px;line-height:1.65}
+.gal .stage-l h2{font-size:clamp(26px,2.6vw,36px)}
+.pinned .gal .tilebeats{min-height:640px}
+.gal .tilebeats .shot img{aspect-ratio:auto!important;height:auto;object-fit:contain;display:block}
+.gal .tilebeats figcaption b{font-size:20px}
+@media (max-width:900px){.gal .stage-grid{grid-template-columns:1fr}}
+
+/* screens gallery: one screen at a time, switched by click or keys (no long scroll) */
+.rbeats .qv{margin:0 auto}.pinned .rbeats{min-height:400px}.card p b{color:var(--ink);font-weight:700}.gal2{padding:104px 0 8px}.gal2>.col{max-width:1340px}
+.gal2 .beat{position:static!important;opacity:1!important;transform:none!important;pointer-events:auto!important;display:none}
+.gal2 .beat.on{display:block;animation:gin .45s ease}
+@keyframes gin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.gal2 .ind li{cursor:pointer}.gal2 .ind li:hover{color:var(--ink)}
+.gal2 .tilebeats{min-height:0}
+.gnav{display:flex;align-items:center;gap:14px;margin-top:22px}
+.gb{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:17px;cursor:pointer}.gb:hover{background:var(--soft)}
+.gcount{font:600 13px Manrope,sans-serif;color:var(--mute);min-width:44px;text-align:center}
+.ghint{font-size:12.5px;color:var(--mute);margin-left:6px}
+@media (max-width:900px){.ghint{display:none}}
+
+/* bigger step bullets */
+.ind{gap:14px;margin-top:36px}
+.ind li{font:500 22px/1.35 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.02em;padding-left:34px}
+.ind li::before{width:14px;height:14px;top:.42em}
+.ind li.on{font-weight:700;font-size:24px}.ind li.on::before{transform:scale(1.25)}
+.gal .ind{gap:8px;margin-top:26px}.gal .ind li{font-size:16.5px;padding-left:28px}.gal .ind li::before{width:11px;height:11px;top:.48em}.gal .ind li.on{font-size:18px}
+@media (max-width:900px){.ind li{font-size:18px}.ind li.on{font-size:19px}}
+
+/* define sentence: line breaks, spacing and a word-by-word focus effect */
+.hmw{line-height:1.5;letter-spacing:-.03em;word-spacing:.1em;max-width:900px;font-size:clamp(30px,3.7vw,50px)}
+.hmw .ln{display:block;margin-bottom:.12em}
+.hmw .w{display:inline-block;opacity:.16;transform:translateY(16px);filter:blur(3px);color:var(--grey);transition:opacity .7s ease,transform .7s ease,filter .7s ease,color .5s ease}
+.hmw .w.on{opacity:1;transform:none;filter:none;color:var(--ink)}
+.hmw em .w.on{color:var(--ac)}
+.hmw em{position:relative;white-space:normal}
+.hmw em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.16em;background:rgba(255,201,40,.65);transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1) .3s;z-index:-1}
+.hmw.done em::after{transform:scaleX(1)}
+html:not(.pinned) .hmw .w{opacity:1;transform:none;filter:none;color:var(--ink)}
+
+/* detail panel of the architecture diagram */
+.detail{font:400 15.5px/1.75 Inter,"Noto Sans KR",sans-serif;color:var(--mute);border-radius:20px}
+.detail.on{border:1px solid var(--line);background:var(--soft);box-shadow:0 14px 34px rgba(20,20,45,.07);padding:28px 32px;animation:gin .4s ease}
+html[data-theme=dark] .detail.on{background:var(--soft)}
+.detail>b{display:block;font:500 clamp(19px,1.7vw,23px)/1.35 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.025em;color:var(--ink);margin:0 0 14px}
+.detail ul{list-style:none;margin:0;padding:0}
+.detail li{position:relative;padding-left:22px;margin:0 0 9px}
+.detail li::before{content:"";position:absolute;left:2px;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--ac)}
+.detail li b.k{color:var(--ink);font-weight:700}
+
+/* animated red checks drawn over the chat screenshot */
+.shot{position:relative}
+.mk-ov{position:absolute;left:0;top:0;width:100%;height:auto;aspect-ratio:2560/1800;pointer-events:none}
+.mk-ov .ck{fill:none;stroke:#d62828;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:100;stroke-dashoffset:100}
+.mk-ov .ring{fill:none;stroke:#d62828;stroke-width:5;opacity:0;transform-box:fill-box;transform-origin:center}
+.beat.on .mk-ov .ck{animation:ckdraw .6s ease-out forwards;animation-delay:calc(var(--d) * .28s + .35s)}
+.beat.on .mk-ov .ring{animation:ckring 1.2s ease-out 2;animation-delay:calc(var(--d) * .28s + .8s)}
+.beat.on .mk-ov .ring.r2{animation-delay:calc(var(--d) * .28s + 1.05s)}
+@keyframes ckdraw{to{stroke-dashoffset:0}}
+@keyframes ckring{0%{transform:scale(.45);opacity:.95}100%{transform:scale(2.6);opacity:0}}
+html:not(.pinned) .mk-ov .ck{stroke-dashoffset:0}
+@media (prefers-reduced-motion:reduce){.mk-ov .ck{stroke-dashoffset:0;animation:none!important}.mk-ov .ring{display:none}}
+
+.go{cursor:pointer}
+.gobadge{position:absolute;right:14px;bottom:14px;background:var(--ac);color:#fff;font:700 12.5px/1 Manrope,"Noto Sans KR",sans-serif;padding:9px 14px;border-radius:99px;letter-spacing:.02em;box-shadow:0 8px 20px rgba(20,20,45,.25)}
+html[data-theme=dark] .gobadge{color:#15131f}
+.go:hover .gobadge{transform:translateX(3px)}.gobadge{transition:transform .25s}
+
+/* representative picture: three cards */
+.fan{max-width:560px;height:700px}
+.fc{width:320px;margin:-100px 0 0 -160px;background:#fff}
+.fc svg{display:block;width:100%;height:auto;aspect-ratio:1100/664;background:#fff}
+.fc img{aspect-ratio:1100/664;object-fit:cover}
+.fan{--q:0}.fan.spread{--q:1}
+.fan .fc{transition:transform 1.3s cubic-bezier(.2,.8,.2,1)}.fan.spread .fc:nth-child(1){transition-delay:.15s}.fan.spread .fc:nth-child(2){transition-delay:.45s}.fan.spread .fc:nth-child(3){transition-delay:.75s}
+@media (prefers-reduced-motion:reduce){.fan{--q:1}.fan .fc{transition:none}}
+.fc:nth-child(1){transform:translateX(calc(var(--q) * -60px)) translateY(calc(var(--q) * -225px)) rotate(calc(var(--q) * -3deg))}
+.fc:nth-child(2){transform:translateX(calc(var(--q) * 45px)) translateY(0) rotate(calc(var(--q) * 2deg))}
+.fc:nth-child(3){transform:translateX(calc(var(--q) * -40px)) translateY(calc(var(--q) * 225px)) rotate(calc(var(--q) * -2deg))}
+.fl{position:absolute;left:10px;top:10px;z-index:4;background:rgba(21,21,21,.88);color:#fff;font:700 11px/1 Manrope,"Noto Sans KR",sans-serif;letter-spacing:.04em;padding:6px 10px;border-radius:99px}
+/* impact numbers: make the "before" value readable */
+.mts2 .mf{font:600 22px/1.2 Inter,sans-serif;color:var(--mute);height:auto;margin-bottom:8px;letter-spacing:-.01em}
+.mts2 .mf .ar{font-size:20px;margin-left:4px;color:var(--ac)}
+
+/* chat-window look for the example question */
+.chatv{max-width:470px;margin:0 auto;border:1px solid var(--line);border-radius:22px;background:var(--bg);box-shadow:0 18px 44px rgba(20,20,45,.08);overflow:hidden}
+.chat-h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--soft);font:700 14px/1 Manrope,"Noto Sans KR",sans-serif}
+.chatv .av{display:inline-block;width:28px;height:28px;border-radius:50%;background:#2f4fd6;position:relative;flex:none}
+.chatv .av::after{content:"";position:absolute;left:7px;top:8px;width:14px;height:10px;border:2px solid #fff;border-radius:4px}
+.msgs{padding:22px 18px 8px;display:flex;flex-direction:column;gap:18px;min-height:250px}
+.um{align-self:flex-end;max-width:86%;background:#e3eafc;color:#1b2a52;border-radius:18px 18px 4px 18px;padding:14px 18px;font:400 15.5px/1.6 Inter,"Noto Sans KR",sans-serif;min-height:48px}
+html[data-theme=dark] .um{background:#26335f;color:#e8ecff}
+.chatv .caret{background:#1b2a52;width:2px;height:1em;vertical-align:-2px}html[data-theme=dark] .chatv .caret{background:#e8ecff}
+.am{display:flex;gap:10px;align-items:flex-start;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.qv.typed .am{opacity:1;transform:none}
+.abub{background:var(--bg);border:1px solid var(--line);border-radius:4px 18px 18px 18px;padding:14px 16px;box-shadow:0 6px 16px rgba(20,20,45,.05)}
+.alabel{font:600 12.5px/1 Manrope,"Noto Sans KR",sans-serif;color:var(--mute);margin-bottom:11px}
+.chatv .chips2{margin:0;min-height:0}
+.chatv .illus{padding:0 18px 16px;margin:0}
+
+/* Supervisor + five specialist Agents row */
+.team{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 30px}
+.tnode,.tn{display:inline-block;border-radius:14px;padding:12px 18px;font:700 15px/1 Manrope,sans-serif;opacity:0}
+.tnode.sup{background:var(--ac);color:#fff;font-size:17px;padding:14px 22px}html[data-theme=dark] .tnode.sup{color:#15131f}
+.tn{background:var(--soft);border:1px solid var(--line);color:var(--ink)}
+.tline{width:44px;height:2px;background:var(--line);transform:scaleX(0);transform-origin:left;transition:transform .5s ease .5s}
+.tagents{display:flex;gap:10px;flex-wrap:wrap}
+.team.in .tline{transform:scaleX(1)}
+.team.in .tnode,.team.in .tn{animation:tpop .6s cubic-bezier(.3,1.7,.5,1) both;animation-delay:calc(var(--i) * .2s + .15s)}
+@keyframes tpop{0%{opacity:0;transform:translateY(14px) scale(.7)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tnode,.tn{opacity:1;animation:none!important}.tline{transform:none}}
+
+/* key results on the main screen */
+.hmts{margin-top:24px;border-top:1px solid var(--line);padding-top:16px;max-width:620px}
+.hcap{font:700 11px/1 Manrope,"Noto Sans KR",sans-serif;letter-spacing:.1em;color:var(--mute);text-transform:uppercase;margin-bottom:14px}
+.hgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.hf{font:600 13.5px/1.2 Inter,sans-serif;color:var(--mute);margin-bottom:4px}.hf .ar{color:var(--ac);margin-left:3px}
+.hv{font:500 clamp(26px,2.5vw,34px)/1.1 Inter,sans-serif;letter-spacing:-.03em;color:var(--ac)}
+.hl2{font:400 12.5px/1.4 Inter,"Noto Sans KR",sans-serif;color:var(--mute);margin-top:6px}
+.hmts+.meta{margin-top:22px}
+@media (max-width:700px){.hgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+
+/* 09 evaluation: everything on one screen */
+#evaluation{padding-top:64px}
+#evaluation h2{margin-bottom:12px}
+#evaluation>.col>.lead{font-size:16.5px;line-height:1.6;margin-bottom:18px}
+.chart.key{padding:22px 28px 20px}
+.chart.key h3{font-size:20px;margin-bottom:4px}
+.chart.key .q{font-size:13px;margin:0 0 12px;line-height:1.5}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;align-items:start}
+.cols .row{grid-template-columns:172px 1fr;height:22px;margin:6px 0;gap:10px}
+.cols .row .name,.cols .row .name.n0,.cols .row .name.n1,.cols .row .name.n2,.cols .row .name.n3{font-size:12.5px;white-space:nowrap}
+.cols .row .name::before{margin-right:7px;width:8px;height:8px}
+.cols .track,.cols .bar{height:8px}
+.cols .bv{font-size:12.5px;margin-left:8px}
+.cols .gt{margin:0 0 4px;font-size:11px}
+.cols .method{font-size:12px;margin-top:10px;padding-top:10px;line-height:1.55}
+.cols .c1 .row:first-child{margin-top:0}
+.notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.notes .note{margin:0;font-size:13px;line-height:1.6}
+.notes .note2{margin:0;font-size:13px;line-height:1.6}
+.notes .note2>b:first-child{font:700 14px/1.4 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.01em;display:block;margin-bottom:4px}
+#evaluation details.allres{margin-top:14px}
+#evaluation details.allres summary{padding:16px 150px 16px 22px;font-size:17px}
+#evaluation details.allres summary small{font-size:12.5px;margin-top:3px}
+@media (max-width:900px){.cols,.notes{grid-template-columns:1fr;gap:12px}.cols .row{grid-template-columns:1fr;height:auto}}
+
+/* safety / more tables: every row on a single line */
+.tbl.oneline{font-size:12px;line-height:1.4}
+.tbl.oneline th{width:132px;white-space:nowrap}
+.tbl.oneline td{white-space:nowrap}
+.tbl.oneline td,.tbl.oneline th{padding:12px 16px}
+@media (max-width:900px){.tbl.oneline td{white-space:normal}}
+
+.detail li b{color:var(--ink);font-weight:700}
+
+/* last section: sit a little higher and leave room below */
+#more{padding-top:56px;padding-bottom:160px}
+#safety{padding-bottom:0}
+
+/* small step bullets */
+.ind li{padding-left:24px}
+.ind li::before{width:8px;height:8px;top:.62em}
+.ind li.on::before{transform:none}
+.gal .ind li{padding-left:20px}.gal .ind li::before{width:6px;height:6px;top:.7em}
+
+/* 200-question card: stacked vertically (pass rate first, then response time), still compact */
+.cols{grid-template-columns:1fr;gap:6px}
+.cols .row{grid-template-columns:200px 1fr;height:22px;margin:5px 0}
+.cols .gt{margin:12px 0 2px}
+.cols .method{margin-top:8px;padding-top:8px}
+.chart.key .q{margin-bottom:8px}
+
+/* 07 architecture: compact so it fits one screen */
+#architecture{padding-top:48px}
+#architecture h2{font-size:clamp(24px,2.5vw,34px);margin-bottom:12px}
+#architecture .team{margin-bottom:14px;gap:10px}
+#architecture .tnode{padding:10px 16px;font-size:14px}
+#architecture .tn{padding:9px 13px;font-size:13px}
+#architecture .lead{font-size:14.5px;line-height:1.6;margin-bottom:12px}
+#architecture .fig{margin-bottom:6px}
+#architecture .fig .svgbox{padding:4px 8px}
+#architecture .fig svg{width:88%;min-width:640px;margin:0 auto}
+#architecture .cap{margin:6px 4px 0;font-size:12.5px}
+#architecture .detail{margin:10px 0 0;padding:12px 18px;font-size:14px}
+
+/* dark mode: the architecture / pipeline figure gets a dark panel instead of a bright white box */
+html[data-theme=dark] .fig .svgbox{background:#171b26;border-color:#2a3042}
+html[data-theme=dark] .fig svg{filter:invert(.9) hue-rotate(180deg)}
+
+/* bars rise row by row when each row scrolls into view (and again every time it comes back) */
+.in .bar,.chart.in .bar{width:0}
+.row .bar{width:0;transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
+.row.on .bar{width:var(--w)}
+.row .bv{opacity:0;transition:opacity .5s ease .5s}
+.row.on .bv{opacity:1}
+@media (prefers-reduced-motion:reduce){.row .bar{width:var(--w);transition:none}.row .bv{opacity:1}}
+
+/* click hint on one small line */
+#detail:not(.on){padding:10px 16px;font-size:13.5px;line-height:1.4;white-space:nowrap;overflow:hidden}
+#detail:not(.on)>b{display:inline;font:700 13.5px/1.4 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.01em;margin:0 8px 0 0;color:var(--ac)}
+
+/* gallery: constant picture box + caption height, so the ← 2/9 → controls never move */
+.gal .tilebeats .shot img{aspect-ratio:4/3!important;object-fit:contain;width:100%;height:auto;background:var(--soft)}
+.gal2 .tilebeats figcaption{min-height:150px}
+.gal2 .mk-ov{top:50%;transform:translateY(-50%)}
+
+.mk-ov .ring{display:none!important}
+
+/* smaller chips in the chat answer so all six sit on one line */
+.chatv .chips2{gap:6px;flex-wrap:nowrap}
+.chatv .chip{padding:6px 10px;font-size:12px;border-radius:99px;white-space:nowrap}
+.chatv .alabel{font-size:12px;margin-bottom:9px}
+.chatv .abub{padding:12px 14px}
+
+/* the other five results are always visible (no expand button) */
+details.allres summary{display:none!important}
+details.allres{margin-top:14px}
+
+/* hero badges: colored pills that pop in and lift on hover */
+.tags span{background:#ece9fb;color:#2f2a6b;border:1px solid #d6d0f7;font-weight:700;letter-spacing:.01em;transition:transform .25s,box-shadow .25s,background .25s;animation:tagpop .55s cubic-bezier(.3,1.5,.5,1) both}
+.tags span.g2{background:#e0f0ee;color:#1f6b66;border-color:#bfe0dc}
+.tags span.g3{background:#fdf3d6;color:#7a5a00;border-color:#f3dd9a}
+.tags span:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(20,20,45,.12)}
+.tags span:nth-child(1){animation-delay:.05s}.tags span:nth-child(2){animation-delay:.12s}.tags span:nth-child(3){animation-delay:.19s}.tags span:nth-child(4){animation-delay:.26s}.tags span:nth-child(5){animation-delay:.33s}.tags span:nth-child(6){animation-delay:.4s}.tags span:nth-child(7){animation-delay:.47s}.tags span:nth-child(8){animation-delay:.54s}.tags span:nth-child(9){animation-delay:.61s}
+@keyframes tagpop{0%{opacity:0;transform:translateY(8px) scale(.9)}100%{opacity:1;transform:none}}
+html[data-theme=dark] .tags span{background:#23213f;color:#c9c5ff;border-color:#3a3766}
+html[data-theme=dark] .tags span.g2{background:#15302e;color:#8fd6cf;border-color:#2b5a56}
+html[data-theme=dark] .tags span.g3{background:#33290f;color:#f0d27a;border-color:#5e4b17}
+@media (prefers-reduced-motion:reduce){.tags span{animation:none}}
+
+/* the considerations are a small note, not a chat message */
+.chatv .am{gap:0;align-self:center;margin-left:0;text-align:center;width:100%}.chatv .chips2{justify-content:center}
+.chatv .abub{background:none;border:0;box-shadow:none;border-radius:0;padding:0}
+.chatv .alabel{font:600 11px/1 Manrope,"Noto Sans KR",sans-serif;color:var(--mute);letter-spacing:.02em;margin-bottom:7px}
+.chatv .chips2{gap:5px;flex-wrap:nowrap}
+.chatv .chip{padding:4px 9px;font:600 11px/1.2 Manrope,"Noto Sans KR",sans-serif;background:transparent;border:1px solid var(--line);color:var(--mute)}
+.chatv .msgs{min-height:200px;gap:14px}
+
+/* type scale and column layout learned from the reference's "Reflection" section:
+   eyebrow 12/600 +0.2em, h2 40/500 -0.025em, h3 24/500, body 18/1.625 grey, numbered columns under a thin rule */
+.eb{font:600 12px/16px Inter,Manrope,sans-serif;letter-spacing:.2em;color:#2f3061}
+html[data-theme=dark] .eb{color:var(--ac)}
+.cs h2{font:500 clamp(28px,3.2vw,40px)/1.15 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.025em}
+.lead{font:400 18px/1.625 Inter,"Noto Sans KR",sans-serif}
+.stage-l .lead{font-size:18px}
+.cardbeats .card,.cards .card{background:none;border:0;border-top:1px solid var(--line);border-radius:0;box-shadow:none;padding:22px 0 0}
+.card h3,.cardbeats .card h3{font:500 24px/32px Inter,"Noto Sans KR",sans-serif;letter-spacing:-.025em;margin:0 0 12px}
+.card p,.cardbeats .card p{font:400 18px/1.625 Inter,"Noto Sans KR",sans-serif;color:var(--mute)}
+.card p b,.cardbeats .card p b{color:var(--ink);font-weight:700}
+.cards{counter-reset:cc}
+.cards .card::before{counter-increment:cc;content:"0" counter(cc);display:block;font:500 14px/20px Inter,sans-serif;color:#2f3061;margin-bottom:8px}
+html[data-theme=dark] .cards .card::before{color:var(--ac)}
+.cardbeats .card::before{content:none}
+</style>
+<script>try{var t=localStorage.getItem("theme");if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)t="dark";if(t==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<style>
+/* l10n additions on top of the shared case-study CSS */
+.ph.win{width:100%;max-width:340px;aspect-ratio:4/4.7;border-width:8px;border-radius:18px}
+.ph.win .notch{display:none}
+.ph.win .pi{object-position:top left}
+.tile .shot{display:block;width:100%;padding:0;cursor:default}
+.tile .shot img{display:block;width:100%;max-height:62vh;object-fit:cover;object-position:top}
+.tile .shot:hover{transform:none}
+code{font:500 .88em ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--soft);padding:1px 6px;border-radius:6px}
+.card code,.tbl code,.lq code{background:var(--bg)}
+.fig .imgbox{overflow-x:auto;border:1px solid var(--line);border-radius:18px;padding:12px;background:#fff}
+.tbl.oneline{width:100%;table-layout:fixed}.tbl.oneline th{width:170px}.tbl.oneline td,.tbl.oneline th{white-space:normal;overflow-wrap:anywhere}
+/* narrow / portrait screens: never let the hero push the page wider than the viewport */
+.hero-grid>*{min-width:0}
+@media (max-width:1100px){.hero-grid{grid-template-columns:minmax(0,1fr)}.quote{white-space:normal;overflow:visible}.ph.win{max-width:420px}}
+html,body{overflow-x:hidden}
+/* tap affordance: map buttons gently bounce in, then hint once when scrolled into view */
+.lq-n{transition:transform .2s ease,border-color .2s,background .2s,box-shadow .2s}
+.lq-n:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(16,24,40,.10)}
+.lq-n:active{transform:scale(.97)}
+.lq-n.bounce{animation:lqBounce .6s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--k,0) * 70ms)}
+.lq-n.hint i{animation:lqPulse 1.6s ease-in-out 2}
+.lq-n.on i{transform:scale(1.08)}
+@keyframes lqBounce{0%{opacity:0;transform:translateY(12px) scale(.96)}60%{opacity:1;transform:translateY(-4px) scale(1.02)}100%{opacity:1;transform:none}}
+@keyframes lqPulse{0%,100%{box-shadow:0 0 0 0 rgba(47,42,107,.35)}50%{box-shadow:0 0 0 7px rgba(47,42,107,0)}}
+.lq-panel{transition:box-shadow .3s}
+.lq-panel.flash{animation:lqFlash .5s ease}
+@keyframes lqFlash{0%{box-shadow:0 0 0 0 rgba(47,42,107,.25)}100%{box-shadow:0 0 0 14px rgba(47,42,107,0)}}
+@media (prefers-reduced-motion:reduce){.lq-n,.lq-n.bounce,.lq-n.hint i,.lq-panel.flash{animation:none!important;transition:none!important}}
+/* definition sentence: keep every line on one row, words light up with scroll */
+.hmw{max-width:none}
+.hmw .ln{white-space:nowrap}
+@media (max-width:900px){.hmw .ln{white-space:normal}}
+/* human-handoff map */
+.lq-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:6px 0 16px}
+.lq-n{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);font:600 14px/1.3 Inter,"Noto Sans KR",sans-serif;transition:.2s}
+.lq-n i{font:700 12px/1 Manrope,sans-serif;font-style:normal;flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--soft)}
+.lq-n:hover{border-color:var(--ac)}
+.lq-n.on{border-color:var(--ac);background:var(--soft)}.lq-n.on i{background:var(--ac);color:var(--bg)}
+.lq-n.ok i{background:#d9f0e2;color:#1f6b45}html[data-theme=dark] .lq-n.ok i{background:#16352a;color:#8fd6b0}
+.lq-n.ok.on i{background:#2e8b57;color:#fff}
+.lq-panel{border:1px solid var(--line);border-radius:18px;background:var(--soft);padding:26px 30px;min-height:300px}
+.lq-d{display:none}.lq-d.on{display:block;animation:lqin .45s ease}
+@keyframes lqin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.lq-h h3{font:500 22px/1.3 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.03em;margin:0 0 14px}
+.lq-r{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.65;color:var(--mute)}
+.lq-r b{font:700 11.5px/1.9 Manrope,sans-serif;letter-spacing:.12em;color:var(--ink);text-transform:uppercase}
+.lq-r span{min-width:0}
+/* case files */
+.lq-tabs{justify-content:flex-start;margin:6px 0 22px}
+.lq-c{display:none}.lq-c.on{display:block;animation:lqin .45s ease}
+.lq-c>h3{font:500 clamp(22px,2.4vw,28px)/1.3 Inter,"Noto Sans KR",sans-serif;letter-spacing:-.03em;margin:0 0 8px}
+.lq-c .lead{margin-bottom:22px}
+.lq-trace{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+.lq-s{position:relative;margin:0 0 18px;padding:0 0 0 6px}
+.lq-s::before{content:"";position:absolute;left:-30px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--grey);border:3px solid var(--bg)}
+.lq-s.agent::before{background:#7fa8dc}.lq-s.check::before{background:#a597d9}.lq-s.rb::before{background:#e4572e}.lq-s.human::before{background:#ffc928}.lq-s.auto::before{background:#7cc096}
+.lq-k{display:inline-block;font:700 10.5px/1 Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:99px;margin-right:10px;background:var(--soft);color:var(--mute);vertical-align:1px}
+.lq-s.agent .lq-k{background:#e3edf9;color:#27538a}.lq-s.check .lq-k{background:#ece9fb;color:#2f2a6b}.lq-s.rb .lq-k{background:#fde7e1;color:#a83a1c}.lq-s.human .lq-k{background:#ffefb8;color:#5b4300}.lq-s.auto .lq-k{background:#dff1e6;color:#1f6b45}
+html[data-theme=dark] .lq-s.agent .lq-k{background:#1d2f47;color:#a6c7ef}html[data-theme=dark] .lq-s.check .lq-k{background:#27244d;color:#c9c5ff}html[data-theme=dark] .lq-s.rb .lq-k{background:#3d1f17;color:#ffb199}html[data-theme=dark] .lq-s.human .lq-k{background:#3b3010;color:#ffd96a}html[data-theme=dark] .lq-s.auto .lq-k{background:#16352a;color:#8fd6b0}
+.lq-s b{font:600 16.5px/1.4 Inter,"Noto Sans KR",sans-serif;color:var(--ink)}
+.lq-s p{margin:6px 0 0;font-size:15px;line-height:1.7;color:var(--mute)}
+.lq-s p b{font-size:inherit;font-weight:700}
+@media (max-width:900px){.lq-map{grid-template-columns:repeat(2,minmax(0,1fr))}.lq-r{grid-template-columns:1fr;gap:2px}.lq-panel{padding:20px}}
+</style>
+</head><body>
+<aside class="side"><a class="logo" href="../">Sihun Wang</a><a href="../#projects" style="display:block;font-size:12px;opacity:.6;margin:-6px 0 10px">&larr; Portfolio</a><div class="tree"><div class="t0">Work</div><div class="t1">Projects</div><a class="t2 on" href="#top">L10n Quality Agent</a><a class="t3" href="#context" data-en="01 Context">01 배경</a><a class="t3" href="#system-problem" data-en="02 System Problem">02 시스템 문제</a><a class="t3" href="#define" data-en="03 Define">03 정의</a><a class="t3" href="#decision" data-en="04 Decision">04 선택</a><a class="t3" href="#build" data-en="05 Build">05 구현</a><a class="t3" href="#approach" data-en="06 Where humans step in">06 사람 개입 지점</a><a class="t3" href="#architecture" data-en="07 Architecture">07 구조</a><a class="t3" href="#cases" data-en="08 Case files">08 실행 사례</a><a class="t3" href="#product" data-en="09 Product">09 화면</a><a class="t3" href="#safety" data-en="10 Safety">10 안전</a><a class="t3" href="#more" data-en="11 More">11 기타</a></div><div class="side-b"><button id="lang" class="tb" type="button" aria-label="Switch language" title="English / 한국어">EN</button><button id="theme" class="tb" type="button" aria-label="Toggle dark mode" title="Dark mode">&#9790;</button><div class="cp">&copy; 2026 Sihun Wang</div></div></aside><div class="topbar"><a class="logo" href="#top">Sihun Wang</a><span><button id="lang2" class="tb" type="button">EN</button><button id="theme2" class="tb" type="button">&#9790;</button></span></div><main><header class="hero" id="top"><div class="col hero-grid"><div class="hero-l">
+<div class="tags rv"><span class="g1">Agentic</span><span class="g1">Multi-language</span><span class="g1">MQM</span><span class="g1">Specialist Tools</span><span class="g2">Localization</span><span class="g2">Translation QA</span><span class="g3">Human-in-the-loop</span><span class="g3">Deterministic Validation</span><span class="g3">Traceable Runs</span></div>
+<h1 class="rv" data-en="L10n Quality Agent:&lt;br&gt;It finds where translation breaks and tells you where a human should look">L10n Quality Agent:<br>어디서 막혔는지 찾아, 사람이 볼 지점을 알려줍니다</h1>
+<p class="quote rv" data-en="&amp;ldquo;The Agent helps translate; anything that needs judgment goes to a human, with the reason.&amp;rdquo;">&ldquo;번역은 Agent가 돕고, 판단이 필요한 지점은 이유와 함께 사람에게 넘깁니다.&rdquo;</p>
+<p class="lead rv" data-en="It translates into the languages you choose, and the Agent picks among &lt;b&gt;six specialist tools&lt;/b&gt; (grammar, fluency and more) to fix it. It then shows &lt;b&gt;at which step and on which error it got stuck, and why a human should look&lt;/b&gt;, backed by a full record.">내가 고른 언어로 번역하고, <b>문법·유창성 등 6개 전문 도구</b>를 Agent가 골라 고칩니다. 그리고 <b>어느 단계의 어떤 오류에서 막혔는지, 왜 사람이 봐야 하는지</b>를 기록과 함께 보여줍니다.</p>
+<div class="hmts rv"><div class="hcap" data-en="What one translation goes through">번역 한 건이 거치는 구조</div>
+<div class="hgrid">
+<div class="hm"><div class="hf">목표 언어 <span class="ar">&rarr;</span></div><div class="hv"><span class="cnt" data-to="5" data-dec="0" data-suffix="">5</span></div><div class="hl2" data-en="Choose from Japanese, Italian, French, German, English">일본어·이탈리아어·프랑스어·독일어·영어 중 선택</div></div>
+<div class="hm"><div class="hf">수정 도구 <span class="ar">&rarr;</span></div><div class="hv"><span class="cnt" data-to="6" data-dec="0" data-suffix="">6</span></div><div class="hl2" data-en="accuracy to fluency; the Agent chooses which to use">accuracy ~ fluency, 쓸 도구는 Agent가 선택</div></div>
+<div class="hm"><div class="hf">개입 지점 <span class="ar">&rarr;</span></div><div class="hv"><span class="cnt" data-to="7" data-dec="0" data-suffix="">7</span></div><div class="hl2" data-en="Conditions that hand off to a human, shown with reasons">사람에게 넘어가는 조건, 이유와 함께 표시</div></div>
+<div class="hm"><div class="hf">최종 승인 <span class="ar">&rarr;</span></div><div class="hv"><span class="cnt" data-to="100" data-dec="0" data-suffix="%">100%</span></div><div class="hl2" data-en="Always done by a human">항상 사람이 합니다</div></div>
+</div></div>
+<div class="meta rv">
+<div><div class="k" data-en="USERS">대상</div><div class="v" data-en="People working on translation/localization quality; developers interested in automating it">번역·현지화 품질을 다루는 사람, 번역 품질 자동화에 관심 있는 개발자</div></div>
+<div><div class="k" data-en="INPUT">입력</div><div class="v" data-en="Pick a PoC sentence, type your own, or CSV batch (many sentences &amp;times; countries)">PoC 문장 선택, 직접 입력, CSV 일괄 (문장 &times; 국가 여러 건)</div></div>
+<div><div class="k" data-en="JUDGEMENT">판단</div><div class="v" data-en="Six MQM categories + deterministic checks (numbers, units, protected terms) + Agent strategy">MQM 6개 영역 + 결정적 검사(숫자·단위·보호 용어) + Agent 전략</div></div>
+<div><div class="k" data-en="STACK">구성</div><div class="v" data-en="LangChain (LCEL), Ollama + Qwen3.5 4B, OpenAI gpt-5-mini, Gradio">LangChain (LCEL), Ollama · Qwen3.5 4B, OpenAI gpt-5-mini, Gradio</div></div>
+</div>
+<a class="ext-link rv" href="https://github.com/sihunwang-skala/l10n-quality-agent" target="_blank" rel="noopener" data-en="View on GitHub &#8599;">GitHub에서 보기 &#8599;</a></div>
+<div class="ph-wrap rv" id="phw"><div class="ph-lb">UI</div><div class="ph win"><i class="notch"></i><img class="pi ko on" data-k="0" src="img/ui-hero.png" alt="서비스 화면"><img class="pi en on" data-k="0" src="img/ui-hero.png" alt="Service screen"><img class="pi ko" data-k="1" src="img/ui-run.png" alt="실행 결과"><img class="pi en" data-k="1" src="img/ui-run.png" alt="Run result"><img class="pi ko" data-k="2" src="img/ui-review.png" alt="검토·승인"><img class="pi en" data-k="2" src="img/ui-review.png" alt="Review & approval"><img class="pi ko" data-k="3" src="img/ui-mode-direct.png" alt="언어 선택·입력"><img class="pi en" data-k="3" src="img/ui-mode-direct.png" alt="Language & input"></div><div class="ph-tabs"><button type="button" class="on" data-i="0" data-en="Service screen">서비스 화면</button><button type="button" class="" data-i="1" data-en="Run result">실행 결과</button><button type="button" class="" data-i="2" data-en="Review &amp; approval">검토·승인</button><button type="button" class="" data-i="3" data-en="Language &amp; input">언어 선택·입력</button></div></div>
+</div></header>
+<section class="cs scn " id="context" style="--scene-h:220vh"><div class="scene"><div class="stage"><div class="col stage-grid"><div class="stage-l">
+<div class="eb" data-en="01 CONTEXT">01 배경</div>
+<h2 data-en="Translate into several languages: which ones need a human?">여러 언어로 번역하면, 어느 번역을 사람이 봐야 할까요?</h2>
+<p class="lead" data-en="Translating one Korean sentence into several languages multiplies the output fast. A person cannot read all of it, and none of it can simply be left to an AI. We needed something that says &lt;b&gt;which translations a human should look at, and why&lt;/b&gt;.">한국어 문장을 여러 언어로 번역하면 결과가 금세 늘어납니다. 전부 사람이 읽을 수는 없고, 전부 AI에게 맡길 수도 없습니다. <b>사람이 봐야 할 번역과 이유</b>를 먼저 알려주는 것이 필요했습니다.</p>
+</div><div class="stage-r"><div class="qv chatv"><div class="chat-h"><span class="av"></span><span class="chat-t">L10n Quality Agent</span></div>
+<div class="msgs"><div class="um"><span class="tx" data-end="0.24" data-t-ko="이 회사는 San Jose 데이터센터에 약 2.5PB의 데이터를 저장합니다." data-t-en="This company stores about 2.5PB of data in its San Jose data center."></span><i class="caret"></i></div>
+<div class="am"><div class="abub"><div class="alabel" data-en="Translate and check in every language I chose">내가 고른 언어마다 번역하고 점검합니다</div>
+<div class="chips2"><span class="chip" data-i="0" data-en="Japanese">일본어</span><span class="chip" data-i="1" data-en="Italian">이탈리아어</span><span class="chip" data-i="2" data-en="French">프랑스어</span><span class="chip" data-i="3" data-en="German">독일어</span><span class="chip" data-i="4" data-en="English">영어</span></div></div></div></div>
+<div class="illus" data-en="The example sentence is fictional, written by the author.">예시 문장은 작성자가 만든 가상의 문장입니다.</div></div></div></div></div></div></section>
+<section class="cs scn " id="system-problem" style="--scene-h:330vh"><div class="scene"><div class="stage"><div class="col stage-grid"><div class="stage-l">
+<div class="eb" data-en="02 SYSTEM PROBLEM">02 시스템 문제</div>
+<h2 data-en="From the translation alone you cannot tell what is wrong or whether a human must look">번역문만 봐서는 어디가 문제인지, 사람이 봐야 하는지 알 수 없습니다</h2>
+<ol class="ind"><li data-beat="0" data-en="Where is the problem?">어디가 문제인지 알 수 없다</li><li data-beat="1" data-en="Who should decide?">누가 판단해야 하는지 모른다</li></ol></div>
+<div class="stage-r"><div class="beats cardbeats">
+<div class="beat" data-beat="0"><div class="card"><h3 data-en="Where is the problem?">어디가 문제인지 알 수 없다</h3><p data-en="With only the output you cannot tell &lt;span class=&quot;hl&quot;&gt;which part is wrong, or what kind of error&lt;/span&gt; (accuracy or style). Asking the model to &amp;ldquo;fix it&amp;rdquo; changes parts that were fine and leaves no reason behind.">번역 결과만 받으면 <span class="hl">어느 부분이, 어떤 종류의 오류인지</span>(정확성인지 문체인지) 알 수 없습니다. 모델에게 &ldquo;고쳐줘&rdquo;라고 하면 멀쩡한 부분까지 바뀌고, 고친 이유는 남지 않습니다.</p></div></div>
+<div class="beat" data-beat="1"><div class="card"><h3 data-en="Who should decide?">누가 판단해야 하는지 모른다</h3><p data-en="Passing everything automatically is risky, and reviewing everything by hand is expensive. There must be &lt;span class=&quot;hl&quot;&gt;a boundary between what can be automated and what a human must see&lt;/span&gt;, shown with reasons.">전부 자동으로 통과시키면 위험하고, 전부 사람이 보면 비용이 큽니다. <span class="hl">자동으로 해도 되는 것과 사람이 봐야 하는 것의 경계</span>가 있어야 하고, 그 경계가 이유와 함께 보여야 합니다.</p></div></div>
+</div></div></div></div></div></section>
+<section class="cs scn define" id="define" style="--scene-h:300vh"><div class="scene"><div class="stage"><div class="col">
+<div class="eb" data-en="03 DEFINE">03 정의</div>
+<p class="hmw" data-fill="1" data-en="&lt;span class=&quot;ln&quot;&gt;How might we translate into&lt;/span&gt;&lt;span class=&quot;ln&quot;&gt;the languages the user chooses,&lt;/span&gt;&lt;span class=&quot;ln&quot;&gt;fix each error with the right tool,&lt;/span&gt;&lt;span class=&quot;ln&quot;&gt;&lt;em&gt;show exactly where it got stuck&lt;/em&gt;&lt;/span&gt;&lt;span class=&quot;ln&quot;&gt;and why a human needs to step in?&lt;/span&gt;"><span class="ln">고른 언어로 번역하고,</span><span class="ln">오류 종류마다 알맞은 도구로 고치며,</span><span class="ln"><em>어디서 막혔는지 짚어</em></span><span class="ln">사람이 봐야 하는 이유를 알려주려면</span><span class="ln">어떻게 해야 할까?</span></p>
+</div></div></div></section>
+<section class="cs scn " id="decision" style="--scene-h:260vh"><div class="scene"><div class="stage"><div class="col stage-grid"><div class="stage-l">
+<div class="eb" data-en="04 DECISION">04 선택</div>
+<h2 data-en="So we built an Agent that picks specialist tools, plus signals that hand off to a human">그래서 전문 도구를 고르는 Agent와, 사람에게 넘기는 신호를 만들었습니다</h2>
+<p class="lead" data-en="The Agent (planner) &lt;b&gt;only chooses the next tool&lt;/b&gt;; whether to accept a candidate is decided by Python checks and MQM re-evaluation. When it gets stuck, where and why is written to the &lt;code&gt;RunRecord&lt;/code&gt; and shown to a human.">Agent(Planner)는 <b>다음에 쓸 도구만 고르고</b>, 후보를 채택할지는 Python 검사와 MQM 재평가가 정합니다. 막히면 어느 단계에서 왜 막혔는지를 <code>RunRecord</code>에 남겨 사람에게 보여줍니다.</p>
+</div><div class="stage-r"><div class="fan">
+<div class="fc" style="--i:0;z-index:1"><img src="img/ui-run.png" alt="Run result"><span class="fl" data-en="Run result: stage, status and Agent reasoning">실행 결과: 단계, 상태, Agent 판단 근거</span></div>
+<div class="fc" style="--i:1;z-index:3"><img src="img/ui-review.png" alt="Review"><span class="fl" data-en="Review: remaining errors and diff">검토: 남은 오류와 변경점(diff)</span></div>
+<div class="fc" style="--i:2;z-index:2"><img src="img/ui-mode-csv.png" alt="CSV batch"><span class="fl" data-en="CSV: many sentences × many countries">CSV: 여러 문장 × 여러 국가</span></div>
+</div></div></div></div></div></section>
+<section class="cs scn " id="build" style="--scene-h:400vh"><div class="scene"><div class="stage"><div class="col stage-grid"><div class="stage-l">
+<div class="eb" data-en="05 BUILD">05 구현</div>
+<h2 data-en="What I built">세 가지를 만들었습니다</h2>
+<ol class="ind"><li data-beat="0" data-en="Translate into the languages you choose">고른 언어로 번역</li><li data-beat="1" data-en="Specialist tools chosen by the Agent">Agent가 고르는 전문 도구</li><li data-beat="2" data-en="Signals that hand off to a human">사람에게 넘기는 신호</li></ol></div>
+<div class="stage-r"><div class="beats cardbeats">
+<div class="beat" data-beat="0"><div class="card"><h3><span class="hl">고른 언어로 번역</span></h3><p data-en="Choosing a target country also sets the language (US, Japan, Italy, France, Germany). In a CSV a row can hold &lt;span class=&quot;hl&quot;&gt;several countries&lt;/span&gt; such as &lt;code&gt;Japan|Italy&lt;/code&gt;, and each language runs separately. TM, terminology, DNE and protected terms feed the translation prompt and the checks.">목표 국가를 고르면 언어가 함께 정해집니다(미국·일본·이탈리아·프랑스·독일). CSV에서는 한 행에 <code>Japan|Italy</code>처럼 <span class="hl">여러 국가</span>를 넣어 문장마다 언어별로 따로 실행합니다. TM·용어집·DNE와 보호 용어가 번역 프롬프트와 검증에 들어갑니다.</p></div></div>
+<div class="beat" data-beat="1"><div class="card"><h3><span class="hl">Agent가 고르는 전문 도구</span></h3><p data-en="MQM evaluation reports each error&amp;rsquo;s &lt;span class=&quot;hl&quot;&gt;category, severity and span&lt;/span&gt;, and the Agent picks the next &lt;b&gt;specialist tool&lt;/b&gt; from them. Each tool is restricted to one category: &lt;code&gt;accuracy&lt;/code&gt;, &lt;code&gt;terminology&lt;/code&gt;, &lt;code&gt;spelling&lt;/code&gt;, &lt;code&gt;grammar&lt;/code&gt;, &lt;code&gt;style&lt;/code&gt;, &lt;code&gt;fluency&lt;/code&gt;. The reason for the choice is recorded too.">MQM 평가가 오류의 <span class="hl">영역·심각도·위치</span>를 알려주면, Agent가 그 가운데 다음에 쓸 <b>전문 도구</b> 하나를 고릅니다. 도구는 각자 한 영역만 고치도록 제한됩니다: <code>accuracy</code>, <code>terminology</code>, <code>spelling</code>, <code>grammar</code>, <code>style</code>, <code>fluency</code>. 고른 이유도 함께 기록합니다.</p></div></div>
+<div class="beat" data-beat="2"><div class="card"><h3><span class="hl">사람에게 넘기는 신호</span></h3><p data-en="A candidate is accepted only if it passes &lt;span class=&quot;hl&quot;&gt;Python checks and an MQM re-evaluation&lt;/span&gt;; otherwise it is rolled back. At &lt;b&gt;seven points&lt;/b&gt; (safety-check failure, Critical error, repeated failure, Agent giving up, and more) automation stops and the run is handed to a human with &lt;b&gt;the step and the reason&lt;/b&gt;.">후보는 <span class="hl">Python 검사와 MQM 재평가</span>를 통과해야 채택되고, 아니면 Rollback합니다. 안전 검증 실패, Critical 오류, 반복 실패, Agent의 포기처럼 <b>7가지 지점</b>에서 자동 처리를 멈추고, <b>어느 단계에서 왜</b> 멈췄는지를 붙여 사람에게 넘깁니다.</p></div></div>
+</div></div></div></div></div></section>
+<section class="cs fig2s" id="approach"><div class="col"><div class="eb rv" data-en="06 WHERE HUMANS STEP IN">06 사람 개입 지점</div>
+<h2 class="rv" data-en="It tells you &lt;span class=&#x27;mk&#x27;&gt;where automation stops&lt;/span&gt;, with the reason">자동 처리가 <span class='mk'>어디서 멈추는지</span>, 이유와 함께 알려줍니다</h2>
+<p class="lead rv" data-en="Every translation passes these points. What a human must look at depends on where it stopped, so click a number to see &lt;b&gt;who decides and what the human is shown&lt;/b&gt;.">번역은 한 건마다 이 지점들을 지납니다. 멈춘 지점에 따라 사람이 봐야 할 내용이 달라지므로, 번호를 눌러 <b>누가 판단하고, 무엇을 사람에게 보여주는지</b> 확인해 보세요.</p>
+<div class="lq rv"><div class="lq-map" id="lqmap"><button type="button" class="lq-n ok on" data-i="0" style="--k:0"><i>✓</i><span data-en="Pass">통과</span></button><button type="button" class="lq-n " data-i="1" style="--k:1"><i>1</i><span data-en="Safety check failed">안전 검증 실패</span></button><button type="button" class="lq-n " data-i="2" style="--k:2"><i>2</i><span data-en="Critical error">Critical 오류</span></button><button type="button" class="lq-n " data-i="3" style="--k:3"><i>3</i><span data-en="Two failures in a category">카테고리 2회 실패</span></button><button type="button" class="lq-n " data-i="4" style="--k:4"><i>4</i><span data-en="12 attempts overall">전체 시도 12회</span></button><button type="button" class="lq-n " data-i="5" style="--k:5"><i>5</i><span data-en="Agent gives up">Agent 포기</span></button><button type="button" class="lq-n " data-i="6" style="--k:6"><i>6</i><span data-en="OpenAI also failed">OpenAI도 미통과</span></button><button type="button" class="lq-n " data-i="7" style="--k:7"><i>7</i><span data-en="Run exception">실행 예외</span></button></div><div class="lq-panel"><div class="lq-d on" data-i="0"><div class="lq-h"><h3 data-en="Automatic checks passed">자동 검사 통과</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Code">코드</span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="When MQM re-evaluation leaves no errors the run becomes &lt;code&gt;AWAITING_HUMAN_APPROVAL&lt;/code&gt;. It is still never auto-approved.">MQM 재평가에서 남은 오류가 없으면 <code>AWAITING_HUMAN_APPROVAL</code>. 이 경우에도 자동 승인하지 않습니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="No errors · revision history · final approve button">오류 없음 · 수정 이력 · 최종 승인 버튼</span></div></div><div class="lq-d" data-i="1"><div class="lq-h"><h3 data-en="Stopped by a deterministic check">결정적 검사에서 막힘</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Code (&lt;code&gt;validation.py&lt;/code&gt;)">코드 (<code>validation.py</code>)</span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="Missing protected term, number/unit correspondence that cannot be confirmed, or meta-commentary leaked into the translation. Rules, not the LLM, decide and send the run to &lt;code&gt;HUMAN_REVIEW_REQUIRED&lt;/code&gt;. On the Agent-first path the Agent re-investigates the cause with MQM.">보호 용어 누락, 숫자·단위 대응 확정 불가, 번역에 섞인 메타 주석. LLM이 아니라 규칙으로 판단해 <code>HUMAN_REVIEW_REQUIRED</code>로 보냅니다. Agent-first 경로에서는 Agent가 MQM으로 원인을 한 번 더 조사합니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="Source and translation number/unit lists side by side">원문과 번역의 숫자·단위 목록을 나란히 보여 줍니다</span></div><div class="lq-r"><b data-en="Real example">실제 예시</b><span data-en="French &amp;lsquo;2,5 PB&amp;rsquo;: a different decimal format that could not be confirmed as the same value → Case B">프랑스어 &lsquo;2,5 PB&rsquo;처럼 소수점 표기가 달라 같은 값으로 확정하지 못한 경우 → 사례 B</span></div></div><div class="lq-d" data-i="2"><div class="lq-h"><h3 data-en="Critical errors are never auto-fixed">심각한 오류는 자동 수정 안 함</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Code (&lt;code&gt;critical_count&lt;/code&gt;)">코드 (<code>critical_count</code>)</span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="If MQM reports even one critical error, no tool is called and the run goes straight to human review.">MQM 평가에 심각도 critical 오류가 하나라도 있으면 수정 도구를 부르지 않고 바로 사람 검토로 전환합니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="Remaining error list (category, severity, explanation)">남은 오류 목록(영역·심각도·설명)</span></div></div><div class="lq-d" data-i="3"><div class="lq-h"><h3 data-en="The same tool failed twice">같은 도구가 두 번 실패</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Code (&lt;code&gt;MAX_ATTEMPTS_PER_CATEGORY=2&lt;/code&gt;)">코드 (<code>MAX_ATTEMPTS_PER_CATEGORY=2</code>)</span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="A candidate is rejected (rollback) if it fails validation, does not reduce the target errors, or adds a new Critical error. Two rejections in one category hand the run to a human.">후보가 검증을 못 넘거나, 대상 오류가 줄지 않거나, 새 Critical 오류가 생기면 거부(Rollback)합니다. 같은 영역에서 두 번 거부되면 사람에게 넘깁니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="Revision history: accepted/rejected and the reasons">수정 이력: 채택/거부와 거부 사유</span></div><div class="lq-r"><b data-en="Real example">실제 예시</b><span data-en="Japanese &amp;lsquo;fluency errors did not decrease&amp;rsquo; → Case A">일본어 &lsquo;fluency 오류가 감소하지 않음&rsquo; → 사례 A</span></div></div><div class="lq-d" data-i="4"><div class="lq-h"><h3 data-en="Overall attempt cap">시도 총량 상한</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Code (&lt;code&gt;MAX_TOTAL_ATTEMPTS=12&lt;/code&gt;)">코드 (<code>MAX_TOTAL_ATTEMPTS=12</code>)</span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="Even if no single category hits its limit, a run stops after 12 revision attempts and goes to a human, so it can never loop forever.">영역별로는 한계에 안 닿아도 한 번의 실행에서 수정 시도가 12회가 되면 멈추고 사람에게 넘깁니다. 끝없이 돌지 않게 하는 안전장치입니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="The reason &amp;ldquo;overall limit of 12 reached&amp;rdquo;">&ldquo;전체 수정 상한 12회 도달&rdquo; 사유</span></div></div><div class="lq-d" data-i="5"><div class="lq-h"><h3 data-en="The Agent decides it is a human call">Agent가 사람 몫이라고 판단</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Agent (planner)">Agent (Planner)</span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="The planner picks &lt;code&gt;human_review&lt;/code&gt;, or errors remain after at most two strategies, and the run goes to a human. The chosen strategies and their reasons are stored as sentences in &lt;code&gt;agent_decisions&lt;/code&gt;.">Planner가 <code>human_review</code>를 고르거나, 전략 최대 2개를 써도 오류가 남으면 사람에게 넘깁니다. 고른 전략과 그 이유가 <code>agent_decisions</code>에 문장으로 남습니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="The Agent&amp;rsquo;s strategy choices and reasoning">Agent 전략 선택과 근거 문장</span></div><div class="lq-r"><b data-en="Real example">실제 예시</b><span data-en="&amp;ldquo;less an error than a subtle difference in expression&amp;rdquo; → Case C">&ldquo;엄밀한 오류라기보다 표현의 미세한 차이&rdquo; → 사례 C</span></div></div><div class="lq-d" data-i="6"><div class="lq-h"><h3 data-en="Still unresolved after escalation">에스컬레이션 후에도 남음</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Code + OpenAI &lt;code&gt;gpt-5-mini&lt;/code&gt;">코드 + OpenAI <code>gpt-5-mini</code></span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="What the Qwen Agent could not solve gets one more attempt from OpenAI. Its candidate faces the same guardrails and MQM re-evaluation; if it fails, the run stays in human review. Without a key a Mock is used and nothing changes.">Qwen Agent가 못 푼 건은 OpenAI가 한 번 더 시도합니다. 후보는 같은 가드레일과 MQM 재평가를 거치고, 통과하지 못하면 그대로 사람 검토입니다. 키가 없으면 Mock이라 상태를 바꾸지 않습니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="The OpenAI candidate and the rejection reason">OpenAI 후보와 거부 사유</span></div></div><div class="lq-d" data-i="7"><div class="lq-h"><h3 data-en="The run itself failed">실행 자체가 실패</h3></div><div class="lq-r"><b data-en="Who decides">누가 판단</b><span data-en="Code (&lt;code&gt;except&lt;/code&gt;)">코드 (<code>except</code>)</span></div><div class="lq-r"><b data-en="Condition">조건</b><span data-en="On an exception such as a failed model call or invalid structured output, the reason is written to &lt;code&gt;failure_reasons&lt;/code&gt; and the run goes to human review instead of being hidden.">모델 호출 실패나 구조화 출력 검증 실패 같은 예외가 나면 숨기지 않고 사유를 <code>failure_reasons</code>에 적어 사람 검토로 돌립니다.</span></div><div class="lq-r"><b data-en="What the human sees">사람이 보는 것</b><span data-en="Exception type and message">예외 종류와 메시지</span></div></div></div>
+<p class="cap2" data-en="&lt;b&gt;Figure 1.&lt;/b&gt; &lt;span class=&#x27;hl&#x27;&gt;Seven human-handoff points plus the pass path&lt;/span&gt;, taken from the code constants and real run records."><b>Figure 1.</b> 코드 상수와 실제 실행 기록에서 정리한 <span class='hl'>사람 개입 지점 7가지와 정상 통과</span>.</p></div></div></section>
+<section class="cs" id="architecture"><div class="col"><div class="eb rv" data-en="07 ARCHITECTURE">07 구조</div>
+<h2 class="rv" data-en="&lt;span class=&#x27;mk&#x27;&gt;The Agent chooses&lt;/span&gt;, &lt;span class=&#x27;mk&#x27;&gt;code decides&lt;/span&gt;"><span class='mk'>Agent는 고르고</span>, <span class='mk'>코드가 정합니다</span></h2>
+<div class="team rv" aria-label="Workflow and its components"><span class="tnode sup" style="--i:0">QualityWorkflow</span><span class="tline"></span><div class="tagents"><span class="tn" style="--i:1">Translate</span><span class="tn" style="--i:2">MQM Evaluate</span><span class="tn" style="--i:3">Planner (Agent)</span><span class="tn" style="--i:4">Tools ×6</span><span class="tn" style="--i:5">Validate</span><span class="tn" style="--i:6">RunRecord</span></div></div>
+<p class="lead rv" data-en="The planner in &lt;code&gt;agent.py&lt;/code&gt; returns just a tool name and a reason (a planner chain, not a tool-calling agent). Whether to accept a candidate is decided by &lt;code&gt;validation.py&lt;/code&gt; and MQM re-evaluation, and &lt;code&gt;chains.py&lt;/code&gt; is the only place that talks to the model. This is what lets every &lt;b&gt;stuck point&lt;/b&gt; be stored as a field."><code>agent.py</code>의 Planner는 도구 이름 하나와 이유만 돌려줍니다(Tool-calling Agent가 아니라 Planner Chain). 후보 번역을 채택할지는 <code>validation.py</code>와 MQM 재평가가 정하고, 모델과 통신하는 곳은 <code>chains.py</code>뿐입니다. 이 구조 덕분에 <b>무엇이 어디서 막혔는지</b>를 모두 필드로 남길 수 있습니다.</p>
+<div class="rv"><div class="fig"><div class="imgbox"><img src="img/architecture.png" alt="LangChain chains and Python control architecture" style="display:block;width:100%;min-width:760px"></div>
+<p class="cap" data-en="&lt;b&gt;Figure 2.&lt;/b&gt; Model calls via &lt;span class=&#x27;hl&#x27;&gt;LangChain chains (LCEL)&lt;/span&gt;; order, acceptance and validation in &lt;span class=&#x27;hl&#x27;&gt;Python code&lt;/span&gt;."><b>Figure 2.</b> 모델 호출은 <span class='hl'>LangChain 체인(LCEL)</span>, 실행 순서·채택 여부·검증은 <span class='hl'>Python 코드</span>.</p></div></div>
+<h3 class="grp rv" data-en="What every run records: where and why it got stuck">실행마다 남는 기록: 어디서, 왜 막혔는가</h3>
+<div class="cards rv">
+<div class="card"><h3 data-en="&lt;code&gt;versions&lt;/code&gt; · &lt;code&gt;attempts&lt;/code&gt;"><code>versions</code> · <code>attempts</code></h3><p data-en="Accepted translation versions and every attempt, accepted or rejected, with before/after MQM results and rejection reasons per tool.">채택된 번역 버전과, 채택·거부를 모두 포함한 시도 이력. 도구별로 수정 전후 MQM 결과와 거부 사유가 들어 있습니다.</p></div>
+<div class="card"><h3 data-en="&lt;code&gt;agent_decisions&lt;/code&gt;"><code>agent_decisions</code></h3><p data-en="The strategies the Agent chose and why, even tools skipped without a call, stored as sentences so a human can retrace its reasoning.">Agent가 고른 전략과 이유, 호출하지 않고 건너뛴 도구까지 문장으로 남깁니다. 사람이 Agent의 판단을 되짚어 볼 수 있습니다.</p></div>
+<div class="card"><h3 data-en="&lt;code&gt;unresolved_errors&lt;/code&gt; · &lt;code&gt;failure_reasons&lt;/code&gt;"><code>unresolved_errors</code> · <code>failure_reasons</code></h3><p data-en="The MQM errors that remain (category, severity, span) and the reasons it stopped: safety check, caps, exceptions. The first thing a human reads.">끝내 남은 MQM 오류(영역·심각도·위치)와, 안전 검증·상한·예외 같은 멈춘 사유. 사람이 가장 먼저 읽는 부분입니다.</p></div>
+<div class="card"><h3 data-en="Seven run states">7가지 실행 상태</h3><p data-en="EVALUATING &amp;rarr; REVISING &amp;rarr; HUMAN_REVIEW_REQUIRED or AWAITING_HUMAN_APPROVAL &amp;rarr; APPROVED / REJECTED. HUMAN_REVIEW_REQUIRED is not terminal: it signals a human to branch a new run.">EVALUATING &rarr; REVISING &rarr; HUMAN_REVIEW_REQUIRED 또는 AWAITING_HUMAN_APPROVAL &rarr; APPROVED / REJECTED. HUMAN_REVIEW_REQUIRED는 종단이 아니라 사람이 새 run을 분기하라는 신호입니다.</p></div>
+</div></div></section>
+<section class="cs" id="cases"><div class="col"><div class="eb rv" data-en="08 CASE FILES">08 실행 사례</div>
+<h2 class="rv" data-en="Real run records: where and why it got stuck">실제 실행 기록으로 보는 &lsquo;어디서, 왜 막혔나&rsquo;</h2>
+<p class="lead rv" data-en="Cases picked from the saved run records (&lt;code&gt;runs/*.json&lt;/code&gt;). They do not score whether the translation got better; they follow &lt;b&gt;what happened at each Agent step and what was left for the human&lt;/b&gt;.">저장된 실행 기록(<code>runs/*.json</code>)에서 고른 사례입니다. 번역이 더 좋아졌는지 점수로 겨루는 것이 아니라, <b>Agent의 단계마다 무슨 일이 일어났고 사람에게 무엇이 남았는지</b>를 따라갑니다.</p>
+<div class="lq rv"><div class="ph-tabs lq-tabs" id="lqtabs"><button type="button" class="on" data-i="0" data-en="A · Japanese">A · 일본어</button><button type="button" class="" data-i="1" data-en="B · French">B · 프랑스어</button><button type="button" class="" data-i="2" data-en="C · English">C · 영어</button></div><div class="lq-c on" data-i="0"><h3 data-en="It fixed the place name and left a nuance for a human">지명 표기는 고치고, 뉘앙스는 사람에게</h3><p class="lead" data-en="&amp;lsquo;San Jose&amp;rsquo; came out as &amp;lsquo;サンホセ&amp;rsquo; in Japanese. The spelling tool fixed it; a remaining style issue the tool could not resolve was left for a human.">한국어 &lsquo;San Jose&rsquo;가 일본어에서 &lsquo;サンホセ&rsquo;로 옮겨졌습니다. spelling 도구가 이를 고쳤고, 남은 문체 문제는 도구가 해결하지 못해 사람 몫으로 남았습니다.</p><ol class="lq-trace"><li class="lq-s auto"><span class="lq-k" data-en="Auto">자동</span><b data-en="Initial translation (v1)">초기 번역 (v1)</b><p data-en="この会社は、米国カリフォルニア州&lt;b&gt;サンホセ&lt;/b&gt;にあるデータセンターに約 2.5PB のデータを保存し&amp;hellip;">この会社は、米国カリフォルニア州<b>サンホセ</b>にあるデータセンターに約 2.5PB のデータを保存し&hellip;</p></li><li class="lq-s agent"><span class="lq-k" data-en="Agent">Agent</span><b data-en="MQM evaluation → the Agent picks the spelling tool">MQM 평가 → Agent가 spelling 도구 선택</b><p data-en="&lt;b&gt;spelling · minor&lt;/b&gt;: &amp;lsquo;サンホセ&amp;rsquo; differs from the Japanese form &amp;lsquo;サンノゼ&amp;rsquo;. The Agent (strategy 1/2) judged it a place-name error to fix first and called the spelling tool."><b>spelling · minor</b> — &lsquo;サンホセ&rsquo;는 일본어 표기 &lsquo;サンノゼ&rsquo;와 다르다는 지적. Agent(전략 1/2)는 지역명 표기 오류라 먼저 고쳐야 한다고 판단하고 spelling 도구를 호출했습니다.</p></li><li class="lq-s auto"><span class="lq-k" data-en="Auto">자동</span><b data-en="Candidate accepted → v2">후보 채택 → v2</b><p data-en="サンホセ → &lt;b&gt;サンノゼ&lt;/b&gt;. The spelling error was gone after re-evaluation, so it was accepted.">サンホセ → <b>サンノゼ</b>. 재평가에서 spelling 오류가 사라져 채택했습니다.</p></li><li class="lq-s rb"><span class="lq-k" data-en="Rollback">Rollback</span><b data-en="Fluency tool candidate rejected → Rollback">fluency 도구 후보 거부 → Rollback</b><p data-en="For the remaining &lt;b&gt;fluency · minor&lt;/b&gt; error (the &amp;lsquo;early morning&amp;rsquo; nuance missing) the Agent (strategy 2/2) called the fluency tool, but &amp;ldquo;fluency errors did not decrease&amp;rdquo;, so it was rejected and v2 kept.">남은 오류 <b>fluency · minor</b>(&lsquo;매일 새벽&rsquo; 뉘앙스 누락)에 Agent(전략 2/2)가 fluency 도구를 호출했지만 &ldquo;fluency 오류가 감소하지 않음&rdquo;으로 거부되어 v2를 유지했습니다.</p></li><li class="lq-s human"><span class="lq-k" data-en="Human">사람</span><b data-en="Human review required">사람 검토 필요</b><p data-en="Remaining error: &lt;b&gt;fluency · minor&lt;/b&gt;. Whether to include &amp;lsquo;early morning&amp;rsquo; is a style call, so it goes to a human with the attempt history and the rejection reason.">남은 오류: <b>fluency · minor</b>. &lsquo;새벽&rsquo;을 번역에 넣을지는 문체 판단이라, 시도 이력과 거부 사유가 함께 남은 채 사람에게 넘어갑니다.</p></li></ol></div><div class="lq-c" data-i="1"><h3 data-en="It looks right, but the number format could not be confirmed">번역은 맞아 보여도, 숫자 표기를 확정하지 못해 사람에게</h3><p class="lead" data-en="The deterministic check could not confirm French &amp;lsquo;2,5 PB&amp;rsquo; as the same value as the source &amp;lsquo;2.5PB&amp;rsquo;. Code stopped first and the Agent investigated.">프랑스어 &lsquo;2,5 PB&rsquo;를 결정적 검사가 원문 &lsquo;2.5PB&rsquo;와 같은 값으로 확정하지 못했습니다. 코드가 먼저 멈추고, Agent는 원인을 조사했습니다.</p><ol class="lq-trace"><li class="lq-s auto"><span class="lq-k" data-en="Auto">자동</span><b data-en="Initial translation (v1)">초기 번역 (v1)</b><p data-en="Cette entreprise stocke environ &lt;b&gt;2,5 PB&lt;/b&gt; de données dans son centre de données situé à San Jose en Californie (États-Unis)&amp;hellip;">Cette entreprise stocke environ <b>2,5 PB</b> de données dans son centre de données situé à San Jose en Californie (États-Unis)&hellip;</p></li><li class="lq-s check"><span class="lq-k" data-en="Check">결정적 검사</span><b data-en="Deterministic check: numbers cannot be confirmed">결정적 검사: 숫자 대응 확정 불가</b><p data-en="Source &lt;code&gt;[&#x27;2.5&#x27;,&#x27;02&#x27;,&#x27;00&#x27;]&lt;/code&gt; ↔ translation &lt;code&gt;[&#x27;2&#x27;,&#x27;5&#x27;,&#x27;02&#x27;,&#x27;00&#x27;]&lt;/code&gt;. The check could not confirm the decimal comma (2,5) as the same value, so it flagged the run for human review.">원문 <code>['2.5','02','00']</code> ↔ 번역 <code>['2','5','02','00']</code>. 소수점 쉼표(2,5)를 같은 값으로 확정하지 못해 이 건을 사람 검토 대상으로 표시했습니다.</p></li><li class="lq-s agent"><span class="lq-k" data-en="Agent">Agent</span><b data-en="The Agent investigates (MQM re-evaluation)">Agent가 원인 조사 (MQM 재평가)</b><p data-en="MQM had not run yet, so the Agent ran it and found one &lt;b&gt;accuracy · minor&lt;/b&gt; issue (the &amp;lsquo;state&amp;rsquo; level of California is weakened).">MQM이 아직 돌지 않은 상태라 Agent가 직접 평가를 실행해 <b>accuracy · minor</b> 1건(California &lsquo;주&rsquo; 단위 표현이 약해짐)을 찾았습니다.</p></li><li class="lq-s agent"><span class="lq-k" data-en="Agent">Agent</span><b data-en="Strategy 1/2: fluency → not called">전략 1/2: fluency 선택 → 호출 안 함</b><p data-en="No unresolved error in that category, so the tool was skipped. A case of the planner choosing without grounding in an actual error, and that fact is recorded as is.">해당 영역에 미해결 오류가 없어 도구를 부르지 않고 건너뛰었습니다. Planner가 실제 오류에 근거하지 않고 고른 사례로, 이 사실도 그대로 기록됩니다.</p></li><li class="lq-s rb"><span class="lq-k" data-en="Rollback">Rollback</span><b data-en="Strategy 2/2: accuracy candidate rejected → Rollback">전략 2/2: accuracy 후보 거부 → Rollback</b><p data-en="The candidate was identical to the current translation and numbers still could not be confirmed, so it was rejected. v1 is kept.">후보가 현재 번역과 동일하고, 숫자 대응도 확정하지 못해 거부했습니다. v1을 유지합니다.</p></li><li class="lq-s human"><span class="lq-k" data-en="Human">사람</span><b data-en="Human review required">사람 검토 필요</b><p data-en="What the human checks: &lt;b&gt;① whether 2,5 = 2.5 is just a format difference&lt;/b&gt;, &lt;b&gt;② whether to preserve &amp;lsquo;state&amp;rsquo; for California&lt;/b&gt;. Both reasons appear on the same screen.">사람이 볼 것: <b>① 2,5 = 2.5 표기 차이인지</b>, <b>② California &lsquo;주&rsquo;를 더 살릴지</b>. 두 이유가 같은 화면에 함께 표시됩니다.</p></li></ol></div><div class="lq-c" data-i="2"><h3 data-en="The Agent decided it was not a fix and handed it over">Agent가 &lsquo;고칠 문제가 아니다&rsquo;라고 사람에게 넘김</h3><p class="lead" data-en="A FLORES+ (public data) sentence. The Agent did not call a fix tool and handed it to a human, with the reason that it was a subtle difference in expression.">FLORES+(공개 데이터) 문장입니다. Agent가 수정 도구를 부르지 않고, 표현의 미세한 차이라는 이유와 함께 사람 판단으로 넘겼습니다.</p><ol class="lq-trace"><li class="lq-s auto"><span class="lq-k" data-en="Auto">자동</span><b data-en="Initial translation (v1)">초기 번역 (v1)</b><p data-en="&amp;hellip;genuine imported models might cost more than &lt;b&gt;their country of origin&lt;/b&gt;.">&hellip;genuine imported models might cost more than <b>their country of origin</b>.</p></li><li class="lq-s agent"><span class="lq-k" data-en="Agent">Agent</span><b data-en="MQM re-evaluation">MQM 재평가</b><p data-en="One &lt;b&gt;fluency · minor&lt;/b&gt; issue: the source &amp;lsquo;모국&amp;rsquo; rendered as &amp;lsquo;their country of origin&amp;rsquo;."><b>fluency · minor</b> 1건: 원문 &lsquo;모국&rsquo;을 &lsquo;their country of origin&rsquo;으로 옮긴 부분.</p></li><li class="lq-s agent"><span class="lq-k" data-en="Agent">Agent</span><b data-en="Strategy 1/2: &lt;code&gt;human_review&lt;/code&gt;">전략 1/2: <code>human_review</code> 선택</b><p data-en="The planner judged it &amp;ldquo;less an error than a subtle difference in expression&amp;rdquo; and called no fix tool.">Planner는 &ldquo;엄밀한 오류라기보다는 표현의 미세한 차이&rdquo;라고 판단해 수정 도구를 호출하지 않았습니다.</p></li><li class="lq-s human"><span class="lq-k" data-en="Human">사람</span><b data-en="Human review required">사람 검토 필요</b><p data-en="One &lt;b&gt;fluency · minor&lt;/b&gt; error and the Agent&amp;rsquo;s reasoning remain, so the human only decides whether to accept it.">남은 오류 <b>fluency · minor</b> 1건과 Agent의 판단 근거가 남아, 사람은 받아들일지만 정하면 됩니다.</p></li></ol></div></div>
+
+<h3 class="grp rv" data-en="Where do humans end up being needed? (127 saved runs)">사람이 필요해지는 곳은 어디였나 (저장된 run 127건)</h3>
+<div class="grid6"><div class="rv chart key"><h3 data-en="89 runs handed to a human: why it stopped&lt;span class=&#x27;fin&#x27;&gt;HITL&lt;/span&gt;">사람 검토로 넘어간 89건: 멈춘 이유<span class='fin'>HITL</span></h3><p class="q" data-en="Each run is classified under one reason. The 28 number/unit cases include format differences, such as &amp;lsquo;2~3km&amp;rsquo; or &amp;lsquo;1600 킬로미터 → 1,600km&amp;rsquo;, that could not be confirmed.">한 건은 하나의 이유로 분류했습니다. 숫자·단위 28건에는 &lsquo;2~3km&rsquo;, &lsquo;1600킬로미터 → 1,600km&rsquo;처럼 오류라기보다 표기 차이로 확정하지 못한 경우가 포함됩니다.</p><div class="row"><div class="name n0" data-en="Two failures in a category">카테고리 수정 2회 실패</div><div class="track"><div class="bar final" style="--w:82.4%"></div><span class="bv">42</span></div></div><div class="row"><div class="name n0" data-en="Numbers/units unconfirmed">숫자·단위 확정 불가</div><div class="track"><div class="bar final" style="--w:54.9%"></div><span class="bv">28</span></div></div><div class="row"><div class="name n0" data-en="Agent gave up / strategies used up">Agent 포기·전략 소진</div><div class="track"><div class="bar final" style="--w:31.4%"></div><span class="bv">16</span></div></div><div class="row"><div class="name n0" data-en="Critical error">Critical 오류</div><div class="track"><div class="bar final" style="--w:2.0%"></div><span class="bv">1</span></div></div><div class="row"><div class="name n0" data-en="Protected term missing">보호 용어 누락</div><div class="track"><div class="bar final" style="--w:2.0%"></div><span class="bv">1</span></div></div><div class="row"><div class="name n0" data-en="Span mismatch">검증 위치(span) 불일치</div><div class="track"><div class="bar final" style="--w:2.0%"></div><span class="bv">1</span></div></div></div>
+<div class="rv chart"><h3 data-en="Errors left for the human: MQM category">사람에게 남은 오류: MQM 영역</h3><p class="q" data-en="The 86 unresolved errors left in the human-review runs, counted by category.">사람 검토 건에 남은 미해결 오류 86개를 영역별로 센 것입니다.</p><div class="row"><div class="name n0">fluency</div><div class="track"><div class="bar c2" style="--w:100.0%"></div><span class="bv">51</span></div></div><div class="row"><div class="name n0">accuracy</div><div class="track"><div class="bar c2" style="--w:52.9%"></div><span class="bv">27</span></div></div><div class="row"><div class="name n0">spelling</div><div class="track"><div class="bar c2" style="--w:11.8%"></div><span class="bv">6</span></div></div><div class="row"><div class="name n0">grammar</div><div class="track"><div class="bar c2" style="--w:2.0%"></div><span class="bv">1</span></div></div><div class="row"><div class="name n0">terminology</div><div class="track"><div class="bar c2" style="--w:2.0%"></div><span class="bv">1</span></div></div><div class="row"><div class="name n0">style</div><div class="track"><div class="bar c2" style="--w:2.0%"></div><span class="bv">1</span></div></div></div></div>
+<div class="grid6"><div class="rv chart"><h3 data-en="Tool attempts: accepted / total">도구별 수정 시도: 채택 / 전체</h3><p class="q" data-en="Of the revision attempts in the same records, the share that passed re-evaluation and was accepted. Tools differ in what they can fix, so you can anticipate where a human will be needed.">같은 기록에서 수정 시도 중 재평가를 통과해 채택된 비율입니다. 도구마다 잘 듣는 영역이 달라, 사람이 필요한 영역을 미리 짐작할 수 있습니다.</p><div class="row"><div class="name n0">spelling</div><div class="track"><div class="bar final" style="--w:83.3%"></div><span class="bv">5 / 6</span></div></div><div class="row"><div class="name n0">grammar</div><div class="track"><div class="bar final" style="--w:100.0%"></div><span class="bv">2 / 2</span></div></div><div class="row"><div class="name n0">fluency</div><div class="track"><div class="bar final" style="--w:13.7%"></div><span class="bv">10 / 73</span></div></div><div class="row"><div class="name n0">accuracy</div><div class="track"><div class="bar final" style="--w:16.2%"></div><span class="bv">6 / 37</span></div></div><div class="row"><div class="name n0">style</div><div class="track"><div class="bar final" style="--w:0.0%"></div><span class="bv">0 / 2</span></div></div></div>
+<div class="rv chart"><h3 data-en="How to read these numbers">이 숫자를 읽는 법</h3><p class="q" data-en="These accumulated during development and experiments (English 82, Japanese 16, French 12, Italian 9, German 8), so they are &lt;b&gt;not a performance metric&lt;/b&gt;; repeated runs of the same sentence are included.">개발·실험 중 쌓인 기록이라(영어 82·일본어 16·프랑스어 12·이탈리아어 9·독일어 8) <b>성능 지표가 아닙니다.</b> 같은 문장을 반복 실행한 건도 포함됩니다.</p>
+<p class="note" data-en="&lt;span class=&#x27;hl&#x27;&gt;In these records, what is left for humans is mostly subtle fluency/accuracy differences and number/unit formats that cannot be confirmed.&lt;/span&gt; Reporting the reason when it stops in those areas is the Agent structure&amp;rsquo;s main job."><span class='hl'>이 기록에서 사람 몫으로 남는 것은 주로 fluency와 accuracy의 미세한 차이와, 숫자·단위 표기의 확정 불가였습니다.</span> 그래서 이 영역에서 멈출 때 이유를 붙여 알려주는 것이 Agent 구조의 핵심 역할입니다.</p></div></div>
+</div></section>
+<section class="cs gal gal2" id="product"><div class="col stage-grid"><div class="stage-l"><div class="eb" data-en="09 PRODUCT">09 화면</div>
+<h2 data-en="Choose, run, and check where it got stuck">고르고, 돌리고, 막힌 곳을 확인합니다</h2>
+<p class="lead" data-en="Whichever way you enter text, the rest is identical: translate &amp;rarr; MQM &amp;rarr; revise &amp;rarr; human approval. Results shown were captured by reloading real runs (local Qwen3.5 4B); all sentences are fictional examples by the author.">어느 입력 방식이든 이후 흐름(번역 &rarr; MQM 평가 &rarr; 수정 &rarr; 사람 승인)은 같습니다. 화면 속 결과는 로컬 Qwen3.5 4B로 실제 실행해 저장된 기록을 다시 불러와 캡처했고, 문장은 모두 작성자가 만든 가상의 예시입니다.</p>
+<ol class="ind"><li data-beat="0" data-en="1. Service screen">1. 서비스 화면</li><li data-beat="1" data-en="2. Direct input: choose languages">2. 직접 입력: 언어 고르기</li><li data-beat="2" data-en="3. CSV: many sentences × many countries">3. CSV: 여러 문장 × 여러 국가</li><li data-beat="3" data-en="4. PoC test">4. PoC 테스트</li><li data-beat="4" data-en="5. Run result: steps, status, reasoning">5. 실행 결과: 단계·상태·판단 근거</li><li data-beat="5" data-en="6. Review &amp; approval">6. 검토·승인</li></ol></div>
+<div class="stage-r"><div class="beats cardbeats tilebeats"><div class="beat" data-beat="0"><figure class="tile"><div class="shot"><img alt="1. Service screen" src="img/ui-hero.png"/></div><figcaption data-en="&lt;span class=&quot;tg u&quot;&gt;Service&lt;/span&gt;&lt;b&gt;1. Service screen&lt;/b&gt;&lt;br/&gt;Choose the input mode and target country; the steps translate &amp;rarr; MQM &amp;rarr; revise &amp;rarr; approval appear with progress."><span class="tg u">서비스</span><b>1. 서비스 화면</b><br/>입력 방식과 목표 국가를 고르면 번역 &rarr; MQM 평가 &rarr; 수정 &rarr; 사람 승인 단계가 진행 표시와 함께 나옵니다.</figcaption></figure></div><div class="beat" data-beat="1"><figure class="tile"><div class="shot"><img alt="2. Direct input: choose languages" src="img/ui-mode-direct.png"/></div><figcaption data-en="&lt;span class=&quot;tg u&quot;&gt;Input&lt;/span&gt;&lt;b&gt;2. Direct input: choose languages&lt;/b&gt;&lt;br/&gt;Enter the Korean source (required), target countries, and optional protected terms and instructions to check one sentence at a time."><span class="tg u">입력</span><b>2. 직접 입력: 언어 고르기</b><br/>한국어 원문(필수)과 목표 국가, 보호 용어·추가 지시(선택)를 넣고 사람이 한 문장씩 점검합니다.</figcaption></figure></div><div class="beat" data-beat="2"><figure class="tile"><div class="shot"><img alt="3. CSV: many sentences × many countries" src="img/ui-mode-csv.png"/></div><figcaption data-en="&lt;span class=&quot;tg u&quot;&gt;Input&lt;/span&gt;&lt;b&gt;3. CSV: many sentences × many countries&lt;/b&gt;&lt;br/&gt;Upload a CSV with a &lt;code&gt;한국어&lt;/code&gt; column (max 30 sentences); it validates at once and previews how many runs will execute. A row like &lt;code&gt;Japan|Italy&lt;/code&gt; runs per language, and one failure does not stop the rest."><span class="tg u">입력</span><b>3. CSV: 여러 문장 × 여러 국가</b><br/><code>한국어</code> 열이 있는 CSV(최대 30문장)를 올리면 즉시 검증하고 &ldquo;몇 건이 실행될지&rdquo;를 미리 보여줍니다. 한 행에 <code>Japan|Italy</code>처럼 쓰면 언어별로 따로 실행되고, 한 건이 실패해도 나머지는 계속됩니다.</figcaption></figure></div><div class="beat" data-beat="3"><figure class="tile"><div class="shot"><img alt="4. PoC test" src="img/ui-mode-poc.png"/></div><figcaption data-en="&lt;span class=&quot;tg u&quot;&gt;Input&lt;/span&gt;&lt;b&gt;4. PoC test&lt;/b&gt;&lt;br/&gt;Pick one of 30 built-in sentences and run it right away, for install checks, demos, and before/after comparison of model or prompt changes."><span class="tg u">입력</span><b>4. PoC 테스트</b><br/>내장 문장 30개 중 하나를 골라 바로 돌려 봅니다. 설치 확인과 데모, 모델·프롬프트 변경 전후 비교에 씁니다.</figcaption></figure></div><div class="beat" data-beat="4"><figure class="tile key"><div class="shot"><img alt="5. Run result: steps, status, reasoning" src="img/ui-run.png"/></div><figcaption data-en="&lt;span class=&quot;tg c&quot;&gt;Result&lt;/span&gt;&lt;b&gt;5. Run result: steps, status, reasoning&lt;/b&gt;&lt;br/&gt;Progress steps, status badge, source vs. translation, revision history (accepted / rolled back) and Agent reasoning per country, so where it stopped is visible at a glance."><span class="tg c">결과</span><b>5. 실행 결과: 단계·상태·판단 근거</b><br/>진행 단계, 상태 배지, 원문·번역 비교, 수정 이력(채택/Rollback), Agent 판단 근거를 국가별 카드로 보여줍니다. 어디서 멈췄는지가 한눈에 보입니다.</figcaption></figure></div><div class="beat" data-beat="5"><figure class="tile key"><div class="shot"><img alt="6. Review &amp; approval" src="img/ui-review.png"/></div><figcaption data-en="&lt;span class=&quot;tg c&quot;&gt;Result&lt;/span&gt;&lt;b&gt;6. Review &amp; approval&lt;/b&gt;&lt;br/&gt;See remaining MQM errors, failure reasons and a diff against the previous version, then edit / AI re-revise / approve / reject. The French example rejects the candidate and hands off because numbers/units cannot be confirmed automatically, which is intended."><span class="tg c">결과</span><b>6. 검토·승인</b><br/>남은 MQM 오류와 실패 사유, 이전 버전과의 변경점(diff)을 보고 직접 수정 / AI 재수정 / 승인 / 거부를 선택합니다. 프랑스어 예시는 숫자·단위를 자동 확정할 수 없어 후보를 거부하고 사람에게 넘긴 의도된 동작입니다.</figcaption></figure></div></div>
+<div class="gnav"><button type="button" class="gb" data-d="-1" aria-label="Previous screen">&larr;</button><span class="gcount">1 / 6</span><button type="button" class="gb" data-d="1" aria-label="Next screen">&rarr;</button></div></div></div></section>
+<section class="cs" id="safety"><div class="col"><div class="eb rv" data-en="10 SAFETY">10 안전</div><h2 class="rv" data-en="Keeping the decision with a human">사람이 결정권을 갖도록</h2>
+<div class="rv"><table class="tbl oneline">
+<tr><th data-en="No auto-approval">자동 승인 없음</th><td data-en="Even with zero errors the run stops at &lt;code&gt;AWAITING_HUMAN_APPROVAL&lt;/code&gt;. A translation-memory (TM) hit is not auto-approved either.">오류가 하나도 없어도 <code>AWAITING_HUMAN_APPROVAL</code>에서 멈춥니다. 번역 메모리(TM) 일치도 자동 승인하지 않습니다.</td></tr>
+<tr><th data-en="Limited Agent authority">Agent의 권한 제한</th><td data-en="The Agent only chooses the next tool and a reason. Acceptance, rollback and state transitions are decided by Python checks and MQM re-evaluation.">Agent는 다음 도구와 이유만 고릅니다. 후보의 채택·Rollback·상태 전환은 Python 검사와 MQM 재평가가 정합니다.</td></tr>
+<tr><th data-en="Deterministic checks">결정적 검사</th><td data-en="Protected terms, numbers/units and leaked meta-comments are caught by rules, not the LLM; if they cannot be confirmed the run goes to a human.">보호 용어, 숫자·단위, 번역에 섞인 메타 주석은 LLM이 아니라 규칙으로 막고, 확정할 수 없으면 사람에게 넘깁니다.</td></tr>
+<tr><th data-en="Explainability">설명 가능성</th><td data-en="Before/after, Agent reasoning and accept/reject reasons are stored per &lt;code&gt;run_id&lt;/code&gt; as JSON; results accumulate in CSV.">수정 전후, Agent 판단 근거, 채택/거부 사유를 <code>run_id</code>별 JSON으로 저장하고 결과는 CSV로 누적합니다.</td></tr>
+<tr><th data-en="Validation protocol">검증 원칙</th><td data-en="Passing tests is not proof of translation quality, and an experiment result does not replace human approval. The evidence boundaries are written down in &lt;a href=&#x27;https://github.com/sihunwang-skala/l10n-quality-agent/blob/main/docs/VALIDATION_PROTOCOL.md&#x27; target=&#x27;_blank&#x27; rel=&#x27;noopener&#x27;&gt;VALIDATION_PROTOCOL.md&lt;/a&gt;.">테스트 통과는 번역 품질의 증거가 아니고, 실험 결과가 사람 승인을 대신하지 않습니다. 증거의 범위는 <a href='https://github.com/sihunwang-skala/l10n-quality-agent/blob/main/docs/VALIDATION_PROTOCOL.md' target='_blank' rel='noopener'>VALIDATION_PROTOCOL.md</a>에 정리했습니다.</td></tr>
+</table></div></div></section>
+<section class="cs" id="more"><div class="col"><div class="eb rv" data-en="11 MORE">11 기타</div><h2 class="rv" data-en="More">기타</h2>
+<div class="rv"><table class="tbl oneline">
+<tr><th data-en="Limits">현재 한계</th><td data-en="The small local model (Qwen3.5 4B) limits the Agent&amp;rsquo;s judgment. The planner sometimes picks a tool without grounding in an actual error (Case B); restricting its choices to categories present in the remaining errors is planned. The number/unit check can false-positive on format differences.">소형 로컬 모델(Qwen3.5 4B) 기준이라 Agent의 판단 품질에 한계가 있습니다. Planner가 실제 오류에 근거하지 않고 도구를 고르는 경우가 있어(사례 B), 선택 가능한 도구를 남은 오류의 영역으로 제한하는 개선을 계획 중입니다. 숫자·단위 검사는 표기 차이를 오탐할 수 있습니다.</td></tr>
+<tr><th data-en="Not built">미구현</th><td data-en="CSV runs sequentially (max 30). Async queue, parallelism, multi-user, a LangGraph Checkpointer, per-model quantitative comparison and a golden dataset are future work. RAG/vector DB is out of scope.">CSV는 순차 실행(최대 30문장)입니다. 비동기 큐·병렬·다중 사용자와 LangGraph Checkpointer, 모델별 정량 비교와 Golden Dataset 평가는 향후 과제입니다. RAG/Vector DB는 범위에서 제외했습니다.</td></tr>
+<tr><th data-en="Data">데이터</th><td data-en="Only the public FLORES+ dataset (CC BY-SA 4.0) is used; TM, terminology and DNE were newly derived from it. Apart from FLORES+ sentences, all example sentences shown are fictional.">공개 데이터셋 FLORES+(CC BY-SA 4.0)만 사용했고, TM·용어집·DNE는 이를 바탕으로 새로 만들었습니다. 화면과 사례 속 예시 문장은 FLORES+ 문장을 제외하면 모두 가상입니다.</td></tr>
+<tr><th data-en="Independence">독립성</th><td data-en="An independent personal project built on personal time and equipment; it contains no internal code, prompts, data or evaluation results of any company. Code is MIT-licensed.">작성자 개인이 개인 시간·장비로 만든 독립 프로젝트이며, 어떤 회사의 내부 코드·프롬프트·데이터·평가 결과도 포함하지 않습니다. 코드는 MIT 라이선스입니다.</td></tr>
+<tr><th>Tech</th><td>Python 3.11, LangChain (LCEL), Pydantic, Ollama (Qwen3.5 4B), OpenAI gpt-5-mini</td></tr>
+<tr><th>Tech (UI &amp; data)</th><td>Gradio (PWA, English/한국어), pandas, pytest, FLORES+</td></tr>
+<tr><th data-en="Repository">저장소</th><td><a href="https://github.com/sihunwang-skala/l10n-quality-agent" target="_blank" rel="noopener">github.com/sihunwang-skala/l10n-quality-agent</a></td></tr>
+</table></div></div></section>
+</main>
+<script>
+(function(){
+var r=document.documentElement,L=function(){return r.getAttribute('lang')==='en'};
+function apply(l){document.querySelectorAll('[data-en]').forEach(function(e){if(e.id==='detail'&&window.__cur)return;if(!e.hasAttribute('data-ko'))e.setAttribute('data-ko',e.innerHTML);e.innerHTML=l==='en'?e.getAttribute('data-en'):e.getAttribute('data-ko')});r.setAttribute('lang',l);window.__lang=l;['lang','lang2'].forEach(function(i){var b=document.getElementById(i);if(b)b.textContent=l==='en'?'한국어':'EN'});if(window.__redetail)window.__redetail()}
+var s='ko';try{s=localStorage.getItem('lang')||'ko'}catch(e){}if(s==='en')apply('en');
+['lang','lang2'].forEach(function(i){document.getElementById(i).addEventListener('click',function(){var n=L()?'ko':'en';apply(n);try{localStorage.setItem('lang',n)}catch(e){}})});
+function sync(){['theme','theme2'].forEach(function(i){var b=document.getElementById(i);if(b)b.textContent=r.getAttribute('data-theme')==='dark'?'☀':'☾'})}sync();
+['theme','theme2'].forEach(function(i){document.getElementById(i).addEventListener('click',function(){var d=r.getAttribute('data-theme')==='dark';if(d)r.removeAttribute('data-theme');else r.setAttribute('data-theme','dark');try{localStorage.setItem('theme',d?'light':'dark')}catch(e){}sync()})});
+/* scroll reveal + count-up */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting){e.target.classList.remove('in');e.target.querySelectorAll('.cnt').forEach(function(c){c.__done=0});return}e.target.classList.add('in');e.target.querySelectorAll('.cnt').forEach(count);if(e.target.classList.contains('cnt'))count(e.target)})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+function count(el){if(el.__done)return;el.__done=1;var to=parseFloat(el.dataset.to),d=+el.dataset.dec,suf=el.dataset.suffix||'',t0=null;if(matchMedia('(prefers-reduced-motion: reduce)').matches){return}
+function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1100),v=to*(1-Math.pow(1-p,3));el.textContent=v.toFixed(d)+suf;if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+/* active table-of-contents */
+var links={};document.querySelectorAll('.t3').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){Object.keys(links).forEach(function(k){links[k].classList.toggle('on',k===e.target.id)})}})},{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('.cs').forEach(function(s){so.observe(s)});
+})();
+</script>
+<script>
+(function(){
+var root=document.documentElement;
+var pinned=matchMedia('(min-width:900px)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches;
+root.classList.toggle('pinned',pinned);
+var scenes=[].slice.call(document.querySelectorAll('.scn'));
+function clamp(x){return x<0?0:x>1?1:x}
+function wrap(el){if(el.querySelector('.w'))return;(function go(n){[].slice.call(n.childNodes).forEach(function(c){if(c.nodeType===3){var f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(t))}else{var s=document.createElement('span');s.className='w';s.textContent=t;f.appendChild(s)}});c.parentNode.replaceChild(f,c)}else if(c.nodeType===1)go(c)})})(el)}
+function count(el){if(el.__done)return;el.__done=1;var to=parseFloat(el.dataset.to),d=+el.dataset.dec,suf=el.dataset.suffix||'',t0=null;function st(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1000),v=to*(1-Math.pow(1-p,3));el.textContent=v.toFixed(d)+suf;if(p<1)requestAnimationFrame(st)}requestAnimationFrame(st)}
+function update(){
+ scenes.forEach(function(sc){
+  var box=sc.querySelector('.scene'),r=box.getBoundingClientRect(),total=r.height-innerHeight,p=pinned&&total>0?clamp(-r.top/total):1;
+  sc.style.setProperty('--p',p.toFixed(4));
+  var beats=sc.querySelectorAll('[data-beat]'),n=0;beats.forEach(function(e){n=Math.max(n,+e.dataset.beat+1)});
+  var want=n?Math.min(n-1,Math.floor(clamp((p-0.04)/0.92)*n)):0,idx=want;
+  if(pinned&&n>1){var cur=(sc.__idx===undefined)?want:sc.__idx,now=performance.now();
+   if(want!==cur){if(!sc.__t||now-sc.__t>700){cur+=want>cur?1:-1;sc.__t=now}setTimeout(req,720)}
+   sc.__idx=cur;idx=cur}
+  beats.forEach(function(e){var b=+e.dataset.beat;e.classList.toggle('on',b===idx);e.classList.toggle('past',b<idx)});
+  sc.querySelectorAll('[data-at]').forEach(function(e){var on=p>=+e.dataset.at||!pinned;e.classList.toggle('on',on);if(on)e.querySelectorAll('.cnt').forEach(count)});
+  var hm=sc.querySelector('[data-fill]');if(hm){wrap(hm);var ws=hm.querySelectorAll('.w'),m=pinned?Math.ceil(clamp((p-0.06)/0.62)*ws.length):ws.length;ws.forEach(function(w,i){w.classList.toggle('on',i<m)});hm.classList.toggle('done',m>=ws.length)}
+ })}
+var ticking=false;function req(){if(!ticking){ticking=true;requestAnimationFrame(function(){ticking=false;update()})}}
+addEventListener('scroll',req,{passive:true});addEventListener('resize',function(){pinned=matchMedia('(min-width:900px)').matches&&!matchMedia('(prefers-reduced-motion: reduce)').matches;root.classList.toggle('pinned',pinned);req()});
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#lang,#lang2'))setTimeout(req,60)});
+update();window.__scenes=update;
+})();
+
+(function(){
+/* brief heartbeat on things you can click, replayed each time they scroll into view until they are used */
+function beat(el,extra){el.classList.remove('hint');void el.offsetWidth;el.classList.add('hint');if(extra)extra.classList.add('hint');setTimeout(function(){el.classList.remove('hint');if(extra)extra.classList.remove('hint')},2600)}
+var box=document.querySelector('#architecture .fig .svgbox'),detail=document.getElementById('detail');
+if(box){var svg=box.querySelector('svg'),hots=[].slice.call(svg.querySelectorAll('.hot')),used=false;
+ hots.forEach(function(g,i){g.style.setProperty('--d',i);g.addEventListener('click',function(){used=true})});
+ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!used)beat(box,detail)})},{threshold:.5}).observe(box);
+ if(detail)new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!used&&!detail.classList.contains('on'))beat(detail)})},{threshold:.9}).observe(detail)}
+var det=document.querySelector('details.allres'),sm=det&&det.querySelector('summary');
+if(sm){var done=false;sm.addEventListener('click',function(){done=true});det.addEventListener('toggle',function(){if(det.open)done=true});
+ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!done)beat(sm)})},{threshold:.9}).observe(sm)}
+})();
+
+(function(){
+var f2=document.querySelector('svg[aria-label^="Figure 2"]');if(!f2)return;
+var items=null,timers=[],box=f2.closest('.svgbox')||f2;
+function init(){if(items)return;var kids=[].slice.call(f2.children).filter(function(e){return e.tagName.toLowerCase()!=='defs'});
+ items=kids.map(function(e){var b;try{b=e.getBBox()}catch(x){b={x:0,y:0,width:0,height:0}}return{e:e,yc:b.y+b.height/2,x:b.x}});
+ items.forEach(function(it){it.row=it.yc<26?-1:it.yc<88?0:it.yc<162?1:it.yc<236?2:3})}
+function hide(){timers.forEach(clearTimeout);timers=[];items.forEach(function(it){if(it.row<0)return;it.e.style.transition='none';it.e.style.opacity=0;it.e.style.transform='translateY(10px)'})}
+function play(){init();hide();void f2.getBoundingClientRect();
+ for(var r=0;r<4;r++){(function(r){var row=items.filter(function(i){return i.row===r}).sort(function(a,b){return a.x-b.x});
+  row.forEach(function(it,k){timers.push(setTimeout(function(){it.e.style.transition='opacity .3s ease,transform .3s ease';it.e.style.opacity=1;it.e.style.transform='none'},120+r*300+k*14))})})(r)}}
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+new IntersectionObserver(function(es){es.forEach(function(e){if(reduce)return;if(e.isIntersecting)play();else if(items)hide()})},{threshold:.5}).observe(box);
+})();
+
+/* keyboard: up/down (PageUp/PageDown) step through the pinned scenes one stage at a time */
+(function(){
+var STOPS={context:[.5,.98],decision:[.5,.98],impact:[.12,.34,.56,.78,.98],'user-problem':[.25,.6,.98],define:[.5],approach:[.08,.31,.54,.77,.98]};
+function stopsFor(sc){var n=0;sc.querySelectorAll('[data-beat]').forEach(function(e){n=Math.max(n,+e.dataset.beat+1)});
+ if(n>1){var a=[];for(var i=0;i<n;i++)a.push(.04+.92*(i+.5)/n);return a}
+ return STOPS[sc.id]||null}
+function active(){var pinned=document.documentElement.classList.contains('pinned');if(!pinned)return null;
+ var list=document.querySelectorAll('.scn');for(var i=0;i<list.length;i++){var box=list[i].querySelector('.scene'),r=box.getBoundingClientRect();if(r.top<=2&&r.bottom>=innerHeight-2)return{sc:list[i],r:r}}return null}
+window.__sc={active:active,stopsFor:stopsFor};
+addEventListener('keydown',function(e){
+ if(e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;
+ var k=e.key;if(k!=='ArrowDown'&&k!=='ArrowUp'&&k!=='PageDown'&&k!=='PageUp')return;
+ var t=e.target;if(t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable))return;
+ if(document.querySelector('.lb:not([hidden])'))return;
+ var a=active();if(!a)return;var st=stopsFor(a.sc);if(!st)return;
+ var total=a.r.height-innerHeight,p=Math.max(0,Math.min(1,-a.r.top/total)),down=(k==='ArrowDown'||k==='PageDown'),target=null;
+ if(down){for(var i=0;i<st.length;i++){if(st[i]>p+.012){target=st[i];break}}}else{for(var j=st.length-1;j>=0;j--){if(st[j]<p-.012){target=st[j];break}}}
+ if(target===null)return;
+ e.preventDefault();var top=a.r.top+scrollY+target*total;scrollTo({top:top,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+});
+})();
+
+(function(){
+var g=document.getElementById('product');if(!g||!g.classList.contains('gal2'))return;
+var beats=[].slice.call(g.querySelectorAll('.beat')),inds=[].slice.call(g.querySelectorAll('.ind li')),cnt=g.querySelector('.gcount'),n=beats.length,cur=0;
+var auto=true;var seen={};window.__galBusy=function(){return auto&&Object.keys(seen).length<n};
+function show(i){cur=(i+n)%n;seen[cur]=1;beats.forEach(function(b,k){b.classList.toggle('on',k===cur)});inds.forEach(function(l,k){l.classList.toggle('on',k===cur)});if(cnt)cnt.textContent=(cur+1)+' / '+n}
+inds.forEach(function(l,k){l.addEventListener('click',function(){show(k)})});
+g.querySelectorAll('.gb').forEach(function(b){b.addEventListener('click',function(){show(cur+(+b.dataset.d))})});
+addEventListener('keydown',function(e){if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey)return;if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+ var t=e.target;if(t&&(/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)||t.isContentEditable))return;if(document.querySelector('.lb:not([hidden])'))return;
+ var r=g.getBoundingClientRect();if(r.top>innerHeight*.7||r.bottom<innerHeight*.3)return;e.preventDefault();show(cur+(e.key==='ArrowRight'?1:-1))});
+show(0);window.__galShow=show;
+['click','keydown','touchstart'].forEach(function(ev){g.addEventListener(ev,function(){auto=false},true)});
+addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft')auto=false});
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(function(){if(!auto||document.querySelector('.lb:not([hidden])'))return;var r=g.getBoundingClientRect();if(r.top>innerHeight*.6||r.bottom<innerHeight*.4)return;show(cur+1)},1300);
+})();
+
+(function(){
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.go');if(!b)return;
+ e.preventDefault();e.stopPropagation();var g=document.getElementById('product');if(window.__galShow)window.__galShow(+b.dataset.goto);
+ g.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})},true);
+})();
+
+/* the example question types itself and the chips pop in by themselves (no scrolling needed) */
+(function(){
+var root=document.documentElement;
+function inView(el){var r=el.getBoundingClientRect();return r.top<innerHeight*.85&&r.bottom>innerHeight*.15}
+function reset(q){q.__st=0;clearTimeout(q.__t);q.classList.remove('typed');var tx=q.querySelector('.tx');if(tx)tx.textContent='';q.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on')});var cr=q.querySelector('.caret');if(cr)cr.style.display=''}
+function play(q){q.__st=1;var tx=q.querySelector('.tx'),txt=root.getAttribute('lang')==='en'?tx.getAttribute('data-t-en'):tx.getAttribute('data-t-ko'),i=0,chips=[].slice.call(q.querySelectorAll('.chip'));
+ (function type(){if(q.__st!==1)return;i++;tx.textContent=txt.slice(0,i);if(i<txt.length){q.__t=setTimeout(type,42)}else{q.classList.add('typed');var k=0;(function pop(){if(q.__st!==1)return;if(k<chips.length){chips[k++].classList.add('on');q.__t=setTimeout(pop,190)}else{q.__st=2}})()}})()}
+function tick(){var pinned=root.classList.contains('pinned');
+ document.querySelectorAll('.qv').forEach(function(q){var b=q.closest('.beat'),vis=inView(q)&&(!pinned||!b||b.classList.contains('on'));
+  if(vis&&!q.__st)play(q);else if(!vis&&q.__st)reset(q)})}
+setInterval(tick,250);
+document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#lang,#lang2'))setTimeout(function(){document.querySelectorAll('.qv').forEach(reset)},30)});
+})();
+
+/* replay the heading marker and the Supervisor/Agent chips each time the section comes into view */
+(function(){var sec=document.getElementById('architecture');if(!sec)return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){var t=e.target;if(e.isIntersecting){t.classList.remove('in');void t.offsetWidth;t.classList.add('in')}else{t.classList.remove('in')}})},{threshold:.5});
+[sec.querySelector('h2'),sec.querySelector('.team')].forEach(function(t){if(t)io.observe(t)});
+})();
+
+/* bar rows: grow one after another each time they scroll into view */
+(function(){
+var rows=[].slice.call(document.querySelectorAll('.chart .row'));if(!rows.length)return;
+var idx=new Map();rows.forEach(function(r){var sib=[].slice.call(r.parentElement.querySelectorAll(':scope > .row'));idx.set(r,sib.indexOf(r))});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){var r=e.target,b=r.querySelector('.bar');
+ if(e.isIntersecting){if(b)b.style.transitionDelay=(idx.get(r)*0.12)+'s';r.classList.add('on')}
+ else{if(b)b.style.transitionDelay='0s';r.classList.remove('on')}})},{threshold:.9,rootMargin:'0px 0px -6% 0px'});
+rows.forEach(function(r){io.observe(r)});
+})();
+
+/* the hero quote stays on one line: shrink the font until it fits its column */
+(function(){
+var q=document.querySelector('.quote');if(!q)return;
+function fit(){q.style.fontSize='';var max=20,min=10.5,f=max;q.style.fontSize=f+'px';
+ while(q.scrollWidth>q.clientWidth+1&&f>min){f-=.5;q.style.fontSize=f+'px'}}
+fit();addEventListener('resize',fit);document.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('#lang,#lang2'))setTimeout(fit,40)});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+})();
+
+(function(){var w=document.getElementById('phw');if(!w)return;var im=w.querySelectorAll('.pi'),bt=w.querySelectorAll('.ph-tabs button'),cur=0,t=null,user=false,n=im.length/2,fin=false;
+window.__phBusy=function(){return !user&&!fin};
+function go(i){cur=i;im.forEach(function(x,k){x.classList.toggle('on',+x.dataset.k===i)});bt.forEach(function(x,k){x.classList.toggle('on',k===i)})}
+bt.forEach(function(b){b.addEventListener('click',function(){user=true;clearInterval(t);go(+b.dataset.i)})});
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)t=setInterval(function(){if(user)return;if(cur===n-1)fin=true;go((cur+1)%n)},1600);})();
+
+(function(){var f=document.querySelector('.fan');if(!f||!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){f.classList.add('spread')},350)}else{f.classList.remove('spread')}})},{threshold:.55}).observe(f);})();
+
+/* autoplay: the page moves on by itself (scene beats, sections, gallery); any wheel/touch/key/click pauses it for a few seconds, or press the button to stop it */
+(function(){
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var lastUser=0,lastStep=Date.now(),off=false,DW_SCENE=1200,DW_BUL=1000,DW_FREE=1000,IDLE=5000;
+['wheel','touchstart','keydown','mousedown'].forEach(function(ev){addEventListener(ev,function(){lastUser=Date.now()},{passive:true,capture:true})});
+function go(y){scrollTo({top:y,behavior:'smooth'})}
+var lastAnim=Date.now(),busySince=0;
+function inView(el){var r=el.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight}
+function animBusy(){var busy=false;try{document.getAnimations().forEach(function(an){if(an.playState!=='running')return;var t=an.effect&&an.effect.getComputedTiming&&an.effect.getComputedTiming();if(!t||t.iterations===Infinity)return;var el=an.effect.target;if(el&&el.getBoundingClientRect&&inView(el))busy=true})}catch(e){}return busy}
+function groups(){var out=[],vh=innerHeight;
+ [].slice.call(document.querySelectorAll('header.hero,section.cs')).forEach(function(sec){if(sec.closest('.scn')||sec.classList.contains('scn'))return;
+  var col=sec.querySelector(':scope > .col')||sec,kids=[].slice.call(col.children).filter(function(k){return k.offsetHeight>0});
+  var cur=null;kids.forEach(function(k){var r=k.getBoundingClientRect(),t=r.top+scrollY,bt=r.bottom+scrollY;
+   if(cur&&bt-cur.t<=vh*.85){cur.b=bt}else{if(cur)out.push(cur);cur={t:t,b:bt}}});if(cur)out.push(cur)});
+ return out.map(function(g){var h=g.b-g.t;return h>vh*.9?g.t-70:g.t+h/2-vh/2})}
+function nextTarget(from){var best=null;
+ groups().forEach(function(y){if(y>from+120&&(best===null||y<best))best=y});
+ [].slice.call(document.querySelectorAll('.scn')).forEach(function(sc){var y=sc.querySelector('.scene').getBoundingClientRect().top+scrollY;if(y>from+24&&(best===null||y<best))best=y});
+ return best}
+function heroBusy(){var w=document.getElementById('phw');return w&&window.__phBusy&&window.__phBusy()&&inView(w)}
+function tick(){
+ var now=Date.now();if(off||document.hidden)return;
+ if(animBusy()){if(!busySince)busySince=now;if(now-busySince<6000)lastAnim=now}else busySince=0;
+ if(now-lastUser<IDLE)return;
+ if(document.querySelector('.lb:not([hidden])'))return;
+ if(now-lastAnim<1500)return;
+ if(heroBusy())return;
+ var a=window.__sc&&window.__sc.active();
+ var dw=a?(a.sc.querySelector('.ind')?DW_BUL:DW_SCENE):DW_FREE;if(now-lastStep<dw)return;
+ var g=document.getElementById('product');
+ if(g&&window.__galBusy&&window.__galBusy()){var gr=g.getBoundingClientRect();if(gr.top<innerHeight*.5&&gr.bottom>innerHeight*.5)return}
+ var maxY=document.documentElement.scrollHeight-innerHeight;
+ if(scrollY>=maxY-4)return;
+ var target=null;
+ if(a){var st=window.__sc.stopsFor(a.sc)||[.25,.6,.98],total=a.r.height-innerHeight,p=Math.max(0,Math.min(1,-a.r.top/total));
+  for(var i=0;i<st.length;i++){if(st[i]>p+.012){target=a.r.top+scrollY+st[i]*total;break}}
+  if(target===null)target=nextTarget(a.r.top+scrollY+total)}
+ else{target=nextTarget(scrollY)}
+ if(target===null)target=maxY;
+ target=Math.min(target,maxY);lastStep=now;go(target)}
+setInterval(tick,400);
+})();
+</script>
+<script>
+/* handoff map + case tabs: all text is already in the DOM (with data-en), so the language switch keeps working */
+(function(){
+function pick(box,btnSel,paneSel,i){box.querySelectorAll(btnSel).forEach(function(b){b.classList.toggle('on',+b.dataset.i===i)});box.querySelectorAll(paneSel).forEach(function(p){p.classList.toggle('on',+p.dataset.i===i)})}
+var map=document.getElementById('lqmap');
+if(map){var root=map.closest('.lq');var panel=root.querySelector('.lq-panel');
+ map.querySelectorAll('.lq-n').forEach(function(b){b.addEventListener('click',function(){pick(root,'.lq-n','.lq-d',+b.dataset.i);if(panel){panel.classList.remove('flash');void panel.offsetWidth;panel.classList.add('flash')}})});
+ /* when the map scrolls into view: bounce the buttons in once, then pulse the first unvisited one as a hint */
+ var played=false;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting||played)return;played=true;io.disconnect();
+   var btns=map.querySelectorAll('.lq-n');btns.forEach(function(b){b.classList.add('bounce')});
+   setTimeout(function(){btns.forEach(function(b){b.classList.remove('bounce')});var h=map.querySelector('.lq-n:not(.on)');if(h)h.classList.add('hint');setTimeout(function(){if(h)h.classList.remove('hint')},3400)},900)})},{threshold:.35});
+ io.observe(map);
+}
+var tabs=document.getElementById('lqtabs');
+if(tabs){var box=tabs.closest('.lq');tabs.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){pick(box,'#lqtabs button','.lq-c',+b.dataset.i)})})}
+})();
+</script>
+</body></html>
