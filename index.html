@@ -6,7 +6,7 @@
     <meta name="description" content="Sihun Wang, AI Agent Engineer. Experience in Agentic RAG, LLM evaluation, HITL, and data pipelines." />
     <meta name="theme-color" content="#ffffff" />
     <title>Sihun Wang | AI Agent Engineer</title>
-    <link rel="stylesheet" href="./styles.css?v=final101" />
+    <link rel="stylesheet" href="./styles.css?v=final102" />
     <script src="./app.js?v=final61" defer></script>
   </head>
   <body>
@@ -15,6 +15,16 @@
 <div class="s3h">Work</div><a class="s3" href="#projects" data-s="projects">Projects</a><a class="s3 sub" href="./health-agent/">Health Coach Multi-Agent</a><a class="s3 sub" href="#proj-l10n">L10n Quality Agent</a>
 <div class="s3h">More</div><a class="s3" href="#skills" data-s="skills">Skills</a><a class="s3" href="#recognition" data-s="recognition">Contributions and Awards</a><a class="s3" href="https://github.com/sihunwang-skala" target="_blank" rel="noreferrer">GitHub</a></aside>
 <script>(function(){var L=[].slice.call(document.querySelectorAll('.side3 a[data-s]'));var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){L.forEach(function(a){a.classList.toggle('on',a.dataset.s===e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});L.forEach(function(a){var t=document.getElementById(a.dataset.s);if(t)io.observe(t)})})();</script>
+<script>/* collapsible sidebar: each group heading (Profile / Work / More) and the Projects sub-list toggle; the state is remembered */
+(function(){var side=document.querySelector('.side3');if(!side)return;var KEY='portfolio-side-groups',st={};try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function bind(head,body,key,label){var open=st[key]!==false;function set(o,keep){open=o;body.hidden=!o;head.setAttribute('aria-expanded',String(o));if(!keep){st[key]=o;save()}}
+head.setAttribute('role','button');head.setAttribute('tabindex','0');head.setAttribute('aria-label',label);head.addEventListener('click',function(e){if(e.target.closest('a'))return;set(!open)});
+head.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();set(!open)}});set(open,true)}
+[].slice.call(side.querySelectorAll('.s3h')).forEach(function(h){var g=document.createElement('div');g.className='s3g';var n=h.nextSibling,items=[];while(n&&!(n.nodeType===1&&n.classList.contains('s3h'))){items.push(n);n=n.nextSibling}
+h.parentNode.insertBefore(g,n);items.forEach(function(x){g.appendChild(x)});bind(h,g,'g-'+h.textContent.trim().toLowerCase(),h.textContent.trim()+' 접기/펼치기')});
+var pr=side.querySelector('a.s3[data-s=projects]');if(pr){var subs=[].slice.call(side.querySelectorAll('a.s3.sub'));if(subs.length){var row=document.createElement('div');row.className='s3row';pr.parentNode.insertBefore(row,pr);row.appendChild(pr);
+var t=document.createElement('button');t.type='button';t.className='s3t';row.appendChild(t);var box=document.createElement('div');box.className='s3sub';row.parentNode.insertBefore(box,row.nextSibling);subs.forEach(function(a){box.appendChild(a)});bind(t,box,'projects-sub','Projects 하위 항목 접기/펼치기')}}})();</script>
 
     <a class="skip-link" href="#main" data-i18n="skip">본문으로 이동</a>
 

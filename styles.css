@@ -844,3 +844,13 @@ html[data-theme=dark] .side-toggle{background:#1e293b;border-color:#64748b;color
 /* Keywords: neon highlighter instead of bold or larger text. */
 strong.keyword { font-weight:inherit; color:#101828; font-size:inherit; line-height:inherit; padding:.05em .25em; border-radius:.2em; background:#f4ff3a; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
 html[data-theme="dark"] strong.keyword { background:#e4ff1a; color:#101828; }
+/* collapsible sidebar groups + Projects sub-list */
+.side3 .s3h{display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;border-radius:6px}
+.side3 .s3h::after,.side3 .s3t::before{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .18s ease;margin-right:.3rem;flex:0 0 auto}
+.side3 .s3h[aria-expanded=false]::after,.side3 .s3t[aria-expanded=false]::before{transform:rotate(-45deg)}
+.side3 .s3h:hover,.side3 .s3h:focus-visible{color:#667085;outline:0}
+.side3 .s3g,.side3 .s3sub{display:flex;flex-direction:column;gap:.15rem}
+.side3 .s3g[hidden],.side3 .s3sub[hidden]{display:none}
+.side3 .s3row{display:flex;align-items:center;gap:.1rem}.side3 .s3row a.s3{flex:1}
+.side3 .s3t{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;padding:0;border:0;border-radius:6px;background:transparent;color:#98a2b3;cursor:pointer}
+.side3 .s3t:hover,.side3 .s3t:focus-visible{background:var(--surface);color:var(--blue);outline:0}
