@@ -38,7 +38,9 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .hero h1 { min-height:1em; margin:.25rem 0 .8rem; font-size:clamp(2.8rem,6vw,4.8rem); letter-spacing:-.06em; line-height:1; }
 .summary { max-width:650px; margin:0; color:#344054; font-size:1rem; line-height:1.6; }
 .reveal-text { display:inline; }
-.intro-char { display:inline; opacity:0; animation:text-reveal .22s ease-out both; animation-delay:calc(var(--reveal-index) * 12ms); }
+.intro-char { display:inline; opacity:0; animation:text-reveal .22s ease-out both; animation-delay:calc(var(--reveal-index) * 12ms); animation-play-state:paused; }
+/* The letter reveal waits until the text scrolls into view (class added by app.js), so it plays while the visitor is looking at it. */
+.reveal-play .intro-char { animation-play-state:running; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 .quick-links { position:static; display:flex; flex-direction:column; align-items:flex-start; gap:.55rem; margin:.8rem 0 0; }
 .quick-link-row { display:flex; flex-wrap:wrap; gap:.55rem; }
@@ -839,4 +841,4 @@ html[data-theme=dark] .side-toggle{background:#1e293b;border-color:#64748b;color
 .pvis[data-card=health] .ph3::after{content:"";position:absolute;left:50%;bottom:7px;width:34%;height:4px;border-radius:2px;background:rgba(17,24,39,.6);transform:translateX(-50%);z-index:2;pointer-events:none}
 
 /* Text emphasis follows the surrounding theme color. */
-strong.keyword { font-weight:700; color:inherit; }
+strong.keyword { font-weight:700; color:inherit; font-size:1.5em; line-height:1; }

@@ -232,7 +232,7 @@ const keywordTerms = [
 ].sort((a, b) => b.length - a.length);
 const keywordPattern = new RegExp(
   "(?<![A-Za-z0-9])(?:" +
-  keywordTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\function renderIntroText() {")).join("|") +
+  keywordTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") +
   ")(?![A-Za-z0-9])", "gi"
 );
 function keywordFragment(value) {
@@ -258,6 +258,21 @@ function highlightBodyKeywords() {
   ).forEach((element) => element.replaceChildren(keywordFragment(element.textContent)));
 }
 
+// Run an effect only when its element is on screen: observe it and add .reveal-play the first time it becomes visible.
+const revealObserver = "IntersectionObserver" in window
+  ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("reveal-play");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.6, rootMargin: "0px 0px -20% 0px" })  // must be well inside the screen, not at its bottom edge
+  : null;
+function armReveal(element) {
+  if (!element) return;
+  if (!revealObserver) { element.classList.add("reveal-play"); return; }
+  if (!element.classList.contains("reveal-play")) revealObserver.observe(element);
+}
 function renderIntroText() {
   const target = document.querySelector("[data-reveal-text]");
   const value = copy[currentLanguage]?.summary || "";
@@ -282,6 +297,7 @@ function renderIntroText() {
     });
     node.replaceWith(fragment);
   });
+  armReveal(target);
 }
 
 const themeToggle = document.querySelector("[data-theme-toggle]");
@@ -363,6 +379,7 @@ function revealRankingLink() {
       });
     };
     walk(link);
+    armReveal(link);
   });
 }
 
@@ -548,8 +565,23 @@ resumeSubmitButton?.addEventListener("click", async () => {
     let index = Math.max(0, list.findIndex((img) => img.classList.contains("on")));
     list.forEach((img, k) => img.classList.toggle("on", k === index));
     if (reduce || list.length < 2) return;
+    let onScreen = false;
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const entering = entry.isIntersecting && !onScreen;
+          onScreen = entry.isIntersecting;
+          if (!entering) return;
+          const current = visible();
+          index = 0;
+          current.forEach((img, k) => img.classList.toggle("on", k === index));
+        });
+      }, { threshold: 0.4 }).observe(root);
+    } else {
+      onScreen = true;
+    }
     setInterval(() => {
-      if (document.hidden) return;
+      if (document.hidden || !onScreen) return;
       const current = visible();
       if (current.length < 2) return;
       index = (index + 1) % current.length;
