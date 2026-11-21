@@ -431,3 +431,23 @@ resumeSubmitButton?.addEventListener("click", async () => {
     resumeSubmitButton.disabled = false;
   }
 });
+
+/* project card visuals: keep cycling the screenshots while the card is on screen */
+(function cycleProjectVisuals() {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("[data-cycle]").forEach((root) => {
+    const visible = () => Array.from(root.querySelectorAll("img")).filter((img) => getComputedStyle(img).display !== "none");
+    let list = visible();
+    if (!list.length) return;
+    let index = Math.max(0, list.findIndex((img) => img.classList.contains("on")));
+    list.forEach((img, k) => img.classList.toggle("on", k === index));
+    if (reduce || list.length < 2) return;
+    setInterval(() => {
+      if (document.hidden) return;
+      const current = visible();
+      if (current.length < 2) return;
+      index = (index + 1) % current.length;
+      current.forEach((img, k) => img.classList.toggle("on", k === index));
+    }, 3200);
+  });
+})();
