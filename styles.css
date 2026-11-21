@@ -841,9 +841,12 @@ html[data-theme=dark] .side-toggle{background:#1e293b;border-color:#64748b;color
 .pvis[data-card=health] .ph3::after{content:"";position:absolute;left:50%;bottom:7px;width:34%;height:4px;border-radius:2px;background:rgba(17,24,39,.6);transform:translateX(-50%);z-index:2;pointer-events:none}
 
 /* Text emphasis follows the surrounding theme color. */
-/* Keywords: neon highlighter instead of bold or larger text. */
-strong.keyword { font-weight:inherit; color:#101828; font-size:inherit; line-height:inherit; padding:.05em .25em; border-radius:.2em; background:#f4ff3a; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
-html[data-theme="dark"] strong.keyword { background:#e4ff1a; color:#101828; }
+/* Keywords: neon highlighter that sweeps in left-to-right when it scrolls into view. */
+strong.keyword { font-weight:inherit; color:#101828; font-size:inherit; line-height:inherit; padding:.05em .25em; border-radius:.2em; background:linear-gradient(#f4ff3a,#f4ff3a) no-repeat left center / 100% 100%; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+html.hl-js strong.keyword { background-size:0% 100%; transition:background-size .7s cubic-bezier(.22,.7,.2,1); transition-delay:var(--hl-delay,0s); }
+html.hl-js strong.keyword.hl-on { background-size:100% 100%; }
+html[data-theme="dark"] strong.keyword { background-image:linear-gradient(#e4ff1a,#e4ff1a); color:#101828; }
+@media (prefers-reduced-motion:reduce) { html.hl-js strong.keyword { background-size:100% 100%; transition:none; } }
 /* collapsible sidebar groups + Projects sub-list */
 .side3 .s3h{display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;border-radius:6px}
 .side3 .s3h::after,.side3 .s3t::before{content:"";width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .18s ease;margin-right:.3rem;flex:0 0 auto}
