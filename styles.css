@@ -57,6 +57,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .hero-minors-label { color:#475467; font-weight:700; }
 
 .resume-section { padding-block:4.7rem; border-bottom:1px solid var(--line); }
+#experience { border-bottom:0; }
 #recognition { border-bottom:0; }
 .section-title { display:grid; grid-template-columns:2.8rem 1fr; margin-bottom:2.3rem; }
 .section-title>span { padding-top:.25rem; color:#667085; font-family:ui-monospace,monospace; font-size:.8rem; }

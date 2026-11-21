@@ -262,10 +262,37 @@ function updateSlideLanguage(language) {
     warmSlideImages(collection);
   });
 }
+function revealRankingLink() {
+  // Same letter-by-letter reveal as the intro paragraph; skips letters that are already wrapped.
+  document.querySelectorAll(".ranking-google-link").forEach((link) => {
+    let index = 0;
+    const walk = (node) => {
+      Array.from(node.childNodes).forEach((child) => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const frag = document.createDocumentFragment();
+          Array.from(child.textContent).forEach((character) => {
+            if (character === " ") { frag.appendChild(document.createTextNode(" ")); return; }
+            const letter = document.createElement("span");
+            letter.className = "intro-char";
+            letter.style.setProperty("--reveal-index", String(index++));
+            letter.textContent = character;
+            frag.appendChild(letter);
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === Node.ELEMENT_NODE && !child.classList.contains("intro-char")) {
+          walk(child);
+        }
+      });
+    };
+    walk(link);
+  });
+}
+
 function updateRankingLink(language) {
   const url = copy[language]?.googleRankingUrl;
   if (!url) return;
   document.querySelectorAll(".ranking-google-link").forEach((link) => { link.href = url; });
+  revealRankingLink();
 }
 
 function setLanguage(language) {
