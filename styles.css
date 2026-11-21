@@ -36,7 +36,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .hero-copy { display:flex; flex-direction:column; justify-content:center; width:100%; min-height:14rem; }
 .job-title { margin:0; color:var(--blue); font-size:.88rem; font-weight:800; letter-spacing:.06em; }
 .hero h1 { min-height:1em; margin:.25rem 0 .8rem; font-size:clamp(2.8rem,6vw,4.8rem); letter-spacing:-.06em; line-height:1; }
-.summary { max-width:650px; margin:0; color:#344054; font-size:1rem; line-height:1.6; }
+.summary { white-space:pre-line; max-width:650px; margin:0; color:#344054; font-size:1rem; line-height:1.6; }
 .reveal-text { display:inline; }
 .intro-char { display:inline; opacity:0; animation:text-reveal .22s ease-out both; animation-delay:calc(var(--reveal-index) * 12ms); animation-play-state:paused; }
 /* The letter reveal waits until the text scrolls into view (class added by app.js), so it plays while the visitor is looking at it. */
