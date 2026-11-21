@@ -478,3 +478,21 @@ resumeSubmitButton?.addEventListener("click", async () => {
     }, 1300);
   });
 })();
+
+// Sidebar toggle: remembers the choice per visitor (falls back silently if storage is blocked).
+(function () {
+  const sideToggle = document.querySelector(".side-toggle");
+  if (!sideToggle) return;
+  const applySide = (collapsed) => {
+    document.body.classList.toggle("side-collapsed", collapsed);
+    sideToggle.setAttribute("aria-pressed", String(!collapsed));
+  };
+  let saved = null;
+  try { saved = localStorage.getItem("portfolio-side-collapsed"); } catch (e) {}
+  applySide(saved === "1");
+  sideToggle.addEventListener("click", () => {
+    const collapsed = !document.body.classList.contains("side-collapsed");
+    try { localStorage.setItem("portfolio-side-collapsed", collapsed ? "1" : "0"); } catch (e) {}
+    applySide(collapsed);
+  });
+})();
