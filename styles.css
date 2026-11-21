@@ -828,3 +828,7 @@ html[data-theme=dark] .side3 a.s3:hover,html[data-theme=dark] .side3 a.s3.on{col
 .side-toggle{position:fixed;top:.9rem;left:172px;z-index:40;display:none;width:30px;height:30px;align-items:center;justify-content:center;padding:0;border:1px solid var(--line);border-radius:7px;background:var(--bg,#fff);color:var(--muted);cursor:pointer;transition:left .2s ease}
 .side-toggle:hover,.side-toggle:focus-visible{color:var(--blue);border-color:var(--blue)}
 @media(min-width:1100px){.side-toggle{display:inline-flex}body.side-collapsed .side-toggle{left:12px}body.side-collapsed .side3{display:none!important}body.side-collapsed{padding-left:0!important}}
+/* sidebar toggle: clearly visible in both themes (it was hidden under the sticky header, same z-index, and dark-on-dark in the dark theme) */
+.side-toggle{z-index:60;width:36px;height:36px;border-color:#667085;color:#111;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+html[data-theme=dark] .side-toggle{background:#1e293b;border-color:#64748b;color:#f1f5f9;box-shadow:0 2px 10px rgba(0,0,0,.5)}
+.side-toggle:hover,.side-toggle:focus-visible{background:var(--blue);border-color:var(--blue);color:#fff}
