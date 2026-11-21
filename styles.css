@@ -837,3 +837,6 @@ html[data-theme=dark] .side-toggle{background:#1e293b;border-color:#64748b;color
 .pvis[data-card=health] .ph3{border-bottom:7px solid #16161f;border-radius:34px}
 .pvis[data-card=health] .ph3 img{height:100%;object-fit:cover;object-position:top}
 .pvis[data-card=health] .ph3::after{content:"";position:absolute;left:50%;bottom:7px;width:34%;height:4px;border-radius:2px;background:rgba(17,24,39,.6);transform:translateX(-50%);z-index:2;pointer-events:none}
+
+/* Text emphasis follows the surrounding theme color. */
+strong.keyword { font-weight:700; color:inherit; }
