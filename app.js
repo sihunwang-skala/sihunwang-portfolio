@@ -1,7 +1,7 @@
 const copy = {
   ko: {
     skip:"본문으로 이동", name:"Sihun Wang", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술", navRecognition:"수상 및 기여",
-    summary:"한국에서 반장을 비롯한 학급 임원으로 수년간 활동한 뒤, 미국으로 유학을 떠났습니다. 미국 수학경시대회 조지아주 지역 대표로 두 차례 선정되었습니다.\n\n이후 미국 인공지능 분야 최상위권 대학인 일리노이대와 조지아공대에 진학해 AI를 공부했습니다. 두 대학은 U.S. News 인공지능 분야 순위에서 각각 미국 내 6위와 5위에 올라 있습니다.\n\n미국과 한국의 AI 연구실과 기업에서 근무하며 AI 모델링부터 AI Agent 개발까지 경험을 쌓았고, 현재는 AI Agent 설계와 개발에 주력하고 있습니다. 앞으로는 Multi-Agent System과 Agent-to-Agent(A2A) Communication을 깊이 탐구하고, 개인화 AI Agent 기술을 연구하고 개발하고자 합니다.",
+    summary:"한국에서 반장을 비롯한 학급 임원으로 수년간 활동한 뒤, 미국으로 유학을 떠났습니다. 미국 수학경시대회 조지아주 지역 대표로 두 차례 선정되었습니다.\n\n이후 미국 인공지능 분야 최상위권 대학인 일리노이대(UIUC)와 조지아공대(Georgia Tech)에 진학해 AI를 공부했습니다. 두 대학은 U.S. News 인공지능 분야 순위에서 각각 미국 내 6위와 5위에 올라 있습니다.\n\n미국과 한국의 AI 연구실과 기업에서 근무하며 AI 모델링부터 AI Agent 개발까지 경험을 쌓았고, 현재는 AI Agent 설계와 개발에 주력하고 있습니다. 앞으로는 Multi-Agent System과 Agent-to-Agent(A2A) Communication을 깊이 탐구하고, 개인화 AI Agent 기술을 연구하고 개발하고자 합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술", viewRecognition:"수상 및 기여",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무", previousScreen:"이전 화면", nextScreen:"다음 화면",
     experienceTitle:"경력", experienceSubtitle:"최신순",
