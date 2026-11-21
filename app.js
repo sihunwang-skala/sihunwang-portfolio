@@ -1,7 +1,7 @@
 const copy = {
   ko: {
     skip:"본문으로 이동", name:"Sihun Wang", navExperience:"경력", navEducation:"학력", navProjects:"프로젝트", navSkills:"기술", navRecognition:"수상 및 기여",
-    summary:"한국에서 반장을 비롯한 학급 임원으로 수년간 활동한 뒤, 미국으로 유학을 떠났습니다.\n\n미국 수학경시대회 조지아주 지역 대표로 두 차례 선정되었습니다.\n\n이후 미국 인공지능 분야 최상위권 대학인 University of Illinois Urbana-Champaign(일리노이대)와 Georgia Institute of Technology(조지아공대)에 진학해 AI를 공부했습니다. 두 대학은 U.S. News 인공지능 분야 순위에서 각각 미국 내 6위와 5위에 올라 있습니다.\n\n미국과 한국의 AI 연구실과 기업에서 근무하며 AI 모델링부터 AI Agent 개발까지 경험을 쌓았고, 현재는 AI Agent 설계와 개발에 주력하고 있습니다. 앞으로는 Multi-Agent System과 Agent-to-Agent(A2A) Communication을 깊이 탐구하고, 개인화 AI Agent 기술을 연구하고 개발하고자 합니다.",
+    summary:"한국에서 반장을 비롯한 학급 임원으로 수년간 활동한 뒤, 미국으로 유학을 떠났습니다. 미국 수학경시대회 조지아주 지역 대표로 두 차례 선정되었습니다.\n\n이후 미국 인공지능 분야 최상위권 대학인 University of Illinois Urbana-Champaign(일리노이대)와 Georgia Institute of Technology(조지아공대)에 진학해 AI를 공부했습니다. 두 대학은 U.S. News 인공지능 분야 순위에서 각각 미국 내 6위와 5위에 올라 있습니다.\n\n미국과 한국의 AI 연구실과 기업에서 근무하며 AI 모델링부터 AI Agent 개발까지 경험을 쌓았고, 현재는 AI Agent 설계와 개발에 주력하고 있습니다. 앞으로는 Multi-Agent System과 Agent-to-Agent(A2A) Communication을 깊이 탐구하고, 개인화 AI Agent 기술을 연구하고 개발하고자 합니다.",
     viewExperience:"경력", viewEducation:"학력", viewProjects:"프로젝트", viewSkills:"기술", viewRecognition:"수상 및 기여",
     locationLabel:"위치", educationLabel:"학력", focusLabel:"관심 직무", previousScreen:"이전 화면", nextScreen:"다음 화면",
     experienceTitle:"경력", experienceSubtitle:"최신순",
@@ -22,7 +22,7 @@ const copy = {
     iea5:"Standard RAG, Agentic RAG, Single-Agent, Multi-Agent 등 Architecture별 성능 비교를 통한 Agent 설계 방식 검증",
     ta1:"경희대학교 대학원 Federated Learning 교과목에서 수강생 21명 대상 강의 및 프로그래밍 실습 지원",
     ta2:"Machine Learning, Deep Learning, Federated Learning 핵심 개념과 구현 방법을 설명하는 실습 4회 설계 및 진행",
-    aibm1:"세계에서 가장 작은 Neural Network 모델 개발을 목표로 Neural Network Architecture, Layer 구성 및 Parameter 구조 분석",
+    aibm1:"세계에서 가장 작은 Artificial Neural Network 모델 개발을 목표로 Deep Learning Architecture, Layer 구성 및 Parameter 구조 분석",
     aibm2:"여러 인공지능 모델의 구조와 Parameter 규모를 비교하여 초경량화 가능성 연구",
     aibm3:"경량화 Neural Network에 Federated Learning을 적용하고 분산 데이터 환경에서의 학습 가능성 검증",
     aibm4:"경량화 CNN 모델에서 98% 정확도 달성 및 서울 Federated Learning Forum에서 발표",
@@ -38,7 +38,7 @@ const copy = {
   },
   en: {
     skip:"Skip to content", name:"Sihun Wang", navExperience:"Experience", navEducation:"Education", navProjects:"Projects", navSkills:"Skills", navRecognition:"Contributions and Awards",
-    summary:"Before moving to the United States to study, I served in class leadership roles in Korea for several years, including as class president.\n\nI was selected twice as a regional representative from Georgia for a U.S. mathematics competition.\n\nI went on to study AI at the University of Illinois Urbana-Champaign and the Georgia Institute of Technology, two of the leading U.S. universities in AI. Their graduate AI programs rank No. 6 and No. 5 nationally, respectively, according to U.S. News & World Report.\n\nThrough research and industry roles in the United States and South Korea, I have gained experience spanning AI modeling and AI agent development. I now focus on designing and developing AI agents, with a particular interest in multi-agent systems, agent-to-agent (A2A) communication, and personalized AI agent technologies.",
+    summary:"Before moving to the United States to study, I served in class leadership roles in Korea for several years, including as class president. I was selected twice as a regional representative from Georgia for a U.S. mathematics competition.\n\nI went on to study AI at the University of Illinois Urbana-Champaign and the Georgia Institute of Technology, two of the leading U.S. universities in AI. Their graduate AI programs rank No. 6 and No. 5 nationally, respectively, according to U.S. News & World Report.\n\nThrough research and industry roles in the United States and South Korea, I have gained experience spanning AI modeling and AI agent development. I now focus on designing and developing AI agents, with a particular interest in multi-agent systems, agent-to-agent (A2A) communication, and personalized AI agent technologies.",
     viewExperience:"Experience", viewEducation:"Education", viewProjects:"Projects", viewSkills:"Skills", viewRecognition:"Contributions and Awards",
     locationLabel:"Location", educationLabel:"Education", focusLabel:"Target roles", previousScreen:"Previous screen", nextScreen:"Next screen",
     experienceTitle:"Experience", experienceSubtitle:"Reverse chronological",
@@ -59,7 +59,7 @@ const copy = {
     iea5:"Validated agent design approaches by comparing architectures including Standard RAG, Agentic RAG, Single-Agent, and Multi-Agent.",
     ta1:"Supported lectures and programming labs for 21 students in a graduate Federated Learning course at Kyung Hee University.",
     ta2:"Designed and delivered four lab sessions explaining core concepts and implementation methods in Machine Learning, Deep Learning, and Federated Learning.",
-    aibm1:"Analyzed neural network architectures, layer configurations, and parameter structures with the goal of developing the world’s smallest neural network model.",
+    aibm1:"Analyzed deep learning architectures, layer configurations, and parameter structures with the goal of developing the world’s smallest artificial neural network model.",
     aibm2:"Compared the structures and parameter counts of multiple AI models to investigate opportunities for ultra-lightweight models.",
     aibm3:"Applied Federated Learning to lightweight neural networks and validated training feasibility in distributed-data environments.",
     aibm4:"Achieved 98% accuracy with a lightweight CNN model and presented the results at the Federated Learning Forum in Seoul.",
@@ -215,6 +215,7 @@ const elements = document.querySelectorAll("[data-i18n]");
 
 // Emphasize selected technical terms and results without changing the copy.
 const keywordTerms = [
+  "execution logs", "실행 로그", "Agent", "Agents",
   "성능 비교", "comparing architectures",
   "Pipeline", "Pipelines", "자동화", "Automation", "Automated",
   "자동 평가 지표", "automated metrics", "PoC",
@@ -246,7 +247,7 @@ const keywordPattern = new RegExp(
   keywordTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") +
   ")(?![A-Za-z0-9])", "gi"
 );
-function keywordFragment(value, limit = 5) {
+function keywordFragment(value, limit = Infinity) {
   const fragment = document.createDocumentFragment();
   let cursor = 0;
   let count = 0;
@@ -288,7 +289,7 @@ function renderIntroText() {
   const target = document.querySelector("[data-reveal-text]");
   const value = copy[currentLanguage]?.summary || "";
   if (!target) return;
-  target.replaceChildren(keywordFragment(value, 5));
+  target.replaceChildren(keywordFragment(value));
   let index = 0;
   const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
   const textNodes = [];
