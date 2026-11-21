@@ -87,7 +87,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .entry-links a { color:var(--blue); font-size:.82rem; font-weight:700; text-underline-offset:.2rem; }
 
 .education-list { display:grid; gap:.8rem; }
-.ranking-note { display:block; margin:0 0 1rem; color:#344054; font-size:1.2rem; font-weight:800; text-align:left; }
+.ranking-note { display:block; margin:0 0 1rem; color:#344054; font-size:1.8rem; font-weight:800; text-align:left; }
 .ranking-note span { color:var(--blue); font-weight:900; }
 .ranking-note strong { color:var(--ink); }
 .ranking-note a strong { color:inherit; }
@@ -841,4 +841,6 @@ html[data-theme=dark] .side-toggle{background:#1e293b;border-color:#64748b;color
 .pvis[data-card=health] .ph3::after{content:"";position:absolute;left:50%;bottom:7px;width:34%;height:4px;border-radius:2px;background:rgba(17,24,39,.6);transform:translateX(-50%);z-index:2;pointer-events:none}
 
 /* Text emphasis follows the surrounding theme color. */
-strong.keyword { font-weight:700; color:inherit; font-size:1.5em; line-height:1; }
+/* Keywords: neon highlighter instead of bold or larger text. */
+strong.keyword { font-weight:inherit; color:#101828; font-size:inherit; line-height:inherit; padding:.05em .25em; border-radius:.2em; background:#f4ff3a; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+html[data-theme="dark"] strong.keyword { background:#e4ff1a; color:#101828; }
