@@ -609,9 +609,13 @@ html.deck .ind li.on{opacity:1;font-weight:700}
 /* invite a click: unvisited map buttons keep a gentle nudge and the hint stays visible */
 .lq-n:not(.seen){animation:lqNudge 2.4s ease-in-out infinite}
 .lq-n.seen{animation:none}
-@keyframes lqNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes lqNudge{0%,55%,100%{transform:translateY(0) scale(1)}25%{transform:translateY(-9px) scale(1.04)}40%{transform:translateY(0) scale(1)}47%{transform:translateY(-3px) scale(1.01)}}
 .lq-hint{display:flex;align-items:center;gap:8px;font:700 14px/1.4 "Noto Sans KR",sans-serif;color:var(--ac);margin:4px 0 12px}
 .lq-hint i{font-style:normal;display:inline-block;animation:lqNudge 1.6s ease-in-out infinite}
+/* decision scene: larger screenshots in the fan */
+.fan{height:480px;max-width:600px}
+.fc{width:400px;margin:-160px 0 0 -200px;transform:translateX(calc((var(--i) - 1) * var(--p,1) * 70px)) translateY(calc((var(--i) - 1) * var(--p,1) * 18px)) rotate(calc((var(--i) - 1) * var(--p,1) * 5deg))}
+.fc img{aspect-ratio:16/11}
 /* hero screenshots: wide browser window below the text, so the web app is readable */
 .hero-grid{grid-template-columns:minmax(0,1fr)!important}
 .ph-wrap{max-width:1040px;width:100%;margin:28px auto 0}
@@ -768,7 +772,7 @@ html[data-theme=dark] .lq-s.agent .lq-k{background:#1d2f47;color:#a6c7ef}html[da
 <h2 class="rv" data-en="&lt;span class=&#x27;mk&#x27;&gt;The &lt;mark class=kw&gt;Agent&lt;/mark&gt; chooses&lt;/span&gt;, &lt;span class=&#x27;mk&#x27;&gt;code decides&lt;/span&gt;"><span class='mk'><mark class=kw>Agent</mark>는 고르고</span>, <span class='mk'>코드가 정합니다</span></h2>
 <div class="team rv" aria-label="Workflow and its components"><span class="tnode sup" style="--i:0">QualityWorkflow</span><span class="tline"></span><div class="tagents"><span class="tn" style="--i:1">Translate</span><span class="tn" style="--i:2">MQM Evaluate</span><span class="tn" style="--i:3">Planner (Agent)</span><span class="tn" style="--i:4">Tools ×6</span><span class="tn" style="--i:5">Validate</span><span class="tn" style="--i:6">RunRecord</span></div></div>
 <p class="lead rv" data-en="The planner in &lt;code&gt;agent.py&lt;/code&gt; returns just a tool name and a reason (a planner chain, not a tool-calling agent). Whether to accept a candidate is decided by &lt;code&gt;validation.py&lt;/code&gt; and &lt;mark class=kw&gt;MQM&lt;/mark&gt; &lt;mark class=kw&gt;re-evaluation&lt;/mark&gt;, and &lt;code&gt;chains.py&lt;/code&gt; is the only place that talks to the model. This separation allows the system to record the &lt;b&gt;stage and reason&lt;/b&gt; for each stop as structured fields."><code>agent.py</code>의 Planner는 다음에 사용할 도구 한 개와 선택 이유만 반환합니다. Tool-calling <mark class=kw>Agent</mark>가 아닌 Planner Chain으로 구현했습니다. 후보 번역을 <mark class=kw>채택</mark>할지는 <code>validation.py</code>와 <mark class=kw>MQM</mark> <mark class=kw>재평가</mark>가 정하고, 모델과 통신하는 곳은 <code>chains.py</code>뿐입니다. 이 구조를 통해 <b>실행 단계와 처리 중단 사유</b>를 구조화된 필드에 기록할 수 있습니다.</p>
-<div class="rv"><div class="fig"><div class="imgbox"><img src="img/architecture.png" alt="LangChain chains and Python control architecture" style="display:block;width:100%;min-width:760px"></div>
+<div class="rv"><div class="fig"><div class="imgbox"><svg viewBox="0 0 1640 920" role="img" aria-label="LangChain chains and Python control architecture" style="display:block;width:100%;min-width:760px;height:auto;font-family:'Noto Sans KR',Inter,sans-serif"><defs><marker id="arc" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 z" fill="#111"/></marker></defs><rect x="20" y="24" width="300" height="50" rx="25" fill="#fbe9c9"/><text x="170" y="58" text-anchor="middle" font-size="26" font-weight="700" fill="#151515" data-en="Input · context">입력 · 컨텍스트</text><rect x="380" y="24" width="420" height="50" rx="25" fill="#d9e4f8"/><text x="590" y="58" text-anchor="middle" font-size="26" font-weight="700" fill="#151515" data-en="LangChain chains">LangChain 체인</text><rect x="880" y="24" width="360" height="50" rx="25" fill="#f5d4cf"/><text x="1060" y="58" text-anchor="middle" font-size="26" font-weight="700" fill="#151515" data-en="Python control · validation">Python 제어 · 검증</text><rect x="1320" y="24" width="300" height="50" rx="25" fill="#e4dcf0"/><text x="1470" y="58" text-anchor="middle" font-size="26" font-weight="700" fill="#151515" data-en="Human review · store">사람 검토 · 저장</text><rect x="20" y="120" width="300" height="250" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="20" y="120" width="22" height="250" rx="10" fill="#e9a23b"/><text x="181" y="187" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="Input · context">입력 · 컨텍스트</text><text x="181" y="237" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Source">원문</text><text x="181" y="269" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Target language">목표 언어·국가</text><text x="181" y="301" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Protected terms · TM">보호 용어 · TM</text><text x="181" y="333" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Glossary · DNE">용어집 · DNE</text><rect x="380" y="110" width="420" height="170" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="380" y="110" width="22" height="170" rx="10" fill="#3b6fd0"/><text x="601" y="171" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="Translate chain">번역 체인</text><text x="601" y="221" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Prompt → ChatOllama (Qwen)">Prompt → ChatOllama(Qwen)</text><text x="601" y="253" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="→ translation">→ 번역문</text><rect x="380" y="310" width="420" height="170" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="380" y="310" width="22" height="170" rx="10" fill="#3b6fd0"/><text x="601" y="371" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="MQM evaluation chain">MQM 평가 체인</text><text x="601" y="421" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Prompt → ChatOllama (Qwen)">Prompt → ChatOllama(Qwen)</text><text x="601" y="453" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="→ structured MQMResult">→ MQMResult 구조화 출력</text><rect x="380" y="510" width="420" height="170" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="380" y="510" width="22" height="170" rx="10" fill="#3b6fd0"/><text x="601" y="571" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="Planner chain">Planner 체인</text><text x="601" y="621" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Prompt → ChatOllama (Qwen)">Prompt → ChatOllama(Qwen)</text><text x="601" y="653" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="→ AgentPlan: one tool + reason">→ AgentPlan: 도구 1개 + 이유</text><rect x="380" y="710" width="420" height="170" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="380" y="710" width="22" height="170" rx="10" fill="#3b6fd0"/><text x="601" y="754" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="Revision chains ×6">수정 체인 ×6</text><text x="601" y="804" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="accuracy · terminology">accuracy · terminology</text><text x="601" y="836" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="spelling · grammar">spelling · grammar</text><text x="601" y="868" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="style · fluency">style · fluency</text><rect x="880" y="140" width="360" height="200" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="880" y="140" width="22" height="200" rx="10" fill="#c0392b"/><text x="1071" y="216" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="QualityWorkflow">QualityWorkflow</text><text x="1071" y="266" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="QwenAgent strategy">QwenAgent 전략 선택</text><text x="1071" y="298" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Attempt caps · Rollback">시도 상한 · Rollback</text><rect x="880" y="400" width="360" height="200" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="880" y="400" width="22" height="200" rx="10" fill="#c0392b"/><text x="1071" y="476" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="validation.py">validation.py</text><text x="1071" y="526" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Numbers · units · terms">숫자·단위·보호 용어</text><text x="1071" y="558" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Meta-comments · status">메타 주석 · 후보 검사</text><rect x="880" y="660" width="360" height="200" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="880" y="660" width="22" height="200" rx="10" fill="#c0392b"/><text x="1071" y="736" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="Acceptance rule">채택 조건</text><text x="1071" y="786" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Python checks pass">Python 검사 통과</text><text x="1071" y="818" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="+ MQM errors shrink">+ MQM 오류 감소</text><rect x="1320" y="250" width="300" height="260" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="1320" y="250" width="22" height="260" rx="10" fill="#7a5fb0"/><text x="1481" y="322" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="Human review">사람 검토 · 승인</text><text x="1481" y="372" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Approve · reject">승인 · 거부</text><text x="1481" y="404" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Edit manually">직접 수정</text><text x="1481" y="436" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="AI re-revise">AI 재수정</text><text x="1481" y="468" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="human_review">human_review</text><rect x="1320" y="600" width="300" height="210" rx="22" fill="#fff" stroke="#111" stroke-width="3"/><rect x="1320" y="600" width="22" height="210" rx="10" fill="#2a9d9d"/><text x="1481" y="664" text-anchor="middle" font-size="32" font-weight="700" fill="#151515" data-en="RunRecord JSON">RunRecord JSON</text><text x="1481" y="714" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="Result CSV">번역 결과 CSV</text><text x="1481" y="746" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="versions · attempts">versions · attempts</text><text x="1481" y="778" text-anchor="middle" font-size="25" font-weight="400" fill="#555" data-en="agent_decisions">agent_decisions</text><path d="M320 235 H350 V195 H380" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M800 195 H840 V215 H880" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M880 290 H840 V395 H800" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M590 280 V310" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M590 480 V510" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M590 680 V710" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M800 795 H840 V500 H880" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M1060 340 V400" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M1040 600 V660" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M1080 660 V600" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M1240 760 H1280 V380 H1320" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/><path d="M1470 510 V600" stroke="#111" stroke-width="4" fill="none" marker-end="url(#arc)"/></svg></div>
 <p class="cap" data-en="&lt;b&gt;Figure 2.&lt;/b&gt; Model calls via &lt;span class=&#x27;hl&#x27;&gt;LangChain chains (LCEL)&lt;/span&gt;; order, acceptance and validation in &lt;span class=&#x27;hl&#x27;&gt;Python code&lt;/span&gt;."><b>Figure 2.</b> 모델 호출은 <span class='hl'>LangChain 체인(LCEL)</span>, 실행 순서·<mark class=kw>채택</mark> 여부·검증은 <span class='hl'>Python 코드</span>.</p></div></div>
 <h3 class="grp rv" data-en="What every run records: where and why it got stuck">실행마다 남는 기록: 어디서, 왜 막혔는가</h3>
 <div class="cards rv">
@@ -813,6 +817,12 @@ html[data-theme=dark] .lq-s.agent .lq-k{background:#1d2f47;color:#a6c7ef}html[da
 <tr><th data-en="Repository">저장소</th><td><a href="https://github.com/sihunwang-skala/l10n-quality-agent" target="_blank" rel="noopener">github.com/sihunwang-skala/l10n-quality-agent</a></td></tr>
 </table></div></div></section>
 </main>
+<script>
+/* shared idle timer: auto-advancing screens move only after 3s without any mouse/key/scroll/touch input */
+window.__lastAct=Date.now();
+['mousemove','mousedown','keydown','wheel','touchstart','scroll'].forEach(function(ev){addEventListener(ev,function(){window.__lastAct=Date.now()},{passive:true,capture:true})});
+window.__due=function(key,ms){var n=Date.now(),L=(window.__adv=window.__adv||{});if(n-window.__lastAct<ms)return false;if(L[key]&&n-L[key]<ms)return false;L[key]=n;return true};
+</script>
 <script>
 (function(){
 var r=document.documentElement,L=function(){return r.getAttribute('lang')==='en'};
@@ -922,7 +932,7 @@ addEventListener('keydown',function(e){if(e.altKey||e.ctrlKey||e.metaKey||e.shif
 show(0);window.__galShow=show;
 ['click','keydown','touchstart'].forEach(function(ev){g.addEventListener(ev,function(){auto=false},true)});
 addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft')auto=false});
-if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(function(){if(!auto||document.querySelector('.lb:not([hidden])'))return;var r=g.getBoundingClientRect();if(r.top>innerHeight*.6||r.bottom<innerHeight*.4)return;show(cur+1)},1300);
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(function(){if(!auto||document.querySelector('.lb:not([hidden])'))return;var r=g.getBoundingClientRect();if(r.top>innerHeight*.6||r.bottom<innerHeight*.4)return;if(!window.__due('gal',3000))return;show(cur+1)},1000);
 })();
 
 (function(){
@@ -974,7 +984,7 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
 window.__phBusy=function(){return !user&&!fin};
 function go(i){cur=i;im.forEach(function(x,k){x.classList.toggle('on',+x.dataset.k===i)});bt.forEach(function(x,k){x.classList.toggle('on',k===i)})}
 bt.forEach(function(b){b.addEventListener('click',function(){user=true;clearInterval(t);go(+b.dataset.i)})});
-if(!matchMedia('(prefers-reduced-motion:reduce)').matches)t=setInterval(function(){if(user)return;if(cur===n-1)fin=true;go((cur+1)%n)},1600);})();
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)t=setInterval(function(){if(user)return;if(!window.__due('hero',3000))return;if(cur===n-1)fin=true;go((cur+1)%n)},1000);})();
 
 (function(){var f=document.querySelector('.fan');if(!f||!('IntersectionObserver' in window))return;
 new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){f.classList.add('spread')},350)}else{f.classList.remove('spread')}})},{threshold:.55}).observe(f);})();
@@ -982,94 +992,6 @@ new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting
 
 </script>
 <script>
-/* slide deck: one section per screen, navigated by buttons, dots, keys, swipe and the sidebar */
-(function(){
-  var root=document.documentElement;
-  root.classList.add("deck");
-  var slides=[].slice.call(document.querySelectorAll("header.hero, main > section"));
-  var bar=document.createElement("nav");
-  bar.className="deck-bar";
-  bar.innerHTML='<button type="button" class="dk-prev" aria-label="이전 화면">&larr;</button><div class="dk-mid"><span class="dk-count"></span><div class="dk-dots"></div></div><button type="button" class="dk-next" aria-label="다음 화면">&rarr;</button>';
-  document.body.appendChild(bar);
-  var dots=bar.querySelector(".dk-dots"), count=bar.querySelector(".dk-count");
-  var prev=bar.querySelector(".dk-prev"), next=bar.querySelector(".dk-next");
-  slides.forEach(function(_,i){var d=document.createElement("button");d.type="button";d.className="dk-dot";d.setAttribute("aria-label","화면 "+(i+1));d.addEventListener("click",function(){show(i)});dots.appendChild(d)});
-  var fill=document.querySelector("[data-fill]");
-  if(fill){
-    fill.removeAttribute("data-fill");
-    if(!fill.querySelector(".w")){
-      (function go(n){[].slice.call(n.childNodes).forEach(function(c){
-        if(c.nodeType===3){var f=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(function(t){if(!t)return;if(/^\s+$/.test(t)){f.appendChild(document.createTextNode(t))}else{var sp=document.createElement("span");sp.className="w";sp.textContent=t;f.appendChild(sp)}});c.parentNode.replaceChild(f,c)}
-        else if(c.nodeType===1){go(c)}
-      })})(fill);
-    }
-  }
-  var cur=0;
-  function play(i){
-    var box=slides[i]&&slides[i].querySelector(".hmw");
-    if(!box) return;
-    var ws=box.querySelectorAll(".w");
-    ws.forEach(function(w){w.classList.remove("on")});
-    ws.forEach(function(w,k){setTimeout(function(){w.classList.add("on")},200+k*110)});
-  }
-  function show(i,push){
-    cur=Math.max(0,Math.min(slides.length-1,i));
-    window.scrollTo(0,0); root.scrollTop=0; document.body.scrollTop=0;
-    slides.forEach(function(s,k){s.classList.toggle("on",k===cur);if(k===cur)s.scrollTop=0});
-    [].forEach.call(dots.children,function(d,k){d.classList.toggle("on",k===cur)});
-    count.textContent=(cur+1)+" / "+slides.length;
-    prev.disabled=cur===0; next.disabled=cur===slides.length-1;
-    if(push!==false&&slides[cur].id){try{history.replaceState(null,"","#"+slides[cur].id)}catch(e){}}
-    beatState[cur]=0; paintBeats(cur);
-    play(cur);
-  }
-  prev.addEventListener("click",function(){show(cur-1)});
-  next.addEventListener("click",function(){show(cur+1)});
-  document.addEventListener("click",function(e){
-    var a=e.target.closest&&e.target.closest('a[href^="#"]'); if(!a) return;
-    var id=a.getAttribute("href").slice(1);
-    var i=slides.findIndex(function(s){return s.id===id}); if(i<0) return;
-    e.preventDefault(); show(i);
-  },true);
-  window.addEventListener("keydown",function(e){
-    if(e.target.closest&&e.target.closest("input,textarea,select")) return;
-    var k=e.key;
-    if(k==="ArrowRight"||k==="PageDown"||k===" "){e.preventDefault();e.stopPropagation();show(cur+1)}
-    else if(k==="ArrowLeft"||k==="PageUp"){e.preventDefault();e.stopPropagation();show(cur-1)}
-    else if(k==="Home"){e.stopPropagation();show(0)}
-    else if(k==="End"){e.stopPropagation();show(slides.length-1)}
-  },true);
-  var sx=null;
-  window.addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
-  window.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50){show(dx<0?cur+1:cur-1)}},{passive:true});
-  /* cards inside a slide step one at a time (with the left list), then the slide advances */
-  slides.forEach(function(sl){sl.querySelectorAll("[data-beat]").forEach(function(e){e.removeAttribute("data-beat")})});
-  var beatState=slides.map(function(){return 0});
-  function beatsOf(i){ if(slides[i].querySelector(".tilebeats")) return []; return [].slice.call(slides[i].querySelectorAll(".beats .beat")) }
-  function paintBeats(i){
-    var beats=beatsOf(i), inds=slides[i].querySelector(".tilebeats")?[]:[].slice.call(slides[i].querySelectorAll(".ind li"));
-    var k=beatState[i];
-    beats.forEach(function(b,j){b.classList.toggle("on",j===k)});
-    inds.forEach(function(l,j){l.classList.toggle("on",j===k)});
-  }
-  /* auto-advance: a card step every 3.5s, a full screen every 7s; any manual move restarts the timer */
-  var timer=null, reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  function stepOf(){ var n=beatsOf(cur).length; return n>1 && beatState[cur]<n-1 }
-  function arm(){
-    if(reduce) return; clearTimeout(timer);
-    timer=setTimeout(function(){
-      if(stepOf()){ beatState[cur]++; paintBeats(cur); arm(); }
-      else { show(cur+1>=slides.length?0:cur+1) }
-    }, 3000);
-  }
-  ["mousemove","mousedown","keydown","wheel","touchstart","scroll"].forEach(function(ev){
-    window.addEventListener(ev,function(){ arm() },{passive:true,capture:true});
-  });
-  var _show=show; show=function(i,push){ _show(i,push); arm(); };
-  arm();
-  var h=location.hash.slice(1), start=slides.findIndex(function(s){return s.id===h});
-  show(start<0?0:start,false);
-})();
 /* keep the page from drifting sideways (it caused the cut-off text on some screens) */
 (function(){addEventListener("scroll",function(){if(scrollX){scrollTo(0,scrollY)}},{passive:true});})();
 /* handoff map + case tabs: all text is already in the DOM (with data-en), so the language switch keeps working */
