@@ -861,3 +861,52 @@ html[data-theme="dark"] strong.keyword { background-image:linear-gradient(#e4ff1
 /* Resume download sits below the hero facts at every breakpoint. */
 .hero-sidebar .header-resume-link { grid-column:1; grid-row:auto; justify-self:center; margin:.2rem auto 0; }
 @media (min-width:821px) { .hero-sidebar { transform:translateY(-2rem); } }
+
+/* Tactile press feedback on the main portfolio page. */
+body button,
+body .header-resume-link,
+body .quick-links a,
+body .side3 a.s3,
+body .side3 .s3h[role="button"],
+body .site-header nav a,
+body .brand,
+body .project-link,
+body .project-media summary,
+body .pvis-link {
+  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+  transform-origin: center;
+}
+body button:not(:disabled):active,
+body .header-resume-link:active,
+body .quick-links a:active,
+body .side3 a.s3:active,
+body .side3 .s3h[role="button"]:active,
+body .site-header nav a:active,
+body .brand:active,
+body .project-link:active,
+body .project-media summary:active,
+body .pvis-link:active {
+  transform: translateY(2px) scale(.98);
+  filter: brightness(.93);
+}
+body .header-resume-link:active,
+body .resume-dialog-actions button:not(:disabled):active,
+body .pvis-link:active .cta {
+  box-shadow: 0 2px 4px rgba(15, 23, 42, .18);
+}
+body .pvis-link:active .cta {
+  animation: none;
+  transform: translateY(2px) scale(.98);
+}
+@media (prefers-reduced-motion: reduce) {
+  body button,
+  body .header-resume-link,
+  body .quick-links a,
+  body .side3 a.s3,
+  body .side3 .s3h[role="button"],
+  body .site-header nav a,
+  body .brand,
+  body .project-link,
+  body .project-media summary,
+  body .pvis-link { transition: none; }
+}
