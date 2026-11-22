@@ -480,7 +480,7 @@ const resumeDialog = document.querySelector("[data-resume-dialog]");
 const resumeLink = document.querySelector(".header-resume-link");
 const resumeDownload = () => {
   const link = document.createElement("a");
-  link.href = "./assets/Resume_Sihun_Wang.pdf";
+  link.href = "./assets/Resume_Sihun_Wang.pdf?v=20261122b";
   link.download = "Resume_Sihun_Wang.pdf";
   document.body.append(link);
   link.click();
