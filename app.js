@@ -477,7 +477,7 @@ document.addEventListener("keydown", (event) => {
 
 
 const resumeDialog = document.querySelector("[data-resume-dialog]");
-const resumeLink = document.querySelector(".header-resume-link");
+const resumeLinks = document.querySelectorAll(".header-resume-link, .side-resume-link");
 const resumeDownload = () => {
   const link = document.createElement("a");
   link.href = "./assets/Resume_Sihun_Wang.pdf?v=20261122b";
@@ -486,10 +486,10 @@ const resumeDownload = () => {
   link.click();
   link.remove();
 };
-resumeLink?.addEventListener("click", (event) => {
+resumeLinks.forEach((link) => link.addEventListener("click", (event) => {
   event.preventDefault();
   resumeDialog?.showModal();
-});
+}));
 resumeDialog?.querySelector("[data-resume-skip]")?.addEventListener("click", () => {
   resumeDialog.close();
   resumeDownload();
