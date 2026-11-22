@@ -31,7 +31,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .language-switch button { display:inline-flex; flex:0 0 auto; align-items:center; justify-content:center; width:3.6rem; min-width:3.6rem; height:2rem; border:0; border-radius:999px; padding:0; background:transparent; color:var(--muted); cursor:pointer; font:inherit; font-size:.78rem; font-weight:800; white-space:nowrap; }
 .language-switch button[aria-pressed="true"] { background:var(--ink); color:var(--white); }
 
-.hero { display:grid; grid-template-columns:minmax(0,1fr) 250px; gap:3rem; align-items:center; min-height:40rem; padding:4.5rem 0 1.5rem; border-bottom:1px solid var(--line); }
+.hero { display:grid; grid-template-columns:minmax(0,1fr) 250px; gap:3rem; align-items:center; min-height:40rem; padding:2.5rem 0 1.5rem; border-bottom:1px solid var(--line); }
 .hero-main { display:flex; flex-direction:column; justify-content:center; align-self:stretch; min-height:100%; }
 .hero-copy { display:flex; flex-direction:column; justify-content:center; width:100%; min-height:14rem; }
 .job-title { margin:0; color:var(--blue); font-size:.88rem; font-weight:800; letter-spacing:.06em; }
@@ -47,7 +47,7 @@ html[lang="ko"] p,html[lang="ko"] li,html[lang="ko"] h1,html[lang="ko"] h2,html[
 .quick-links a { flex:0 0 auto; white-space:nowrap; }
 .quick-links a { padding:.5rem .75rem; border:1px solid var(--line); border-radius:7px; color:#344054; font-size:.83rem; font-weight:700; text-decoration:none; }
 .quick-links a:hover { border-color:var(--blue); color:var(--blue); }
-.hero-sidebar { display:grid; gap:.8rem; align-content:start; transform:translateY(1.5rem); }
+.hero-sidebar { display:grid; gap:.7rem; align-content:start; transform:none; }
 .profile-photo { display:block; width:min(100%, 180px); height:auto; max-height:250px; justify-self:center; object-fit:contain; object-position:center; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
 .hero-facts { margin:0; padding:1.1rem 1.25rem; border:1px solid var(--line); border-radius:12px; background:var(--surface); }
 .hero-facts div { padding:.7rem 0; border-bottom:1px solid var(--line); }
