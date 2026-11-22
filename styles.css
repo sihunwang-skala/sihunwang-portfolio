@@ -857,3 +857,6 @@ html[data-theme="dark"] strong.keyword { background-image:linear-gradient(#e4ff1
 .side3 .s3row{display:flex;align-items:center;gap:.1rem}.side3 .s3row a.s3{flex:1}
 .side3 .s3t{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;padding:0;border:0;border-radius:6px;background:transparent;color:#98a2b3;cursor:pointer}
 .side3 .s3t:hover,.side3 .s3t:focus-visible{background:var(--surface);color:var(--blue);outline:0}
+
+/* Resume download sits below the hero facts at every breakpoint. */
+.hero-sidebar .header-resume-link { grid-column:1; grid-row:auto; justify-self:start; margin:.2rem 0 0; }
