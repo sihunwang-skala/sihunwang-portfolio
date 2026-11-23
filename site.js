@@ -6,7 +6,17 @@
     const selected=lang();
     document.querySelectorAll("[data-v2-en][data-v2-ko]").forEach(el=>{
       const value=el.getAttribute("data-v2-"+selected);
-      if(value!==null)el.textContent=value;
+      if(value===null)return;
+      if(el.classList.contains("v2-career-goal-description")&&selected==="en"&&value.includes(" using ")){
+        const split=value.indexOf(" using ");
+        el.replaceChildren(
+          document.createTextNode(value.slice(0,split)),
+          document.createElement("br"),
+          document.createTextNode(value.slice(split+1))
+        );
+      }else{
+        el.textContent=value;
+      }
     });
     document.querySelectorAll("[data-v2-placeholder-en]").forEach(el=>{
       el.setAttribute("placeholder",el.getAttribute("data-v2-placeholder-"+selected)||"");
@@ -111,7 +121,7 @@
       for(let n=0;n<16;n++){
         const size=(lo+hi)/2;
         careerGoal.style.fontSize=size+"px";
-        const measured=textRange.getBoundingClientRect().width;
+        const measured=Math.max(0,...Array.from(textRange.getClientRects(),rect=>rect.width));
         if(measured<=available-2)lo=size;
         else hi=size;
       }
