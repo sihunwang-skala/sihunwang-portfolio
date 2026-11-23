@@ -97,4 +97,36 @@
     window.addEventListener("resize",queueHeroFit,{passive:true});
   }
 
+  // Resize the complete Career Goal to a single line in Korean or English.
+  const careerGoal=document.querySelector("body.v2-home .v2-career-goal-description");
+  if(careerGoal){
+    const textRange=document.createRange();
+    let queued=false;
+    function fitCareerGoal(){
+      const available=careerGoal.clientWidth;
+      if(!available)return;
+      textRange.selectNodeContents(careerGoal);
+      let lo=4,hi=20;
+      // Binary search the largest readable size that fits the current text.
+      for(let n=0;n<16;n++){
+        const size=(lo+hi)/2;
+        careerGoal.style.fontSize=size+"px";
+        const measured=textRange.getBoundingClientRect().width;
+        if(measured<=available-2)lo=size;
+        else hi=size;
+      }
+      careerGoal.style.fontSize=Math.max(4,Math.floor(lo*10)/10)+"px";
+    }
+    function queueCareerFit(){
+      if(queued)return;
+      queued=true;
+      requestAnimationFrame(()=>{queued=false;fitCareerGoal()});
+    }
+    queueCareerFit();
+    document.fonts?.ready.then(queueCareerFit);
+    window.addEventListener("resize",queueCareerFit,{passive:true});
+    if("ResizeObserver" in window)new ResizeObserver(queueCareerFit).observe(careerGoal);
+    new MutationObserver(queueCareerFit).observe(careerGoal,{childList:true,characterData:true,subtree:true});
+  }
+
 })();
