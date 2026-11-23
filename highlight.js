@@ -32,7 +32,7 @@ var io=new IntersectionObserver(function(es){
     io.unobserve(k);
     whenRevealed(k,function(){k.classList.add('hl-on')});
   });
-},{threshold:.9});
+},{threshold:0.45,rootMargin:"0px 0px -12% 0px"});
 
 function watch(root){
   (root.querySelectorAll?root.querySelectorAll('strong.keyword:not([data-hl])'):[]).forEach(function(k){
