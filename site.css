@@ -630,3 +630,35 @@ html[data-theme="dark"] body.v2-home .v2-feature-tile:hover{background:#27394c}
 @media(prefers-reduced-motion:reduce){
   body.v2-home .v2-feature-tile,body.v2-home .v2-hero-name{transition:none}
 }
+
+/* Compact contact strip directly beneath the four Home navigation tiles. */
+body.v2-home .v2-home-quicklinks{
+ display:flex;flex-wrap:wrap;
+ align-items:center;justify-content:flex-start;
+ gap:12px 27px;
+ margin:25px 0 0;
+ padding:3px 1px 0;
+}
+body.v2-home .v2-home-quicklinks a{
+ display:inline-flex;align-items:center;
+ color:#515a67;
+ background:transparent;
+ border:0;
+ font-size:14px;
+ font-weight:530;
+ line-height:1.5;
+ text-decoration:none;
+ text-underline-offset:4px;
+ transition:color .16s ease;
+}
+body.v2-home .v2-home-quicklinks a:hover,
+body.v2-home .v2-home-quicklinks a:focus-visible{
+ color:#111827;text-decoration:underline;
+}
+body.v2-home .v2-footer{margin-top:92px}
+html[data-theme="dark"] body.v2-home .v2-home-quicklinks a{color:#d8e1ea}
+@media(max-width:620px){
+ body.v2-home .v2-home-quicklinks{gap:12px 19px;margin-top:22px}
+ body.v2-home .v2-home-quicklinks a{font-size:14px}
+ body.v2-home .v2-footer{margin-top:65px}
+}
