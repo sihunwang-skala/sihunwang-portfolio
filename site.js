@@ -61,4 +61,33 @@
     if(projectIds.includes(hash))location.replace("./projects/#"+encodeURIComponent(hash));
     else if(aboutIds.includes(hash))location.replace("./about/#"+encodeURIComponent(hash));
   }
+  // Fit all three role/expertise/education labels on one uninterrupted line.
+  // Measure actual glyph widths after web fonts load and when the viewport changes.
+  const heroIdentity=document.querySelector("body.v2-home .v2-horizontal-identity");
+  if(heroIdentity){
+    function fitHeroIdentity(){
+      const available=heroIdentity.getBoundingClientRect().width;
+      const last=heroIdentity.lastElementChild;
+      if(!available||!last)return;
+      const left=heroIdentity.getBoundingClientRect().left;
+      let lo=5,hi=54;
+      for(let n=0;n<16;n++){
+        const mid=(lo+hi)/2;
+        heroIdentity.style.fontSize=mid+"px";
+        const used=last.getBoundingClientRect().right-left;
+        if(used<=available-1)lo=mid;else hi=mid;
+      }
+      heroIdentity.style.fontSize=Math.floor(lo*10)/10+"px";
+    }
+    let fitQueued=false;
+    function queueHeroFit(){
+      if(fitQueued)return;
+      fitQueued=true;
+      requestAnimationFrame(()=>{fitQueued=false;fitHeroIdentity()});
+    }
+    queueHeroFit();
+    document.fonts?.ready.then(queueHeroFit);
+    window.addEventListener("resize",queueHeroFit,{passive:true});
+  }
+
 })();
