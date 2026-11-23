@@ -276,7 +276,7 @@ function highlightBodyKeywords() {
     ".resume-entry li[data-i18n], .project-bullets li[data-i18n], .recognition-body p[data-i18n]"
   ).forEach((element) => element.replaceChildren(keywordFragment(element.textContent)));
 }
-const overviewAgentPattern = /\b(?:LangGraph Orchestration|Personalization|Multi-Agent|Agentic RAG|AI Agent|HITL)\b/gi;
+const overviewAgentPattern = /\b(?:LangGraph Orchestration|Personalization|Multi-Agent|Agentic RAG|AI Agent)\b/gi;
 function highlightOverviewAgentTerms() {
   document.querySelectorAll(
     '.overview-wide-row .overview-tech, .overview-table [data-i18n="overviewSkills"]'
