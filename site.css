@@ -1199,3 +1199,50 @@ body.v2-home .v2-feature-tile .v2-feature-meta{
    top:12px;right:14px;
  }
 }
+
+/* Experience: make the existing expandable contribution section discoverable. */
+body.v2-section-page[data-v2-page="experience"] .ref-more > summary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:auto;
+  max-width:100%;
+  padding:9px 14px;
+  margin:4px 0 0;
+  border:1px solid #bed0f6;
+  border-radius:8px;
+  background:#edf3ff;
+  color:#204da9;
+  font-size:13px;
+  font-weight:680;
+  line-height:1.5;
+  cursor:pointer;
+  transition:background-color .15s,border-color .15s,color .15s;
+}
+body.v2-section-page[data-v2-page="experience"] .ref-more > summary::after{
+  content:"+";
+  display:inline-block;
+  font-size:18px;
+  font-weight:600;
+  line-height:1;
+  color:inherit;
+}
+body.v2-section-page[data-v2-page="experience"] .ref-more[open] > summary::after{content:"−"}
+body.v2-section-page[data-v2-page="experience"] .ref-more > summary:hover{
+  background:#dfeaff;
+  border-color:#8daff0;
+  color:#163d89;
+}
+body.v2-section-page[data-v2-page="experience"] .ref-more > summary:focus-visible{
+  outline:2px solid #3468d6;
+  outline-offset:3px;
+}
+html[data-theme="dark"] body.v2-section-page[data-v2-page="experience"] .ref-more > summary{
+  background:#1b3151;
+  border-color:#40649a;
+  color:#d4e6ff;
+}
+html[data-theme="dark"] body.v2-section-page[data-v2-page="experience"] .ref-more > summary:hover{
+  background:#28456f;
+}
