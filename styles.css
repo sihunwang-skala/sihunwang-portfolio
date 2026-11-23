@@ -935,6 +935,8 @@ body .pvis-link:active .cta {
 .overview-wide-row td:last-child{width:auto;text-align:left;white-space:normal;padding-left:.7rem}
 .overview-wide-row .overview-item a{color:inherit;font-weight:inherit}
 .overview-wide-row .overview-item a:hover{color:var(--blue)}
+.overview-wide-row .overview-item strong,.overview-wide-row .overview-item .overview-tech{display:inline;font-size:.94rem;line-height:1.5}
+.overview-wide-row .overview-item .overview-tech{margin:0;color:inherit;font-weight:400}
 #projects .project-list article[id]{scroll-margin-top:5rem}
 @media(max-width:650px){
   .overview-table,.overview-table tbody{display:block;width:100%}
