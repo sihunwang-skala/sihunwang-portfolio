@@ -28,45 +28,20 @@
   document.addEventListener("click",ev=>{
     if(body.classList.contains("v2-menu-open")&&!sidebar?.contains(ev.target)&&!menuBtn?.contains(ev.target))closeMenu();
   });
-  const filters=Array.from(document.querySelectorAll("[data-v2-filter]"));
-  const timeline=Array.from(document.querySelectorAll("[data-v2-kind]"));
-  function setFilter(filter){
-    filters.forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.v2Filter===filter)));
-    timeline.forEach(item=>item.classList.toggle("v2-filter-hide",filter!=="all"&&item.dataset.v2Kind!==filter));
-  }
-  filters.forEach(button=>button.addEventListener("click",()=>{
-    setFilter(button.dataset.v2Filter);
-    updateNavSelection();
-  }));
-  if(filters.length)setFilter("all");
-  // Sidebar deep links open the corresponding filter before scrolling to its first row.
-  const aboutHashFilter={experience:"professional",education:"education",recognition:"awards"};
-  function updateNavSelection(){
-    const fragment=decodeURIComponent(location.hash.replace(/^#/,""));
-    const desired=body.dataset.v2Page==="projects"?"projects":
-      body.dataset.v2Page==="about"?
-        (fragment==="experience"?"experience":fragment==="education"?"education":fragment==="recognition"?"awards":"about"):
-      "";
-    document.querySelectorAll("[data-v2-nav]").forEach(anchor=>{
-      if(anchor.dataset.v2Nav===desired)anchor.setAttribute("aria-current","page");
-      else anchor.removeAttribute("aria-current");
+  // Each sidebar section is a real page; preserve legacy About section URLs.
+  const sectionRoutes={experience:"./experience/",education:"./education/",recognition:"./awards/"};
+  function syncNav(){
+    const active=body.dataset.v2Page;
+    document.querySelectorAll("[data-v2-nav]").forEach(link=>{
+      if(link.dataset.v2Nav===active)link.setAttribute("aria-current","page");
+      else link.removeAttribute("aria-current");
     });
   }
-  function selectAboutFragment(){
-    if(body.dataset.v2Page==="about"){
-      const fragment=decodeURIComponent(location.hash.replace(/^#/,""));
-      if(aboutHashFilter[fragment]){
-        setFilter(aboutHashFilter[fragment]);
-        requestAnimationFrame(()=>{
-          const target=document.getElementById(fragment);
-          target?.scrollIntoView({block:"start"});
-        });
-      }else if(!fragment) setFilter("all");
-    }
-    updateNavSelection();
+  syncNav();
+  if(body.dataset.v2Page==="about"){
+    const oldHash=decodeURIComponent(location.hash.slice(1));
+    if(sectionRoutes[oldHash])location.replace(sectionRoutes[oldHash]);
   }
-  selectAboutFragment();
-  window.addEventListener("hashchange",selectAboutFragment);
   const details=document.querySelector(".v2-technical-detail");
   function revealHash(){
     if(!details||!location.hash)return;
@@ -88,8 +63,9 @@
   if(body.dataset.v2Page==="home"){
     const hash=decodeURIComponent(location.hash.slice(1));
     const projectIds=["projects","proj-l10n","proj-pipeline","proj-interview","proj-usage"];
-    const aboutIds=["background","education","experience","skills","recognition"];
+    const aboutIds=["background","skills"];
     if(projectIds.includes(hash))location.replace("./projects/#"+encodeURIComponent(hash));
+    else if(sectionRoutes[hash])location.replace(sectionRoutes[hash]);
     else if(aboutIds.includes(hash))location.replace("./about/#"+encodeURIComponent(hash));
   }
   // Fit all three role/expertise/education labels on one uninterrupted line.
