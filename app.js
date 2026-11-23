@@ -12,7 +12,7 @@ const copy = {
     flitto3:"총 4,983건의 번역 결과에 대해 LLM-as-a-Judge, xCOMET 등 4개 자동 평가 지표를 활용한 품질 평가 Pipeline 구축",
     flitto4:"저득점 번역을 Human-in-the-Loop(HITL) 검수로 연결하여 자동 평가와 전문가 검토를 결합한 품질 관리 체계 구현",
     flitto5:"외부 PoC 검수에서 200건 중 195건 무수정 통과, 97.5% 승인율 달성",
-    kdn1:"국세청 API와 공공 데이터를 활용하여 기존 수작업 기반의 데이터 수집, 검증 및 처리 프로세스를 Python 기반 Pipeline으로 자동화",
+    kdn1:"국세청 API와 공공 데이터를 활용하여 기존 수작업 기반의 데이터 수집, 검증 및 처리 프로세스를 자동화",
     kdn2:"API, Selenium, BeautifulSoup을 활용한 데이터 수집 및 식별자 매핑 로직 구현",
     kdn3:"OpenPyXL을 활용하여 고유 식별번호 645건에 대한 데이터를 조회하고 Excel 30개 시트 내 2,346개 셀 입력 자동화",
     kdn4:"실행 결과와 오류 로그를 분석하는 Error Triage Agent 개발, API 요청 실패 45건 전량 재처리",
@@ -52,7 +52,7 @@ const copy = {
     flitto3:"Built a quality evaluation pipeline for 4,983 translation outputs using four automated metrics, including LLM-as-a-Judge and xCOMET.",
     flitto4:"Implemented a quality management process combining automated evaluation with expert review by routing low-scoring translations to human-in-the-loop (HITL) review.",
     flitto5:"Achieved a 97.5% acceptance rate in external PoC review, with 195 of 200 translations accepted without revision.",
-    kdn1:"Automated manual data collection, validation, and processing through Python-based pipelines using the National Tax Service API and public data.",
+    kdn1:"Automated manual data collection, validation, and processing using the National Tax Service API and public data.",
     kdn2:"Implemented data collection and identifier-mapping logic using APIs, Selenium, and BeautifulSoup.",
     kdn3:"Retrieved data for 645 unique identifiers and automated entry into 2,346 cells across 30 Excel sheets using OpenPyXL.",
     kdn4:"Developed an error triage agent to analyze execution results and error logs, successfully reprocessing all 45 failed API requests.",
@@ -221,7 +221,8 @@ const elements = document.querySelectorAll("[data-i18n]");
 
 // Emphasize selected technical terms and results without changing the copy.
 const keywordTerms = [
-  "regional representative", "top-ranked U.S. universities for AI", "No. 6", "No. 5",
+  "regional representative", "class leadership roles", "top-ranked U.S. universities for AI", "No. 6", "No. 5",
+  "학급 임원", "조지아주 지역 대표", "미국 인공지능 분야 최상위권 대학", "인공지능 분야 최상위권 대학", "미국 AI 분야 최상위권 대학",
   "execution logs", "실행 로그", "Agent", "Agents",
   "성능 비교", "comparing architectures",
   "Pipeline", "Pipelines", "자동화", "Automation", "Automated",
@@ -273,7 +274,7 @@ function keywordFragment(value, limit = Infinity, pattern = keywordPattern) {
 }
 function highlightBodyKeywords() {
   document.querySelectorAll(
-    ".resume-entry li[data-i18n], .project-bullets li[data-i18n], .recognition-body p[data-i18n]"
+    ".resume-entry li[data-i18n], .ref-brief[data-i18n], .ref-award-description[data-i18n], .project-bullets li[data-i18n], .recognition-body p[data-i18n]"
   ).forEach((element) => element.replaceChildren(keywordFragment(element.textContent)));
 }
 const overviewAgentPattern = /\b(?:LangGraph Orchestration|Personalization|Multi-Agent|Agentic RAG|AI Agent)\b/gi;
