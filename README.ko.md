@@ -6,6 +6,10 @@ AI Agent 개발, Agentic RAG, Tool Routing, LLM 평가, HITL 검증, 데이터 �
 
 라이브 사이트: https://sihunwang-skala.github.io/sihunwang-portfolio/
 
+## 대표 Case Study
+
+[Health Agent: 개인 맞춤형 건강 코칭](https://sihunwang-skala.github.io/sihunwang-portfolio/health-agent/)에서 Agent workflow와 평가 결과를 확인할 수 있습니다. 같은 조건에서 비교한 네 가지 Agent/RAG 구조를 설명합니다.
+
 ## Case Study 기준
 
 공개 Case Study는 [Case Study Evidence Standard](docs/CASE_STUDY_EVIDENCE_STANDARD.md)를 따릅니다. 문제, 본인 기여, 시스템 설계, 평가 근거, 한계를 구분해 공개 주장을 검토 가능하게 관리합니다.
