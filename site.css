@@ -1110,3 +1110,30 @@ body.v2-projects .v2-case-placeholder span{font-size:15px;letter-spacing:.025em}
  body.v2-projects .v2-project-case .v2-case-image,
  body.v2-projects .v2-project-case .v2-case-placeholder{height:245px}
 }
+
+/* About profile photo: smaller and aligned with the beginning of the biography. */
+@media(min-width:681px){
+ body.v2-about .v2-about-intro{
+  grid-template-columns:minmax(0,1fr) clamp(165px,14.5vw,208px);
+  column-gap:clamp(23px,3vw,48px);
+  align-items:start;
+ }
+ body.v2-about .v2-about-photo-wrap{
+  width:100%;
+  max-width:208px;
+  margin:-22px 0 0;
+  align-self:start;
+  transform:none;
+ }
+ body.v2-about .v2-about-photo{
+  display:block;
+  width:100%;
+  height:auto;
+ }
+}
+@media(max-width:680px){
+ body.v2-about .v2-about-photo-wrap{
+  max-width:210px;
+  margin-top:-2px;
+ }
+}
