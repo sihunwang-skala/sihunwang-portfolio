@@ -8,7 +8,7 @@ d.classList.add('hl-js');
 function whenRevealed(k,cb){
   var tries=0;
   (function check(){
-    var chars=k.querySelectorAll('.intro-char');
+    var chars=k.querySelectorAll('.intro-char, .intro-word');
     if(!chars.length){
       if(k.closest('.reveal-text')&&tries++<40)return setTimeout(check,100);
       return cb();
