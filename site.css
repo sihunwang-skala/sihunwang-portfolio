@@ -1494,3 +1494,65 @@ body.v2-resume .v2-resume-preview .v2-resume-action{
   justify-content:flex-end;
   margin:18px 0 0;
 }
+
+/* Education and Skills share one aligned content column and one divider. */
+body[data-v2-page="education"] .v2-skills-section{
+  margin-top:28px;
+  padding:0;
+}
+body[data-v2-page="education"] #skills.resume-section.page-shell{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:25px 0 0;
+  border:0;
+  border-top:1px solid var(--v2-divider);
+  box-sizing:border-box;
+}
+body[data-v2-page="education"] .ref-timeline-item.ref-education-row:last-child{
+  border-bottom:0;
+}
+body[data-v2-page="education"] #skills .skills-list{
+  width:100%;
+  margin:0;
+  border-top:0;
+}
+body[data-v2-page="education"] #skills .skills-list > div:last-child{
+  border-bottom:0;
+}
+body[data-v2-page="education"] .v2-footer{
+  border-top:0;
+  justify-content:space-between;
+  text-align:left;
+}
+
+/* Homepage interactive accents: warm terracotta, not blue. */
+body.v2-home .v2-hero-name .v2-about-hint{
+  color:#94543D;
+  border-bottom-color:#C6A18E;
+}
+body.v2-home .v2-hero-name:hover .v2-about-hint,
+body.v2-home .v2-hero-name:focus-visible .v2-about-hint{
+  color:#6F3928;
+  border-bottom-color:#6F3928;
+}
+body.v2-home .v2-feature-tile .v2-feature-meta .v2-feature-label,
+body.v2-home .v2-feature-tile .v2-feature-meta .v2-feature-arrow,
+body.v2-home .v2-home-quicklinks a{
+  color:#94543D;
+}
+body.v2-home .v2-feature-tile:hover .v2-feature-meta .v2-feature-label,
+body.v2-home .v2-feature-tile:hover .v2-feature-meta .v2-feature-arrow,
+body.v2-home .v2-home-quicklinks a:hover{
+  color:#6F3928;
+}
+html[data-theme="dark"] body.v2-home .v2-hero-name .v2-about-hint,
+html[data-theme="dark"] body.v2-home .v2-feature-tile .v2-feature-meta .v2-feature-label,
+html[data-theme="dark"] body.v2-home .v2-feature-tile .v2-feature-meta .v2-feature-arrow,
+html[data-theme="dark"] body.v2-home .v2-home-quicklinks a{
+  color:#E6A78E;
+}
+html[data-theme="dark"] body.v2-home .v2-hero-name .v2-about-hint{
+  border-bottom-color:#E6A78E;
+}
