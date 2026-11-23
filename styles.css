@@ -968,3 +968,28 @@ body .pvis-link:active .cta {
   .hero-direction-row { grid-template-columns:4.5rem minmax(0,1fr); gap:.55rem; }
   .background-section { padding:3rem 0 2.25rem; }
 }
+
+/* Keep profile overview directly below Role / Goal / Service; preserve table alignment. */
+.hero { min-height:0; align-items:start; }
+.hero-main { min-height:0; justify-content:flex-start; }
+.hero-copy { min-height:0; justify-content:flex-start; }
+.hero-sidebar { align-self:start; }
+.hero .overview { width:100%; padding:1.5rem 0 0; }
+.hero .overview-table,
+.hero .overview-table tbody { display:block; width:100%; table-layout:auto; }
+.hero .overview-table tr { display:grid; grid-template-columns:8.75rem minmax(0,1fr); column-gap:1.15rem; align-items:start; border-top:1px solid var(--line); }
+.hero .overview-table th,
+.hero .overview-table td,
+.hero .overview-table td:last-child { display:block; width:auto; min-width:0; padding:1rem 0; white-space:normal; text-align:left; }
+.hero .overview-table th { grid-column:1; grid-row:1; }
+.hero .overview-table td,
+.hero .overview-table .overview-wide-row td:last-child { grid-column:2; grid-row:1; }
+.hero .overview-table td:nth-child(2) { padding-right:0; }
+.hero .overview-table .overview-item { overflow-wrap:anywhere; }
+@media (max-width:650px) {
+  .hero .overview-table tr { grid-template-columns:minmax(0,1fr); }
+  .hero .overview-table th { grid-column:1; grid-row:1; padding:1rem 0 .25rem; }
+  .hero .overview-table td,
+  .hero .overview-table td:last-child,
+  .hero .overview-table .overview-wide-row td:last-child { grid-column:1; grid-row:2; padding:.15rem 0 1rem; }
+}
