@@ -967,3 +967,146 @@ body.v2-page{--v2-sidebar-width:220px}
   body.v2-page .v2-main{margin-left:0;width:100%;max-width:none}
   body.v2-page .v2-inner{width:100%;max-width:none;margin:0}
 }
+
+/* Projects: rich visual case study above exactly one concise description. */
+body.v2-projects .v2-project-grid.v2-case-study-list{
+ display:grid;
+ grid-template-columns:minmax(0,1fr);
+ width:100%;
+ max-width:1050px;
+ gap:52px;
+ margin:25px 0 0;
+}
+body.v2-projects .v2-project-card.v2-project-case{
+ display:block;
+ border:0;
+ border-bottom:1px solid var(--v2-divider);
+ border-radius:0;
+ background:transparent;
+ box-shadow:none;
+ transform:none;
+ overflow:visible;
+ padding:0 0 36px;
+ scroll-margin-top:30px;
+}
+body.v2-projects .v2-project-case .v2-project-media{
+ width:100%;
+ max-width:100%;
+ min-width:0;
+ overflow:hidden;
+ border-radius:12px;
+}
+body.v2-projects .v2-project-case .v2-case-visual-link{display:block}
+body.v2-projects .v2-project-case .pvis{
+ margin:0;
+ height:min(57vw,450px);
+ min-height:310px;
+ padding-top:26px;
+ border-radius:12px;
+ box-sizing:border-box;
+}
+body.v2-projects .v2-project-case .pvis[data-card="health"] .pshots{
+ display:flex;
+ align-items:flex-end;
+ justify-content:center;
+ flex-direction:row;
+ gap:18px;
+ height:100%;
+ max-width:100%;
+ padding:0 18px;
+ box-sizing:border-box;
+}
+body.v2-projects .v2-project-case .pvis[data-card="health"] .ph3{
+ height:100%;
+ max-width:100%;
+}
+body.v2-projects .v2-project-case .pvis[data-card="l10n"] .pshots{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ height:100%;
+ flex-direction:row;
+}
+body.v2-projects .v2-project-case .pvis[data-card="l10n"] .ph3.wide{
+ width:min(78%,670px);
+ height:100%;
+ max-width:100%;
+}
+body.v2-projects .v2-project-case .v2-project-card-text{
+ padding:19px 1px 0;
+}
+body.v2-projects .v2-project-case .v2-tagline{
+ margin-bottom:5px;
+ font-size:12px;
+ font-weight:700;
+ letter-spacing:.07em;
+}
+body.v2-projects .v2-project-case h3{
+ font-size:clamp(22px,2.1vw,28px);
+ font-weight:700;
+ margin:0 0 7px;
+ line-height:1.35;
+}
+body.v2-projects .v2-project-case h3 a::after{content:none}
+body.v2-projects .v2-project-case .v2-project-card-text>p:not(.v2-tagline){
+ font-size:16px;
+ line-height:1.6;
+ margin:0;
+}
+body.v2-projects .v2-project-case .v2-project-outcome{
+ font-size:15px;
+ line-height:1.6;
+ margin-top:8px;
+}
+body.v2-projects .v2-case-image-link{
+ text-decoration:none;
+ color:inherit;
+ display:block;
+ border-radius:12px;
+ overflow:hidden;
+}
+body.v2-projects .v2-case-logo,
+body.v2-projects .v2-case-image,
+body.v2-projects .v2-case-placeholder{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ width:100%;
+ height:clamp(270px,29vw,385px);
+ background:#f3f5f7;
+ overflow:hidden;
+ border-radius:12px;
+}
+body.v2-projects .v2-case-logo img{
+ display:block;
+ width:clamp(155px,24vw,290px);
+ height:auto;
+ max-height:170px;
+ object-fit:contain;
+}
+body.v2-projects .v2-case-image img{
+ display:block;
+ width:100%;
+ height:100%;
+ padding:23px;
+ object-fit:contain;
+}
+body.v2-projects .v2-case-placeholder{
+ flex-direction:column;
+ gap:8px;
+ color:#344257;
+ background:linear-gradient(135deg,#eaf0f8,#f4f6fa);
+}
+body.v2-projects .v2-case-placeholder strong{
+ font-size:clamp(22px,2.6vw,33px);
+ font-weight:700;
+}
+body.v2-projects .v2-case-placeholder span{font-size:15px;letter-spacing:.025em}
+@media(max-width:690px){
+ body.v2-projects .v2-project-grid.v2-case-study-list{gap:34px}
+ body.v2-projects .v2-project-case .pvis{height:300px;min-height:0}
+ body.v2-projects .v2-project-case .v2-project-card-text>p:not(.v2-tagline){font-size:14px}
+ body.v2-projects .v2-project-case .v2-case-logo,
+ body.v2-projects .v2-project-case .v2-case-image,
+ body.v2-projects .v2-project-case .v2-case-placeholder{height:245px}
+}
