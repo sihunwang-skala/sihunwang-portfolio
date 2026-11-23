@@ -796,3 +796,71 @@ body.v2-projects .v2-project-outcome{font-size:14px}
   body.v2-page .v2-main{padding:38px 19px 70px}
   body.v2-projects .v2-project-image{aspect-ratio:4/3}
 }
+
+/* Home card titles carry visual weight; destination labels sit by the arrow. */
+body.v2-home .v2-hero h1{font-size:clamp(50px,5vw,72px)}
+body.v2-home .v2-hero-name{gap:10px;align-items:baseline}
+body.v2-home .v2-about-hint{
+  font-size:11px;
+  font-weight:450;
+  line-height:1.35;
+  gap:4px;
+  letter-spacing:0;
+  white-space:nowrap;
+  vertical-align:baseline;
+}
+body.v2-home .v2-feature-tile{
+  position:relative;
+  display:flex;
+  justify-content:flex-start;
+  align-items:flex-end;
+  min-height:clamp(126px,10vw,152px);
+  padding:26px 25px 22px;
+}
+body.v2-home .v2-feature-title{
+  display:block;
+  width:100%;
+  max-width:95%;
+  margin:30px 0 0;
+  font-size:clamp(18px,1.65vw,24px);
+  line-height:1.34;
+  font-weight:610;
+  letter-spacing:-.035em;
+  overflow-wrap:normal;
+}
+body.v2-home .v2-feature-meta{
+  position:absolute;
+  top:19px;
+  right:22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  min-width:0;
+}
+body.v2-home .v2-feature-meta .v2-feature-label{
+  color:#7a8491;
+  font-size:10px;
+  font-weight:490;
+  letter-spacing:.015em;
+  line-height:1.3;
+  text-transform:none;
+  white-space:nowrap;
+}
+body.v2-home .v2-feature-meta .v2-feature-arrow{
+  color:#7b8798;
+  font-size:15px;
+  line-height:1;
+  font-weight:400;
+  align-self:center;
+}
+@media(max-width:650px){
+  body.v2-home .v2-feature-tile{
+    min-height:108px;
+    padding:17px 18px;
+  }
+  body.v2-home .v2-feature-title{font-size:19px;margin-top:29px}
+  body.v2-home .v2-feature-meta{top:13px;right:16px;gap:6px}
+  body.v2-home .v2-feature-meta .v2-feature-label{font-size:10px}
+  body.v2-home .v2-about-hint{font-size:10px}
+}
