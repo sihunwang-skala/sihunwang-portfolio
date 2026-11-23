@@ -60,15 +60,12 @@ var t=document.createElement('button');t.type='button';t.className='s3t';row.app
       <section class="hero page-shell" id="top">
         <div class="hero-main">
           <div class="hero-copy">
-            <p class="job-title">AI Agent Engineer</p>
             <h1>Sihun Wang</h1>
-            <p class="role-statement" data-i18n="roleStatement">Personal Agent를 Multi-Agent System으로 개발하고, A2A Communication을 통해 다른 Agent와 협업하도록 확장하는 AI Agent Engineer를 목표로 합니다.</p>
-            <div class="background-story">
-            <p class="summary"><span class="reveal-text" data-reveal-text data-i18n="summary">한국에서 반장을 비롯한 학급 임원으로 수년간 활동한 뒤 미국으로 유학을 떠났습니다. 유학 중에는 미국 수학경시대회 조지아주 지역 대표로 두 차례 선정되었습니다.
-
-이후 미국 인공지능 분야 최상위권 대학인 일리노이대(UIUC)와 조지아공대(Georgia Tech)에 진학해 AI를 공부했습니다. 두 대학은 U.S. News 인공지능 분야 순위에서 각각 미국 내 6위와 5위에 올라 있습니다.
-
-미국과 한국의 AI 연구실에서 연구하고, 한국 기업에서 일하며 AI 모델링부터 AI Agent 개발까지 경험을 쌓았습니다. 현재는 AI Agent 설계와 개발에 주력하고 있습니다. 앞으로는 Multi-Agent System과 Agent-to-Agent(A2A) Communication을 깊이 탐구하고, 개인화 AI Agent 기술을 연구하고 개발하고자 합니다.</span></p></div>
+            <dl class="hero-direction" aria-label="Role, Goal and Service">
+              <div class="hero-direction-row"><dt>Role</dt><dd>AI Agent Engineer</dd></div>
+              <div class="hero-direction-row"><dt>Goal</dt><dd data-i18n="heroGoal">Personal Agent를 Multi-Agent System으로 구현하고 A2A로 외부 Agent와 연결</dd></div>
+              <div class="hero-direction-row"><dt>Service</dt><dd>Personal AI Platform</dd></div>
+            </dl>
           </div>
           <div class="quick-links">
             <div class="quick-link-row">
@@ -94,6 +91,37 @@ var t=document.createElement('button');t.type='button';t.className='s3t';row.app
           <a class="header-resume-link" href="./assets/Resume_Sihun_Wang.pdf?v=20261122b" download data-i18n="downloadResume">Download Resume (PDF)</a>
         </aside>
       </section>
+
+      <section class="background-section page-shell" id="background" aria-labelledby="background-title">
+        <h2 id="background-title" data-i18n="backgroundTitle">배경</h2>
+        <div class="background-story">
+            <p class="summary"><span class="reveal-text" data-reveal-text data-i18n="summary">한국에서 반장을 비롯한 학급 임원으로 수년간 활동한 뒤 미국으로 유학을 떠났습니다. 유학 중에는 미국 수학경시대회 조지아주 지역 대표로 두 차례 선정되었습니다.
+
+이후 미국 인공지능 분야 최상위권 대학인 일리노이대(UIUC)와 조지아공대(Georgia Tech)에 진학해 AI를 공부했습니다. 두 대학은 U.S. News 인공지능 분야 순위에서 각각 미국 내 6위와 5위에 올라 있습니다.
+
+미국과 한국의 AI 연구실에서 연구하고, 한국 기업에서 일하며 AI 모델링부터 AI Agent 개발까지 경험을 쌓았습니다. 현재는 AI Agent 설계와 개발에 주력하고 있습니다. AI Agent Engineer로서 Personal AI Agent를 Multi-Agent Architecture 기반으로 개발하고, A2A Communication을 통해 외부 Agent와 협업하도록 확장하는 것이 목표입니다.</span></p></div>
+      </section>
+
+            <section class="overview page-shell" aria-label="Profile overview">
+  <table class="overview-table"><tbody>
+    <tr><th scope="row"><a href="#education" data-i18n="educationTitle">학력</a></th><td>
+      <div class="overview-item"><strong data-i18n="overviewGt">M.S., Georgia Institute of Technology</strong><span data-i18n="overviewMajorAi">Computer Science - Artificial Intelligence</span></div>
+      <div class="overview-item"><strong data-i18n="overviewUiuc">B.S., University of Illinois Urbana-Champaign</strong><span data-i18n="overviewMajorStatistics">Statistics | Minors: Computer Science, Data Science, Informatics</span></div>
+    </td></tr>
+    <tr class="overview-wide-row"><th scope="row"><a href="#experience" data-i18n="experienceTitle">경력</a></th><td>
+      <div class="overview-item"><strong>Flitto | Operation Support (AI)</strong><span class="overview-tech"> - AI Agent, Prompt Engineering, LLM Evaluation</span></div>
+      <div class="overview-item"><strong>Korea Data Network | Data Engineer</strong><span class="overview-tech"> - Automation, Data Pipeline, API Integration, OpenPyXL</span></div>
+      <div class="overview-item"><strong>IEA Lab (UIUC) | LLM Researcher</strong><span class="overview-tech"> - Multi-Agent, Agentic RAG, RAG Evaluation</span></div>
+    </td></tr>
+    <tr class="overview-wide-row"><th scope="row"><a href="#projects" data-i18n="projectsTitle">프로젝트</a></th><td>
+      <div class="overview-item"><a href="./health-agent/"><strong>mHealth Coaching Chatbot</strong><span class="overview-tech"> - Multi-Agent, LangGraph Orchestration, Agentic RAG, RAG Evaluation</span></a></div>
+      <div class="overview-item"><a href="#proj-l10n"><strong>L10n Quality Agent</strong><span class="overview-tech"> - AI Agent, LangChain, MQM Error Routing, HITL</span></a></div>
+      <div class="overview-item"><a href="#proj-interview"><strong>Real-time Mock Interview</strong><span class="overview-tech"> - AI Agent, Faster-Whisper STT, Silero VAD, Ollama, Supertonic TTS</span></a></div>
+      <div class="overview-item"><a href="#proj-usage"><strong>AI Usage Bar</strong><span class="overview-tech"> - LaunchAgent, Swift 6, SwiftPM</span></a></div>
+    </td></tr>
+    <tr><th scope="row"><a href="#skills" data-i18n="skillsTitle">기술</a></th><td><strong data-i18n="overviewSkills">Multi-Agent, Agentic RAG, Personalization, LLM Evaluation, HITL, Data Science, Data Analysis</strong></td></tr>
+  </tbody></table>
+</section>
 
       <section class="resume-section page-shell" id="education">
         <div class="section-title"><span>01</span><div><h2 data-i18n="educationTitle">학력</h2></div></div>
