@@ -248,7 +248,6 @@ const keywordTerms = [
   "ANN", "Swift 6", "SwiftPM", "LaunchAgent", "Swift Testing",
   "97.5%", "90.5%", "8.0–8.5%p", "8.0–8.5 percentage points",
   "60분에서 10분", "60 to 10 minutes", "zero API errors", "API 오류 0건",
-  "Team 2nd place", "Team 4th place", "Team 2위", "Team 4위",
   "미국 수학경시대회 조지아주 동남부 지역 대표",
   "Represented Southeast Georgia in the U.S. mathematics competition"
 ].sort((a, b) => b.length - a.length);
