@@ -936,3 +936,34 @@ body.v2-page .v2-main{padding-left:clamp(22px,2.7vw,46px);padding-right:clamp(22
  body.v2-home .v2-career-goal-description{font-size:clamp(20px,5vw,26px)}
 }
 @media(max-width:620px){body.v2-page .v2-main{padding:38px 19px 70px}}
+
+/* Shared alignment correction: do not center a narrow inner wrapper inside
+   the content region, which pushed every page far to the right on wide screens. */
+body.v2-page{--v2-sidebar-width:220px}
+@media(min-width:821px){
+  body.v2-page .v2-sidebar{width:var(--v2-sidebar-width)}
+  body.v2-page .v2-main{
+    box-sizing:border-box;
+    margin-left:var(--v2-sidebar-width);
+    width:calc(100% - var(--v2-sidebar-width));
+    max-width:none;
+    padding:50px clamp(24px,2vw,42px) 84px;
+  }
+  body.v2-page .v2-inner{
+    box-sizing:border-box;
+    width:100%;
+    max-width:1600px;
+    min-width:0;
+    margin:0;
+  }
+  body.v2-page .v2-section-page-content,
+  body.v2-page .ref-timeline-list,
+  body.v2-page .v2-project-grid,
+  body.v2-page .v2-page-intro{
+    margin-left:0;
+  }
+}
+@media(max-width:820px){
+  body.v2-page .v2-main{margin-left:0;width:100%;max-width:none}
+  body.v2-page .v2-inner{width:100%;max-width:none;margin:0}
+}
