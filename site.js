@@ -7,13 +7,18 @@
     document.querySelectorAll("[data-v2-en][data-v2-ko]").forEach(el=>{
       const value=el.getAttribute("data-v2-"+selected);
       if(value===null)return;
-      if(el.classList.contains("v2-career-goal-description")&&selected==="en"&&value.includes(" using ")){
-        const split=value.indexOf(" using ");
-        el.replaceChildren(
-          document.createTextNode(value.slice(0,split)),
-          document.createElement("br"),
-          document.createTextNode(value.slice(split+1))
-        );
+      if(el.classList.contains("v2-career-goal-description")){
+        const cut=selected==="ko"?" A2A Communication으로":" using ";
+        const at=value.indexOf(cut);
+        if(at>=0){
+          el.replaceChildren(
+            document.createTextNode(value.slice(0,at)),
+            document.createElement("br"),
+            document.createTextNode(value.slice(at).trimStart())
+          );
+        }else{
+          el.textContent=value;
+        }
       }else{
         el.textContent=value;
       }
@@ -70,14 +75,8 @@
       catch{location.href="mailto:"+mail}
     });
   });
-  if(body.dataset.v2Page==="home"){
-    const hash=decodeURIComponent(location.hash.slice(1));
-    const projectIds=["projects","proj-l10n","proj-pipeline","proj-interview","proj-usage"];
-    const aboutIds=["background","skills"];
-    if(projectIds.includes(hash))location.replace("./projects/#"+encodeURIComponent(hash));
-    else if(sectionRoutes[hash])location.replace(sectionRoutes[hash]);
-    else if(aboutIds.includes(hash))location.replace("./about/#"+encodeURIComponent(hash));
-  }
+  // Home now includes each destination as an on-page section;
+  // preserve hash anchors instead of redirecting to a separate page.
   // Fit all three role/expertise/education labels on one uninterrupted line.
   // Measure actual glyph widths after web fonts load and when the viewport changes.
   const heroIdentity=document.querySelector("body.v2-home .v2-horizontal-identity");
@@ -107,36 +106,7 @@
     window.addEventListener("resize",queueHeroFit,{passive:true});
   }
 
-  // Resize the complete Career Goal to a single line in Korean or English.
-  const careerGoal=document.querySelector("body.v2-home .v2-career-goal-description");
-  if(careerGoal){
-    const textRange=document.createRange();
-    let queued=false;
-    function fitCareerGoal(){
-      const available=careerGoal.clientWidth;
-      if(!available)return;
-      textRange.selectNodeContents(careerGoal);
-      let lo=4,hi=20;
-      // Binary search the largest readable size that fits the current text.
-      for(let n=0;n<16;n++){
-        const size=(lo+hi)/2;
-        careerGoal.style.fontSize=size+"px";
-        const measured=Math.max(0,...Array.from(textRange.getClientRects(),rect=>rect.width));
-        if(measured<=available-2)lo=size;
-        else hi=size;
-      }
-      careerGoal.style.fontSize=Math.max(4,Math.floor(lo))+"px";
-    }
-    function queueCareerFit(){
-      if(queued)return;
-      queued=true;
-      requestAnimationFrame(()=>{queued=false;fitCareerGoal()});
-    }
-    queueCareerFit();
-    document.fonts?.ready.then(queueCareerFit);
-    window.addEventListener("resize",queueCareerFit,{passive:true});
-    if("ResizeObserver" in window)new ResizeObserver(queueCareerFit).observe(careerGoal);
-    new MutationObserver(queueCareerFit).observe(careerGoal,{childList:true,characterData:true,subtree:true});
-  }
+  // Two explicit, language-specific line breaks are rendered directly.
+  // Responsive CSS controls readable font size without shrinking below 20px.
 
 })();
