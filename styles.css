@@ -993,3 +993,60 @@ body .pvis-link:active .cta {
   .hero .overview-table td:last-child,
   .hero .overview-table .overview-wide-row td:last-child { grid-column:1; grid-row:2; padding:.15rem 0 1rem; }
 }
+
+/* Final summary: same typography across Role, Goal, Service and the four overview categories. */
+.hero { min-height:0; border-bottom:0; align-items:start; }
+.hero-main, .hero-copy { justify-content:flex-start; min-height:0; }
+.hero .overview-education { width:100%; padding:1rem 0 0; }
+.hero .overview-education .overview-table tr { grid-template-columns:6.5rem minmax(0,1fr); gap:1.25rem; }
+.hero-direction dt,
+.hero .overview-education .overview-table th,
+.overview-full .overview-table th { font-family:inherit; font-size:.94rem; line-height:1.55; font-weight:800; color:var(--blue); }
+.hero .overview-education .overview-table th { padding:1rem 0; }
+.hero .overview-education .overview-table td { padding:1rem 0; }
+.hero .overview-education .overview-item strong,
+.overview-full .overview-item strong,
+.overview-full .overview-table [data-i18n="overviewSkills"] { font-family:inherit; font-size:1.16rem; line-height:1.55; font-weight:650; color:var(--ink); }
+.hero .overview-education .overview-item span { font-family:inherit; font-size:.86rem; font-weight:400; }
+.overview-full { padding:0 0 1.65rem; border-bottom:0; }
+.overview-full .overview-table,
+.overview-full .overview-table tbody { display:block; width:100%; table-layout:auto; }
+.overview-full .overview-table tr { display:grid; grid-template-columns:6.5rem minmax(0,1fr); column-gap:1.25rem; align-items:start; border-top:1px solid var(--line); }
+.overview-full .overview-table th,
+.overview-full .overview-table td,
+.overview-full .overview-table td:last-child,
+.overview-full .overview-wide-row td:last-child { display:block; width:auto; min-width:0; text-align:left; white-space:normal; padding:.95rem 0; }
+.overview-full .overview-table th { grid-column:1; grid-row:1; }
+.overview-full .overview-table td,
+.overview-full .overview-table td:last-child,
+.overview-full .overview-wide-row td:last-child { grid-column:2; grid-row:1; padding-right:0; }
+.overview-full .overview-item { overflow-wrap:anywhere; }
+.overview-full .overview-wide-row .overview-item strong { display:inline; font-size:1.16rem; font-weight:650; }
+.overview-full .overview-wide-row .overview-item .overview-tech { display:inline; font-size:.94rem; line-height:1.55; font-weight:400; }
+.overview-full .overview-table [data-i18n="overviewSkills"] { display:inline; }
+.overview-full .overview-item + .overview-item { margin-top:.55rem; padding-top:.55rem; }
+.overview-full .overview-table tr:last-child { border-bottom:0; }
+.background-section { padding-top:2.5rem; border-bottom:0; }
+.background-goal { font-weight:750; }
+.intro-word { display:inline; opacity:0; animation:text-reveal .22s ease-out both; animation-delay:calc(var(--reveal-index) * 45ms); animation-play-state:paused; }
+.reveal-play .intro-word { animation-play-state:running; }
+@media (prefers-reduced-motion:reduce) { .intro-word { opacity:1; animation:none; } }
+@media(min-width:1250px) {
+  .resume-section { position:relative; }
+  .resume-section > .section-title { position:absolute; top:3rem; left:-215px; width:200px; display:block; margin:0; }
+  .resume-section > .section-title > span { display:block; margin-bottom:.3rem; }
+  .resume-section > .section-title h2 { font-size:1.7rem; letter-spacing:-.035em; }
+  .resume-section > .section-title p { margin-top:.25rem; }
+  .resume-section { padding-top:3rem; padding-bottom:3rem; }
+}
+@media(max-width:650px) {
+  .hero .overview-education .overview-table tr,
+  .overview-full .overview-table tr { grid-template-columns:minmax(0,1fr); }
+  .hero .overview-education .overview-table th,
+  .overview-full .overview-table th { grid-column:1; grid-row:1; padding:.9rem 0 .2rem; }
+  .hero .overview-education .overview-table td,
+  .hero .overview-education .overview-table td:last-child,
+  .overview-full .overview-table td,
+  .overview-full .overview-table td:last-child,
+  .overview-full .overview-wide-row td:last-child { grid-column:1; grid-row:2; padding:.1rem 0 .9rem; }
+}
