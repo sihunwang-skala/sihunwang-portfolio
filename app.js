@@ -222,6 +222,7 @@ const elements = document.querySelectorAll("[data-i18n]");
 // Emphasize selected technical terms and results without changing the copy.
 const keywordTerms = [
   "regional representative", "class leadership roles", "top-ranked U.S. universities for AI", "No. 6", "No. 5", "6위", "5위",
+  "Agent를 고도화하는 것이 목표입니다.",
   "AI 모델링", "AI Agent Engineer", "A2A",
   "학급 임원", "조지아주 지역 대표", "미국 인공지능 분야 최상위권 대학", "인공지능 분야 최상위권 대학", "미국 AI 분야 최상위권 대학",
   "execution logs", "실행 로그", "Agent", "Agents",
@@ -262,8 +263,6 @@ function keywordFragment(value, limit = Infinity, pattern = keywordPattern) {
   let count = 0;
   pattern.lastIndex = 0;
   for (const match of value.matchAll(pattern)) {
-    // This particular closing phrase stays unhighlighted; preserve all other Agent highlights.
-    if (match[0] === "Agent" && value.slice(match.index).startsWith("Agent를 고도화하는 것이 목표입니다.")) continue;
     if (count++ === limit) break;
     fragment.append(document.createTextNode(value.slice(cursor, match.index)));
     const strong = document.createElement("strong");
