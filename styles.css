@@ -922,3 +922,8 @@ body .pvis-link:active .cta {
 .overview-table th{width:7.5rem;white-space:nowrap}.overview-table td:last-child{width:7rem;text-align:right;white-space:nowrap}
 .overview-table a{color:var(--blue);text-decoration:none;font-weight:650}.overview-table a:hover{text-decoration:underline}
 @media(max-width:580px){.overview-table th{width:5.5rem}.overview-table th,.overview-table td{padding:.75rem .4rem}.overview-table td:last-child{width:auto}.overview-table td:last-child a{font-size:.8rem}}
+.overview-table{table-layout:fixed}
+.overview-table th{width:10rem}
+.overview-table td:nth-child(2){overflow-wrap:anywhere;padding-right:1.25rem}
+.overview-table td:last-child{width:8.5rem;padding-left:1rem}
+@media(max-width:580px){.overview-table th{width:6rem}.overview-table td:last-child{width:5.8rem;padding-left:.3rem}.overview-table td:nth-child(2){padding-right:.35rem}}
