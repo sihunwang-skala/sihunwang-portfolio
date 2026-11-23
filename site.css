@@ -423,43 +423,37 @@ html[data-theme="dark"] .v2-hero h1 em{color:#f0f2f5}
   body.v2-about .v2-about-intro .summary{font-size:15px}
 }
 
-/* Horizontal role line: all three labels share font size, weight and baseline. */
+/* Home: largest font that fits the complete three-part identity on one line.
+   site.js measures the rendered width and computes the maximum usable size. */
 body.v2-home .v2-horizontal-identity{
   display:flex;
   align-items:baseline;
   flex-wrap:nowrap;
-  gap:0;
-  max-width:100%;
   white-space:nowrap;
-  font-size:clamp(15px,1.34vw,20px);
-  line-height:1.55;
-  font-weight:570;
-  letter-spacing:-.023em;
+  gap:0;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  font-size:30px;
+  font-weight:585;
+  line-height:1.4;
+  letter-spacing:-.027em;
   color:#242424;
 }
-body.v2-home .v2-horizontal-identity > span:not(.v2-bar) {
+body.v2-home .v2-horizontal-identity > span:not(.v2-bar){
   flex:0 0 auto;
   font-size:inherit;
   font-weight:inherit;
+  white-space:nowrap;
 }
-body.v2-home .v2-horizontal-identity .v2-bar {
+body.v2-home .v2-horizontal-identity > .v2-bar{
   flex:0 0 auto;
+  display:inline-block;
   font:inherit;
-  font-weight:360;
-  color:#a1a1a1;
-  margin-inline:clamp(12px,1.5vw,23px);
-}
-@media(max-width:1120px){
-  body.v2-home .v2-horizontal-identity{
-    flex-wrap:wrap;
-    white-space:normal;
-    column-gap:0;
-    row-gap:2px;
-  }
-}
-@media(max-width:680px){
-  body.v2-home .v2-horizontal-identity{font-size:15px}
-  body.v2-home .v2-horizontal-identity .v2-bar{margin-inline:10px}
+  font-weight:400;
+  color:#7b828e;
+  margin-inline:.48em;
+  white-space:nowrap;
 }
 /* Project previews show the actual linked case-study pages, not unrelated UI thumbnails. */
 body.v2-projects .v2-live-preview-frame{
