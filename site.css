@@ -1471,19 +1471,26 @@ html[data-theme="dark"] body.v2-about .ref-education-copy .ref-ranking-note a.re
 }
 
 /* High-contrast Resume PDF download button in light and dark themes. */
-body.v2-resume .v2-resume-header a.v2-resume-link{
+body.v2-resume .v2-resume-action a.v2-resume-link{
   background:#17202a;
   color:#ffffff;
   border:1px solid #17202a;
   font-weight:650;
   opacity:1;
 }
-body.v2-resume .v2-resume-header a.v2-resume-link:hover{
+body.v2-resume .v2-resume-action a.v2-resume-link:hover{
   background:#2257d8;
   color:#ffffff;
   border-color:#2257d8;
 }
-body.v2-resume .v2-resume-header a.v2-resume-link:focus-visible{
+body.v2-resume .v2-resume-action a.v2-resume-link:focus-visible{
   outline:2px solid #2257d8;
   outline-offset:3px;
+}
+
+/* Place Resume download beneath the embedded PDF, aligned to its right edge. */
+body.v2-resume .v2-resume-preview .v2-resume-action{
+  display:flex;
+  justify-content:flex-end;
+  margin:18px 0 0;
 }
