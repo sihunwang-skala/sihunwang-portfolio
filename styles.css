@@ -935,6 +935,7 @@ body .pvis-link:active .cta {
 .overview-wide-row td:last-child{width:auto;text-align:left;white-space:normal;padding-left:.7rem}
 .overview-wide-row .overview-item a{color:inherit;font-weight:inherit}
 .overview-wide-row .overview-item a:hover{color:var(--blue)}
+#projects .project-list article[id]{scroll-margin-top:5rem}
 @media(max-width:650px){
   .overview-table,.overview-table tbody{display:block;width:100%}
   .overview-table tr{display:grid;grid-template-columns:minmax(0,1fr) auto}
