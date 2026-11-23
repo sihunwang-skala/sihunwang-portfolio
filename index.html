@@ -14,9 +14,9 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
 <link rel="stylesheet" href="./styles.css?v=20261123-compact" />
-<link rel="stylesheet" href="./site.css?v=20261123-max-single-line-taller" />
+<link rel="stylesheet" href="./site.css?v=20261124-four-tiles" />
 <script src="./app.js?v=20261123-about-copy" defer></script>
-<script src="./site.js?v=20261123-max-single-line" defer></script>
+<script src="./site.js?v=20261124-nav-filter" defer></script>
 <script src="./highlight.js?v=20261123-on-scroll" defer></script>
 </head>
 <body class="v2-page v2-home" data-v2-page="home">
@@ -25,10 +25,11 @@
 <a class="v2-logo" href="./" aria-label="Sihun Wang, home">sihun wang</a>
 <p class="v2-nav-label">Portfolio</p>
 <nav class="v2-nav" aria-label="Pages">
-<a href="./" aria-current="page" data-v2-en="Home" data-v2-ko="홈">Home</a>
-<a href="./projects/"  data-v2-en="Projects" data-v2-ko="프로젝트">Projects</a>
-<a href="./resume/"  data-v2-en="Resume" data-v2-ko="이력서">Resume</a>
-<a href="./about/"  data-v2-en="About" data-v2-ko="소개">About</a>
+<a href="./about/" data-v2-nav="about" data-v2-en="About" data-v2-ko="소개">About</a>
+<a href="./about/#experience" data-v2-nav="experience" data-v2-en="Experience" data-v2-ko="경력">Experience</a>
+<a href="./projects/" data-v2-nav="projects" data-v2-en="Projects" data-v2-ko="프로젝트">Projects</a>
+<a href="./about/#education" data-v2-nav="education" data-v2-en="Education" data-v2-ko="학력">Education</a>
+<a href="./about/#recognition" data-v2-nav="awards" data-v2-en="Awards &amp; Contribution" data-v2-ko="수상 및 기여">Awards &amp; Contribution</a>
 </nav>
 <div class="v2-sidebar-bottom">
 <div class="v2-mini-contact"><a href="https://github.com/sihunwang-skala" target="_blank" rel="noreferrer">GitHub</a><a href="mailto:sihunw@naver.com">Email</a></div>
@@ -40,8 +41,25 @@
 <header class="v2-mobilebar"><a href="./">sihun wang</a><button type="button" data-v2-menu aria-controls="v2-sidebar" aria-expanded="false" data-v2-en="Menu" data-v2-ko="메뉴">Menu</button></header>
 <main class="v2-main" id="main"><div class="v2-inner">
 <section class="v2-hero" id="top"><p class="v2-kicker" data-v2-en="AI Engineering / Seoul, South Korea" data-v2-ko="AI 엔지니어링 / 대한민국 서울">AI Engineering / Seoul, South Korea</p>
-<h1><span data-v2-en="Sihun Wang" data-v2-ko="Sihun Wang">Sihun Wang</span></h1>
-<div class="v2-horizontal-identity"><span>AI Agent Engineer</span><span class="v2-bar" aria-hidden="true">|</span><span>Agentic AI, Multi-Agent, A2A</span><span class="v2-bar" aria-hidden="true">|</span><span>AI @ UIUC, Georgia Tech</span></div>
+<h1><a class="v2-hero-name" href="./about/">Sihun Wang</a></h1>
+<div class="v2-feature-grid" aria-label="Explore experience, projects, education and awards">
+  <a class="v2-feature-tile" href="./about/#experience">
+    <span>AI Agent Engineer</span>
+    <span class="v2-feature-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="v2-feature-tile" href="./projects/">
+    <span>Agentic AI, Multi-Agent, A2A</span>
+    <span class="v2-feature-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="v2-feature-tile" href="./about/#education">
+    <span>AI @ UIUC, Georgia Tech</span>
+    <span class="v2-feature-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="v2-feature-tile" href="./about/#recognition">
+    <span>AI, STAT, MATH Awards</span>
+    <span class="v2-feature-arrow" aria-hidden="true">↗</span>
+  </a>
+</div>
 <p class="v2-goal" data-v2-en="My goal is to build context-aware AI agents with multi-agent architectures, tailored to individuals and organizations, and connect independent agents through A2A communication." data-v2-ko="개인과 기업의 맥락에 맞춘 AI Agent를 Multi-Agent Architecture 기반으로 개발하고, 독립적인 Agent들이 A2A Communication을 통해 협업하도록 연결하는 것이 목표입니다.">My goal is to build context-aware AI agents with multi-agent architectures, tailored to individuals and organizations, and connect independent agents through A2A communication.</p></section>
 <section class="v2-section" id="experience-preview"><div class="v2-section-top"><h2 data-v2-en="Experience" data-v2-ko="경력">Experience</h2><a href="./about/#experience" data-v2-en="Full background" data-v2-ko="모두 보기">Full background</a></div>
 <ul class="v2-experience-list"><li><span class="v2-exp-mark"><img src="https://www.google.com/s2/favicons?domain=www.flitto.com&amp;sz=128" alt="Flitto logo" loading="lazy" /></span><div><h3>Flitto</h3><p class="v2-role">Operation Support (AI)</p><p class="v2-evidence" data-v2-en="97.5% accepted without revision in external PoC review" data-v2-ko="외부 PoC 검수 97.5% 무수정 승인">97.5% accepted without revision in external PoC review</p></div><time>2026</time></li><li><span class="v2-exp-mark"><img src="./assets/kdn-mark.png" alt="Korea Data Network logo" loading="lazy" /></span><div><h3>Korea Data Network</h3><p class="v2-role">Data Engineer</p><p class="v2-evidence" data-v2-en="Automated data pipelines and reduced weekly updates from 60 to 10 minutes" data-v2-ko="데이터 자동화로 주간 갱신 시간 60분에서 10분으로 단축">Automated data pipelines and reduced weekly updates from 60 to 10 minutes</p></div><time>2025</time></li><li><span class="v2-exp-mark"><img src="https://www.google.com/s2/favicons?domain=illinois.edu&amp;sz=128" alt="UIUC logo" loading="lazy" /></span><div><h3>UIUC IEA Lab</h3><p class="v2-role">LLM Researcher</p><p class="v2-evidence" data-v2-en="Multi-Agent orchestration, Agentic RAG and evaluation" data-v2-ko="Multi-Agent Orchestration, Agentic RAG 및 평가">Multi-Agent orchestration, Agentic RAG and evaluation</p></div><time>2024</time></li><li><span class="v2-exp-mark"><img src="./assets/khu-seal.png" alt="Kyung Hee University logo" loading="lazy" /></span><div><h3>Kyung Hee University</h3><p class="v2-role">Teaching Assistant</p><p class="v2-evidence" data-v2-en="Machine Learning, Deep Learning and Federated Learning labs" data-v2-ko="Machine Learning, Deep Learning, Federated Learning 실습">Machine Learning, Deep Learning and Federated Learning labs</p></div><time>2022</time></li><li><span class="v2-exp-mark"><span class="v2-exp-lettermark" aria-label="AI and BM Lab">AI &amp; BM</span></span><div><h3>AI &amp; BM Lab</h3><p class="v2-role">AI Researcher</p><p class="v2-evidence" data-v2-en="Lightweight neural networks and Federated Learning" data-v2-ko="경량 Neural Network 및 Federated Learning 연구">Lightweight neural networks and Federated Learning</p></div><time>2022</time></li></ul></section>
