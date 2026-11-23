@@ -1453,3 +1453,19 @@ body.v2-home .v2-career-goal-description{
   color:#151515;
   font-weight:600;
 }
+
+/* Make AI program ranking source links visibly blue. */
+body.v2-about .ref-education-copy .ref-ranking-note a.ref-overviews-link,
+body.v2-about .ref-education-copy .ref-ranking-note a.ref-rank-link{
+  color:#1d4ed8;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+body.v2-about .ref-education-copy .ref-ranking-note a.ref-overviews-link:hover,
+body.v2-about .ref-education-copy .ref-ranking-note a.ref-rank-link:hover{
+  color:#1e40af;
+}
+html[data-theme="dark"] body.v2-about .ref-education-copy .ref-ranking-note a.ref-overviews-link,
+html[data-theme="dark"] body.v2-about .ref-education-copy .ref-ranking-note a.ref-rank-link{
+  color:#93b4ff;
+}
