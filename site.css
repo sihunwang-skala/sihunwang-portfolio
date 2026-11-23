@@ -864,3 +864,75 @@ body.v2-home .v2-feature-meta .v2-feature-arrow{
   body.v2-home .v2-feature-meta .v2-feature-label{font-size:10px}
   body.v2-home .v2-about-hint{font-size:10px}
 }
+
+/* Resume organization for standalone Experience and Awards pages. */
+body.v2-section-page.v2-about .ref-timeline-item.ref-resume-row{
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(116px,max-content);
+ gap:20px 30px;align-items:start;width:100%;padding:24px 0 27px;
+ border-bottom:1px solid var(--v2-divider);
+}
+body.v2-section-page.v2-about .ref-resume-main{
+ display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:start;min-width:0;
+}
+body.v2-section-page.v2-about .ref-resume-main .ref-logo{
+ display:grid;place-items:center;margin:1px 0 0;width:40px;min-width:40px;height:40px;
+}
+body.v2-section-page.v2-about .ref-resume-copy{min-width:0}
+body.v2-section-page.v2-about .ref-resume-heading{
+ display:flex;align-items:baseline;flex-wrap:wrap;
+ gap:4px 15px;margin:0 0 10px;
+}
+body.v2-section-page.v2-about .ref-resume-heading h3{
+ font-size:17px;line-height:1.45;font-weight:650;letter-spacing:-.025em;color:#252525;margin:0;
+}
+body.v2-section-page.v2-about .ref-resume-heading h3 a{color:inherit;text-decoration:none}
+body.v2-section-page.v2-about .ref-resume-heading h3 a:hover{text-decoration:underline}
+body.v2-section-page.v2-about .ref-resume-heading .ref-role{
+ margin:0;font-size:15px;line-height:1.55;font-weight:550;color:#45505e;
+}
+body.v2-section-page.v2-about .ref-resume-description{font-size:14px;line-height:1.7;min-width:0}
+body.v2-section-page.v2-about .ref-resume-description .ref-brief,
+body.v2-section-page.v2-about .ref-resume-description .ref-award-description{
+ margin:0;font-size:14px;line-height:1.7;
+}
+body.v2-section-page.v2-about .ref-resume-description .ref-more,
+body.v2-section-page.v2-about .ref-resume-description .ref-links{margin-top:9px}
+body.v2-section-page.v2-about .ref-resume-aside{
+ min-width:116px;text-align:right;align-self:start;padding-top:2px;
+}
+body.v2-section-page.v2-about .ref-resume-aside .ref-date{
+ margin:0;white-space:nowrap;font-size:14px;font-weight:450;color:#606870;
+}
+body.v2-section-page.v2-about .ref-resume-aside .ref-location{
+ display:block;margin:6px 0 0;color:#858b94;font-size:12px;line-height:1.45;
+}
+/* Career goal is a centered, prominent headline, not a small site caption. */
+body.v2-home .v2-career-goal{
+ max-width:1120px;text-align:center;margin:0 auto 38px;padding:7px 0 0;
+}
+body.v2-home .v2-career-goal-label{
+ margin:0 0 10px;font-size:14px;font-weight:530;letter-spacing:.025em;color:#697386;
+}
+body.v2-home .v2-career-goal-description{
+ margin:0 auto;font-size:clamp(21px,2.1vw,30px);font-weight:570;
+ letter-spacing:-.045em;line-height:1.5;color:#263341;text-wrap:balance;
+}
+body.v2-home .v2-career-goal-description strong{font-weight:730;color:#111b2a}
+body.v2-page .v2-inner{width:100%;max-width:1180px;margin-inline:auto}
+body.v2-page .v2-main{padding-left:clamp(22px,2.7vw,46px);padding-right:clamp(22px,2.7vw,46px)}
+@media(max-width:820px){
+ body.v2-page .v2-main{padding:45px 23px 72px}
+}
+@media(max-width:680px){
+ body.v2-section-page.v2-about .ref-timeline-item.ref-resume-row{
+   grid-template-columns:minmax(0,1fr);row-gap:5px;
+ }
+ body.v2-section-page.v2-about .ref-resume-aside{
+   grid-row:1;text-align:left;min-width:0;padding:0 0 0 54px;
+ }
+ body.v2-section-page.v2-about .ref-resume-aside .ref-date{font-size:12px}
+ body.v2-section-page.v2-about .ref-resume-main{grid-row:2}
+ body.v2-home .v2-career-goal{margin-bottom:24px}
+ body.v2-home .v2-career-goal-description{font-size:clamp(20px,5vw,26px)}
+}
+@media(max-width:620px){body.v2-page .v2-main{padding:38px 19px 70px}}
