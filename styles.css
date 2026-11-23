@@ -1210,3 +1210,9 @@ html.hl-js strong.keyword { transition:background-size .7s cubic-bezier(.22,.7,.
     font-size:var(--detail-heading-size);
   }
 }
+
+/* Separate the overview's Skills row from the numbered Background section. */
+.overview-full + .background-section { margin-top:4rem; }
+@media (max-width:650px) {
+  .overview-full + .background-section { margin-top:2.5rem; }
+}
