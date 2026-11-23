@@ -41,7 +41,8 @@
     if(!details||!location.hash)return;
     try{
       const id=decodeURIComponent(location.hash.slice(1));
-      if(details.querySelector("#"+CSS.escape(id)))details.open=true;
+      const target=details.querySelector("#"+CSS.escape(id));
+      if(target){details.open=true;requestAnimationFrame(()=>target.scrollIntoView({block:"start"}))}
     }catch{}
   }
   revealHash();
