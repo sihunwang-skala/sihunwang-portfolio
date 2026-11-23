@@ -34,8 +34,39 @@
     filters.forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.v2Filter===filter)));
     timeline.forEach(item=>item.classList.toggle("v2-filter-hide",filter!=="all"&&item.dataset.v2Kind!==filter));
   }
-  filters.forEach(button=>button.addEventListener("click",()=>setFilter(button.dataset.v2Filter)));
+  filters.forEach(button=>button.addEventListener("click",()=>{
+    setFilter(button.dataset.v2Filter);
+    updateNavSelection();
+  }));
   if(filters.length)setFilter("all");
+  // Sidebar deep links open the corresponding filter before scrolling to its first row.
+  const aboutHashFilter={experience:"professional",education:"education",recognition:"awards"};
+  function updateNavSelection(){
+    const fragment=decodeURIComponent(location.hash.replace(/^#/,""));
+    const desired=body.dataset.v2Page==="projects"?"projects":
+      body.dataset.v2Page==="about"?
+        (fragment==="experience"?"experience":fragment==="education"?"education":fragment==="recognition"?"awards":"about"):
+      "";
+    document.querySelectorAll("[data-v2-nav]").forEach(anchor=>{
+      if(anchor.dataset.v2Nav===desired)anchor.setAttribute("aria-current","page");
+      else anchor.removeAttribute("aria-current");
+    });
+  }
+  function selectAboutFragment(){
+    if(body.dataset.v2Page==="about"){
+      const fragment=decodeURIComponent(location.hash.replace(/^#/,""));
+      if(aboutHashFilter[fragment]){
+        setFilter(aboutHashFilter[fragment]);
+        requestAnimationFrame(()=>{
+          const target=document.getElementById(fragment);
+          target?.scrollIntoView({block:"start"});
+        });
+      }else if(!fragment) setFilter("all");
+    }
+    updateNavSelection();
+  }
+  selectAboutFragment();
+  window.addEventListener("hashchange",selectAboutFragment);
   const details=document.querySelector(".v2-technical-detail");
   function revealHash(){
     if(!details||!location.hash)return;
