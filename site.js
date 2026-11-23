@@ -115,7 +115,7 @@
         if(measured<=available-2)lo=size;
         else hi=size;
       }
-      careerGoal.style.fontSize=Math.max(4,Math.floor(lo*10)/10)+"px";
+      careerGoal.style.fontSize=Math.max(4,Math.floor(lo))+"px";
     }
     function queueCareerFit(){
       if(queued)return;
