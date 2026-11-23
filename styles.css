@@ -1062,3 +1062,40 @@ body .pvis-link:active .cta {
 .entry-heading .inline-job-title p { margin:0; white-space:nowrap; }
 /* Enlarge the Georgia Tech specialization label without changing other degree details. */
 .hero .overview-education [data-i18n="overviewMajorAi"] { font-size:1.06rem; line-height:1.5; }
+
+/* Numbered sections: the title aligns with content; the index sits above it. */
+.background-section > .section-title h2 { font-size:2.15rem; letter-spacing:-.04em; margin:0; }
+.background-section > .section-title { margin-bottom:2.3rem; }
+@media (min-width:1250px) {
+  .background-section, .resume-section { position:relative; }
+  .background-section { padding-top:2.6rem; padding-bottom:2.6rem; }
+  .resume-section { padding-top:2.6rem; padding-bottom:2.6rem; }
+  .background-section > .section-title,
+  .resume-section > .section-title {
+    position:absolute;
+    top:2.6rem;
+    left:max(-215px, calc(24px - (100vw - 920px)/2));
+    width:min(200px, calc((100vw - 920px)/2 - 36px));
+    display:block;
+    margin:0;
+  }
+  .background-section > .section-title > span,
+  .resume-section > .section-title > span {
+    position:absolute;
+    bottom:100%;
+    left:0;
+    padding:0 0 .35rem;
+    margin:0;
+  }
+  .background-section > .section-title h2,
+  .resume-section > .section-title h2 {
+    font-size:2.15rem;
+    line-height:1.25;
+    letter-spacing:-.04em;
+  }
+}
+/* Skills-to-awards boundary: only one divider, retained on the section edge. */
+#skills .skills-list > div:last-child { border-bottom:0; }
+#skills { border-bottom:1px solid var(--line); }
+/* Yellow marker sweeps in once its own text becomes visible, as in Background. */
+html.hl-js strong.keyword { transition:background-size .7s cubic-bezier(.22,.7,.2,1); }
