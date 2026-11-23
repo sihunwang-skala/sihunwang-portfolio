@@ -43,7 +43,7 @@ const copy = {
     skip:"Skip to content", name:"Sihun Wang", navExperience:"Experience", navEducation:"Education", navProjects:"Projects", navSkills:"Skills", navRecognition:"Contributions and Awards",
     heroGoal:"Build personal AI agents using multi-agent architectures and connect them with external agents through A2A communication.", backgroundTitle:"Background",
     overviewTitle:"At a glance", overviewUiuc:"B.S., University of Illinois Urbana-Champaign", overviewMajorStatistics:"Statistics | Minors: Computer Science, Data Science, Informatics", overviewGt:"M.S., Georgia Institute of Technology", overviewMajorAi:"Computer Science - Artificial Intelligence", overviewHealth:"Health coaching chatbot", overviewPipeline:"Data pipeline", overviewSkills:"Multi-Agent, Agentic RAG, Personalization, LLM Evaluation, HITL, Data Science, Data Analysis", overviewDetails:"Explore",
-    summary:"Before moving to the United States to study, I served in class leadership roles in Korea for several years, including as class president. While studying in the United States, I was selected twice as a regional representative from Georgia for a U.S. mathematics competition.\n\nI went on to study AI at the University of Illinois Urbana-Champaign and the Georgia Institute of Technology, two of the leading U.S. universities in AI. Their AI programs rank No. 6 and No. 5 nationally, respectively, according to U.S. News & World Report.\n\nI worked in AI research labs in both the United States and South Korea, as well as at companies in South Korea. These roles gave me experience spanning AI modeling and AI agent development. I now focus on designing and developing AI agents. My goal as an AI Agent Engineer is to build personal AI agents using multi-agent architectures and enable them to collaborate with external agents through A2A communication.",
+    summary:"Before moving to the United States to study, I served in class leadership roles in Korea for several years, including as class president. While studying in the United States, I was selected twice as a regional representative from Georgia for a U.S. mathematics competition.\n\nI went on to study AI at the University of Illinois Urbana-Champaign and the Georgia Institute of Technology, two of the top-ranked U.S. universities for AI. Their AI programs rank No. 6 and No. 5 nationally, respectively, according to U.S. News & World Report.\n\nI worked in AI research labs in both the United States and South Korea, as well as at companies in South Korea. These roles gave me experience spanning AI modeling and AI agent development. I now focus on designing and developing AI agents. My goal as an AI Agent Engineer is to build personal AI agents using multi-agent architectures and enable them to collaborate with external agents through A2A communication.",
     viewExperience:"Experience", viewEducation:"Education", viewProjects:"Projects", viewSkills:"Skills", viewRecognition:"Contributions and Awards",
     locationLabel:"Location", educationLabel:"Education", focusLabel:"Target roles", previousScreen:"Previous screen", nextScreen:"Next screen",
     experienceTitle:"Experience", experienceSubtitle:"Reverse chronological",
@@ -221,6 +221,7 @@ const elements = document.querySelectorAll("[data-i18n]");
 
 // Emphasize selected technical terms and results without changing the copy.
 const keywordTerms = [
+  "regional representative", "top-ranked U.S. universities for AI", "No. 6", "No. 5",
   "execution logs", "실행 로그", "Agent", "Agents",
   "성능 비교", "comparing architectures",
   "Pipeline", "Pipelines", "자동화", "Automation", "Automated",
@@ -301,23 +302,38 @@ function renderIntroText() {
   const target = document.querySelector("[data-reveal-text]");
   const value = copy[currentLanguage]?.summary || "";
   if (!target) return;
-  target.replaceChildren(keywordFragment(value));
+
+  const goalIntro = currentLanguage === "en"
+    ? "My goal as an AI Agent Engineer"
+    : "AI Agent Engineer로서";
+  const goalIndex = value.lastIndexOf(goalIntro);
+  if (goalIndex >= 0) {
+    const bold = document.createElement("strong");
+    bold.className = "background-goal";
+    bold.appendChild(keywordFragment(value.slice(goalIndex)));
+    target.replaceChildren(keywordFragment(value.slice(0, goalIndex)), bold);
+  } else {
+    target.replaceChildren(keywordFragment(value));
+  }
+
+  // Reveal complete words rather than individual letters, retaining whitespace.
   let index = 0;
   const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
-  const textNodes = [];
-  while (walker.nextNode()) textNodes.push(walker.currentNode);
-  textNodes.forEach((node) => {
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => {
     const fragment = document.createDocumentFragment();
-    Array.from(node.textContent).forEach((character) => {
-      if (character === " ") {
-        fragment.append(document.createTextNode(" "));
-        return;
+    node.textContent.split(/(\s+)/u).forEach((piece) => {
+      if (!piece) return;
+      if (/^\s+$/u.test(piece)) {
+        fragment.append(document.createTextNode(piece));
+      } else {
+        const word = document.createElement("span");
+        word.className = "intro-word";
+        word.style.setProperty("--reveal-index", String(index++));
+        word.textContent = piece;
+        fragment.append(word);
       }
-      const letter = document.createElement("span");
-      letter.className = "intro-char";
-      letter.style.setProperty("--reveal-index", String(index++));
-      letter.textContent = character;
-      fragment.append(letter);
     });
     node.replaceWith(fragment);
   });
