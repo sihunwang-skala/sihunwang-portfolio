@@ -1216,3 +1216,57 @@ html.hl-js strong.keyword { transition:background-size .7s cubic-bezier(.22,.7,.
 @media (max-width:650px) {
   .overview-full + .background-section { margin-top:2.5rem; }
 }
+
+/* Compact, role-first landing instead of the former four-row overview. */
+.hero { grid-template-columns:minmax(0,1fr) 210px; gap:2.5rem; min-height:0; align-items:center; padding:3.5rem 0 3rem; border-bottom:1px solid var(--line); }
+.hero-main { display:flex; flex-direction:column; justify-content:center; align-self:center; min-height:0; }
+.hero-copy { display:block; min-height:0; }
+.hero h1 { margin:0 0 .8rem; }
+.hero-compact-headline {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  column-gap:.65rem;
+  row-gap:.2rem;
+  max-width:100%;
+  margin:1rem 0 0;
+  color:var(--ink);
+  font-family:inherit;
+  font-size:clamp(1.05rem,1.55vw,1.25rem);
+  font-weight:650;
+  line-height:1.6;
+}
+.hero-compact-headline strong { font-weight:800; }
+.hero-compact-headline .hero-divider { color:var(--muted); font-weight:400; }
+.hero-sidebar { align-self:center; }
+@media (max-width:820px) {
+  .hero { grid-template-columns:1fr; gap:1.75rem; padding:2.6rem 0; }
+  .hero-sidebar { align-self:start; }
+}
+/* At roomy desktop widths, move the experience logos into the empty left
+   gutter beneath the section heading, leaving the descriptions aligned. */
+@media (min-width:1250px) {
+  #experience .resume-entry {
+    display:block;
+    position:relative;
+    padding:2rem 0;
+  }
+  #experience .resume-entry > .organization-logo-link {
+    position:absolute;
+    top:2rem;
+    left:var(--portfolio-gutter-left);
+    width:var(--portfolio-gutter-width);
+    min-height:48px;
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    justify-self:auto;
+    place-items:initial;
+    text-align:left;
+  }
+  #experience .resume-entry:first-child > .organization-logo-link { top:3.25rem; }
+  #experience .resume-entry > .organization-logo-link img,
+  #experience .resume-entry > .organization-logo-link .organization-logo,
+  #experience .resume-entry > .organization-logo-link .logo-mark-frame { margin:0; justify-self:start; }
+  #experience .entry-main { min-width:0; }
+}
