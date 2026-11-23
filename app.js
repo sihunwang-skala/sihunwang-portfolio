@@ -237,7 +237,7 @@ const keywordTerms = [
   "Agent-to-Agent(A2A)", "Agent-to-Agent (A2A)",
   "cluster-based few-shot prompting", "LangGraph Supervisor", "LangChain LCEL",
   "Supervisor Agent", "Supervisor Routing", "Evidence Selection", "LLM Evaluation",
-  "Neural Network", "Single-Agent", "Standard RAG", "Retrieval", "98%",
+  "Artificial Neural Network", "Neural Network", "Single-Agent", "Standard RAG", "Retrieval", "98%",
   "multi-agent orchestration", "human-in-the-loop", "Machine Learning",
   "Deep Learning", "Federated Learning", "Hybrid Search RAG", "Agentic RAG",
   "Agent Evaluation", "Fluency Agent", "Tool Routing", "AI Workflow", "Multi-Agent",
