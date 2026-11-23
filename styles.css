@@ -1055,3 +1055,10 @@ body .pvis-link:active .cta {
 .hero { padding-bottom:0; }
 .hero .overview-education { padding-top:0; }
 .hero .overview-education .overview-table tr { border-top:0; border-bottom:0; }
+
+/* Keep Flitto's job title beside the employer name. */
+.entry-heading .inline-job-title { display:flex; align-items:baseline; flex-wrap:nowrap; gap:.65rem; min-width:0; }
+.entry-heading .inline-job-title h3 { flex:0 0 auto; }
+.entry-heading .inline-job-title p { margin:0; white-space:nowrap; }
+/* Enlarge the Georgia Tech specialization label without changing other degree details. */
+.hero .overview-education [data-i18n="overviewMajorAi"] { font-size:1.06rem; line-height:1.5; }
