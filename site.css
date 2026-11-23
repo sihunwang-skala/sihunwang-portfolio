@@ -1447,3 +1447,9 @@ body.v2-page:not(.v2-home) .v2-sidebar > .v2-logo{
     pointer-events:none;
   }
 }
+
+/* Render the home statement with high contrast and a crisp standard font weight. */
+body.v2-home .v2-career-goal-description{
+  color:#151515;
+  font-weight:600;
+}
