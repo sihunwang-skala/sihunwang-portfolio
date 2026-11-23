@@ -221,7 +221,7 @@ const elements = document.querySelectorAll("[data-i18n]");
 
 // Emphasize selected technical terms and results without changing the copy.
 const keywordTerms = [
-  "regional representative", "class leadership roles", "top-ranked U.S. universities for AI", "No. 6", "No. 5",
+  "regional representative", "class leadership roles", "top-ranked U.S. universities for AI", "No. 6", "No. 5", "6위", "5위",
   "학급 임원", "조지아주 지역 대표", "미국 인공지능 분야 최상위권 대학", "인공지능 분야 최상위권 대학", "미국 AI 분야 최상위권 대학",
   "execution logs", "실행 로그", "Agent", "Agents",
   "성능 비교", "comparing architectures",
