@@ -253,12 +253,12 @@ const keywordPattern = new RegExp(
   keywordTerms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") +
   ")(?![A-Za-z0-9])", "gi"
 );
-function keywordFragment(value, limit = Infinity) {
+function keywordFragment(value, limit = Infinity, pattern = keywordPattern) {
   const fragment = document.createDocumentFragment();
   let cursor = 0;
   let count = 0;
-  keywordPattern.lastIndex = 0;
-  for (const match of value.matchAll(keywordPattern)) {
+  pattern.lastIndex = 0;
+  for (const match of value.matchAll(pattern)) {
     if (count++ === limit) break;
     fragment.append(document.createTextNode(value.slice(cursor, match.index)));
     const strong = document.createElement("strong");
@@ -274,6 +274,12 @@ function highlightBodyKeywords() {
   document.querySelectorAll(
     ".resume-entry li[data-i18n], .project-bullets li[data-i18n], .recognition-body p[data-i18n]"
   ).forEach((element) => element.replaceChildren(keywordFragment(element.textContent)));
+}
+const overviewAgentPattern = /\b(?:LangGraph Orchestration|Personalization|Multi-Agent|Agentic RAG|AI Agent|HITL)\b/gi;
+function highlightOverviewAgentTerms() {
+  document.querySelectorAll(
+    '.overview-wide-row .overview-tech, .overview-table [data-i18n="overviewSkills"]'
+  ).forEach((element) => element.replaceChildren(keywordFragment(element.textContent, Infinity, overviewAgentPattern)));
 }
 
 // Run an effect only when its element is on screen: observe it and add .reveal-play the first time it becomes visible.
@@ -418,6 +424,7 @@ function setLanguage(language) {
   });
   renderIntroText();
   highlightBodyKeywords();
+  highlightOverviewAgentTerms();
   buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.lang === selected)));
   localStorage.setItem("portfolio-language", selected);
   updateSlideLanguage(selected);
