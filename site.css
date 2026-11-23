@@ -1431,3 +1431,19 @@ body.v2-home .v2-career-goal-description{
   font-size:16px;
   line-height:1.5;
 }
+
+/* Hide the duplicate name on Home; center sidebar branding on inner pages. */
+body.v2-home .v2-sidebar > .v2-logo{
+  visibility:hidden;
+  pointer-events:none;
+}
+body.v2-page:not(.v2-home) .v2-sidebar > .v2-logo{
+  align-self:center;
+  text-align:center;
+}
+@media(max-width:820px){
+  body.v2-home .v2-mobilebar > a{
+    visibility:hidden;
+    pointer-events:none;
+  }
+}
