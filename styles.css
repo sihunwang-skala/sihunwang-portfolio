@@ -1099,3 +1099,114 @@ body .pvis-link:active .cta {
 #skills { border-bottom:1px solid var(--line); }
 /* Yellow marker sweeps in once its own text becomes visible, as in Background. */
 html.hl-js strong.keyword { transition:background-size .7s cubic-bezier(.22,.7,.2,1); }
+
+/* Shared type scale below the landing area; keep the hero typography intact. */
+:root {
+  --detail-heading-size:2.15rem;
+  --detail-item-title-size:1.16rem;
+  --detail-body-size:1rem;
+  --detail-secondary-size:.9rem;
+}
+.background-section > .section-title h2,
+.resume-section > .section-title h2 {
+  font-size:var(--detail-heading-size);
+  line-height:1.25;
+  letter-spacing:-.04em;
+}
+.background-section .summary,
+.resume-section .entry-main li,
+.resume-section .project-bullets,
+.resume-section .project-list article > p:not(.stack),
+.resume-section .skills-list dd,
+.resume-section .education-list p,
+.resume-section .recognition-list p,
+.overview-full .overview-wide-row .overview-item .overview-tech,
+.overview-full .overview-table [data-i18n="overviewSkills"] {
+  font-size:var(--detail-body-size);
+  line-height:1.6;
+}
+.resume-section .entry-heading h3,
+.resume-section .education-list h3,
+.resume-section .project-heading h3,
+.resume-section .recognition-list h3,
+.overview-full .overview-wide-row .overview-item strong {
+  font-size:var(--detail-item-title-size);
+  line-height:1.45;
+}
+.resume-section .entry-heading p,
+.resume-section .education-list span,
+.resume-section .entry-meta,
+.resume-section .project-list .stack {
+  font-size:var(--detail-secondary-size);
+}
+/* Each detailed section owns only its top divider.
+   Avoid extra empty bands formed by paired bottom/top borders. */
+.resume-section,
+#skills { border-top:1px solid var(--line); border-bottom:0; }
+.resume-section .resume-list,
+.resume-section .skills-list { border-top:0; }
+.resume-section .section-title { margin-bottom:1.5rem; }
+.background-section { border-bottom:0; }
+.overview-full { padding-bottom:0; }
+.overview-full .overview-table tr:last-child { border-bottom:0; }
+
+/* One content baseline: Sihun, Role value, Goal value, Service value,
+   and the Education summary all begin on the same left edge. */
+@media (min-width:1250px) {
+  :root {
+    --portfolio-gutter-left:max(-215px, calc(24px - (100vw - 920px) / 2));
+    --portfolio-gutter-width:min(200px, calc((100vw - 920px) / 2 - 36px));
+  }
+  .hero-direction-row {
+    display:block;
+    position:relative;
+    padding:.9rem 0;
+  }
+  .hero-direction dt {
+    position:absolute;
+    top:.9rem;
+    left:var(--portfolio-gutter-left);
+    width:var(--portfolio-gutter-width);
+    margin:0;
+    text-align:left;
+  }
+  .hero-direction dd { display:block; width:100%; margin:0; }
+  .hero .overview-education .overview-table tr,
+  .overview-full .overview-table tr {
+    display:block;
+    position:relative;
+    grid-template-columns:none;
+  }
+  .hero .overview-education .overview-table th,
+  .overview-full .overview-table th {
+    position:absolute;
+    top:.95rem;
+    left:var(--portfolio-gutter-left);
+    width:var(--portfolio-gutter-width);
+    padding:0;
+    text-align:left;
+  }
+  .hero .overview-education .overview-table td,
+  .hero .overview-education .overview-table td:last-child,
+  .overview-full .overview-table td,
+  .overview-full .overview-table td:last-child,
+  .overview-full .overview-wide-row td:last-child {
+    display:block;
+    width:100%;
+    padding:.95rem 0;
+    text-align:left;
+  }
+  .overview-full .overview-table th {
+    font-size:1.1rem;
+    line-height:1.5;
+  }
+  .background-section > .section-title,
+  .resume-section > .section-title {
+    left:var(--portfolio-gutter-left);
+    width:var(--portfolio-gutter-width);
+  }
+  .background-section > .section-title h2,
+  .resume-section > .section-title h2 {
+    font-size:var(--detail-heading-size);
+  }
+}
