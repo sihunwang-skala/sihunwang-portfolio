@@ -168,7 +168,7 @@ body.v2-page select {
 body.v2-page {
   --v2-sidebar-width:282px;
   --v2-accent:#1f2937;
-  font-family:"Geist","Inter","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:"DM Sans","Noto Sans KR","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   font-size:16px;
   letter-spacing:-.012em;
   line-height:1.65;
@@ -390,4 +390,25 @@ body.v2-about .v2-section:not(#timeline){margin-top:88px}
   body.v2-about .v2-timeline-item .entry-meta{text-align:left}
   body.v2-projects .v2-project-grid{gap:35px}
   body.v2-projects .v2-project-image{aspect-ratio:4/3}
+}
+
+/* About reference: photo follows the introductory copy in source order,
+   but occupies the right-hand column on desktop screens. */
+body.v2-about .v2-about-copy{grid-column:1;grid-row:1}
+body.v2-about .v2-about-photo-wrap{grid-column:2;grid-row:1}
+body.v2-about .v2-about-copy .background-story{margin-top:0}
+body.v2-about .v2-about-opening{max-width:580px}
+body.v2-about .v2-about-contact{padding-top:2px}
+body.v2-about .v2-about-photo-wrap{margin-top:5px}
+body.v2-about .v2-about-photo{max-height:510px}
+body.v2-about .v2-timeline-list{margin-top:3px}
+body.v2-about .v2-timeline-item .v2-timeline-primary{margin:14px 0 0}
+body.v2-resume .v2-resume-action{margin-top:37px}
+body.v2-resume .v2-resume-contact{margin-top:92px}
+body.v2-resume .v2-next-section-link{margin-top:76px;font-size:.92rem}
+body.v2-resume .v2-next-section-link a{color:#6d7788;text-decoration:none}
+body.v2-resume .v2-next-section-link a:hover{text-decoration:underline}
+@media(max-width:880px){
+ body.v2-about .v2-about-copy{grid-column:1;grid-row:1}
+ body.v2-about .v2-about-photo-wrap{grid-column:1;grid-row:2;max-width:295px}
 }
