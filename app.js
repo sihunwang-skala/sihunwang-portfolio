@@ -456,7 +456,8 @@ function setLanguage(language) {
 
 buttons.forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.lang)));
 setLanguage(localStorage.getItem("portfolio-language") || "en");
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearLabel = document.getElementById("year");
+if (yearLabel) yearLabel.textContent = new Date().getFullYear();
 
 document.querySelectorAll("[data-slide-collection]").forEach((container) => {
   const collection = getSlideCollection(container.dataset.slideCollection) || [];
