@@ -947,3 +947,24 @@ body .pvis-link:active .cta {
   .overview-table td:last-child{grid-column:2;grid-row:1;width:auto;padding:.75rem .4rem}
   .overview-wide-row td:last-child{grid-column:1 / -1;grid-row:2;padding:.1rem .4rem 1rem}
 }
+
+/* Landing direction, followed by background and the restored two-column overview */
+.hero { min-height:max(40rem, calc(100svh - 5rem)); }
+.hero-direction { display:grid; gap:0; margin:1.8rem 0 1rem; max-width:65rem; }
+.hero-direction-row { display:grid; grid-template-columns:6.5rem minmax(0,1fr); align-items:baseline; gap:1.25rem; padding:.9rem 0; border-top:1px solid var(--line); }
+.hero-direction-row:last-child { border-bottom:1px solid var(--line); }
+.hero-direction dt { color:var(--blue); font-size:.94rem; font-weight:800; }
+.hero-direction dd { margin:0; color:var(--ink); font-size:clamp(1rem,1.7vw,1.16rem); font-weight:650; line-height:1.55; }
+.background-section { padding:4rem 0 3rem; border-bottom:1px solid var(--line); }
+.background-section h2 { margin:0 0 1.5rem; font-size:1.35rem; }
+.background-section .background-story { margin:0; max-width:78ch; }
+.background-section .summary { max-width:78ch; }
+.overview { padding:2.5rem 0 3.2rem; }
+.overview-table tr > td { width:auto; text-align:left; white-space:normal; padding-left:.7rem; }
+@media (max-width:820px) {
+  .hero { min-height:calc(100svh - 5rem); }
+}
+@media (max-width:560px) {
+  .hero-direction-row { grid-template-columns:4.5rem minmax(0,1fr); gap:.55rem; }
+  .background-section { padding:3rem 0 2.25rem; }
+}
