@@ -587,3 +587,144 @@ body.v2-about .v2-timeline-item .v2-school-location {
   body.v2-about .v2-timeline-item .v2-education-note {grid-column:2; grid-row:6;}
   body.v2-about .v2-timeline-item .entry-links {grid-column:2; grid-row:7;}
 }
+
+/* Reference timeline v3: direct grid children prevent collapsed narrow columns.
+   Reference positions at 1527px: logo x282, school/company x335, role x665. */
+body.v2-about .ref-timeline-list{width:100%;min-width:0;border:0;margin:0;padding:0}
+body.v2-about .ref-timeline-item{
+ display:grid;
+ grid-template-columns:minmax(0,355px) minmax(0,1fr);
+ column-gap:28px;
+ align-items:start;
+ width:100%;
+ min-width:0;
+ padding:24px 0 27px;
+ margin:0;
+ border:0;
+ border-bottom:1px solid #e7e7e7;
+ background:transparent;
+}
+body.v2-about .ref-timeline-item:first-child{padding-top:17px}
+body.v2-about .ref-timeline-item:last-child{border-bottom:0}
+body.v2-about .ref-identity{
+ display:grid;
+ grid-template-columns:40px minmax(0,1fr);
+ column-gap:13px;
+ align-items:start;
+ min-width:0;
+}
+body.v2-about .ref-logo{
+ display:grid;
+ place-items:center;
+ width:40px; height:40px;
+ min-width:40px;
+ min-height:0;
+ border:0;
+ padding:0;
+ margin:0;
+ background:transparent;
+ text-decoration:none;
+ border-radius:5px;
+ overflow:hidden;
+}
+body.v2-about .ref-logo .organization-logo,
+body.v2-about .ref-logo .logo-mark-frame{
+ display:grid;place-items:center;
+ width:40px;height:40px;
+ min-width:40px;max-width:40px;min-height:40px;max-height:40px;
+ margin:0;padding:0;border:0;
+ border-radius:5px;
+ background:transparent;
+}
+body.v2-about .ref-logo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+body.v2-about .ref-logo .mark-logo{font-size:.56rem;line-height:1.1;text-align:center;font-weight:750;letter-spacing:0}
+body.v2-about .ref-institution,
+body.v2-about .ref-description {display:block;min-width:0;width:100%}
+body.v2-about .ref-institution h3{
+ margin:0 0 7px;
+ font-size:16px;line-height:1.46;
+ font-weight:530;letter-spacing:-.018em;
+ color:#222;overflow-wrap:normal;word-break:normal;
+}
+body.v2-about .ref-institution h3 a{color:inherit;text-decoration:none}
+body.v2-about .ref-institution h3 a:hover{text-decoration:underline}
+body.v2-about .ref-date,
+body.v2-about .ref-location{
+ display:block;
+ margin:0;
+ color:#818181;
+ font-size:14px;line-height:1.5;
+ font-weight:400;letter-spacing:-.01em;
+}
+body.v2-about .ref-role{
+ display:block;
+ margin:0 0 10px;
+ font-size:16px;line-height:1.48;
+ font-weight:535;letter-spacing:-.018em;
+ color:#171717;
+}
+body.v2-about .ref-brief,
+body.v2-about .ref-metrics{
+ margin:0;
+ padding:0;
+ color:#333;
+ font-size:14px;
+ font-weight:415;
+ line-height:1.7;
+ letter-spacing:-.007em;
+}
+body.v2-about .ref-metrics{display:flex;flex-wrap:wrap;gap:9px}
+body.v2-about .ref-metrics strong{font-weight:480}
+body.v2-about .ref-metrics .academic-note{font-size:14px;line-height:1.7;margin:0}
+body.v2-about .ref-more{
+ display:block;
+ min-width:0;
+ margin:5px 0 0;
+ padding:0;
+ border:0;background:transparent;
+ font-size:13px;line-height:1.65;
+}
+body.v2-about .ref-more summary{
+ display:list-item;
+ width:max-content;
+ max-width:100%;
+ padding:4px 0;
+ margin:0;
+ cursor:pointer;
+ color:#777;
+ font-size:12px;
+ font-weight:430;
+ list-style:none;
+}
+body.v2-about .ref-more summary::after{content:" +";color:#999}
+body.v2-about .ref-more[open] summary::after{content:" −"}
+body.v2-about .ref-more summary::-webkit-details-marker{display:none}
+body.v2-about .ref-more ul{margin:9px 0 0;padding-left:17px;list-style:disc}
+body.v2-about .ref-more li{
+ padding:0;
+ margin:3px 0;
+ color:#444;
+ font-size:13px;
+ font-weight:410;
+ line-height:1.7;
+ list-style:disc;
+}
+body.v2-about .ref-more .ref-detail-body{margin-top:8px}
+body.v2-about .ref-more .ref-links{display:flex;flex-wrap:wrap;gap:12px;margin:4px 0 0}
+body.v2-about .ref-more .ref-links a{font-size:12px;color:#676767;text-decoration:underline;text-underline-offset:3px}
+body.v2-about .ref-more .ranking-note{margin:0;padding:0;border:0;font-size:13px;line-height:1.6}
+body.v2-about .ref-more .ranking-note a{font-size:inherit;line-height:inherit;color:#69707a;font-weight:400}
+body.v2-about .ref-more .ranking-google-link span{font-size:inherit}
+/* The reference uses a compact navigation, not an inset content container. */
+body.v2-about .v2-inner{width:100%;max-width:none;margin:0}
+@media(max-width:1160px){
+ body.v2-about .ref-timeline-item{grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:24px}
+}
+@media(max-width:950px){
+ body.v2-about .ref-timeline-item{grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:20px}
+}
+@media(max-width:680px){
+ body.v2-about .ref-timeline-item{grid-template-columns:minmax(0,1fr);gap:11px}
+ body.v2-about .ref-identity{grid-template-columns:40px minmax(0,1fr)}
+ body.v2-about .ref-description{padding-left:53px}
+}
