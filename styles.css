@@ -1050,3 +1050,8 @@ body .pvis-link:active .cta {
   .overview-full .overview-table td:last-child,
   .overview-full .overview-wide-row td:last-child { grid-column:1; grid-row:2; padding:.1rem 0 .9rem; }
 }
+
+/* One divider only between Service / Education and Education / Experience. */
+.hero { padding-bottom:0; }
+.hero .overview-education { padding-top:0; }
+.hero .overview-education .overview-table tr { border-top:0; border-bottom:0; }
