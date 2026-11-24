@@ -43,7 +43,15 @@
       typingTracks.push({el,parts,total,duration,delay,last:-1});
       return duration;
     }
-    addTrack(hero,0,8,650,1350);
+    const phrases=Array.from(hero.querySelectorAll(".v2-typing-phrase"));
+    if(phrases.length===4){
+      let delay=0;
+      phrases.forEach(phrase=>{
+        delay+=addTrack(phrase,delay,8,180,500)+90;
+      });
+    }else{
+      addTrack(hero,0,8,650,1350);
+    }
     if(!typingTracks.length)return;
     let start=null;
     function tick(now){
@@ -81,15 +89,15 @@
           const mid=value.indexOf(" who designs ");
           const last=value.indexOf(" and connects ");
           if(mid<0||mid>=at||last<=at){el.textContent=value;return;}
-          el.replaceChildren(
-            document.createTextNode(value.slice(0,mid).trim()),
-            document.createElement("br"),
-            document.createTextNode(value.slice(mid,at).trim()),
-            document.createElement("br"),
-            document.createTextNode(value.slice(at,last).trim()),
-            document.createElement("br"),
-            document.createTextNode(value.slice(last).trim())
-          );
+          // Four sequential typing phrases, arranged into two visual lines.
+          const phrases=[value.slice(0,mid),value.slice(mid,at),value.slice(at,last).trimStart(),value.slice(last)];
+          const parts=phrases.map(text=>{
+            const span=document.createElement("span");
+            span.className="v2-typing-phrase";
+            span.textContent=text;
+            return span;
+          });
+          el.replaceChildren(parts[0],parts[1],document.createElement("br"),parts[2],parts[3]);
         }else{
           el.replaceChildren(
             document.createTextNode(value.slice(0,at)),
