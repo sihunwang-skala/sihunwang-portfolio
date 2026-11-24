@@ -223,7 +223,7 @@ const elements = document.querySelectorAll("[data-i18n]");
 const keywordTerms = [
   "regional representative", "class leadership roles", "top-ranked U.S. universities for AI", "No. 6", "No. 5", "6위", "5위",
   "Agent를 고도화하는 것이 목표입니다.",
-  "AI 모델링", "AI Agent Engineer", "A2A",
+  "AI 모델링", "AI modeling", "AI Agent Engineer", "A2A",
   "학급 임원", "조지아주 지역 대표", "미국 인공지능 분야 최상위권 대학", "인공지능 분야 최상위권 대학", "미국 AI 분야 최상위권 대학",
   "execution logs", "실행 로그", "Agent", "Agents",
   "성능 비교", "comparing architectures",
