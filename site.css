@@ -1656,3 +1656,16 @@ body.v2-home .v2-long-resume .v2-resume-contact{
 @media(prefers-reduced-motion:reduce){
   html:has(body.v2-home){scroll-behavior:auto}
 }
+
+/* Prevent an accidental third line before "using": split English at a phrase boundary on narrower layouts. */
+body.v2-home .v2-career-goal{
+  container-type:inline-size;
+}
+body.v2-home .v2-career-goal-description br.v2-medium-break{
+  display:none;
+}
+@container (max-width: 1030px){
+  .v2-career-goal-description br.v2-medium-break{
+    display:initial;
+  }
+}
