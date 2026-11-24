@@ -1923,7 +1923,7 @@ body.v2-home .v2-career-goal-description .v2-typing-pending{
 /* Align the About link with the center of the hero name. */
 body.v2-home .v2-hero-name{
   align-items:center;
-  gap:20px;
+  gap:34px;
 }
 body.v2-home .v2-hero-name .v2-about-hint{
   margin-left:0;
@@ -1934,7 +1934,7 @@ body.v2-home .v2-hero-name .v2-about-hint{
   line-height:1.45;
 }
 @media(max-width:680px){
-  body.v2-home .v2-hero-name{gap:12px}
+  body.v2-home .v2-hero-name{gap:18px}
   body.v2-home .v2-hero-name .v2-about-hint{font-size:14px}
 }
 
