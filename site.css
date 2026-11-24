@@ -1328,10 +1328,16 @@ html[data-theme="dark"] body.v2-section-page[data-v2-page="experience"] .ref-mor
 html[data-theme="dark"] body.v2-section-page[data-v2-page="experience"] .ref-more > summary:hover{
   background:#233244;
 }
-html.hl-js body[data-v2-page="awards"] .ref-award-description strong.keyword{
+html.hl-js body[data-v2-page="awards"] .ref-award-description strong.keyword,
+html.hl-js body.v2-home #awards .ref-award-description strong.keyword{
   background-size:100% 100%;
   transition:none;
   transition-delay:0s;
+  color:#101828;
+}
+html[data-theme="dark"].hl-js body.v2-page #awards .ref-award-description strong.keyword,
+html[data-theme="dark"].hl-js body.v2-page[data-v2-page="awards"] .ref-award-description strong.keyword{
+  color:#101828;
 }
 body.v2-projects .v2-project-links{
   display:flex;
