@@ -1989,23 +1989,23 @@ body.v2-section-page[data-v2-page="experience"] .ref-more > summary{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  padding:6px 11px;
-  margin:4px 0 0;
+  gap:4px;
+  padding:2px 6px;
+  margin:3px 0 0;
   border:1px solid #c6ccd4;
   border-radius:6px;
   background:#f6f7f9;
   color:#252525;
-  font-size:13px;
+  font-size:11px;
   font-weight:650;
-  line-height:1.5;
+  line-height:1.4;
   cursor:pointer;
 }
 body.v2-home .v2-long-experience .ref-more > summary::after,
 body.v2-section-page[data-v2-page="experience"] .ref-more > summary::after{
   content:"+";
   color:inherit;
-  font-size:16px;
+  font-size:12px;
   line-height:1;
   font-weight:650;
 }
