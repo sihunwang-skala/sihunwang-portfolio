@@ -45,10 +45,16 @@
     }
     const phrases=Array.from(hero.querySelectorAll(".v2-typing-phrase"));
     if(phrases.length===4){
-      // Reveal each complete phrase instantly, in four distinct stages.
+      // Fade in each complete phrase over 0.5 seconds, sequentially.
       phrases.forEach((phrase,index)=>{
-        addTrack(phrase,index*300,0,0,0);
+        phrase.animate([{opacity:0},{opacity:1}],{
+          duration:500,
+          delay:index*500,
+          easing:"ease-out",
+          fill:"backwards"
+        });
       });
+      return;
     }else{
       addTrack(hero,0,8,650,1350);
     }
