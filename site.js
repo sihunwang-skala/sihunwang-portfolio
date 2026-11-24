@@ -8,16 +8,27 @@
       const value=el.getAttribute("data-v2-"+selected);
       if(value===null)return;
       if(el.classList.contains("v2-career-goal-description")){
-        const cut=selected==="ko"?" A2A Communication으로":" using ";
-        const at=value.indexOf(cut);
-        if(at>=0){
+        const split=selected==="en"?" using ":" A2A Communication으로";
+        const at=value.indexOf(split);
+        if(at<0){el.textContent=value;return;}
+        if(selected==="en"){
+          const mid=value.indexOf(" who designs ");
+          if(mid<0||mid>=at){el.textContent=value;return;}
+          const responsiveBreak=document.createElement("br");
+          responsiveBreak.className="v2-medium-break";
+          el.replaceChildren(
+            document.createTextNode(value.slice(0,mid)),
+            responsiveBreak,
+            document.createTextNode(value.slice(mid,at)),
+            document.createElement("br"),
+            document.createTextNode(value.slice(at))
+          );
+        }else{
           el.replaceChildren(
             document.createTextNode(value.slice(0,at)),
             document.createElement("br"),
-            document.createTextNode(value.slice(at).trimStart())
+            document.createTextNode(value.slice(at))
           );
-        }else{
-          el.textContent=value;
         }
       }else{
         el.textContent=value;
