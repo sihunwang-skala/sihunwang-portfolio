@@ -2,6 +2,52 @@
 (() => {
   const body=document.body;
   const lang=()=>document.documentElement.lang==="ko"?"ko":"en";
+  // Reveal the translated hero text rapidly without removing its layout footprint.
+  // Keep the explicit line breaks, and skip motion for reduced-motion users.
+  let typingFrame=0;
+  function typeHero(el){
+    if(typingFrame)cancelAnimationFrame(typingFrame);
+    typingFrame=0;
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches ||
+       (location.hash && location.hash!=="#top") ||
+       el.getBoundingClientRect().bottom<0)return;
+    const parts=Array.from(el.childNodes)
+      .filter(node=>node.nodeType===Node.TEXT_NODE && node.textContent.length)
+      .map(node=>{
+        const chars=Array.from(node.textContent);
+        const shown=document.createTextNode("");
+        const pending=document.createElement("span");
+        pending.className="v2-typing-pending";
+        pending.textContent=chars.join("");
+        node.replaceWith(shown,pending);
+        return {chars,shown,pending};
+      });
+    const total=parts.reduce((n,p)=>n+p.chars.length,0);
+    if(!total)return;
+    const duration=Math.min(1350,Math.max(650,total*8));
+    let start=null,last=-1;
+    function tick(now){
+      if(start===null)start=now;
+      const count=Math.min(total,Math.floor((now-start)/duration*total));
+      if(count!==last){
+        last=count;
+        let left=count;
+        parts.forEach(p=>{
+          const n=Math.max(0,Math.min(p.chars.length,left));
+          p.shown.nodeValue=p.chars.slice(0,n).join("");
+          p.pending.textContent=p.chars.slice(n).join("");
+          left-=p.chars.length;
+        });
+      }
+      if(count<total){typingFrame=requestAnimationFrame(tick);}
+      else{
+        parts.forEach(p=>p.pending.remove());
+        el.normalize();
+        typingFrame=0;
+      }
+    }
+    typingFrame=requestAnimationFrame(tick);
+  }
   function translate(){
     const selected=lang();
     document.querySelectorAll("[data-v2-en][data-v2-ko]").forEach(el=>{
@@ -34,6 +80,8 @@
         el.textContent=value;
       }
     });
+    const hero=body.classList.contains("v2-home")&&document.querySelector(".v2-career-goal-description");
+    if(hero)typeHero(hero);
     document.querySelectorAll("[data-v2-placeholder-en]").forEach(el=>{
       el.setAttribute("placeholder",el.getAttribute("data-v2-placeholder-"+selected)||"");
     });
