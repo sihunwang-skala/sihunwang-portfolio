@@ -2,7 +2,7 @@
 (() => {
   const body=document.body;
   const lang=()=>document.documentElement.lang==="ko"?"ko":"en";
-  // Type the entire homepage hero: intro, four card titles, and subtitles.
+  // Type only the homepage introduction; card text stays visible.
   // The unrevealed suffix retains its full width, preserving wrapping and layout.
   let typingFrame=0;
   let typingTracks=[];
@@ -44,11 +44,6 @@
       return duration;
     }
     addTrack(hero,0,8,650,1350);
-    document.querySelectorAll(".v2-feature-grid .v2-feature-tile").forEach((card,index)=>{
-      const delay=120+index*90;
-      const duration=addTrack(card.querySelector(".v2-feature-title"),delay,17,240,650);
-      addTrack(card.querySelector(".v2-feature-subtitle"),delay+duration*.8,15,200,650);
-    });
     if(!typingTracks.length)return;
     let start=null;
     function tick(now){
