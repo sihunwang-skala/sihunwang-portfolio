@@ -45,11 +45,11 @@
     }
     const phrases=Array.from(hero.querySelectorAll(".v2-typing-phrase"));
     if(phrases.length===4){
-      // Fade in each complete phrase over 0.5 seconds, sequentially.
+      // Fade in each complete phrase over one second, sequentially.
       phrases.forEach((phrase,index)=>{
         phrase.animate([{opacity:0},{opacity:1}],{
-          duration:500,
-          delay:index*500,
+          duration:1000,
+          delay:index*1000,
           easing:"ease-out",
           fill:"backwards"
         });
