@@ -1898,7 +1898,7 @@ body.v2-home .v2-feature-tile .v2-feature-main{
   gap:18px;
 }
 body.v2-home .v2-feature-tile .v2-feature-subtitle{
-  color:#20242b;
+  color:#94543D;
   font-size:clamp(13px,1.1vw,16px);
   font-weight:600;
 }
@@ -1908,7 +1908,7 @@ body.v2-home .v2-feature-tile .v2-feature-meta .v2-feature-arrow{
   line-height:1;
 }
 html[data-theme="dark"] body.v2-home .v2-feature-tile .v2-feature-subtitle{
-  color:#f1f3f7;
+  color:#E6A78E;
   font-weight:600;
 }
 body.v2-home .v2-career-goal-description .v2-typing-pending{
@@ -1918,4 +1918,22 @@ body.v2-home .v2-career-goal-description .v2-typing-pending{
   body.v2-home .v2-feature-tile .v2-feature-main{gap:15px}
   body.v2-home .v2-feature-tile .v2-feature-subtitle{font-size:13px}
   body.v2-home .v2-feature-tile .v2-feature-meta .v2-feature-arrow{font-size:23px}
+}
+
+/* Align the About link with the center of the hero name. */
+body.v2-home .v2-hero-name{
+  align-items:center;
+  gap:20px;
+}
+body.v2-home .v2-hero-name .v2-about-hint{
+  margin-left:0;
+  font-size:16px;
+  font-weight:600;
+  align-self:center;
+  gap:5px;
+  line-height:1.45;
+}
+@media(max-width:680px){
+  body.v2-home .v2-hero-name{gap:12px}
+  body.v2-home .v2-hero-name .v2-about-hint{font-size:14px}
 }
