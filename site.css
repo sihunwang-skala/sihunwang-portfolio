@@ -1762,3 +1762,133 @@ html[data-theme="dark"] body.v2-home .v2-feature-subtitle{
     font-size:11px;
   }
 }
+
+/* Dark theme: readable foregrounds for all shared portfolio sections. */
+html[data-theme="dark"] body.v2-page{
+  --v2-divider:#3b4350;
+  --v2-subtle:#c7d0dc;
+  --v2-accent:#a9c4ff;
+  background:#10151e;
+  color:#f1f3f7;
+}
+html[data-theme="dark"] body.v2-page .v2-sidebar,
+html[data-theme="dark"] body.v2-page .v2-mobilebar{
+  background:#10151e;
+  color:#f1f3f7;
+}
+html[data-theme="dark"] body.v2-page .v2-logo,
+html[data-theme="dark"] body.v2-page .v2-mobilebar a,
+html[data-theme="dark"] body.v2-page .v2-mobilebar button{
+  color:#f1f3f7;
+}
+html[data-theme="dark"] body.v2-page .v2-nav a:hover,
+html[data-theme="dark"] body.v2-page .v2-nav a:focus-visible{
+  background:#2b3544;
+  color:#fff;
+}
+html[data-theme="dark"] body.v2-page .v2-copyright,
+html[data-theme="dark"] body.v2-page .v2-footer,
+html[data-theme="dark"] body.v2-page .v2-mini-contact a{
+  color:#b9c4d2;
+}
+html[data-theme="dark"] body.v2-home .v2-career-goal-description,
+html[data-theme="dark"] body.v2-home .v2-career-goal-description strong,
+html[data-theme="dark"] body.v2-home .v2-horizontal-identity{
+  color:#f1f3f7;
+}
+html[data-theme="dark"] body.v2-home .v2-feature-tile,
+html[data-theme="dark"] body.v2-home .v2-feature-tile .v2-feature-title{
+  color:#f4f6f9;
+}
+html[data-theme="dark"] body.v2-home .v2-feature-subtitle{
+  color:#e0e5ec;
+  font-weight:550;
+}
+html[data-theme="dark"] body.v2-home .v2-feature-tile:focus-visible{
+  background:#27394c;
+  border-color:#708198;
+}
+html[data-theme="dark"] body.v2-home .v2-hero-name:hover .v2-about-hint,
+html[data-theme="dark"] body.v2-home .v2-hero-name:focus-visible .v2-about-hint,
+html[data-theme="dark"] body.v2-home .v2-feature-tile:hover .v2-feature-meta .v2-feature-arrow,
+html[data-theme="dark"] body.v2-home .v2-home-quicklinks a:hover,
+html[data-theme="dark"] body.v2-home .v2-home-quicklinks a:focus-visible{
+  color:#ffd0b9;
+  border-bottom-color:#ffd0b9;
+}
+html[data-theme="dark"] body.v2-about .v2-about-intro .summary,
+html[data-theme="dark"] body.v2-about .ref-brief,
+html[data-theme="dark"] body.v2-about .ref-award-description,
+html[data-theme="dark"] body.v2-about .ref-metrics,
+html[data-theme="dark"] body.v2-about .ref-more li,
+html[data-theme="dark"] body.v2-about .ref-education-copy .ref-degree,
+html[data-theme="dark"] body.v2-projects .v2-project-card p{
+  color:#dbe2ec;
+}
+html[data-theme="dark"] body.v2-about .ref-institution h3,
+html[data-theme="dark"] body.v2-about .ref-education-copy h3,
+html[data-theme="dark"] body.v2-about .ref-education-aside .ref-gpa,
+html[data-theme="dark"] body.v2-about .ref-role,
+html[data-theme="dark"] body.v2-section-page.v2-about .ref-resume-heading h3,
+html[data-theme="dark"] body.v2-section-page.v2-about .ref-resume-heading .ref-role,
+html[data-theme="dark"] body.v2-projects .v2-project-card h3,
+html[data-theme="dark"] body.v2-projects .v2-project-outcome{
+  color:#f1f3f7;
+}
+html[data-theme="dark"] body.v2-about .ref-date,
+html[data-theme="dark"] body.v2-about .ref-location,
+html[data-theme="dark"] body.v2-about .ref-ranking-note,
+html[data-theme="dark"] body.v2-about .ref-rank-number,
+html[data-theme="dark"] body.v2-about .ref-education-copy .ref-ranking-note,
+html[data-theme="dark"] body.v2-about .ref-education-aside .ref-date,
+html[data-theme="dark"] body.v2-about .ref-education-aside .ref-academic-note,
+html[data-theme="dark"] body.v2-section-page.v2-about .ref-resume-aside .ref-date,
+html[data-theme="dark"] body.v2-section-page.v2-about .ref-resume-aside .ref-location,
+html[data-theme="dark"] body.v2-projects .v2-tagline,
+html[data-theme="dark"] body.v2-resume .v2-resume-mobile-note{
+  color:#c7d0dc;
+}
+html[data-theme="dark"] body.v2-about .ref-links a,
+html[data-theme="dark"] body.v2-about .ref-education-copy .ref-ranking-note a.ref-overviews-link,
+html[data-theme="dark"] body.v2-about .ref-education-copy .ref-ranking-note a.ref-rank-link,
+html[data-theme="dark"] body.v2-projects .v2-project-links a,
+html[data-theme="dark"] body.v2-resume .v2-resume-mobile-link,
+html[data-theme="dark"] body.v2-resume .v2-next-section-link a,
+html[data-theme="dark"] body.v2-page .v2-about-contact a,
+html[data-theme="dark"] body.v2-page .v2-about-contact button{
+  color:#b6cfff;
+}
+html[data-theme="dark"] body.v2-about .ref-education-copy .ref-ranking-note a:hover,
+html[data-theme="dark"] body.v2-about .ref-links a:hover,
+html[data-theme="dark"] body.v2-projects .v2-project-links a:hover{
+  color:#e2ecff;
+}
+html[data-theme="dark"] body.v2-about .ref-more summary,
+html[data-theme="dark"] body.v2-about .ref-more summary::after{
+  color:#dbe2ec;
+}
+html[data-theme="dark"] body.v2-section-page[data-v2-page="experience"] .ref-more > summary,
+html[data-theme="dark"] body.v2-home .v2-long-experience .ref-more > summary{
+  background:#233244;
+  border-color:#56667b;
+  color:#e6edf7;
+}
+html[data-theme="dark"] body.v2-about .v2-timeline-filters button{
+  color:#c7d0dc;
+}
+html[data-theme="dark"] body.v2-about .v2-timeline-filters button[aria-pressed="true"]{
+  color:#fff;
+}
+html[data-theme="dark"] body.v2-resume .v2-resume-action a.v2-resume-link{
+  background:#e2e8f0;
+  border-color:#e2e8f0;
+  color:#10151e;
+}
+html[data-theme="dark"] body.v2-resume .v2-resume-action a.v2-resume-link:hover{
+  background:#fff;
+  border-color:#fff;
+  color:#10151e;
+}
+html[data-theme="dark"].hl-js body.v2-page strong.keyword:not(.hl-on){
+  color:inherit;
+}
