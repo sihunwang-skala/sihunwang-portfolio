@@ -1665,7 +1665,7 @@ body.v2-home .v2-career-goal-description br.v2-medium-break{
   display:none;
 }
 @container (max-width: 1030px){
-  .v2-career-goal-description br.v2-medium-break{
+  body.v2-home .v2-career-goal-description br.v2-medium-break{
     display:initial;
   }
 }
