@@ -2039,3 +2039,12 @@ html[data-theme="dark"] body.v2-section-page[data-v2-page="experience"] .ref-mor
   background:#35475d;
   border-color:#90a1b6;
 }
+
+/* Consistent bold typography for all three university ranking source links. */
+body.v2-about .ref-education-copy .ref-ranking-note a.ref-overviews-link,
+body.v2-about .ref-education-copy .ref-ranking-note a.ref-rank-link{
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:700;
+  line-height:inherit;
+}
