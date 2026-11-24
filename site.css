@@ -1911,7 +1911,8 @@ html[data-theme="dark"] body.v2-home .v2-feature-tile .v2-feature-subtitle{
   color:#E6A78E;
   font-weight:600;
 }
-body.v2-home .v2-career-goal-description .v2-typing-pending{
+body.v2-home .v2-career-goal-description .v2-typing-pending,
+body.v2-home .v2-feature-grid .v2-typing-pending{
   color:transparent;
 }
 @media(max-width:820px){
