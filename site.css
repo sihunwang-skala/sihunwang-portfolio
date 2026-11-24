@@ -2043,8 +2043,8 @@ html[data-theme="dark"] body.v2-section-page[data-v2-page="experience"] .ref-mor
 /* Consistent bold typography for all three university ranking source links. */
 body.v2-about .ref-education-copy .ref-ranking-note a.ref-overviews-link,
 body.v2-about .ref-education-copy .ref-ranking-note a.ref-rank-link{
-  font-family:inherit;
+  font-family:"Pretendard Variable","Noto Sans KR","DM Sans",sans-serif;
   font-size:inherit;
-  font-weight:700;
+  font-weight:700 !important;
   line-height:inherit;
 }
