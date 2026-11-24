@@ -45,9 +45,9 @@
     }
     const phrases=Array.from(hero.querySelectorAll(".v2-typing-phrase"));
     if(phrases.length===4){
-      let delay=0;
-      phrases.forEach(phrase=>{
-        delay+=addTrack(phrase,delay,8,180,500)+90;
+      // Reveal each complete phrase instantly, in four distinct stages.
+      phrases.forEach((phrase,index)=>{
+        addTrack(phrase,index*300,0,0,0);
       });
     }else{
       addTrack(hero,0,8,650,1350);
@@ -58,7 +58,10 @@
       if(start===null)start=now;
       let done=true;
       typingTracks.forEach(track=>{
-        const count=Math.max(0,Math.min(track.total,Math.floor((now-start-track.delay)/track.duration*track.total)));
+        const elapsed=now-start-track.delay;
+        const count=track.duration===0
+          ? (elapsed>=0?track.total:0)
+          : Math.max(0,Math.min(track.total,Math.floor(elapsed/track.duration*track.total)));
         if(count<track.total)done=false;
         if(count===track.last)return;
         track.last=count;
@@ -89,7 +92,7 @@
           const mid=value.indexOf(" who designs ");
           const last=value.indexOf(" and connects ");
           if(mid<0||mid>=at||last<=at){el.textContent=value;return;}
-          // Four sequential typing phrases, arranged into two visual lines.
+          // Four sequential phrase reveals, arranged into two visual lines.
           const phrases=[value.slice(0,mid),value.slice(mid,at),value.slice(at,last).trimStart(),value.slice(last)];
           const parts=phrases.map(text=>{
             const span=document.createElement("span");
