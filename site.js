@@ -79,15 +79,16 @@
         if(at<0){el.textContent=value;return;}
         if(selected==="en"){
           const mid=value.indexOf(" who designs ");
-          if(mid<0||mid>=at){el.textContent=value;return;}
-          const responsiveBreak=document.createElement("br");
-          responsiveBreak.className="v2-medium-break";
+          const last=value.indexOf(" and connects ");
+          if(mid<0||mid>=at||last<=at){el.textContent=value;return;}
           el.replaceChildren(
-            document.createTextNode(value.slice(0,mid)),
-            responsiveBreak,
-            document.createTextNode(value.slice(mid,at)),
+            document.createTextNode(value.slice(0,mid).trim()),
             document.createElement("br"),
-            document.createTextNode(value.slice(at))
+            document.createTextNode(value.slice(mid,at).trim()),
+            document.createElement("br"),
+            document.createTextNode(value.slice(at,last).trim()),
+            document.createElement("br"),
+            document.createTextNode(value.slice(last).trim())
           );
         }else{
           el.replaceChildren(
