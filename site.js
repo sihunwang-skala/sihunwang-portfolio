@@ -56,7 +56,7 @@
       });
       return;
     }else{
-      addTrack(hero,0,8,650,1350);
+      addTrack(hero,0,24,1950,4050);
     }
     if(!typingTracks.length)return;
     let start=null;
