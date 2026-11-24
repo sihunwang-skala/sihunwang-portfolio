@@ -2,18 +2,33 @@
 (() => {
   const body=document.body;
   const lang=()=>document.documentElement.lang==="ko"?"ko":"en";
-  // Reveal the translated hero text rapidly without removing its layout footprint.
-  // Keep the explicit line breaks, and skip motion for reduced-motion users.
+  // Type the entire homepage hero: intro, four card titles, and subtitles.
+  // The unrevealed suffix retains its full width, preserving wrapping and layout.
   let typingFrame=0;
-  function typeHero(el){
+  let typingTracks=[];
+  function finishTyping(){
     if(typingFrame)cancelAnimationFrame(typingFrame);
     typingFrame=0;
-    if(matchMedia("(prefers-reduced-motion: reduce)").matches ||
-       (location.hash && location.hash!=="#top") ||
-       el.getBoundingClientRect().bottom<0)return;
-    const parts=Array.from(el.childNodes)
-      .filter(node=>node.nodeType===Node.TEXT_NODE && node.textContent.length)
-      .map(node=>{
+    typingTracks.forEach(track=>{
+      track.parts.forEach(p=>{
+        p.shown.nodeValue=p.chars.join("");
+        p.pending.remove();
+      });
+      track.el.normalize();
+    });
+    typingTracks=[];
+  }
+  function typeHome(){
+    finishTyping();
+    if(!body.classList.contains("v2-home") ||
+       matchMedia("(prefers-reduced-motion: reduce)").matches ||
+       (location.hash && location.hash!=="#top"))return;
+    const hero=document.querySelector(".v2-career-goal-description");
+    if(!hero || hero.getBoundingClientRect().bottom<0)return;
+    function addTrack(el,delay,speed,min,max){
+      if(!el)return 0;
+      const nodes=Array.from(el.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE && n.textContent.length);
+      const parts=nodes.map(node=>{
         const chars=Array.from(node.textContent);
         const shown=document.createTextNode("");
         const pending=document.createElement("span");
@@ -22,33 +37,43 @@
         node.replaceWith(shown,pending);
         return {chars,shown,pending};
       });
-    const total=parts.reduce((n,p)=>n+p.chars.length,0);
-    if(!total)return;
-    const duration=Math.min(1350,Math.max(650,total*8));
-    let start=null,last=-1;
+      const total=parts.reduce((n,p)=>n+p.chars.length,0);
+      if(!total)return 0;
+      const duration=Math.min(max,Math.max(min,total*speed));
+      typingTracks.push({el,parts,total,duration,delay,last:-1});
+      return duration;
+    }
+    addTrack(hero,0,8,650,1350);
+    document.querySelectorAll(".v2-feature-grid .v2-feature-tile").forEach((card,index)=>{
+      const delay=120+index*90;
+      const duration=addTrack(card.querySelector(".v2-feature-title"),delay,17,240,650);
+      addTrack(card.querySelector(".v2-feature-subtitle"),delay+duration*.8,15,200,650);
+    });
+    if(!typingTracks.length)return;
+    let start=null;
     function tick(now){
       if(start===null)start=now;
-      const count=Math.min(total,Math.floor((now-start)/duration*total));
-      if(count!==last){
-        last=count;
+      let done=true;
+      typingTracks.forEach(track=>{
+        const count=Math.max(0,Math.min(track.total,Math.floor((now-start-track.delay)/track.duration*track.total)));
+        if(count<track.total)done=false;
+        if(count===track.last)return;
+        track.last=count;
         let left=count;
-        parts.forEach(p=>{
+        track.parts.forEach(p=>{
           const n=Math.max(0,Math.min(p.chars.length,left));
           p.shown.nodeValue=p.chars.slice(0,n).join("");
           p.pending.textContent=p.chars.slice(n).join("");
           left-=p.chars.length;
         });
-      }
-      if(count<total){typingFrame=requestAnimationFrame(tick);}
-      else{
-        parts.forEach(p=>p.pending.remove());
-        el.normalize();
-        typingFrame=0;
-      }
+      });
+      if(done)finishTyping();
+      else typingFrame=requestAnimationFrame(tick);
     }
     typingFrame=requestAnimationFrame(tick);
   }
   function translate(){
+    finishTyping();
     const selected=lang();
     document.querySelectorAll("[data-v2-en][data-v2-ko]").forEach(el=>{
       const value=el.getAttribute("data-v2-"+selected);
@@ -80,8 +105,7 @@
         el.textContent=value;
       }
     });
-    const hero=body.classList.contains("v2-home")&&document.querySelector(".v2-career-goal-description");
-    if(hero)typeHero(hero);
+    typeHome();
     document.querySelectorAll("[data-v2-placeholder-en]").forEach(el=>{
       el.setAttribute("placeholder",el.getAttribute("data-v2-placeholder-"+selected)||"");
     });
