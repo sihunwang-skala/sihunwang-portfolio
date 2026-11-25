@@ -109,7 +109,7 @@
           el.replaceChildren(parts[0],parts[1],document.createElement("br"),parts[2],parts[3]);
         }else{
           const mid=value.indexOf(" Multi-Agent 기반으로");
-          const last=value.indexOf(" AI Agent Engineer를 목표합니다.");
+          const last=value.indexOf(value.includes(" AI 에이전트 엔지니어를 목표합니다.")?" AI 에이전트 엔지니어를 목표합니다.":" AI Agent Engineer를 목표합니다.");
           if(mid>=0 && mid<at && last>at){
             const phrases=[value.slice(0,mid),value.slice(mid,at),value.slice(at,last).trimStart(),value.slice(last)];
             const parts=phrases.map(text=>{
