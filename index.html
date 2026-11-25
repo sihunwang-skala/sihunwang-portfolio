@@ -18,6 +18,39 @@
 <script src="./app.js?v=20261124-ai-modeling-highlight" defer></script>
 <script src="./site.js?v=20261124-korean-typing-slow" defer></script>
 <script src="./highlight.js?v=20261123-on-scroll" defer></script>
+<style>
+/* Home only: editorial index replacing the four feature cards. */
+body.v2-home .v2-editorial-list{list-style:none;padding:0;margin:0;border-top:1px solid #d8dadd}
+body.v2-home .v2-editorial-entry{margin:0;padding:0;border-bottom:1px solid #d8dadd;list-style:none}
+body.v2-home .v2-editorial-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto 26px;align-items:center;gap:14px;padding:23px 0;color:inherit;text-decoration:none;background:transparent}
+body.v2-home .v2-editorial-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:5px}
+body.v2-home .v2-editorial-number{font-size:13px;font-weight:500;line-height:1.4;color:#73777d;font-variant-numeric:tabular-nums;align-self:center}
+body.v2-home .v2-editorial-label{font-size:13px;font-weight:550;color:#6d7076;line-height:1.45;text-decoration:none}
+body.v2-home .v2-editorial-title{font-size:clamp(23px,2.25vw,32px);line-height:1.22;font-weight:650;letter-spacing:-.04em;color:inherit;overflow-wrap:anywhere}
+body.v2-home .v2-editorial-detail{grid-column:3;font-size:clamp(13px,1.1vw,16px);font-weight:600;color:#94543D;line-height:1.5;text-align:right;white-space:normal}
+body.v2-home .v2-editorial-arrow{grid-column:4;justify-self:end;font-size:23px;line-height:1;font-weight:500;color:inherit;text-decoration:none;transition:transform .18s ease}
+body.v2-home a.v2-editorial-row:hover .v2-editorial-arrow,body.v2-home .v2-editorial-arrow:hover{transform:translate(2px,-2px);color:#94543D}
+body.v2-home a.v2-editorial-row:hover .v2-editorial-title,body.v2-home .v2-editorial-about-link:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+body.v2-home .v2-editorial-about .v2-editorial-row{align-items:start;padding:25px 0 28px}
+body.v2-home .v2-editorial-about .v2-editorial-number{align-self:start;padding-top:2px}
+body.v2-home .v2-editorial-about .v2-editorial-copy{gap:12px;grid-column:2/4}
+body.v2-home .v2-editorial-about .v2-editorial-arrow{margin-top:2px}
+body.v2-home .v2-editorial-about h1{font-size:clamp(39px,4.2vw,63px);line-height:1.06;margin:0;font-weight:750;letter-spacing:-.065em}
+body.v2-home .v2-editorial-about .v2-career-goal{margin:0;width:100%;max-width:none;min-width:0}
+body.v2-home .v2-editorial-about .v2-career-goal-description{margin:0;font-size:clamp(17px,1.55vw,23px);font-weight:600;line-height:1.55;letter-spacing:-.025em;white-space:normal;overflow-wrap:break-word}
+html[data-theme="dark"] body.v2-home .v2-editorial-list,html[data-theme="dark"] body.v2-home .v2-editorial-entry{border-color:#414751}
+html[data-theme="dark"] body.v2-home .v2-editorial-label,html[data-theme="dark"] body.v2-home .v2-editorial-number{color:#b1bac7}
+html[data-theme="dark"] body.v2-home .v2-editorial-detail,html[data-theme="dark"] body.v2-home a.v2-editorial-row:hover .v2-editorial-arrow,html[data-theme="dark"] body.v2-home .v2-editorial-arrow:hover{color:#E6A78E}
+@media(max-width:760px){
+ body.v2-home .v2-editorial-row{grid-template-columns:27px minmax(0,1fr) 20px;gap:7px 10px;padding:19px 0}
+ body.v2-home .v2-editorial-arrow{grid-column:3;grid-row:1;font-size:20px}
+ body.v2-home .v2-editorial-detail{grid-column:2;grid-row:2;text-align:left}
+ body.v2-home .v2-editorial-about .v2-editorial-copy{grid-column:2}
+ body.v2-home .v2-editorial-about .v2-editorial-row{padding:21px 0 24px}
+ body.v2-home .v2-editorial-about .v2-career-goal-description br{display:none}
+}
+@media(prefers-reduced-motion:reduce){body.v2-home .v2-editorial-arrow{transition:none}}
+</style>
 </head>
 <body class="v2-page v2-home v2-about v2-section-page v2-projects v2-resume" data-v2-page="home">
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -45,39 +78,54 @@
 </aside>
 <header class="v2-mobilebar"><a href="./">sihun wang</a><button type="button" data-v2-menu aria-controls="v2-sidebar" aria-expanded="false" data-v2-en="Menu" data-v2-ko="메뉴">Menu</button></header>
 <main class="v2-main" id="main"><div class="v2-inner">
-<section class="v2-hero" id="top">
-<h1><a class="v2-hero-name" href="#about" aria-label="About Sihun Wang">Sihun Wang<span class="v2-about-hint" aria-hidden="true">↗</span></a></h1>
+<section class="v2-hero v2-editorial-home" id="top">
+<ol class="v2-editorial-list" aria-label="Portfolio sections">
+  <li class="v2-editorial-entry v2-editorial-about">
+    <div class="v2-editorial-row">
+      <span class="v2-editorial-number" aria-hidden="true">01</span>
+      <div class="v2-editorial-copy">
+        <a class="v2-editorial-label v2-editorial-about-link" href="#about">About</a>
+        <h1><a class="v2-hero-name" href="#about" aria-label="About Sihun Wang">Sihun Wang</a></h1>
 <div class="v2-career-goal">
   <p class="v2-career-goal-description" data-v2-en="I aim to become an AI Agent Engineer who designs Context-Aware &amp; Personalized Agents using Multi-Agent Architecture and connects them through A2A Communication." data-v2-ko="Context-Aware &amp; Personalized Agents를 Multi-Agent Architecture 기반으로 설계하고 A2A Communication으로 연결하는 AI Agent Engineer를 목표합니다.">Context-Aware &amp; Personalized Agents를 Multi-Agent Architecture 기반으로 설계하고<br>A2A Communication으로 연결하는 AI Agent Engineer를 목표합니다.</p>
 </div>
-<div class="v2-feature-grid" aria-label="Explore role, projects, education, and awards">
-  <a class="v2-feature-tile" href="#experience" aria-label="Experience">
-    <span class="v2-feature-meta" style="justify-content:flex-end"><span class="v2-feature-arrow" aria-hidden="true">↗</span></span>
-    <span class="v2-feature-main">
-      <span class="v2-feature-title">AI Agent Engineer</span>
-    </span>
-  </a>
-  <a class="v2-feature-tile" href="#projects" aria-label="Projects">
-    <span class="v2-feature-meta" style="justify-content:flex-end"><span class="v2-feature-arrow" aria-hidden="true">↗</span></span>
-    <span class="v2-feature-main">
-      <span class="v2-feature-title">Agentic AI, Multi-Agent, A2A</span>
-    </span>
-  </a>
-  <a class="v2-feature-tile" href="#education" aria-label="Education">
-    <span class="v2-feature-meta" style="justify-content:flex-end"><span class="v2-feature-arrow" aria-hidden="true">↗</span></span>
-    <span class="v2-feature-main">
-      <span class="v2-feature-title">AI @ UIUC, Georgia Tech</span>
-      <span class="v2-feature-subtitle" style="white-space:nowrap" data-v2-en="U.S. #6, #5  QS #21, #15" data-v2-ko="미국 6위 5위 세계 21위 15위">U.S. #6, #5  QS #21, #15</span>
-    </span>
-  </a>
-  <a class="v2-feature-tile" href="#awards" aria-label="Awards &amp; Contribution">
-    <span class="v2-feature-meta" style="justify-content:flex-end"><span class="v2-feature-arrow" aria-hidden="true">↗</span></span>
-    <span class="v2-feature-main">
-      <span class="v2-feature-title">AI, STAT, MATH</span>
-      <span class="v2-feature-subtitle" data-v2-en="State Regional Representative" data-v2-ko="주 지역 대표">State Regional Representative</span>
-    </span>
-  </a>
-</div>
+      </div>
+      <a class="v2-editorial-arrow" href="#about" aria-label="About Sihun Wang">↗</a>
+    </div>
+  </li>
+  <li class="v2-editorial-entry">
+    <a class="v2-editorial-row" href="#experience">
+      <span class="v2-editorial-number" aria-hidden="true">02</span>
+      <span class="v2-editorial-copy"><span class="v2-editorial-label">Experience</span><span class="v2-editorial-title">AI Agent Engineer</span></span>
+      
+      <span class="v2-editorial-arrow" aria-hidden="true">↗</span>
+    </a>
+  </li>
+  <li class="v2-editorial-entry">
+    <a class="v2-editorial-row" href="#projects">
+      <span class="v2-editorial-number" aria-hidden="true">03</span>
+      <span class="v2-editorial-copy"><span class="v2-editorial-label">Projects</span><span class="v2-editorial-title">Agentic AI, Multi-Agent, A2A</span></span>
+      
+      <span class="v2-editorial-arrow" aria-hidden="true">↗</span>
+    </a>
+  </li>
+  <li class="v2-editorial-entry">
+    <a class="v2-editorial-row" href="#education">
+      <span class="v2-editorial-number" aria-hidden="true">04</span>
+      <span class="v2-editorial-copy"><span class="v2-editorial-label">Education</span><span class="v2-editorial-title">AI @ UIUC, Georgia Tech</span></span>
+      <span class="v2-editorial-detail" data-v2-en="U.S. #6, #5  QS #21, #15" data-v2-ko="미국 6위 5위 세계 21위 15위">U.S. #6, #5  QS #21, #15</span>
+      <span class="v2-editorial-arrow" aria-hidden="true">↗</span>
+    </a>
+  </li>
+  <li class="v2-editorial-entry">
+    <a class="v2-editorial-row" href="#awards">
+      <span class="v2-editorial-number" aria-hidden="true">05</span>
+      <span class="v2-editorial-copy"><span class="v2-editorial-label">Awards &amp; Contribution</span><span class="v2-editorial-title">AI, STAT, MATH</span></span>
+      <span class="v2-editorial-detail" data-v2-en="State Regional Representative" data-v2-ko="주 지역 대표">State Regional Representative</span>
+      <span class="v2-editorial-arrow" aria-hidden="true">↗</span>
+    </a>
+  </li>
+</ol>
 <nav class="v2-home-quicklinks" aria-label="Resume and contact links">
   <a href="#resume" data-v2-en="Resume" data-v2-ko="Resume">Resume</a>
   <a href="https://github.com/sihunwang-skala" target="_blank" rel="noopener noreferrer">GitHub</a>
