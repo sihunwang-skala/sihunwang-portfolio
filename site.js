@@ -91,7 +91,7 @@
       const value=el.getAttribute("data-v2-"+selected);
       if(value===null)return;
       if(el.classList.contains("v2-career-goal-description")){
-        const split=selected==="en"?" using ":" A2A Communication으로";
+        const split=selected==="en"?" using ":(value.includes(" A2A로")?" A2A로":" A2A Communication으로");
         const at=value.indexOf(split);
         if(at<0){el.textContent=value;return;}
         if(selected==="en"){
