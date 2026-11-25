@@ -27,8 +27,8 @@ body.v2-home .v2-editorial-copy{display:flex;flex-direction:column;align-items:f
 body.v2-home .v2-editorial-number{font-size:13px;font-weight:500;line-height:1.4;color:#73777d;font-variant-numeric:tabular-nums;align-self:center}
 body.v2-home .v2-editorial-label{font-size:11px;font-weight:450;color:#6d7076;line-height:1.45;text-decoration:none}
 body.v2-home .v2-editorial-title{font-size:clamp(23px,2.25vw,32px);line-height:1.22;font-weight:650;letter-spacing:-.04em;color:inherit;overflow-wrap:anywhere}
-body.v2-home .v2-editorial-title .v2-editorial-comma{margin-inline-start:0;margin-inline-end:var(--v2-symbol-spacing,.1em)}
-body.v2-home .v2-editorial-title .v2-editorial-at{margin-inline:var(--v2-symbol-spacing,.1em)}
+body.v2-home .v2-editorial-title .v2-editorial-comma{margin-inline-start:.1em;margin-inline-end:var(--v2-symbol-spacing,.35em)}
+body.v2-home .v2-editorial-title .v2-editorial-at{margin-inline:var(--v2-symbol-spacing,.35em)}
 body.v2-home #spacing-preview[hidden]{display:none!important}
 body.v2-home #spacing-preview{margin:0 0 22px;padding:15px 18px;border:1px solid #d8dadd;border-radius:8px;color:inherit;background:transparent}
 body.v2-home #spacing-preview .spacing-preview-top,body.v2-home #spacing-preview .spacing-preview-controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
@@ -92,9 +92,9 @@ html[data-theme="dark"] body.v2-home .v2-editorial-detail,html[data-theme="dark"
 <main class="v2-main" id="main"><div class="v2-inner">
 <section class="v2-hero v2-editorial-home" id="top">
 <section id="spacing-preview" aria-label="Symbol spacing preview" hidden>
-  <div class="spacing-preview-top"><strong>Spacing preview: after comma / around @</strong><output id="spacing-value" for="spacing-range">0.10em</output><a id="spacing-exit" href="./">Exit preview</a></div>
+  <div class="spacing-preview-top"><strong>Spacing preview: after comma / around @</strong><output id="spacing-value" for="spacing-range">0.35em</output><a id="spacing-exit" href="./">Exit preview</a></div>
   <div class="spacing-preview-controls">
-    <label for="spacing-range">0</label><input id="spacing-range" type="range" min="0" max="0.5" step="0.05" value="0.1" aria-label="Extra spacing after commas and on each side of at signs"><span>0.50em</span>
+    <label for="spacing-range">0</label><input id="spacing-range" type="range" min="0" max="0.5" step="0.05" value="0.35" aria-label="Extra spacing after commas and on each side of at signs"><span>0.50em</span>
     <button id="spacing-apply" type="button">적용하기</button><button id="spacing-reset" type="button">초기화</button>
   </div>
   <p id="spacing-status" role="status">슬라이더를 움직이면 실제 제목에 즉시 반영됩니다. 적용하기는 현재 미리보기 URL에 값을 저장합니다.</p>
@@ -406,8 +406,8 @@ html[data-theme="dark"] body.v2-home .v2-editorial-detail,html[data-theme="dark"
   const status=document.getElementById("spacing-status");
   const exit=document.getElementById("spacing-exit");
   const raw=url.searchParams.get("spacing");
-  const n=raw==="preview"||raw===""?0.1:Number(raw);
-  range.value=String(Number.isFinite(n)?Math.round(Math.min(0.5,Math.max(0,n))*20)/20:0.1);
+  const n=raw==="preview"||raw===""?0.35:Number(raw);
+  range.value=String(Number.isFinite(n)?Math.round(Math.min(0.5,Math.max(0,n))*20)/20:0.35);
   function render(){
     const v=Number(range.value).toFixed(2)+"em";
     document.documentElement.style.setProperty("--v2-symbol-spacing",v);
@@ -421,7 +421,7 @@ html[data-theme="dark"] body.v2-home .v2-editorial-detail,html[data-theme="dark"
   }
   range.addEventListener("input",()=>{render();status.textContent="미리보기 중: 적용하기를 누르면 현재 값을 URL에 저장합니다."});
   document.getElementById("spacing-apply").addEventListener("click",save);
-  document.getElementById("spacing-reset").addEventListener("click",()=>{range.value="0.1";render();save()});
+  document.getElementById("spacing-reset").addEventListener("click",()=>{range.value="0.35";render();save()});
   const normal=new URL(location.href);normal.searchParams.delete("spacing");exit.href=normal.href;
   panel.hidden=false;
   render();
