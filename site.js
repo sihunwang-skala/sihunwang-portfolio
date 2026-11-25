@@ -108,11 +108,24 @@
           });
           el.replaceChildren(parts[0],parts[1],document.createElement("br"),parts[2],parts[3]);
         }else{
-          el.replaceChildren(
-            document.createTextNode(value.slice(0,at)),
-            document.createElement("br"),
-            document.createTextNode(value.slice(at))
-          );
+          const mid=value.indexOf(" Multi-Agent 기반으로");
+          const last=value.indexOf(" AI Agent Engineer를 목표합니다.");
+          if(mid>=0 && mid<at && last>at){
+            const phrases=[value.slice(0,mid),value.slice(mid,at),value.slice(at,last).trimStart(),value.slice(last)];
+            const parts=phrases.map(text=>{
+              const span=document.createElement("span");
+              span.className="v2-typing-phrase";
+              span.textContent=text;
+              return span;
+            });
+            el.replaceChildren(parts[0],parts[1],document.createElement("br"),parts[2],parts[3]);
+          }else{
+            el.replaceChildren(
+              document.createTextNode(value.slice(0,at)),
+              document.createElement("br"),
+              document.createTextNode(value.slice(at))
+            );
+          }
         }
       }else{
         el.textContent=value;
