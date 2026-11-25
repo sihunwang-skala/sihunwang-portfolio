@@ -27,7 +27,18 @@ body.v2-home .v2-editorial-copy{display:flex;flex-direction:column;align-items:f
 body.v2-home .v2-editorial-number{font-size:13px;font-weight:500;line-height:1.4;color:#73777d;font-variant-numeric:tabular-nums;align-self:center}
 body.v2-home .v2-editorial-label{font-size:11px;font-weight:450;color:#6d7076;line-height:1.45;text-decoration:none}
 body.v2-home .v2-editorial-title{font-size:clamp(23px,2.25vw,32px);line-height:1.22;font-weight:650;letter-spacing:-.04em;color:inherit;overflow-wrap:anywhere}
-body.v2-home .v2-editorial-title .v2-editorial-comma,body.v2-home .v2-editorial-title .v2-editorial-at{margin-inline:.1em}
+body.v2-home .v2-editorial-title .v2-editorial-comma,body.v2-home .v2-editorial-title .v2-editorial-at{margin-inline:var(--v2-symbol-spacing,.1em)}
+body.v2-home #spacing-preview[hidden]{display:none!important}
+body.v2-home #spacing-preview{margin:0 0 22px;padding:15px 18px;border:1px solid #d8dadd;border-radius:8px;color:inherit;background:transparent}
+body.v2-home #spacing-preview .spacing-preview-top,body.v2-home #spacing-preview .spacing-preview-controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+body.v2-home #spacing-preview .spacing-preview-top{justify-content:space-between;margin-bottom:12px}
+body.v2-home #spacing-preview output{font-weight:700;font-variant-numeric:tabular-nums}
+body.v2-home #spacing-preview input[type=range]{flex:1 1 180px;min-width:0;max-width:100%;accent-color:#94543D}
+body.v2-home #spacing-preview button{font:inherit;font-size:13px;cursor:pointer;color:inherit;background:transparent;border:1px solid #b8b9bd;border-radius:5px;padding:7px 12px}
+body.v2-home #spacing-preview a{font-size:13px;color:inherit;text-decoration:underline}
+body.v2-home #spacing-preview p{margin:8px 0 0;font-size:12px;line-height:1.5;color:inherit;opacity:.75}
+html[data-theme="dark"] body.v2-home #spacing-preview{border-color:#414751}
+
 body.v2-home .v2-editorial-detail{grid-column:3;font-size:clamp(13px,1.1vw,16px);font-weight:600;color:#94543D;line-height:1.5;text-align:right;white-space:normal}
 body.v2-home .v2-editorial-arrow{grid-column:4;justify-self:end;font-size:23px;line-height:1;font-weight:500;color:inherit;text-decoration:none;transition:transform .18s ease}
 body.v2-home a.v2-editorial-row:hover .v2-editorial-arrow,body.v2-home .v2-editorial-arrow:hover{transform:translate(2px,-2px);color:#94543D}
@@ -79,6 +90,14 @@ html[data-theme="dark"] body.v2-home .v2-editorial-detail,html[data-theme="dark"
 <header class="v2-mobilebar"><a href="./">sihun wang</a><button type="button" data-v2-menu aria-controls="v2-sidebar" aria-expanded="false" data-v2-en="Menu" data-v2-ko="메뉴">Menu</button></header>
 <main class="v2-main" id="main"><div class="v2-inner">
 <section class="v2-hero v2-editorial-home" id="top">
+<section id="spacing-preview" aria-label="Symbol spacing preview" hidden>
+  <div class="spacing-preview-top"><strong>Spacing preview: , / @</strong><output id="spacing-value" for="spacing-range">0.10em</output><a id="spacing-exit" href="./">Exit preview</a></div>
+  <div class="spacing-preview-controls">
+    <label for="spacing-range">0</label><input id="spacing-range" type="range" min="0" max="0.5" step="0.05" value="0.1" aria-label="Extra spacing on each side of comma and at sign"><span>0.50em</span>
+    <button id="spacing-apply" type="button">적용하기</button><button id="spacing-reset" type="button">초기화</button>
+  </div>
+  <p id="spacing-status" role="status">슬라이더를 움직이면 실제 제목에 즉시 반영됩니다. 적용하기는 현재 미리보기 URL에 값을 저장합니다.</p>
+</section>
 <ol class="v2-editorial-list" aria-label="Portfolio sections">
   <li class="v2-editorial-entry v2-editorial-about">
     <div class="v2-editorial-row">
@@ -375,5 +394,37 @@ html[data-theme="dark"] body.v2-home .v2-editorial-detail,html[data-theme="dark"
 </div></main>
 <dialog class="resume-dialog" data-resume-dialog aria-labelledby="resume-dialog-title"><form method="dialog" class="resume-dialog-card"><button class="resume-dialog-close" value="cancel" aria-label="Close">×</button><h2 id="resume-dialog-title">Download Resume</h2><label>Name<input name="name" autocomplete="name"></label><label>Role / Company<input name="role" autocomplete="organization-title"></label><div class="resume-dialog-actions"><button type="button" data-resume-submit>Continue</button></div></form></dialog>
 <div class="image-lightbox" data-image-lightbox aria-hidden="true"><button type="button" data-lightbox-close aria-label="Close enlarged image">×</button><img data-lightbox-image alt="" /></div>
+
+<script>
+(() => {
+  const url=new URL(location.href);
+  if(!url.searchParams.has("spacing"))return;
+  const panel=document.getElementById("spacing-preview");
+  const range=document.getElementById("spacing-range");
+  const value=document.getElementById("spacing-value");
+  const status=document.getElementById("spacing-status");
+  const exit=document.getElementById("spacing-exit");
+  const raw=url.searchParams.get("spacing");
+  const n=raw==="preview"||raw===""?0.1:Number(raw);
+  range.value=String(Number.isFinite(n)?Math.round(Math.min(0.5,Math.max(0,n))*20)/20:0.1);
+  function render(){
+    const v=Number(range.value).toFixed(2)+"em";
+    document.documentElement.style.setProperty("--v2-symbol-spacing",v);
+    value.value=v;
+  }
+  function save(){
+    const next=new URL(location.href);
+    next.searchParams.set("spacing",Number(range.value).toFixed(2));
+    history.replaceState(history.state,"",next.href);
+    status.textContent="미리보기 URL에 "+Number(range.value).toFixed(2)+"em을 적용했습니다. 실제 공개 기본값은 변경되지 않습니다.";
+  }
+  range.addEventListener("input",()=>{render();status.textContent="미리보기 중: 적용하기를 누르면 현재 값을 URL에 저장합니다."});
+  document.getElementById("spacing-apply").addEventListener("click",save);
+  document.getElementById("spacing-reset").addEventListener("click",()=>{range.value="0.1";render();save()});
+  const normal=new URL(location.href);normal.searchParams.delete("spacing");exit.href=normal.href;
+  panel.hidden=false;
+  render();
+})();
+</script>
 </body>
 </html>
