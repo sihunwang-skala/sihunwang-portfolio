@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 800" width="1100" height="800">
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e5a"/></marker>
+  <style>
+    text { font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif; }
+    .lane { font-size: 19px; font-weight: 700; fill: #1f2a33; }
+    .node-b { font-size: 18px; font-weight: 700; fill: #17323b; }
+    .node { font-size: 15px; fill: #2c3e46; }
+    .edge { font-size: 14px; font-weight: 600; }
+  </style>
+</defs>
+<rect width="1100" height="800" fill="#ffffff"/>
+<rect x="20" y="10" width="1060" height="230" rx="14" fill="#fdf8e6" stroke="#c9d3dc" stroke-width="1.5"/>
+<text x="40" y="40" class="lane">① 준비 — 세션 시작 전</text>
+<rect x="20" y="256" width="1060" height="262" rx="14" fill="#eef4fb" stroke="#c9d3dc" stroke-width="1.5"/>
+<text x="40" y="286" class="lane">② 실시간 — 사용자가 답하는 동안</text>
+<rect x="20" y="534" width="1060" height="246" rx="14" fill="#eef8f0" stroke="#c9d3dc" stroke-width="1.5"/>
+<text x="40" y="564" class="lane">③ 종료 후 — 리포트와 누적 복습</text>
+<text x="45" y="718" class="edge" fill="#555">━▶ 실행 흐름     ┄┄▶ 복습 피드백(다음 연습의 질문)     ━ 빨강: 끼어들기     ━ 주황: 답변 끝 신호     ━ 초록: 기록 저장</text>
+<rect x="45" y="60" width="185" height="90" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="137.5" y="89.0" text-anchor="middle" class="node-b">제안서·발표자료·자막</text>
+<text x="137.5" y="111.0" text-anchor="middle" class="node">PDF · PPTX · DOCX</text>
+<text x="137.5" y="133.0" text-anchor="middle" class="node">HTML · SRT · XLSX</text>
+<rect x="270" y="75" width="150" height="60" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="345.0" y="111.0" text-anchor="middle" class="node-b">글자 추출</text>
+<rect x="460" y="75" width="150" height="60" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="535.0" y="100.0" text-anchor="middle" class="node-b">지문</text>
+<text x="535.0" y="122.0" text-anchor="middle" class="node">최대 15만 자</text>
+<rect x="650" y="26" width="180" height="56" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="740.0" y="49.0" text-anchor="middle" class="node-b">질문 은행</text>
+<text x="740.0" y="71.0" text-anchor="middle" class="node">3개씩 미리 생성</text>
+<rect x="650" y="100" width="180" height="56" rx="10" fill="#fff8ee" stroke="#1f4e5a" stroke-width="2"/>
+<text x="740.0" y="123.0" text-anchor="middle" class="node-b">사용자 추가 질문</text>
+<text x="740.0" y="145.0" text-anchor="middle" class="node">시작 전·진행 중</text>
+<rect x="650" y="174" width="180" height="56" rx="10" fill="#fff8ee" stroke="#1f4e5a" stroke-width="2"/>
+<text x="740.0" y="197.0" text-anchor="middle" class="node-b">지난 연습 복습 기록</text>
+<text x="740.0" y="219.0" text-anchor="middle" class="node">틀린 질문 우선</text>
+<rect x="885" y="56" width="170" height="150" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="970.0" y="93.0" text-anchor="middle" class="node-b">질문 대기열</text>
+<text x="970.0" y="115.0" text-anchor="middle" class="node">우선순위 점수</text>
+<text x="970.0" y="137.0" text-anchor="middle" class="node">사용자 질문 0.99</text>
+<text x="970.0" y="159.0" text-anchor="middle" class="node">복습 0.985</text>
+<text x="970.0" y="181.0" text-anchor="middle" class="node">은행 1.00 − 0.02·순번</text>
+<path d="M230,105 H270" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M420,105 H460" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M610,105 H650" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M830,54 H885" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M830,128 H885" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M830,202 H885" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<rect x="45" y="330" width="150" height="60" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="120.0" y="355.0" text-anchor="middle" class="node-b">마이크</text>
+<text x="120.0" y="377.0" text-anchor="middle" class="node">16 kHz</text>
+<rect x="230" y="330" width="150" height="60" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="305.0" y="355.0" text-anchor="middle" class="node-b">Silero VAD</text>
+<text x="305.0" y="377.0" text-anchor="middle" class="node">말소리 구간 감지</text>
+<rect x="415" y="330" width="180" height="60" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="505.0" y="355.0" text-anchor="middle" class="node-b">faster-whisper</text>
+<text x="505.0" y="377.0" text-anchor="middle" class="node">받아쓰기 (STT)</text>
+<rect x="650" y="282" width="190" height="54" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="745.0" y="304.0" text-anchor="middle" class="node-b">부분 받아쓰기</text>
+<text x="745.0" y="326.0" text-anchor="middle" class="node">3초마다 갱신</text>
+<rect x="650" y="370" width="190" height="54" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="745.0" y="392.0" text-anchor="middle" class="node-b">끼어들기 검사</text>
+<text x="745.0" y="414.0" text-anchor="middle" class="node">숫자 모순·반복·이탈</text>
+<rect x="880" y="330" width="180" height="70" rx="10" fill="#fff3d6" stroke="#b7791f" stroke-width="2"/>
+<text x="970.0" y="360.0" text-anchor="middle" class="node-b">다음 질문 결정</text>
+<text x="970.0" y="382.0" text-anchor="middle" class="node">답변 끝 버튼 기준</text>
+<rect x="880" y="430" width="180" height="60" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="970.0" y="455.0" text-anchor="middle" class="node-b">TTS 음성 합성</text>
+<text x="970.0" y="477.0" text-anchor="middle" class="node">미리 만든 음성 우선</text>
+<path d="M195,360 H230" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M380,360 H415" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M595,345 Q620,345 650,309" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M595,375 Q620,385 650,397" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M840,309 Q860,309 880,355" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M840,397 Q860,397 880,380" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M595,355 H880" fill="none" stroke="#b7791f" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="640" y="343" class="edge" fill="#b7791f">답변 끝</text>
+<path d="M970,206 V330" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="975" y="272" class="edge" fill="#1f4e5a">대기열에서 다음 질문</text>
+<path d="M970,400 V430" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M650,397 Q700,470 880,462" fill="none" stroke="#b03a2e" stroke-width="2.2" marker-end="url(#arr)"/>
+<text x="690" y="470" class="edge" fill="#b03a2e">끼어들기 문장</text>
+<rect x="45" y="600" width="200" height="74" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="145.0" y="632.0" text-anchor="middle" class="node-b">실험 기록</text>
+<text x="145.0" y="654.0" text-anchor="middle" class="node">질문·답변·출처 문장</text>
+<rect x="300" y="600" width="200" height="74" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="400.0" y="632.0" text-anchor="middle" class="node-b">LLM 채점</text>
+<text x="400.0" y="654.0" text-anchor="middle" class="node">판정·이유·모범 답안</text>
+<rect x="555" y="600" width="200" height="74" rx="10" fill="#ffffff" stroke="#1f4e5a" stroke-width="2"/>
+<text x="655.0" y="632.0" text-anchor="middle" class="node-b">리포트</text>
+<text x="655.0" y="654.0" text-anchor="middle" class="node">출처·우선순위·꼬리질문 이유</text>
+<rect x="810" y="600" width="200" height="74" rx="10" fill="#f2fbf4" stroke="#1f4e5a" stroke-width="2"/>
+<text x="910.0" y="632.0" text-anchor="middle" class="node-b">누적 복습 기록</text>
+<text x="910.0" y="654.0" text-anchor="middle" class="node">2번 맞으면 졸업</text>
+<path d="M245,637 H300" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M500,637 H555" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M755,637 H810" fill="none" stroke="#1f4e5a" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M505,365 V582 H145 V600" fill="none" stroke="#2f6f4f" stroke-width="2.2" marker-end="url(#arr)"/>
+<path d="M1010,637 H1060 V160 H1055" fill="none" stroke="#2f6f4f" stroke-width="2.2" stroke-dasharray="7 6" marker-end="url(#arr)"/>
+<path d="M1010,637 H1060 V160 H1055" fill="none" stroke="#2f6f4f" stroke-width="2.2" stroke-dasharray="7 6" marker-end="url(#arr)"/>
+<text x="512" y="470" class="edge" fill="#2f6f4f">모든 턴 저장</text>
+</svg>
