@@ -15,19 +15,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
 <link rel="stylesheet" href="./styles.css?v=20261123-compact" />
 <link rel="stylesheet" href="./site.css?v=20261126-mobile" />
-<script src="./app.js?v=20261127-resume-dialog-v2" defer></script>
+<script src="./app.js?v=20261127-resume-wheel-v3" defer></script>
 <script src="./site.js?v=20261124-complete" defer></script>
 <script src="./highlight.js?v=20261123-on-scroll" defer></script>
 <script src="./portfolio-notifications.js?v=2" defer></script>
 <style id="resume-contained-viewer-style">
-body.v2-resume .v2-resume-frame{height:clamp(360px,64vh,640px);min-height:0}
-body.v2-resume .v2-resume-mobile-preview[data-resume-viewer]{background:#f2f4f7}
-body.v2-resume .resume-viewer-controls{display:flex;justify-content:center;align-items:center;gap:8px;padding:6px;border-bottom:1px solid #d9dfe7}
-body.v2-resume .resume-viewer-controls button{font:inherit;font-size:15px;min-width:40px;min-height:40px;padding:5px 10px;color:#17202a;background:#fff;border:1px solid #c9c9c9;border-radius:6px;cursor:pointer}
-body.v2-resume .resume-viewer-controls button:disabled{opacity:.4;cursor:default}
-body.v2-resume .resume-viewer-controls output{min-width:48px;text-align:center;color:#17202a;font-size:14px;font-variant-numeric:tabular-nums}
-body.v2-resume .resume-viewer-scroll{height:clamp(260px,57vh,460px);overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;background:#fff}
-body.v2-resume .v2-resume-mobile-preview .resume-viewer-scroll img{display:block;max-width:none;min-width:100%;height:auto;margin:0}
+body.v2-resume .v2-resume-preview .v2-resume-mobile-preview[data-resume-viewer]{display:block;width:100%;box-sizing:border-box;border:1px solid var(--v2-divider);border-radius:10px;overflow:hidden;background:#f2f4f7}
+body.v2-resume .resume-viewer-scroll{height:clamp(360px,64vh,640px);overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;background:#f2f4f7;cursor:grab;user-select:none;overflow-anchor:none}
+body.v2-resume .resume-viewer-scroll.is-dragging{cursor:grabbing}
+body.v2-resume .v2-resume-mobile-preview .resume-viewer-scroll img{display:block;width:100%;max-width:none;min-width:0;height:auto;margin:0 auto;background:#fff;user-select:none;-webkit-user-drag:none}
+@media(max-width:820px){body.v2-resume .resume-viewer-scroll{height:clamp(260px,57vh,460px)}}
 </style>
 </head>
 <body class="v2-page v2-resume" data-v2-page="resume">
@@ -61,13 +58,7 @@ body.v2-resume .v2-resume-mobile-preview .resume-viewer-scroll img{display:block
 </header>
 <section class="v2-resume-preview" aria-label="Resume PDF preview">
   <div class="v2-resume-mobile-preview" data-resume-viewer>
-    <div class="resume-viewer-controls" role="group" aria-label="Resume zoom">
-      <button type="button" data-resume-minus aria-label="Zoom out">−</button><output data-resume-zoom>100%</output><button type="button" data-resume-plus aria-label="Zoom in">+</button><button type="button" data-resume-fit data-v2-en="Fit" data-v2-ko="맞춤">Fit</button>
-    </div>
-    <div class="resume-viewer-scroll" data-resume-scroll tabindex="0" aria-label="Scrollable resume preview"><img src="./assets/resume-mobile.png?v=20261127-new-resume" alt="Sihun Wang resume" loading="lazy" width="1224" height="1584" /></div>
-  </div>
-  <div class="v2-resume-frame-shell">
-    <iframe class="v2-resume-frame" src="./assets/Resume_Sihun_Wang.pdf?v=20261127-new-resume#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;view=FitH" title="Sihun Wang résumé PDF" loading="eager"></iframe>
+    <div class="resume-viewer-scroll" data-resume-scroll tabindex="0" aria-label="Resume preview: scroll wheel to zoom, drag to pan"><img src="./assets/resume-mobile.png?v=20261127-new-resume" alt="Sihun Wang resume" loading="lazy" draggable="false" width="1224" height="1584" /></div>
   </div>
   <div class="v2-resume-action"><a class="v2-resume-link" href="./assets/Resume_Sihun_Wang.pdf?v=20261127-new-resume" download data-v2-en="Download PDF" data-v2-ko="PDF 다운로드">Download PDF</a></div>
 </section>

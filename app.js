@@ -594,23 +594,70 @@ resumeForm?.addEventListener("submit", event => {
   resumeDownload();
 });
 
-// Mobile browsers often cannot render embedded PDFs. Keep the original preview
-// image inside its own scroll region and provide explicit, bounded zoom.
+// Resume: wheel zoom at the pointer, drag to pan, and pinch on touchscreens.
 document.querySelectorAll("[data-resume-viewer]").forEach(viewer => {
   const viewport = viewer.querySelector("[data-resume-scroll]");
   const image = viewport?.querySelector("img");
-  const indicator = viewer.querySelector("[data-resume-zoom]");
-  if (!viewport || !image || !indicator) return;
-  let zoom = 100;
-  const render = () => {
-    image.style.width = zoom + "%";
-    indicator.textContent = zoom + "%";
-    viewer.querySelector("[data-resume-minus]").disabled = zoom <= 100;
-    viewer.querySelector("[data-resume-plus]").disabled = zoom >= 250;
+  if (!viewport || !image) return;
+  let zoom = 1, drag = null, pinch = null;
+  const render = () => { image.style.width = (zoom * 100) + "%"; };
+  const zoomAt = (next, x, y) => {
+    const value = Math.max(0.6, Math.min(3, next));
+    if (Math.abs(value - zoom) < 0.0001) return false;
+    const before = image.getBoundingClientRect();
+    if (!before.width || !before.height) return false;
+    const rx = (x - before.left) / before.width;
+    const ry = (y - before.top) / before.height;
+    zoom = value;
+    render();
+    const after = image.getBoundingClientRect();
+    viewport.scrollLeft += after.left + rx * after.width - x;
+    viewport.scrollTop += after.top + ry * after.height - y;
+    return true;
   };
-  viewer.querySelector("[data-resume-minus]").addEventListener("click", () => { zoom = Math.max(100, zoom - 25); render(); });
-  viewer.querySelector("[data-resume-plus]").addEventListener("click", () => { zoom = Math.min(250, zoom + 25); render(); });
-  viewer.querySelector("[data-resume-fit]").addEventListener("click", () => { zoom = 100; render(); viewport.scrollLeft = 0; viewport.scrollTop = 0; });
+  viewport.addEventListener("wheel", e => {
+    if (!e.deltaY || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? viewport.clientHeight : 1);
+    const changed = zoomAt(zoom * Math.exp(-Math.max(-240, Math.min(240, dy)) * 0.0025), e.clientX, e.clientY);
+    if (changed || e.ctrlKey || e.metaKey) e.preventDefault();
+  }, {passive:false});
+  viewport.addEventListener("pointerdown", e => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    e.preventDefault();
+    drag = {id:e.pointerId,x:e.clientX,y:e.clientY,left:viewport.scrollLeft,top:viewport.scrollTop};
+    viewport.setPointerCapture(e.pointerId);
+    viewport.classList.add("is-dragging");
+  });
+  viewport.addEventListener("pointermove", e => {
+    if (!drag || drag.id !== e.pointerId) return;
+    viewport.scrollLeft = drag.left - (e.clientX - drag.x);
+    viewport.scrollTop = drag.top - (e.clientY - drag.y);
+  });
+  const stopDrag = () => { drag = null; viewport.classList.remove("is-dragging"); };
+  ["pointerup","pointercancel","lostpointercapture"].forEach(type => viewport.addEventListener(type, stopDrag));
+  const touchInfo = touches => ({
+    distance:Math.hypot(touches[0].clientX-touches[1].clientX,touches[0].clientY-touches[1].clientY),
+    x:(touches[0].clientX+touches[1].clientX)/2,
+    y:(touches[0].clientY+touches[1].clientY)/2
+  });
+  viewport.addEventListener("touchstart", e => {
+    if (e.touches.length === 2) { pinch = touchInfo(e.touches); }
+  }, {passive:true});
+  viewport.addEventListener("touchmove", e => {
+    if (e.touches.length !== 2 || !pinch) return;
+    if (e.cancelable) e.preventDefault();
+    const current = touchInfo(e.touches);
+    if (pinch.distance > 0) zoomAt(zoom * current.distance / pinch.distance,current.x,current.y);
+    pinch = current;
+  }, {passive:false});
+  ["touchend","touchcancel"].forEach(type => viewport.addEventListener(type, () => {pinch=null;}));
+  viewport.addEventListener("keydown", e => {
+    if (!["+","=","-","0"].includes(e.key)) return;
+    e.preventDefault();
+    const r = viewport.getBoundingClientRect();
+    zoomAt(e.key==="0"?1:zoom*(e.key==="-"?0.8:1.25),r.left+r.width/2,r.top+r.height/2);
+  });
+  image.addEventListener("dragstart", e => e.preventDefault());
   render();
 });
 
