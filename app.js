@@ -577,7 +577,9 @@ resumeForm?.addEventListener("submit", event => {
   };
   // Preserve the user gesture and never delay the PDF for email delivery.
   // No notification is sent from offline HTML copies.
-  if (location.protocol === "https:" && location.hostname === "sihunwang-skala.github.io" && location.pathname.startsWith("/sihunwang-portfolio/")) {
+  let ownerMode=window.__portfolioOwnerMode===true;
+  try { ownerMode=ownerMode || localStorage.getItem("portfolio:owner-mode")==="1"; } catch {}
+  if (!ownerMode && location.protocol === "https:" && location.hostname === "sihunwang-skala.github.io" && location.pathname.startsWith("/sihunwang-portfolio/")) {
     try {
       void fetch("https://formsubmit.co/ajax/swwk10@gmail.com", {
         method: "POST",

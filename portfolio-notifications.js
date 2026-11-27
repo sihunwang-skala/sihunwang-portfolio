@@ -3,6 +3,31 @@
   const d=w.document,n=w.navigator,l=w.location;
   if(l.protocol!=="https:" || l.hostname!=="sihunwang-skala.github.io" || !l.pathname.startsWith("/sihunwang-portfolio/") || w.__portfolioNotifications) return;
   w.__portfolioNotifications=true;
+  // Owner Mode is a local notification preference, not authentication.
+  const ownerKey="portfolio:owner-mode";
+  let owner=false, changed=false;
+  try { owner=w.localStorage.getItem(ownerKey)==="1"; } catch {}
+  try {
+    const url=new w.URL(l.href);
+    const mode=url.searchParams.get("owner-mode");
+    if(mode==="on" || mode==="off"){
+      changed=true;
+      owner=mode==="on";
+      let saved=false;
+      try {
+        if(owner)w.localStorage.setItem(ownerKey,"1");
+        else w.localStorage.removeItem(ownerKey);
+        saved=true;
+      } catch {}
+      if(saved){
+        url.searchParams.delete("owner-mode");
+        w.history.replaceState(w.history.state,"",url.href);
+      }
+      console.info("Portfolio Owner Mode: "+(owner?"ON":"OFF")+(saved?"":" (this page only; storage unavailable)"));
+    }
+  } catch {}
+  w.__portfolioOwnerMode=owner;
+  if(owner || changed)return;
   const endpoint="https://formsubmit.co/ajax/swwk10@gmail.com";
   const projects={
     "proj-health":"Health Agent","proj-l10n":"L10n Quality Agent","proj-pipeline":"Data Automation Pipeline","proj-interview":"Real-time Mock Interview","proj-lightweight-cnn":"Lightweight Neural Networks","proj-usage":"AI Usage Bar"
