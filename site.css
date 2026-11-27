@@ -675,7 +675,7 @@ body.v2-page .v2-sidebar{
 body.v2-page .v2-logo{margin-bottom:37px;font-size:21px}
 body.v2-page .v2-nav{gap:2px}
 body.v2-page .v2-nav a{padding:8px 10px;font-size:14px;line-height:1.45;border-radius:7px;white-space:normal}
-body.v2-page .v2-nav .v2-nav-secondary-start{
+body.v2-page .v2-nav .v2-nav-secondary-start + a{
   margin-top:15px;
   padding-top:19px;
   border-top:1px solid #e7e7e7;
@@ -2081,3 +2081,6 @@ body.v2-about .ref-education-copy .ref-ranking-note a.ref-rank-link{
  body.v2-page .v2-project-links,body.v2-page .v2-about-contact{flex-wrap:wrap}
  body.v2-page .v2-project-links a,body.v2-page .v2-about-contact a{display:inline-flex;align-items:center;min-height:44px}
 }
+
+/* Resume follows Awards & Contribution without an extra section-sized gap. */
+body.v2-home #awards + #resume{margin-top:clamp(24px,3vw,40px);padding-top:clamp(20px,2.5vw,30px)}
