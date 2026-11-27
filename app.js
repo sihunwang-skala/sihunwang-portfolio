@@ -509,24 +509,25 @@ document.addEventListener("keydown", (event) => {
 
 
 const resumeDialog = document.querySelector("[data-resume-dialog]");
-const resumeLinks = document.querySelectorAll(".header-resume-link, .side-resume-link");
+const resumeLinks = document.querySelectorAll(".v2-resume-link[download], .header-resume-link, .side-resume-link");
+const resumeForm = resumeDialog?.querySelector("form");
+let resumeURL = "./assets/Resume_Sihun_Wang.pdf?v=20261126-final";
 const resumeDownload = () => {
   const link = document.createElement("a");
-  link.href = "./assets/Resume_Sihun_Wang.pdf?v=20261126-final";
+  link.href = resumeURL;
   link.download = "Resume_Sihun_Wang.pdf";
   document.body.append(link);
   link.click();
   link.remove();
 };
-resumeLinks.forEach((link) => link.addEventListener("click", (event) => {
+resumeLinks.forEach(link => link.addEventListener("click", event => {
+  if (!resumeDialog || typeof resumeDialog.showModal !== "function") return;
   event.preventDefault();
-  resumeDialog?.showModal();
+  resumeURL = link.href || resumeURL;
+  resumeForm?.reset();
+  if (!resumeDialog.open) resumeDialog.showModal();
 }));
-resumeDialog?.querySelector("[data-resume-skip]")?.addEventListener("click", () => {
-  resumeDialog.close();
-  resumeDownload();
-});
-const resumeSubmitButton = resumeDialog?.querySelector("[data-resume-submit]");
+resumeDialog?.querySelector(".resume-dialog-close")?.addEventListener("click", () => resumeDialog.close());
 const detectResumeBrowser = (ua) => {
   if (/KAKAOTALK/i.test(ua)) return "KakaoTalk in-app browser";
   if (/Instagram/i.test(ua)) return "Instagram in-app browser";
@@ -550,25 +551,21 @@ const detectResumeOS = (ua) => {
   if (/Linux/i.test(ua)) return "Linux";
   return "Other";
 };
-resumeSubmitButton?.addEventListener("click", async () => {
-  if (resumeSubmitButton.disabled) return;
-  resumeSubmitButton.disabled = true;
-  const form = resumeDialog?.querySelector("form");
-  const name = form?.elements.namedItem("name")?.value.trim() || "";
-  const role = form?.elements.namedItem("role")?.value.trim() || "";
+
+resumeForm?.addEventListener("submit", event => {
+  event.preventDefault();
+  if (!resumeDialog?.open) return;
+  const name = resumeForm.elements.namedItem("name")?.value.trim().slice(0, 150) || "";
+  const role = resumeForm.elements.namedItem("role")?.value.trim().slice(0, 150) || "";
   const ua = navigator.userAgent || "";
   let referrer = "Direct or unavailable";
-  try {
-    if (document.referrer) {
-      const referrerUrl = new URL(document.referrer);
-      referrer = referrerUrl.origin;
-    }
-  } catch {}
+  try { if (document.referrer) referrer = new URL(document.referrer).origin; } catch {}
   const payload = {
     _subject: "Portfolio resume download",
     _template: "table",
     name: name || "Not provided",
     role: role || "Not provided",
+    event: "Resume download requested",
     downloaded_at: new Date().toISOString(),
     browser_or_app: detectResumeBrowser(ua),
     operating_system: detectResumeOS(ua),
@@ -576,24 +573,45 @@ resumeSubmitButton?.addEventListener("click", async () => {
     language: navigator.language || "Unknown",
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "Unknown",
     referring_page: referrer,
-    page: location.origin + location.pathname + location.hash
+    page: location.origin + location.pathname
   };
-  try {
-    const response = await fetch("https://formsubmit.co/ajax/swwk10@gmail.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(payload)
-    });
-    const result = await response.json();
-    if (!response.ok || result.success === "false" || result.success === false) {
-      throw new Error("Email provider rejected the request");
-    }
-    resumeDialog?.close();
-    resumeDownload();
-  } catch {
-    resumeDownload();
-    resumeSubmitButton.disabled = false;
+  // Preserve the user gesture and never delay the PDF for email delivery.
+  // No notification is sent from offline HTML copies.
+  if (location.protocol === "https:" && location.hostname === "sihunwang-skala.github.io" && location.pathname.startsWith("/sihunwang-portfolio/")) {
+    try {
+      void fetch("https://formsubmit.co/ajax/swwk10@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+        keepalive: true
+      }).then(async response => {
+        const result = await response.json();
+        if (!response.ok || result.success === "false" || result.success === false) console.warn("Resume notification rejected");
+      }).catch(() => console.warn("Resume notification unavailable"));
+    } catch {}
   }
+  resumeDialog.close();
+  resumeDownload();
+});
+
+// Mobile browsers often cannot render embedded PDFs. Keep the original preview
+// image inside its own scroll region and provide explicit, bounded zoom.
+document.querySelectorAll("[data-resume-viewer]").forEach(viewer => {
+  const viewport = viewer.querySelector("[data-resume-scroll]");
+  const image = viewport?.querySelector("img");
+  const indicator = viewer.querySelector("[data-resume-zoom]");
+  if (!viewport || !image || !indicator) return;
+  let zoom = 100;
+  const render = () => {
+    image.style.width = zoom + "%";
+    indicator.textContent = zoom + "%";
+    viewer.querySelector("[data-resume-minus]").disabled = zoom <= 100;
+    viewer.querySelector("[data-resume-plus]").disabled = zoom >= 250;
+  };
+  viewer.querySelector("[data-resume-minus]").addEventListener("click", () => { zoom = Math.max(100, zoom - 25); render(); });
+  viewer.querySelector("[data-resume-plus]").addEventListener("click", () => { zoom = Math.min(250, zoom + 25); render(); });
+  viewer.querySelector("[data-resume-fit]").addEventListener("click", () => { zoom = 100; render(); viewport.scrollLeft = 0; viewport.scrollTop = 0; });
+  render();
 });
 
 /* project card visuals: keep cycling the screenshots while the card is on screen */

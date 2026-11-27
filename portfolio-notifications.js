@@ -51,6 +51,8 @@
     const u=parse(a.href,l.href);
     if(!u)return;
     if(u.origin===l.origin && /\/Resume_Sihun_Wang\.pdf$/i.test(u.pathname) && a.hasAttribute("download")){
+      // The dialog sends one notification, including optional fields, on Continue.
+      if(e.type==="click" && a.matches(".v2-resume-link") && typeof d.querySelector("[data-resume-dialog]")?.showModal==="function")return;
       send("Resume download click","Resume PDF","resume-download",3000);return;
     }
     const p=targetProject(a,u);

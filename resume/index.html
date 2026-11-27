@@ -15,10 +15,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
 <link rel="stylesheet" href="./styles.css?v=20261123-compact" />
 <link rel="stylesheet" href="./site.css?v=20261126-mobile" />
-<script src="./app.js?v=20261124-footer-clean" defer></script>
+<script src="./app.js?v=20261127-resume-dialog-v2" defer></script>
 <script src="./site.js?v=20261124-complete" defer></script>
 <script src="./highlight.js?v=20261123-on-scroll" defer></script>
-<script src="./portfolio-notifications.js?v=1" defer></script>
+<script src="./portfolio-notifications.js?v=2" defer></script>
+<style id="resume-contained-viewer-style">
+body.v2-resume .v2-resume-frame{height:clamp(360px,64vh,640px);min-height:0}
+body.v2-resume .v2-resume-mobile-preview[data-resume-viewer]{background:#f2f4f7}
+body.v2-resume .resume-viewer-controls{display:flex;justify-content:center;align-items:center;gap:8px;padding:6px;border-bottom:1px solid #d9dfe7}
+body.v2-resume .resume-viewer-controls button{font:inherit;font-size:15px;min-width:40px;min-height:40px;padding:5px 10px;color:#17202a;background:#fff;border:1px solid #c9c9c9;border-radius:6px;cursor:pointer}
+body.v2-resume .resume-viewer-controls button:disabled{opacity:.4;cursor:default}
+body.v2-resume .resume-viewer-controls output{min-width:48px;text-align:center;color:#17202a;font-size:14px;font-variant-numeric:tabular-nums}
+body.v2-resume .resume-viewer-scroll{height:clamp(260px,57vh,460px);overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;background:#fff}
+body.v2-resume .v2-resume-mobile-preview .resume-viewer-scroll img{display:block;max-width:none;min-width:100%;height:auto;margin:0}
+</style>
 </head>
 <body class="v2-page v2-resume" data-v2-page="resume">
 <a class="skip-link" href="./resume/#main">Skip to main content</a>
@@ -50,12 +60,14 @@
   <h1 class="v2-page-heading" data-v2-en="Resume" data-v2-ko="Resume">Resume</h1>
 </header>
 <section class="v2-resume-preview" aria-label="Resume PDF preview">
-  <a class="v2-resume-mobile-preview" href="./assets/Resume_Sihun_Wang.pdf?v=20261126-final" target="_blank" rel="noopener noreferrer" aria-label="Open resume PDF">
-    <img src="./assets/resume-mobile.png?v=20261126-final" alt="Sihun Wang resume" loading="lazy" width="1224" height="1584" />
-    <span data-v2-en="Open full-size PDF" data-v2-ko="PDF 크게 보기">Open full-size PDF</span>
-  </a>
+  <div class="v2-resume-mobile-preview" data-resume-viewer>
+    <div class="resume-viewer-controls" role="group" aria-label="Resume zoom">
+      <button type="button" data-resume-minus aria-label="Zoom out">−</button><output data-resume-zoom>100%</output><button type="button" data-resume-plus aria-label="Zoom in">+</button><button type="button" data-resume-fit data-v2-en="Fit" data-v2-ko="맞춤">Fit</button>
+    </div>
+    <div class="resume-viewer-scroll" data-resume-scroll tabindex="0" aria-label="Scrollable resume preview"><img src="./assets/resume-mobile.png?v=20261126-final" alt="Sihun Wang resume" loading="lazy" width="1224" height="1584" /></div>
+  </div>
   <div class="v2-resume-frame-shell">
-    <iframe class="v2-resume-frame" src="./assets/Resume_Sihun_Wang.pdf?v=20261126-final#toolbar=0&amp;navpanes=0&amp;scrollbar=1" title="Sihun Wang résumé PDF" loading="eager"></iframe>
+    <iframe class="v2-resume-frame" src="./assets/Resume_Sihun_Wang.pdf?v=20261126-final#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;view=FitH" title="Sihun Wang résumé PDF" loading="eager"></iframe>
   </div>
   <div class="v2-resume-action"><a class="v2-resume-link" href="./assets/Resume_Sihun_Wang.pdf?v=20261126-final" download data-v2-en="Download PDF" data-v2-ko="PDF 다운로드">Download PDF</a></div>
 </section>
@@ -66,7 +78,7 @@
 <p class="v2-next-section-link"><a href="./about/" data-v2-en="Keep scrolling for about me" data-v2-ko="About 페이지로 이동">Keep scrolling for about me</a></p>
 <footer class="v2-footer"><span>© Sihun Wang</span><span>AI Agent Engineer</span></footer>
 </div></main>
-<dialog class="resume-dialog" data-resume-dialog aria-labelledby="resume-dialog-title"><form method="dialog" class="resume-dialog-card"><button class="resume-dialog-close" value="cancel" aria-label="Close">×</button><h2 id="resume-dialog-title">Download Resume</h2><label>Name<input name="name" autocomplete="name"></label><label>Role / Company<input name="role" autocomplete="organization-title"></label><div class="resume-dialog-actions"><button type="button" data-resume-submit>Continue</button></div></form></dialog>
+<dialog class="resume-dialog" data-resume-dialog aria-labelledby="resume-dialog-title"><form method="dialog" class="resume-dialog-card"><button type="button" class="resume-dialog-close" aria-label="Close">×</button><h2 id="resume-dialog-title">Download Resume</h2><label>Name<input name="name" autocomplete="name" maxlength="150"></label><label>Role / Company<input name="role" autocomplete="organization-title" maxlength="150"></label><p data-resume-intro data-v2-en="Both fields are optional. Provided details are emailed to the site owner." data-v2-ko="두 항목 모두 선택 사항입니다. 입력한 정보는 사이트 운영자에게 이메일로 전달됩니다.">Both fields are optional. Provided details are emailed to the site owner.</p><div class="resume-dialog-actions"><button type="submit" data-resume-submit>Continue</button></div></form></dialog>
 <div class="image-lightbox" data-image-lightbox aria-hidden="true"><button type="button" data-lightbox-close aria-label="Close enlarged image">×</button><img data-lightbox-image alt="" /></div>
 </body>
 </html>
