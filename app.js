@@ -511,7 +511,7 @@ document.addEventListener("keydown", (event) => {
 const resumeDialog = document.querySelector("[data-resume-dialog]");
 const resumeLinks = document.querySelectorAll(".v2-resume-link[download], .header-resume-link, .side-resume-link");
 const resumeForm = resumeDialog?.querySelector("form");
-let resumeURL = "./assets/Resume_Sihun_Wang.pdf?v=20261126-final";
+let resumeURL = "./assets/Resume_Sihun_Wang.pdf?v=20261127-new-resume";
 const resumeDownload = () => {
   const link = document.createElement("a");
   link.href = resumeURL;
