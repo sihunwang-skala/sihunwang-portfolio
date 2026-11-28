@@ -599,21 +599,22 @@ resumeForm?.addEventListener("submit", event => {
 // Resume: native scrolling, modifier-wheel and trackpad/touch pinch zoom.
 document.querySelectorAll("[data-resume-viewer]").forEach(viewer => {
   const viewport = viewer.querySelector("[data-resume-scroll]");
-  const image = viewport?.querySelector("img");
-  if (!viewport || !image) return;
+  const page = viewport?.querySelector("[data-resume-page]");
+  const image = page?.querySelector("img");
+  if (!viewport || !page || !image) return;
   let zoom = 1, pinch = null, gestureZoom = null;
   // US Letter at 96 CSS pixels per inch. Fit narrower screens at the initial scale.
-  const render = () => { image.style.width = (Math.min(816, viewport.clientWidth || 816) * zoom) + "px"; };
+  const render = () => { page.style.width = (Math.min(816, viewport.clientWidth || 816) * zoom) + "px"; };
   const zoomAt = (next, x, y) => {
     const value = Math.max(0.6, Math.min(3, next));
     if (Math.abs(value - zoom) < 0.0001) return false;
-    const before = image.getBoundingClientRect();
+    const before = page.getBoundingClientRect();
     if (!before.width || !before.height) return false;
     const rx = (x - before.left) / before.width;
     const ry = (y - before.top) / before.height;
     zoom = value;
     render();
-    const after = image.getBoundingClientRect();
+    const after = page.getBoundingClientRect();
     viewport.scrollLeft += after.left + rx * after.width - x;
     viewport.scrollTop += after.top + ry * after.height - y;
     return true;

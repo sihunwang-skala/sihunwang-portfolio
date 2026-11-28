@@ -15,14 +15,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css" />
 <link rel="stylesheet" href="./styles.css?v=20261123-compact" />
 <link rel="stylesheet" href="./site.css?v=20261126-mobile" />
-<script src="./app.js?v=20261128-native-scroll" defer></script>
+<script src="./app.js?v=20261128-resume-links" defer></script>
 <script src="./site.js?v=20261124-complete" defer></script>
 <script src="./highlight.js?v=20261123-on-scroll" defer></script>
 <script src="./portfolio-notifications.js?v=3" defer></script>
 <style id="resume-contained-viewer-style">
 body.v2-resume .v2-resume-preview .v2-resume-mobile-preview[data-resume-viewer]{display:block;width:100%;box-sizing:border-box;border:1px solid var(--v2-divider);border-radius:10px;overflow:hidden;background:#f2f4f7}
 body.v2-resume .resume-viewer-scroll{height:clamp(360px,64vh,640px);overflow:auto;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;background:#f2f4f7;cursor:auto;user-select:none;overflow-anchor:none}
-body.v2-resume .v2-resume-mobile-preview .resume-viewer-scroll img{display:block;width:min(816px,100%);max-width:none;min-width:0;height:auto;margin:0 auto;background:#fff;user-select:none;-webkit-user-drag:none}
+body.v2-resume .resume-document-page{position:relative;width:min(816px,100%);margin:0 auto;background:#fff}
+body.v2-resume .v2-resume-mobile-preview .resume-document-page img{display:block;width:100%;max-width:none;min-width:0;height:auto;margin:0;background:#fff;user-select:none;-webkit-user-drag:none}
+body.v2-resume .resume-document-link{position:absolute;display:block;z-index:1;cursor:pointer;background:transparent;text-decoration:none}
+body.v2-resume .resume-document-link:hover{background:rgba(60,100,180,.08)}
+body.v2-resume .resume-document-link:focus-visible{outline:2px solid #4674ba;outline-offset:1px}
 @media(max-width:820px){body.v2-resume .resume-viewer-scroll{height:clamp(260px,57vh,460px)}}
 </style>
 </head>
@@ -57,7 +61,30 @@ body.v2-resume .v2-resume-mobile-preview .resume-viewer-scroll img{display:block
 </header>
 <section class="v2-resume-preview" aria-label="Resume PDF preview">
   <div class="v2-resume-mobile-preview" data-resume-viewer>
-    <div class="resume-viewer-scroll" data-resume-scroll tabindex="0" aria-label="Resume preview: scroll to read, pinch or Control/Command + wheel to zoom"><img src="./assets/resume-preview.svg?v=20261128-final" alt="Sihun Wang resume" loading="lazy" draggable="false" width="1224" height="1584" /></div>
+    <div class="resume-viewer-scroll" data-resume-scroll tabindex="0" aria-label="Resume preview: scroll to read, pinch or Control/Command + wheel to zoom">
+    <div class="resume-document-page" data-resume-page>
+      <img src="./assets/resume-preview.svg?v=20261128-final" alt="Sihun Wang resume" loading="lazy" draggable="false" width="1224" height="1584" />
+      <a class="resume-document-link" href="https://www.gatech.edu/" target="_blank" rel="noopener noreferrer" aria-label="Georgia Institute of Technology" title="Georgia Institute of Technology" style="left:6.372549%;top:8.005054%;width:22.415587%;height:1.654037%"></a>
+      <a class="resume-document-link" href="https://www.usnews.com/best-graduate-schools/top-computer-science-schools/artificial-intelligence-rankings" target="_blank" rel="noopener noreferrer" aria-label="U.S. News #5" title="U.S. News #5" style="left:39.635704%;top:8.169193%;width:7.749119%;height:1.489897%"></a>
+      <a class="resume-document-link" href="https://www.topuniversities.com/university-subject-rankings/data-science-artificial-intelligence/2025" target="_blank" rel="noopener noreferrer" aria-label="QS #15" title="QS #15" style="left:48.103776%;top:8.169193%;width:4.263844%;height:1.489897%"></a>
+      <a class="resume-document-link" href="https://illinois.edu/" target="_blank" rel="noopener noreferrer" aria-label="University of Illinois Urbana-Champaign" title="University of Illinois Urbana-Champaign" style="left:6.372549%;top:11.717170%;width:29.021733%;height:1.654045%"></a>
+      <a class="resume-document-link" href="https://www.usnews.com/best-graduate-schools/top-computer-science-schools/artificial-intelligence-rankings" target="_blank" rel="noopener noreferrer" aria-label="U.S. News #6" title="U.S. News #6" style="left:46.241850%;top:11.881310%;width:7.749121%;height:1.489905%"></a>
+      <a class="resume-document-link" href="https://www.topuniversities.com/university-subject-rankings/data-science-artificial-intelligence/2025" target="_blank" rel="noopener noreferrer" aria-label="QS #21" title="QS #21" style="left:54.709924%;top:11.881310%;width:4.263839%;height:1.489905%"></a>
+      <a class="resume-document-link" href="https://www.flitto.com/ko" target="_blank" rel="noopener noreferrer" aria-label="Flitto" title="Flitto" style="left:6.372549%;top:18.806820%;width:3.982815%;height:1.698234%"></a>
+      <a class="resume-document-link" href="https://www.kdn21.co.kr/default/" target="_blank" rel="noopener noreferrer" aria-label="Korea Data Network" title="Korea Data Network" style="left:6.372549%;top:27.443179%;width:15.268431%;height:1.698234%"></a>
+      <a class="resume-document-link" href="https://infoaccesslab.web.illinois.edu/people/" target="_blank" rel="noopener noreferrer" aria-label="Information Experience and Accessibility Lab" title="Information Experience and Accessibility Lab" style="left:6.372549%;top:36.079545%;width:33.580882%;height:1.698234%"></a>
+      <a class="resume-document-link" href="https://com.khu.ac.kr/biz_kor/user/contents/view.do?menuNo=14500077" target="_blank" rel="noopener noreferrer" aria-label="Kyung Hee University, Department of Big Data Analytics" title="Kyung Hee University, Department of Big Data Analytics" style="left:6.372549%;top:46.300507%;width:41.829986%;height:1.698230%"></a>
+      <a class="resume-document-link" href="https://leekj.wordpress.com/" target="_blank" rel="noopener noreferrer" aria-label="Artificial Intelligence &amp; Business Model Laboratory" title="Artificial Intelligence &amp; Business Model Laboratory" style="left:6.372549%;top:53.352271%;width:37.988072%;height:1.698234%"></a>
+      <a class="resume-document-link" href="https://github.com/sihunwang/upstage-ml-team2" target="_blank" rel="noopener noreferrer" aria-label="Upstage AI Stages ML Competition" title="Upstage AI Stages ML Competition" style="left:8.823529%;top:77.335859%;width:24.747664%;height:1.507576%"></a>
+      <a class="resume-document-link" href="https://www.kbsmedia.co.kr/business/digital.html" target="_blank" rel="noopener noreferrer" aria-label="KBS Media AI Excellence Award" title="KBS Media AI Excellence Award" style="left:8.823529%;top:79.122478%;width:23.210767%;height:1.507568%"></a>
+      <a class="resume-document-link" href="https://uiucdsc.org/data-dive" target="_blank" rel="noopener noreferrer" aria-label="UIUC Data Dive Competition" title="UIUC Data Dive Competition" style="left:8.823529%;top:80.909089%;width:20.546585%;height:1.507576%"></a>
+      <a class="resume-document-link" href="https://book.stat420.org/" target="_blank" rel="noopener noreferrer" aria-label="Applied Statistics with R" title="Applied Statistics with R" style="left:8.823529%;top:82.695709%;width:17.208416%;height:1.507576%"></a>
+      <a class="resume-document-link" href="https://sites.google.com/a/georgiasouthern.edu/math-tournament/" target="_blank" rel="noopener noreferrer" aria-label="GSU Mathematics Tournament" title="GSU Mathematics Tournament" style="left:8.823529%;top:84.482320%;width:21.395508%;height:1.469699%"></a>
+      <a class="resume-document-link" href="https://www.2026skala.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="SK AI Leader Academy, Team Lead" title="SK AI Leader Academy, Team Lead" style="left:8.823529%;top:89.993687%;width:24.746879%;height:1.507576%"></a>
+      <a class="resume-document-link" href="https://culturecomplex.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="Culcom, Group Leader" title="Culcom, Group Leader" style="left:8.823529%;top:91.780306%;width:15.489723%;height:1.507576%"></a>
+      <a class="resume-document-link" href="https://psychology.illinois.edu/news/2021-08-25t024843/learning-about-korean-liberal-arts-student-organization-ted-jung" target="_blank" rel="noopener noreferrer" aria-label="KLASO, Team Lead" title="KLASO, Team Lead" style="left:8.823529%;top:93.566918%;width:13.775784%;height:1.507576%"></a>
+    </div>
+    </div>
   </div>
   <div class="v2-resume-action"><a class="v2-resume-link" href="./assets/Resume_Sihun_Wang.pdf?v=20261128-final" download data-v2-en="Download PDF" data-v2-ko="PDF 다운로드">Download PDF</a></div>
 </section>
