@@ -596,13 +596,14 @@ resumeForm?.addEventListener("submit", event => {
   resumeDownload();
 });
 
-// Resume: wheel zoom at the pointer, drag to pan, and pinch on touchscreens.
+// Resume: native scrolling, modifier-wheel and trackpad/touch pinch zoom.
 document.querySelectorAll("[data-resume-viewer]").forEach(viewer => {
   const viewport = viewer.querySelector("[data-resume-scroll]");
   const image = viewport?.querySelector("img");
   if (!viewport || !image) return;
-  let zoom = 1, drag = null, pinch = null;
-  const render = () => { image.style.width = (zoom * 100) + "%"; };
+  let zoom = 1, pinch = null, gestureZoom = null;
+  // US Letter at 96 CSS pixels per inch. Fit narrower screens at the initial scale.
+  const render = () => { image.style.width = (Math.min(816, viewport.clientWidth || 816) * zoom) + "px"; };
   const zoomAt = (next, x, y) => {
     const value = Math.max(0.6, Math.min(3, next));
     if (Math.abs(value - zoom) < 0.0001) return false;
@@ -617,33 +618,39 @@ document.querySelectorAll("[data-resume-viewer]").forEach(viewer => {
     viewport.scrollTop += after.top + ry * after.height - y;
     return true;
   };
+  // Do not cancel ordinary wheel or two-finger scrolling.
+  // Chromium/Firefox trackpad pinch is normally delivered as a Ctrl-wheel event.
   viewport.addEventListener("wheel", e => {
-    if (!e.deltaY || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    if (!(e.ctrlKey || e.metaKey) || !e.deltaY) return;
+    if (e.cancelable) e.preventDefault();
+    if (gestureZoom !== null) return;
     const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? viewport.clientHeight : 1);
-    const changed = zoomAt(zoom * Math.exp(-Math.max(-240, Math.min(240, dy)) * 0.0025), e.clientX, e.clientY);
-    if (changed || e.ctrlKey || e.metaKey) e.preventDefault();
+    zoomAt(zoom * Math.exp(-Math.max(-240, Math.min(240, dy)) * 0.0025), e.clientX, e.clientY);
   }, {passive:false});
-  viewport.addEventListener("pointerdown", e => {
-    if (e.pointerType !== "mouse" || e.button !== 0) return;
-    e.preventDefault();
-    drag = {id:e.pointerId,x:e.clientX,y:e.clientY,left:viewport.scrollLeft,top:viewport.scrollTop};
-    viewport.setPointerCapture(e.pointerId);
-    viewport.classList.add("is-dragging");
-  });
-  viewport.addEventListener("pointermove", e => {
-    if (!drag || drag.id !== e.pointerId) return;
-    viewport.scrollLeft = drag.left - (e.clientX - drag.x);
-    viewport.scrollTop = drag.top - (e.clientY - drag.y);
-  });
-  const stopDrag = () => { drag = null; viewport.classList.remove("is-dragging"); };
-  ["pointerup","pointercancel","lostpointercapture"].forEach(type => viewport.addEventListener(type, stopDrag));
+  // Safari's trackpad gesture events are separate from ordinary scrolling.
+  viewport.addEventListener("gesturestart", e => {
+    if (e.cancelable) e.preventDefault();
+    gestureZoom = zoom;
+  }, {passive:false});
+  viewport.addEventListener("gesturechange", e => {
+    if (gestureZoom === null) return;
+    if (e.cancelable) e.preventDefault();
+    const r = viewport.getBoundingClientRect();
+    if (Number.isFinite(e.scale) && !pinch) zoomAt(gestureZoom * e.scale,
+      Number.isFinite(e.clientX) ? e.clientX : r.left+r.width/2,
+      Number.isFinite(e.clientY) ? e.clientY : r.top+r.height/2);
+  }, {passive:false});
+  viewport.addEventListener("gestureend", e => {
+    if (e.cancelable) e.preventDefault();
+    gestureZoom = null;
+  }, {passive:false});
   const touchInfo = touches => ({
     distance:Math.hypot(touches[0].clientX-touches[1].clientX,touches[0].clientY-touches[1].clientY),
     x:(touches[0].clientX+touches[1].clientX)/2,
     y:(touches[0].clientY+touches[1].clientY)/2
   });
   viewport.addEventListener("touchstart", e => {
-    if (e.touches.length === 2) { pinch = touchInfo(e.touches); }
+    if (e.touches.length === 2) pinch = touchInfo(e.touches);
   }, {passive:true});
   viewport.addEventListener("touchmove", e => {
     if (e.touches.length !== 2 || !pinch) return;
@@ -660,6 +667,8 @@ document.querySelectorAll("[data-resume-viewer]").forEach(viewer => {
     zoomAt(e.key==="0"?1:zoom*(e.key==="-"?0.8:1.25),r.left+r.width/2,r.top+r.height/2);
   });
   image.addEventListener("dragstart", e => e.preventDefault());
+  if (typeof ResizeObserver === "function") new ResizeObserver(render).observe(viewport);
+  else window.addEventListener("resize",render);
   render();
 });
 
